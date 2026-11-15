@@ -776,7 +776,8 @@
 
     /* Interactive Product Switcher */
     .hero-switcher-wrap {
-      padding-top: 6px;
+      padding-top: 12px;
+      padding-bottom: 28px;
     }
 
     .hero-switcher-tabs {
@@ -1064,11 +1065,11 @@
     }
 
     /* =====================================================================
-       6. ARCHITECTURAL HORIZONTAL-WAVE TIMELINE
+       6. ARCHITECTURAL HORIZONTAL-WAVE TIMELINE (SLOW, READABLE RUNWAY)
     ===================================================================== */
     .timeline-scroll-runway {
       position: relative;
-      height: 290vh;
+      height: 760vh;
     }
 
     .timeline-sticky-stage {
@@ -1404,7 +1405,7 @@
     }
 
     .cases-section {
-      padding: 54px 0 110px;
+      padding: 64px 0 140px;
     }
 
     .cases-split {
@@ -1426,13 +1427,15 @@
       font-size: 0.93rem;
       color: var(--text-secondary);
       line-height: 1.7;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
+    /* Generous vertical spacing on desktop so each case study stays readable while scrolling */
     .case-selector-list {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 28vh;
+      padding-bottom: 16vh;
     }
 
     .case-select-btn {
@@ -1443,7 +1446,7 @@
       align-items: flex-start;
       gap: 6px;
       width: 100%;
-      padding: 18px 20px 20px;
+      padding: 20px 22px 22px;
       border-radius: 16px;
       border: 1px solid var(--border-glass);
       background: var(--glass-bg);
@@ -1503,7 +1506,7 @@
 
     .case-display-card {
       position: sticky;
-      top: 110px;
+      top: 130px;
       padding: clamp(24px, 3.6vw, 38px);
       border-radius: 22px;
     }
@@ -1777,7 +1780,7 @@
     .acc-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
 
     .acc-item {
@@ -2019,6 +2022,11 @@
       .eng-bento,
       .accordion-columns {
         grid-template-columns: 1fr;
+      }
+
+      .case-selector-list {
+        gap: 18px;
+        padding-bottom: 0;
       }
 
       .case-display-card {
@@ -2428,7 +2436,7 @@
         <div class="container timeline-stage-header">
           <div>
             <h2 class="timeline-stage-title">08/2023 to 11/2026</h2>
-            <p class="timeline-stage-sub">16 milestones across Germany and India. Scroll or use ← / → keys.</p>
+            <p class="timeline-stage-sub">16 milestones across Germany and India. Scroll calmly or use ← / → keys.</p>
           </div>
 
           <div class="timeline-controls-bar">
@@ -2504,7 +2512,7 @@
           <div class="cases-left" data-reveal>
             <span class="section-kicker">Deep Dive</span>
             <h2>From classroom friction to shipped products.</h2>
-            <p>Scroll through each build to see how it went from idea to real-world adoption, or click to inspect.</p>
+            <p>Scroll calmly through each build to see how it went from idea to real-world adoption, or click to inspect.</p>
 
             <div class="case-selector-list" role="tablist">
               <button class="case-select-btn active" data-project="the1" data-case-idx="0" type="button">
@@ -2892,7 +2900,114 @@
     }
 
     /* =======================================================================
-       1. GENTLE READING-COMFORT CURVE
+       0.5. SMART WHEEL-SPEED GOVERNOR FOR INTERACTIVE SCROLL SECTIONS
+       Slows down rapid trackpad/mouse-wheel spikes inside the Timeline &
+       Case Studies so every card stays readable at ANY cursor/wheel speed,
+       while handing control back seamlessly at section boundaries.
+    ======================================================================= */
+    (function initWheelSpeedGovernor() {
+      if (prefersReducedMotion) return;
+
+      const timelineEl = document.getElementById('timeline');
+      const casesEl = document.getElementById('casesSection');
+      let targetScrollY = window.scrollY;
+      let isSmoothingWheel = false;
+
+      function normalizeWheelDelta(e) {
+        let dy = e.deltaY;
+        if (e.deltaMode === 1) dy *= 32;        // DOM_DELTA_LINE
+        else if (e.deltaMode === 2) dy *= window.innerHeight; // DOM_DELTA_PAGE
+        return dy;
+      }
+
+      function runWheelEase() {
+        if (!isSmoothingWheel) return;
+        const diff = targetScrollY - window.scrollY;
+        if (Math.abs(diff) < 0.6) {
+          window.scrollTo(0, targetScrollY);
+          isSmoothingWheel = false;
+          return;
+        }
+        window.scrollTo(0, window.scrollY + diff * 0.14);
+        requestAnimationFrame(runWheelEase);
+      }
+
+      window.addEventListener(
+        'wheel',
+        (e) => {
+          if (e.ctrlKey || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+
+          const rawDy = normalizeWheelDelta(e);
+          const dir = Math.sign(rawDy);
+          if (dir === 0) return;
+
+          const curY = window.scrollY;
+          const vh = window.innerHeight;
+          let activeGovernor = null;
+
+          // Check if currently inside pinned Timeline runway
+          if (timelineEl) {
+            const tlTop = timelineEl.offsetTop;
+            const tlBottom = tlTop + timelineEl.offsetHeight - vh;
+            if (curY >= tlTop - 20 && curY <= tlBottom + 20) {
+              // Allow natural exit if at top scrolling up or at bottom scrolling down
+              if ((curY <= tlTop + 4 && dir < 0) || (curY >= tlBottom - 4 && dir > 0)) {
+                isSmoothingWheel = false;
+                return;
+              }
+              activeGovernor = { minY: tlTop, maxY: tlBottom, maxStep: 36, scale: 0.34 };
+            }
+          }
+
+          // Check if currently inside desktop Case Studies sticky zone
+          if (!activeGovernor && casesEl && window.innerWidth > 960) {
+            const csTop = casesEl.offsetTop - 60;
+            const csBottom = casesEl.offsetTop + casesEl.offsetHeight - vh * 0.75;
+            if (curY >= csTop && curY <= csBottom) {
+              if ((curY <= csTop + 4 && dir < 0) || (curY >= csBottom - 4 && dir > 0)) {
+                isSmoothingWheel = false;
+                return;
+              }
+              activeGovernor = { minY: csTop, maxY: csBottom, maxStep: 48, scale: 0.45 };
+            }
+          }
+
+          if (!activeGovernor) {
+            isSmoothingWheel = false;
+            return;
+          }
+
+          e.preventDefault();
+
+          if (!isSmoothingWheel) {
+            targetScrollY = curY;
+          }
+
+          // Dampen and cap wheel impulse so fast flicks never skip items
+          const dampedDelta = dir * Math.min(activeGovernor.maxStep, Math.abs(rawDy) * activeGovernor.scale);
+          targetScrollY = Math.max(
+            activeGovernor.minY,
+            Math.min(activeGovernor.maxY, targetScrollY + dampedDelta)
+          );
+
+          if (!isSmoothingWheel) {
+            isSmoothingWheel = true;
+            requestAnimationFrame(runWheelEase);
+          }
+        },
+        { passive: false }
+      );
+
+      // Cancel wheel governor immediately if user grabs scrollbar or uses keys/links
+      window.addEventListener('mousedown', () => { isSmoothingWheel = false; }, { passive: true });
+      window.addEventListener('touchstart', () => { isSmoothingWheel = false; }, { passive: true });
+      window.addEventListener('keydown', () => { isSmoothingWheel = false; }, { passive: true });
+    })();
+
+    /* =======================================================================
+       1. READING-COMFORT DWELL CURVE
+       Creates a gentle plateau at each milestone center so cards pause
+       briefly for effortless reading while scrolling.
     ======================================================================= */
     function gentleEaseCurve(t, steps) {
       if (steps <= 1) return t;
@@ -2900,7 +3015,8 @@
       const scaled = clamped * steps;
       const idx = Math.min(steps - 1, Math.floor(scaled));
       const frac = scaled - idx;
-      const shaped = frac + 0.045 * Math.sin(2.0 * Math.PI * frac);
+      // Stronger magnetic dwell plateau around each milestone
+      const shaped = frac + 0.115 * Math.sin(2.0 * Math.PI * frac);
       return (idx + shaped) / steps;
     }
 
@@ -3171,7 +3287,7 @@
     document.querySelectorAll('[data-reveal]').forEach((el) => revealObserver.observe(el));
 
     /* =======================================================================
-       6. HERO 2-TAB FEATURE SWITCHER
+       6. HERO 2-TAB FEATURE SWITCHER (SLOW, VELOCITY-CLAMPED DWELL)
     ======================================================================= */
     (function initHeroAutoSwitcher() {
       const wrap = document.getElementById('heroSwitcherWrap');
@@ -3256,6 +3372,8 @@
 
       let activeIdx = 0;
       let userOverride = false;
+      let smoothedRaw = 0;
+      let lastTs = performance.now();
 
       function setHeroTab(idx, progressInTab = 1) {
         const clampedIdx = Math.max(0, Math.min(showcaseKeys.length - 1, idx));
@@ -3280,23 +3398,40 @@
         });
       });
 
-      function onScrollHeroSwitcher() {
-        if (prefersReducedMotion || userOverride) return;
-        const rect = wrap.getBoundingClientRect();
-        const vh = window.innerHeight;
-        const startY = vh * 0.72;
-        const endY = vh * 0.18;
-        const raw = Math.min(1, Math.max(0, (startY - rect.top) / Math.max(1, startY - endY)));
-        const idx = raw < 0.52 ? 0 : 1;
-        const frac = idx === 0 ? Math.min(1, Math.max(0.15, raw / 0.52)) : Math.min(1, Math.max(0.15, (raw - 0.52) / 0.48));
-        setHeroTab(idx, frac);
+      function tickHeroSwitcher(now) {
+        const dt = Math.min(0.05, Math.max(0.001, (now - lastTs) * 0.001));
+        lastTs = now;
+
+        if (!prefersReducedMotion && !userOverride) {
+          const rect = wrap.getBoundingClientRect();
+          const vh = window.innerHeight;
+          // Wider scroll window so THE 1 stays visible much longer
+          const startY = vh * 0.88;
+          const endY = -vh * 0.25;
+          const targetRaw = Math.min(1, Math.max(0, (startY - rect.top) / Math.max(1, startY - endY)));
+
+          // Velocity-clamped progression: max 0.55 progress per second regardless of scroll speed
+          const maxStep = 0.55 * dt;
+          const delta = targetRaw - smoothedRaw;
+          smoothedRaw += Math.sign(delta) * Math.min(Math.abs(delta), maxStep);
+
+          const switchThreshold = 0.62;
+          const idx = smoothedRaw < switchThreshold ? 0 : 1;
+          const frac =
+            idx === 0
+              ? Math.min(1, Math.max(0.12, smoothedRaw / switchThreshold))
+              : Math.min(1, Math.max(0.12, (smoothedRaw - switchThreshold) / (1 - switchThreshold)));
+          setHeroTab(idx, frac);
+        }
+
+        requestAnimationFrame(tickHeroSwitcher);
       }
 
-      window.addEventListener('scroll', onScrollHeroSwitcher, { passive: true });
+      requestAnimationFrame(tickHeroSwitcher);
     })();
 
     /* =======================================================================
-       7. SPLIT CASE STUDIES
+       7. SPLIT CASE STUDIES (SLOW, VELOCITY-CLAMPED DWELL PROGRESSION)
     ======================================================================= */
     (function initScrollCaseStudies() {
       const card = document.getElementById('caseDisplayCard');
@@ -3366,6 +3501,9 @@
       };
 
       let activeCaseIdx = 0;
+      let smoothedCaseFloat = 0;
+      let manualClickUntil = 0;
+      let lastTs = performance.now();
 
       function setActiveCase(idx, progressInCase = 1) {
         const clamped = Math.max(0, Math.min(projectKeys.length - 1, idx));
@@ -3384,31 +3522,42 @@
       }
 
       buttons.forEach((btn, idx) => {
-        btn.addEventListener('click', () => setActiveCase(idx, 1));
+        btn.addEventListener('click', () => {
+          manualClickUntil = performance.now() + 900;
+          smoothedCaseFloat = idx;
+          setActiveCase(idx, 1);
+        });
       });
 
-      function onScrollCases() {
-        if (prefersReducedMotion) return;
-        const focusY = window.innerHeight * 0.48;
-        let closestIdx = 0;
-        let minDistance = Infinity;
-        let activeProgress = 0.5;
+      function tickCases(now) {
+        const dt = Math.min(0.05, Math.max(0.001, (now - lastTs) * 0.001));
+        lastTs = now;
 
-        buttons.forEach((btn, idx) => {
-          const rect = btn.getBoundingClientRect();
-          const centerY = rect.top + rect.height * 0.5;
-          const dist = Math.abs(centerY - focusY);
-          if (dist < minDistance) {
-            minDistance = dist;
-            closestIdx = idx;
-            activeProgress = Math.min(1, Math.max(0.15, 1 - Math.max(0, centerY - focusY) / Math.max(1, rect.height)));
-          }
-        });
+        if (!prefersReducedMotion && now > manualClickUntil) {
+          const firstRect = buttons[0].getBoundingClientRect();
+          const lastRect = buttons[buttons.length - 1].getBoundingClientRect();
+          const focusY = window.innerHeight * 0.48;
 
-        setActiveCase(closestIdx, activeProgress);
+          const startCenter = firstRect.top + firstRect.height * 0.5;
+          const endCenter = lastRect.top + lastRect.height * 0.5;
+          const span = Math.max(1, endCenter - startCenter);
+          const rawNormalized = Math.min(1, Math.max(0, (focusY - startCenter) / span));
+          const targetFloat = rawNormalized * (buttons.length - 1);
+
+          // Rate-limit case switching speed to max 0.95 cases/sec so fast scrolls never skip
+          const maxStep = 0.95 * dt;
+          const diff = targetFloat - smoothedCaseFloat;
+          smoothedCaseFloat += Math.sign(diff) * Math.min(Math.abs(diff), maxStep);
+
+          const closestIdx = Math.round(smoothedCaseFloat);
+          const localFrac = Math.min(1, Math.max(0.15, 1 - Math.abs(smoothedCaseFloat - closestIdx) * 1.4));
+          setActiveCase(closestIdx, localFrac);
+        }
+
+        requestAnimationFrame(tickCases);
       }
 
-      window.addEventListener('scroll', onScrollCases, { passive: true });
+      requestAnimationFrame(tickCases);
     })();
 
     /* =======================================================================
@@ -3474,13 +3623,15 @@
     })();
 
     /* =======================================================================
-       9. ACADEMIC & LEADERSHIP ACCORDIONS
+       9. ACADEMIC & LEADERSHIP ACCORDIONS (VELOCITY-CLAMPED FOCUS)
     ======================================================================= */
     (function initScrollRecordAccordions() {
       const items = Array.from(document.querySelectorAll('.acc-item[data-acc-order]'));
       if (!items.length) return;
 
       const manuallyToggled = new Set();
+      let smoothedFocusIdx = 0;
+      let lastTs = performance.now();
 
       items.forEach((item, idx) => {
         const trigger = item.querySelector('.acc-trigger');
@@ -3492,34 +3643,49 @@
         }
       });
 
-      function onScrollRecord() {
-        if (prefersReducedMotion) return;
-        const vh = window.innerHeight;
-        const openLine = vh * 0.76;
-        const focusY = vh * 0.5;
+      function tickRecord(now) {
+        const dt = Math.min(0.05, Math.max(0.001, (now - lastTs) * 0.001));
+        lastTs = now;
 
-        let closestIdx = -1;
-        let minDist = Infinity;
+        if (!prefersReducedMotion) {
+          const vh = window.innerHeight;
+          const openLine = vh * 0.72;
+          const focusY = vh * 0.48;
 
-        items.forEach((item, idx) => {
-          const rect = item.getBoundingClientRect();
-          if (!manuallyToggled.has(idx) && rect.top < openLine) {
-            item.classList.add('open');
+          let closestIdx = -1;
+          let minDist = Infinity;
+
+          items.forEach((item, idx) => {
+            const rect = item.getBoundingClientRect();
+            if (!manuallyToggled.has(idx) && rect.top < openLine) {
+              item.classList.add('open');
+            }
+            const centerY = rect.top + rect.height * 0.5;
+            const dist = Math.abs(centerY - focusY);
+            if (rect.top < vh * 0.8 && rect.bottom > vh * 0.2 && dist < minDist) {
+              minDist = dist;
+              closestIdx = idx;
+            }
+          });
+
+          if (closestIdx >= 0) {
+            const maxStep = 4.5 * dt;
+            const diff = closestIdx - smoothedFocusIdx;
+            smoothedFocusIdx += Math.sign(diff) * Math.min(Math.abs(diff), maxStep);
+            const activeFocus = Math.round(smoothedFocusIdx);
+
+            items.forEach((item, idx) => {
+              item.classList.toggle('is-focused', idx === activeFocus);
+            });
+          } else {
+            items.forEach((item) => item.classList.remove('is-focused'));
           }
-          const centerY = rect.top + rect.height * 0.5;
-          const dist = Math.abs(centerY - focusY);
-          if (rect.top < vh * 0.8 && rect.bottom > vh * 0.2 && dist < minDist) {
-            minDist = dist;
-            closestIdx = idx;
-          }
-        });
+        }
 
-        items.forEach((item, idx) => {
-          item.classList.toggle('is-focused', idx === closestIdx);
-        });
+        requestAnimationFrame(tickRecord);
       }
 
-      window.addEventListener('scroll', onScrollRecord, { passive: true });
+      requestAnimationFrame(tickRecord);
     })();
 
     /* =======================================================================
@@ -3695,6 +3861,8 @@
 
     /* =======================================================================
        11. ARCHITECTURAL HORIZONTAL-WAVE TIMELINE
+       Velocity-clamped horizontal glide + magnetic milestone dwell so every
+       card is readable at ANY cursor / wheel / scrollbar speed.
     ======================================================================= */
     (function initArchitecturalTimeline() {
       const runway = document.getElementById('timeline');
@@ -3759,11 +3927,14 @@
       layoutNodes();
       window.addEventListener('resize', layoutNodes, { passive: true });
 
+      let manualNavUntil = 0;
+
       function scrollToMilestone(idx) {
         const clamped = Math.max(0, Math.min(MILESTONES.length - 1, idx));
         const targetProgress = clamped / (MILESTONES.length - 1);
         const runwayTop = runway.offsetTop;
         const scrollable = Math.max(1, runway.offsetHeight - window.innerHeight);
+        manualNavUntil = performance.now() + 850;
         window.scrollTo({
           top: runwayTop + Math.min(1, targetProgress) * scrollable,
           behavior: 'smooth'
@@ -3871,8 +4042,12 @@
       window.addEventListener('resize', resizeTunnel, { passive: true });
 
       let smoothProgress = 0;
+      let lastFrameMs = performance.now();
 
       function animateTimeline(nowMs) {
+        const dt = Math.min(0.05, Math.max(0.001, (nowMs - lastFrameMs) * 0.001));
+        lastFrameMs = nowMs;
+
         const tSec = nowMs * 0.001;
         const isLight = htmlEl.getAttribute('data-theme') === 'light' ? 1.0 : 0.0;
 
@@ -3883,7 +4058,14 @@
         const rect = runway.getBoundingClientRect();
         const scrollable = Math.max(1, runway.offsetHeight - window.innerHeight);
         const rawProgress = Math.min(1, Math.max(0, -rect.top / scrollable));
-        smoothProgress += (rawProgress - smoothProgress) * 0.16;
+
+        // Velocity-clamped damper: caps horizontal panning to ~1.55 milestones/sec
+        // during scrolling so even a fast scrollbar drag or cursor flick stays readable.
+        const maxMilestonesPerSec = nowMs < manualNavUntil ? 7.5 : 1.55;
+        const maxProgressStep = (maxMilestonesPerSec / Math.max(1, MILESTONES.length - 1)) * dt;
+        const diff = rawProgress - smoothProgress;
+        const dampedDelta = diff * Math.min(1, 7.5 * dt);
+        smoothProgress += Math.sign(dampedDelta) * Math.min(Math.abs(dampedDelta), maxProgressStep);
 
         if (!prefersReducedMotion) {
           const shapedProgress = gentleEaseCurve(smoothProgress, MILESTONES.length);
