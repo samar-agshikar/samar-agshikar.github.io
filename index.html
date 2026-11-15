@@ -2902,8 +2902,8 @@
     /* =======================================================================
        0.5. SMART WHEEL-SPEED GOVERNOR FOR INTERACTIVE SCROLL SECTIONS
        Slows down rapid trackpad/mouse-wheel spikes inside the Timeline &
-       Case Studies so every card stays readable at ANY cursor/wheel speed,
-       while handing control back seamlessly at section boundaries.
+       Case Studies while guaranteeing clean, trap-free entry and exit at
+       every section boundary.
     ======================================================================= */
     (function initWheelSpeedGovernor() {
       if (prefersReducedMotion) return;
@@ -2915,20 +2915,22 @@
 
       function normalizeWheelDelta(e) {
         let dy = e.deltaY;
-        if (e.deltaMode === 1) dy *= 32;        // DOM_DELTA_LINE
-        else if (e.deltaMode === 2) dy *= window.innerHeight; // DOM_DELTA_PAGE
+        if (e.deltaMode === 1) dy *= 32;
+        else if (e.deltaMode === 2) dy *= window.innerHeight;
         return dy;
       }
 
       function runWheelEase() {
         if (!isSmoothingWheel) return;
         const diff = targetScrollY - window.scrollY;
-        if (Math.abs(diff) < 0.6) {
-          window.scrollTo(0, targetScrollY);
+        if (Math.abs(diff) <= 1.5) {
+          window.scrollTo(0, Math.round(targetScrollY));
           isSmoothingWheel = false;
           return;
         }
-        window.scrollTo(0, window.scrollY + diff * 0.14);
+        // Minimum 1.5px step per frame prevents subpixel rounding stalls
+        const step = Math.sign(diff) * Math.max(1.5, Math.abs(diff) * 0.16);
+        window.scrollTo(0, Math.round(window.scrollY + step));
         requestAnimationFrame(runWheelEase);
       }
 
@@ -2945,34 +2947,36 @@
           const vh = window.innerHeight;
           let activeGovernor = null;
 
-          // Check if currently inside pinned Timeline runway
+          // 1. Pinned Timeline runway
           if (timelineEl) {
-            const tlTop = timelineEl.offsetTop;
-            const tlBottom = tlTop + timelineEl.offsetHeight - vh;
-            if (curY >= tlTop - 20 && curY <= tlBottom + 20) {
-              // Allow natural exit if at top scrolling up or at bottom scrolling down
-              if ((curY <= tlTop + 4 && dir < 0) || (curY >= tlBottom - 4 && dir > 0)) {
-                isSmoothingWheel = false;
-                return;
-              }
+            const tlTop = Math.round(timelineEl.offsetTop);
+            const tlBottom = Math.round(tlTop + timelineEl.offsetHeight - vh);
+            if (curY >= tlTop && curY <= tlBottom) {
               activeGovernor = { minY: tlTop, maxY: tlBottom, maxStep: 36, scale: 0.34 };
             }
           }
 
-          // Check if currently inside desktop Case Studies sticky zone
+          // 2. Desktop Case Studies sticky zone
           if (!activeGovernor && casesEl && window.innerWidth > 960) {
-            const csTop = casesEl.offsetTop - 60;
-            const csBottom = casesEl.offsetTop + casesEl.offsetHeight - vh * 0.75;
-            if (curY >= csTop && curY <= csBottom) {
-              if ((curY <= csTop + 4 && dir < 0) || (curY >= csBottom - 4 && dir > 0)) {
-                isSmoothingWheel = false;
-                return;
-              }
+            const csTop = Math.round(casesEl.offsetTop - 40);
+            const csBottom = Math.round(casesEl.offsetTop + casesEl.offsetHeight - vh * 0.72);
+            if (csBottom > csTop && curY >= csTop && curY <= csBottom) {
               activeGovernor = { minY: csTop, maxY: csBottom, maxStep: 48, scale: 0.45 };
             }
           }
 
           if (!activeGovernor) {
+            isSmoothingWheel = false;
+            return;
+          }
+
+          // Release control cleanly within 20px of section boundaries so native
+          // scrolling always transitions seamlessly into adjacent sections
+          const exitMargin = 20;
+          if (
+            (dir > 0 && curY >= activeGovernor.maxY - exitMargin) ||
+            (dir < 0 && curY <= activeGovernor.minY + exitMargin)
+          ) {
             isSmoothingWheel = false;
             return;
           }
@@ -2983,11 +2987,12 @@
             targetScrollY = curY;
           }
 
-          // Dampen and cap wheel impulse so fast flicks never skip items
           const dampedDelta = dir * Math.min(activeGovernor.maxStep, Math.abs(rawDy) * activeGovernor.scale);
-          targetScrollY = Math.max(
-            activeGovernor.minY,
-            Math.min(activeGovernor.maxY, targetScrollY + dampedDelta)
+          targetScrollY = Math.round(
+            Math.max(
+              activeGovernor.minY,
+              Math.min(activeGovernor.maxY, targetScrollY + dampedDelta)
+            )
           );
 
           if (!isSmoothingWheel) {
@@ -2998,7 +3003,6 @@
         { passive: false }
       );
 
-      // Cancel wheel governor immediately if user grabs scrollbar or uses keys/links
       window.addEventListener('mousedown', () => { isSmoothingWheel = false; }, { passive: true });
       window.addEventListener('touchstart', () => { isSmoothingWheel = false; }, { passive: true });
       window.addEventListener('keydown', () => { isSmoothingWheel = false; }, { passive: true });
@@ -3015,7 +3019,6 @@
       const scaled = clamped * steps;
       const idx = Math.min(steps - 1, Math.floor(scaled));
       const frac = scaled - idx;
-      // Stronger magnetic dwell plateau around each milestone
       const shaped = frac + 0.115 * Math.sin(2.0 * Math.PI * frac);
       return (idx + shaped) / steps;
     }
@@ -3405,12 +3408,10 @@
         if (!prefersReducedMotion && !userOverride) {
           const rect = wrap.getBoundingClientRect();
           const vh = window.innerHeight;
-          // Wider scroll window so THE 1 stays visible much longer
           const startY = vh * 0.88;
           const endY = -vh * 0.25;
           const targetRaw = Math.min(1, Math.max(0, (startY - rect.top) / Math.max(1, startY - endY)));
 
-          // Velocity-clamped progression: max 0.55 progress per second regardless of scroll speed
           const maxStep = 0.55 * dt;
           const delta = targetRaw - smoothedRaw;
           smoothedRaw += Math.sign(delta) * Math.min(Math.abs(delta), maxStep);
@@ -3544,7 +3545,6 @@
           const rawNormalized = Math.min(1, Math.max(0, (focusY - startCenter) / span));
           const targetFloat = rawNormalized * (buttons.length - 1);
 
-          // Rate-limit case switching speed to max 0.95 cases/sec so fast scrolls never skip
           const maxStep = 0.95 * dt;
           const diff = targetFloat - smoothedCaseFloat;
           smoothedCaseFloat += Math.sign(diff) * Math.min(Math.abs(diff), maxStep);
@@ -4059,8 +4059,6 @@
         const scrollable = Math.max(1, runway.offsetHeight - window.innerHeight);
         const rawProgress = Math.min(1, Math.max(0, -rect.top / scrollable));
 
-        // Velocity-clamped damper: caps horizontal panning to ~1.55 milestones/sec
-        // during scrolling so even a fast scrollbar drag or cursor flick stays readable.
         const maxMilestonesPerSec = nowMs < manualNavUntil ? 7.5 : 1.55;
         const maxProgressStep = (maxMilestonesPerSec / Math.max(1, MILESTONES.length - 1)) * dt;
         const diff = rawProgress - smoothProgress;
