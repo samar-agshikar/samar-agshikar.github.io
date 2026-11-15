@@ -1,0 +1,3995 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samar Agshikar — Student Founder, Developer &amp; Builder</title>
+  <meta
+    name="description"
+    content="Samar Agshikar — Student developer and founder building THE 1 and Kerniq, writing Building What's Next, and exploring AI, mathematics, and education."
+  />
+  <meta name="author" content="Samar Agshikar" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#090912" id="metaThemeColor" />
+  <link rel="canonical" href="https://samar-agshikar.github.io/" />
+
+  <!-- Open Graph / LinkedIn Rich Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Samar Agshikar — Building What's Next" />
+  <meta property="og:description" content="Student developer and builder working across AI, mathematics, and education. Creator of THE 1 and Kerniq." />
+  <meta property="og:url" content="https://samar-agshikar.github.io/" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Samar Agshikar — Building What's Next" />
+  <meta name="twitter:description" content="Student developer and builder creating THE 1, Kerniq, and Building What's Next." />
+
+  <!-- Structured Data for Search & Social Crawlers -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Samar Agshikar",
+      "url": "https://samar-agshikar.github.io/",
+      "sameAs": [
+        "https://www.linkedin.com/in/samar-agshikar/",
+        "https://github.com/samar-agshikar",
+        "https://the-1.app"
+      ],
+      "jobTitle": "Student Developer & Founder",
+      "knowsAbout": ["Artificial Intelligence", "Software Development", "Mathematics", "EdTech"]
+    }
+  </script>
+
+  <!-- Ensure page always starts cleanly at the top when opened -->
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* =====================================================================
+       1. COHESIVE EDITORIAL PALETTE — DARK & LIGHT THEMES
+    ===================================================================== */
+    :root,
+    [data-theme="dark"] {
+      --bg-page: #090912;
+      --bg-gradient: radial-gradient(ellipse 90% 60% at 15% 0%, #270b1e 0%, transparent 55%),
+                     radial-gradient(ellipse 80% 60% at 85% 15%, #0c1c42 0%, transparent 55%),
+                     linear-gradient(180deg, #090912 0%, #0d0b1a 50%, #080a14 100%);
+
+      --glass-bg: rgba(16, 18, 34, 0.62);
+      --glass-bg-strong: rgba(12, 14, 28, 0.90);
+      --glass-pill: rgba(15, 17, 34, 0.78);
+      --glass-hover: rgba(255, 255, 255, 0.055);
+      --glass-inset: rgba(255, 255, 255, 0.03);
+
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #8b9bb4;
+
+      --border-glass: rgba(255, 255, 255, 0.10);
+      --border-glass-strong: rgba(255, 255, 255, 0.20);
+      --specular-top: inset 0 1px 0 0 rgba(255, 255, 255, 0.16);
+
+      --grid-line: rgba(255, 255, 255, 0.045);
+      --track-line: rgba(255, 255, 255, 0.15);
+      --stem-line: rgba(255, 255, 255, 0.20);
+      --stem-active: #818cf8;
+
+      --grad-primary: linear-gradient(135deg, #f43f5e 0%, #6366f1 52%, #06b6d4 100%);
+      --grad-text: linear-gradient(115deg, #fda4af 0%, #a5b4fc 50%, #67e8f9 100%);
+      --grad-bar: linear-gradient(90deg, #f43f5e 0%, #6366f1 52%, #06b6d4 100%);
+      --accent-1: #fb7185;
+      --accent-2: #818cf8;
+      --accent-3: #22d3ee;
+
+      --logo-bg: linear-gradient(135deg, #e11d48 0%, #4f46e5 100%);
+      --logo-fg: #ffffff;
+      --logo-border: rgba(255, 255, 255, 0.28);
+
+      --cta-bg: linear-gradient(135deg, #e11d48 0%, #4f46e5 55%, #0284c7 100%);
+      --cta-text: #ffffff;
+      --cta-shadow: 0 14px 34px -8px rgba(99, 102, 241, 0.45);
+
+      --ambient-mesh:
+        radial-gradient(circle at 14% 16%, rgba(244, 63, 94, 0.24) 0%, transparent 45%),
+        radial-gradient(circle at 78% 22%, rgba(99, 102, 241, 0.26) 0%, transparent 48%),
+        radial-gradient(circle at 52% 65%, rgba(6, 182, 212, 0.18) 0%, transparent 50%),
+        radial-gradient(circle at 20% 85%, rgba(124, 58, 237, 0.20) 0%, transparent 45%);
+
+      --shadow-glass: 0 24px 60px -16px rgba(2, 4, 16, 0.85);
+    }
+
+    [data-theme="light"] {
+      --bg-page: #f8fafc;
+      --bg-gradient: radial-gradient(ellipse 90% 55% at 12% 0%, #ffe4e6 0%, transparent 55%),
+                     radial-gradient(ellipse 85% 55% at 88% 12%, #e0f2fe 0%, transparent 55%),
+                     linear-gradient(180deg, #fafaf9 0%, #f1f5f9 55%, #f8fafc 100%);
+
+      --glass-bg: rgba(255, 255, 255, 0.78);
+      --glass-bg-strong: rgba(255, 255, 255, 0.96);
+      --glass-pill: rgba(255, 255, 255, 0.88);
+      --glass-hover: rgba(15, 23, 42, 0.045);
+      --glass-inset: rgba(15, 23, 42, 0.025);
+
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+
+      --border-glass: rgba(15, 23, 42, 0.09);
+      --border-glass-strong: rgba(15, 23, 42, 0.16);
+      --specular-top: inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+
+      --grid-line: rgba(15, 23, 42, 0.055);
+      --track-line: rgba(15, 23, 42, 0.16);
+      --stem-line: rgba(15, 23, 42, 0.20);
+      --stem-active: #4f46e5;
+
+      --grad-primary: linear-gradient(135deg, #e11d48 0%, #4f46e5 52%, #0284c7 100%);
+      --grad-text: linear-gradient(115deg, #be123c 0%, #4338ca 50%, #0369a1 100%);
+      --grad-bar: linear-gradient(90deg, #e11d48 0%, #4f46e5 52%, #0284c7 100%);
+      --accent-1: #e11d48;
+      --accent-2: #4f46e5;
+      --accent-3: #0284c7;
+
+      --logo-bg: #0f172a;
+      --logo-fg: #ffffff;
+      --logo-border: rgba(79, 70, 229, 0.35);
+
+      --cta-bg: linear-gradient(135deg, #0f172a 0%, #312e81 55%, #0369a1 100%);
+      --cta-text: #ffffff;
+      --cta-shadow: 0 14px 32px -8px rgba(49, 46, 129, 0.30);
+
+      --ambient-mesh:
+        radial-gradient(circle at 12% 14%, rgba(244, 63, 94, 0.16) 0%, transparent 45%),
+        radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.20) 0%, transparent 46%),
+        radial-gradient(circle at 50% 62%, rgba(99, 102, 241, 0.14) 0%, transparent 48%),
+        radial-gradient(circle at 85% 88%, rgba(16, 185, 129, 0.14) 0%, transparent 45%);
+
+      --shadow-glass: 0 20px 50px -14px rgba(15, 23, 42, 0.09);
+    }
+
+    :root {
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --container: 1200px;
+      --spring: cubic-bezier(0.22, 1, 0.36, 1);
+      --bounce-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: clip;
+    }
+
+    body {
+      position: relative;
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.65;
+      overflow-x: clip;
+      transition: background-color 0.45s var(--spring), color 0.35s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 clamp(16px, 4vw, 44px);
+    }
+
+    /* =====================================================================
+       2. FIXED BACKDROP, AMBIENT MESH & NOISE TEXTURE
+    ===================================================================== */
+    .page-bg-gradient {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: var(--bg-gradient);
+      transition: background 0.5s ease;
+    }
+
+    .ambient-field {
+      position: fixed;
+      inset: -12%;
+      z-index: 0;
+      pointer-events: none;
+      background-image: var(--ambient-mesh);
+      filter: blur(48px);
+      animation: auroraFloat 20s ease-in-out infinite alternate;
+    }
+
+    .noise-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    @keyframes auroraFloat {
+      0% { transform: translate3d(-1.5%, -1%, 0) scale(1); }
+      50% { transform: translate3d(1.6%, 1.2%, 0) scale(1.03); }
+      100% { transform: translate3d(-0.8%, 1.8%, 0) scale(1.01); }
+    }
+
+    main,
+    header,
+    footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    .glass-panel {
+      position: relative;
+      background: var(--glass-bg);
+      border: 1px solid var(--border-glass);
+      backdrop-filter: blur(24px) saturate(175%);
+      -webkit-backdrop-filter: blur(24px) saturate(175%);
+      box-shadow: var(--specular-top), var(--shadow-glass);
+      transition:
+        transform 0.35s var(--spring),
+        border-color 0.3s ease,
+        background-color 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    .glass-panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(
+        420px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(255, 255, 255, 0.11),
+        transparent 65%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .glass-panel:hover::after {
+      opacity: 1;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      filter: blur(8px);
+      transform: translate3d(0, 20px, 0) scale(0.985);
+      transition:
+        opacity 0.75s var(--spring),
+        filter 0.75s var(--spring),
+        transform 0.75s var(--spring);
+      transition-delay: var(--delay, 0ms);
+    }
+
+    [data-reveal].is-visible {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    /* =====================================================================
+       3. RESPONSIVE TOP DOCK & MOBILE DRAWER
+    ===================================================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 150;
+      padding: 12px 0;
+      pointer-events: none;
+    }
+
+    .top-dock-shell {
+      pointer-events: auto;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 12px 8px 14px;
+      border-radius: 999px;
+      background: var(--glass-pill);
+      border: 1px solid var(--border-glass-strong);
+      backdrop-filter: blur(28px) saturate(185%);
+      -webkit-backdrop-filter: blur(28px) saturate(185%);
+      box-shadow:
+        var(--specular-top),
+        0 18px 46px -12px rgba(2, 6, 23, 0.35);
+      overflow: hidden;
+    }
+
+    .dock-progress-track {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 0;
+      height: 2.5px;
+      background: rgba(128, 128, 128, 0.14);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .dock-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--grad-bar);
+      border-radius: 999px;
+      transition: width 0.08s linear;
+    }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: clamp(0.88rem, 2vw, 0.95rem);
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      flex-shrink: 0;
+    }
+
+    .brand-monogram {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      border: 1.5px solid var(--logo-border);
+      background: var(--logo-bg);
+      color: var(--logo-fg);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+    }
+
+    .dock-nav {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 3px;
+      border-radius: 999px;
+      background: var(--glass-inset);
+      border: 1px solid var(--border-glass);
+    }
+
+    .nav-active-pill {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      height: calc(100% - 6px);
+      width: 72px;
+      border-radius: 999px;
+      background: var(--grad-primary);
+      box-shadow: 0 6px 18px -4px rgba(99, 102, 241, 0.45);
+      transition:
+        transform 0.48s var(--bounce-spring),
+        width 0.42s var(--spring);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .dock-nav a {
+      position: relative;
+      z-index: 1;
+      padding: 6px 11px;
+      border-radius: 999px;
+      font-size: 0.77rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: color 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .dock-nav a:hover {
+      color: var(--text-primary);
+    }
+
+    .dock-nav a.active {
+      color: #ffffff;
+    }
+
+    .dock-right {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .dock-location-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--glass-hover);
+      border: 1px solid var(--border-glass);
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .icon-btn {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--glass-hover);
+      border: 1px solid var(--border-glass);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: transform 0.3s var(--bounce-spring), border-color 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .icon-btn:hover {
+      transform: scale(1.08);
+      border-color: var(--border-glass-strong);
+    }
+
+    .nav-cta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: var(--cta-bg);
+      color: var(--cta-text);
+      box-shadow: var(--cta-shadow);
+      transition: transform 0.3s var(--bounce-spring);
+      white-space: nowrap;
+    }
+
+    .nav-cta-pill:hover {
+      transform: translateY(-1.5px) scale(1.03);
+    }
+
+    .mobile-toggle {
+      display: none;
+    }
+
+    .mobile-menu-drawer {
+      pointer-events: auto;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 16px;
+      right: 16px;
+      display: none;
+      padding: 16px;
+      border-radius: 22px;
+      background: var(--glass-bg-strong);
+      border: 1px solid var(--border-glass-strong);
+      backdrop-filter: blur(28px) saturate(180%);
+      box-shadow: var(--shadow-glass);
+      flex-direction: column;
+      gap: 6px;
+      z-index: 160;
+      animation: cardMorphIn 0.3s var(--spring);
+    }
+
+    .mobile-menu-drawer.open {
+      display: flex;
+    }
+
+    .mobile-menu-drawer a {
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--glass-inset);
+      border: 1px solid var(--border-glass);
+    }
+
+    .mobile-menu-drawer a.active,
+    .mobile-menu-drawer a:hover {
+      background: var(--grad-primary);
+      color: #ffffff;
+      border-color: transparent;
+    }
+
+    /* =====================================================================
+       4. HERO SECTION & INTERACTIVE WORKSPACE PREVIEW
+    ===================================================================== */
+    .hero-section {
+      position: relative;
+      padding: clamp(100px, 14vh, 130px) 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: clamp(28px, 4vw, 44px);
+      align-items: center;
+      margin-bottom: 56px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 6px 13px;
+      border-radius: 999px;
+      background: var(--glass-bg);
+      border: 1px solid var(--border-glass);
+      backdrop-filter: blur(18px);
+      font-size: clamp(0.72rem, 1.8vw, 0.78rem);
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 18px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.75);
+      animation: pulseLive 2.2s infinite;
+    }
+
+    @keyframes pulseLive {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.7; }
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 5.2vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      color: var(--text-primary);
+      margin-bottom: 18px;
+    }
+
+    .hero-title .italic-gradient {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.96rem, 1.6vw, 1.05rem);
+      line-height: 1.72;
+      color: var(--text-secondary);
+      max-width: 54ch;
+      margin-bottom: 24px;
+    }
+
+    .hero-sub strong {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .btn-luminous {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      background: var(--cta-bg);
+      color: var(--cta-text);
+      box-shadow: var(--cta-shadow);
+      transition: transform 0.35s var(--bounce-spring);
+      cursor: pointer;
+      border: none;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .btn-luminous:hover {
+      transform: translateY(-2.5px) scale(1.02);
+    }
+
+    .btn-glass {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 20px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: var(--glass-bg);
+      border: 1px solid var(--border-glass-strong);
+      backdrop-filter: blur(20px) saturate(170%);
+      box-shadow: var(--specular-top);
+      transition: transform 0.35s var(--bounce-spring), border-color 0.25s ease;
+      cursor: pointer;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .btn-glass:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-2);
+    }
+
+    .hero-journey-pill {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 14px;
+      background: var(--glass-bg);
+      border: 1px solid var(--border-glass);
+      backdrop-filter: blur(18px);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+    }
+
+    .hero-right-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-orb-float {
+      width: 100%;
+      height: 185px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    #heroWebGLOrb {
+      width: 195px;
+      height: 195px;
+      filter: drop-shadow(0 18px 34px rgba(99, 102, 241, 0.32));
+    }
+
+    .hero-preview-card {
+      width: 100%;
+      border-radius: 22px;
+      padding: 20px;
+    }
+
+    .preview-card-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border-glass);
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .preview-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .preview-dots span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--grad-primary);
+    }
+
+    .preview-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .preview-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 14px;
+      border-radius: 12px;
+      background: var(--glass-hover);
+      border: 1px solid var(--border-glass);
+      font-size: 0.82rem;
+      transition: transform 0.3s var(--spring), border-color 0.25s ease;
+    }
+
+    .preview-row:hover {
+      transform: translateX(4px);
+      border-color: var(--border-glass-strong);
+    }
+
+    .preview-row strong {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .preview-tag {
+      font-family: var(--font-mono);
+      font-size: 0.69rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+      color: #ffffff;
+      background: var(--grad-primary);
+      flex-shrink: 0;
+    }
+
+    /* Interactive Product Switcher */
+    .hero-switcher-wrap {
+      padding-top: 6px;
+    }
+
+    .hero-switcher-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      max-width: 600px;
+      margin: 0 auto 16px;
+    }
+
+    .switcher-tab {
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+      padding: 14px 16px 16px;
+      border-radius: 16px;
+      background: var(--glass-bg);
+      border: 1px solid var(--border-glass);
+      backdrop-filter: blur(22px) saturate(170%);
+      cursor: pointer;
+      transition:
+        transform 0.35s var(--bounce-spring),
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .switcher-tab:hover {
+      transform: translateY(-2px);
+    }
+
+    .switcher-tab.active {
+      border-color: var(--accent-2);
+      transform: translateY(-2px) scale(1.015);
+      box-shadow: var(--specular-top), 0 14px 32px -10px rgba(99, 102, 241, 0.32);
+    }
+
+    .tab-dwell-bar {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--grad-bar);
+      transition: width 0.12s linear;
+    }
+
+    .switcher-tab-title {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .switcher-tab-sub {
+      display: block;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .hero-showcase-frame {
+      border-radius: 22px;
+      padding: clamp(20px, 3.4vw, 36px);
+      overflow: hidden;
+    }
+
+    .showcase-frame-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 28px;
+      align-items: center;
+      animation: cardMorphIn 0.45s var(--spring);
+    }
+
+    @keyframes cardMorphIn {
+      0% {
+        opacity: 0;
+        filter: blur(6px);
+        transform: translate3d(0, 12px, 0) scale(0.99);
+      }
+      100% {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+    }
+
+    .showcase-copy h3 {
+      font-size: clamp(1.25rem, 2.4vw, 1.42rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .showcase-copy p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .showcase-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+
+    .showcase-pills span {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: var(--glass-hover);
+      border: 1px solid var(--border-glass);
+      color: var(--text-primary);
+    }
+
+    .showcase-mock {
+      padding: 16px;
+      border-radius: 16px;
+      background: var(--glass-inset);
+      border: 1px solid var(--border-glass);
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .mock-window-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-glass);
+    }
+
+    .mock-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 13px;
+      border-radius: 12px;
+      background: var(--glass-bg);
+      border: 1px solid var(--border-glass);
+      font-size: 0.81rem;
+    }
+
+    /* =====================================================================
+       5. PERSONAL STORY & RECOGNITION SECTION
+    ===================================================================== */
+    .story-section {
+      padding: clamp(72px, 10vh, 96px) 0;
+      border-top: 1px solid var(--border-glass);
+      border-bottom: 1px solid var(--border-glass);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 28px;
+    }
+
+    .story-letter-card {
+      padding: clamp(24px, 4vw, 40px);
+      border-radius: 22px;
+    }
+
+    .section-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .story-letter-card h2 {
+      font-size: clamp(1.65rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .story-letter-card p {
+      font-size: 0.94rem;
+      line-height: 1.76;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    .story-letter-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .story-signature {
+      margin-top: 18px;
+      padding-top: 15px;
+      border-top: 1px solid var(--border-glass);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .signature-script {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.55rem;
+      color: var(--text-primary);
+    }
+
+    .now-card {
+      padding: clamp(22px, 3.5vw, 32px);
+      border-radius: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .now-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .now-item {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: var(--glass-hover);
+      border: 1px solid var(--border-glass);
+    }
+
+    .now-item-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .now-item-val {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.42;
+    }
+
+    .rec-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .rec-badge {
+      padding: 13px 10px;
+      border-radius: 14px;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .rec-badge span {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* =====================================================================
+       6. ARCHITECTURAL HORIZONTAL-WAVE TIMELINE
+    ===================================================================== */
+    .timeline-scroll-runway {
+      position: relative;
+      height: 290vh;
+    }
+
+    .timeline-sticky-stage {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    #tunnelWebGLCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.55;
+    }
+
+    .timeline-arch-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background-image: repeating-linear-gradient(
+        to right,
+        var(--grid-line) 0px,
+        var(--grid-line) 1px,
+        transparent 1px,
+        transparent 220px
+      );
+    }
+
+    .timeline-stage-header {
+      position: relative;
+      z-index: 6;
+      padding-top: clamp(86px, 12vh, 104px);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .timeline-stage-title {
+      font-size: clamp(1.85rem, 3.8vw, 3.1rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.08;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .timeline-stage-sub {
+      font-size: clamp(0.88rem, 1.5vw, 0.95rem);
+      color: var(--text-secondary);
+    }
+
+    .timeline-controls-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: var(--glass-bg-strong);
+      border: 1px solid var(--border-glass-strong);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--specular-top);
+    }
+
+    .tl-counter-text {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      padding: 0 4px;
+    }
+
+    .tl-step-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--border-glass);
+      background: var(--glass-hover);
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .tl-step-btn:hover {
+      transform: scale(1.08);
+      background: var(--grad-primary);
+      color: #ffffff;
+    }
+
+    .timeline-viewport {
+      position: relative;
+      z-index: 5;
+      flex: 1;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .timeline-track-canvas {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      will-change: transform;
+    }
+
+    .timeline-baseline {
+      position: absolute;
+      bottom: 64px;
+      left: 0;
+      height: 1.5px;
+      background: var(--track-line);
+    }
+
+    .timeline-baseline-progress {
+      position: absolute;
+      top: -1px;
+      left: 0;
+      height: 3.5px;
+      width: 0px;
+      background: var(--grad-bar);
+      border-radius: 999px;
+      box-shadow: 0 0 14px rgba(99, 102, 241, 0.55);
+    }
+
+    .tl-node {
+      position: absolute;
+      bottom: 64px;
+      width: 270px;
+      cursor: pointer;
+      transition: opacity 0.45s var(--spring), transform 0.45s var(--spring);
+    }
+
+    .tl-node-stem {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 1.5px;
+      height: var(--stem-h, 180px);
+      background: var(--stem-line);
+      transition: background-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .tl-node.is-uncovered .tl-node-stem {
+      background: var(--stem-active);
+    }
+
+    .tl-node.is-current .tl-node-stem {
+      width: 2px;
+      background: var(--grad-primary);
+      box-shadow: 0 0 12px var(--accent-2);
+    }
+
+    .tl-node-anchor {
+      position: absolute;
+      left: -4.5px;
+      bottom: -4.5px;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      transform: rotate(45deg);
+      background: var(--bg-page);
+      border: 2px solid var(--stem-line);
+      transition: transform 0.35s var(--bounce-spring), border-color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .tl-node.is-uncovered .tl-node-anchor {
+      border-color: var(--stem-active);
+      background: var(--stem-active);
+    }
+
+    .tl-node.is-current .tl-node-anchor {
+      transform: rotate(45deg) scale(1.38);
+      border-color: #ffffff;
+      background: var(--accent-2);
+      box-shadow: 0 0 14px var(--accent-2);
+    }
+
+    .tl-node-content {
+      position: absolute;
+      left: 0;
+      bottom: calc(var(--stem-h, 180px) - 2px);
+      padding-left: 14px;
+      width: 260px;
+      transition: transform 0.4s var(--spring);
+    }
+
+    .tl-node.is-current .tl-node-content {
+      transform: translateY(-4px);
+    }
+
+    .tl-node-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .tl-node-date {
+      font-family: var(--font-sans);
+      font-size: 1.08rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      color: var(--text-primary);
+    }
+
+    .tl-node.is-current .tl-node-date {
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tl-node-cat {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: var(--glass-hover);
+      border: 1px solid var(--border-glass);
+      color: var(--text-muted);
+    }
+
+    .tl-node-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      line-height: 1.32;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+
+    .tl-node-desc {
+      font-size: 0.79rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+
+    /* =====================================================================
+       7. PROJECTS & CASE STUDIES
+    ===================================================================== */
+    .pillars-section {
+      padding: clamp(80px, 11vh, 110px) 0 70px;
+      border-top: 1px solid var(--border-glass);
+    }
+
+    .centered-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 44px;
+    }
+
+    .centered-header h2 {
+      font-size: clamp(1.85rem, 3.6vw, 2.85rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      margin-bottom: 10px;
+    }
+
+    .centered-header p {
+      font-size: 0.96rem;
+      color: var(--text-secondary);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .pillar-card {
+      padding: 28px 24px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .pillar-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 11px;
+      border-radius: 999px;
+      background: var(--grad-primary);
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .pillar-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .pillar-card p {
+      font-size: 0.89rem;
+      color: var(--text-secondary);
+      line-height: 1.66;
+    }
+
+    .pillar-link {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--accent-2);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.25s ease;
+    }
+
+    .pillar-link:hover {
+      transform: translateX(4px);
+    }
+
+    .cases-section {
+      padding: 54px 0 110px;
+    }
+
+    .cases-split {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .cases-left h2 {
+      font-size: clamp(1.75rem, 3vw, 2.45rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.14;
+      margin-bottom: 12px;
+    }
+
+    .cases-left > p {
+      font-size: 0.93rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .case-selector-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .case-select-btn {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      width: 100%;
+      padding: 18px 20px 20px;
+      border-radius: 16px;
+      border: 1px solid var(--border-glass);
+      background: var(--glass-bg);
+      backdrop-filter: blur(18px);
+      color: var(--text-secondary);
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.35s var(--spring);
+    }
+
+    .case-select-btn:hover {
+      transform: translateX(4px);
+      color: var(--text-primary);
+    }
+
+    .case-select-btn.active {
+      border-color: var(--accent-2);
+      color: var(--text-primary);
+      transform: translateX(6px);
+      box-shadow: var(--specular-top), 0 14px 32px -10px rgba(99, 102, 241, 0.30);
+    }
+
+    .case-btn-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .case-btn-sub {
+      font-size: 0.81rem;
+      line-height: 1.48;
+      color: var(--text-muted);
+    }
+
+    .case-dwell-bar {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--grad-bar);
+      transition: width 0.12s linear;
+    }
+
+    .case-select-num {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 3px 7px;
+      border-radius: 7px;
+      background: var(--grad-primary);
+      color: #ffffff;
+    }
+
+    .case-display-card {
+      position: sticky;
+      top: 110px;
+      padding: clamp(24px, 3.6vw, 38px);
+      border-radius: 22px;
+    }
+
+    .case-display-inner {
+      animation: cardMorphIn 0.45s var(--spring);
+    }
+
+    .case-display-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border-glass);
+    }
+
+    .case-display-title {
+      font-size: clamp(1.35rem, 2.5vw, 1.55rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .case-display-body p {
+      font-size: 0.93rem;
+      line-height: 1.74;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    .case-highlights {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .case-highlights li {
+      position: relative;
+      padding-left: 17px;
+      font-size: 0.89rem;
+      color: var(--text-secondary);
+    }
+
+    .case-highlights li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--grad-primary);
+    }
+
+    /* =====================================================================
+       8. ENGINEERING SECTION
+    ===================================================================== */
+    .engineering-section {
+      padding: clamp(80px, 11vh, 104px) 0;
+      border-top: 1px solid var(--border-glass);
+    }
+
+    .eng-bento {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .eng-hero-card {
+      padding: clamp(24px, 4vw, 40px);
+      border-radius: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .eng-hero-card h2 {
+      font-size: clamp(1.75rem, 3.2vw, 2.45rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.14;
+      margin-bottom: 12px;
+    }
+
+    .eng-hero-card p {
+      font-size: 0.94rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    .eng-spectrum-box {
+      padding: 20px 22px;
+      border-radius: 16px;
+      background: var(--grad-primary);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #ffffff;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35);
+    }
+
+    .eng-stack-col {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .eng-sub-card {
+      padding: 22px 26px;
+      border-radius: 18px;
+    }
+
+    .eng-sub-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .eng-sub-card p {
+      font-size: 0.88rem;
+      line-height: 1.64;
+      color: var(--text-secondary);
+    }
+
+    /* =====================================================================
+       9. WRITING SPOTLIGHT (SUBSTACK)
+    ===================================================================== */
+    .writing-spotlight {
+      position: relative;
+      padding: clamp(90px, 12vh, 120px) 0;
+      border-top: 1px solid var(--border-glass);
+      overflow: hidden;
+    }
+
+    .radial-beams {
+      position: absolute;
+      inset: 0;
+      background: repeating-conic-gradient(
+        from 0deg at 50% 50%,
+        rgba(99, 102, 241, 0.10) 0deg 6deg,
+        transparent 6deg 18deg
+      );
+      mask-image: radial-gradient(circle at 50% 50%, black 16%, transparent 74%);
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, black 16%, transparent 74%);
+      pointer-events: none;
+    }
+
+    .writing-header-card {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto 34px;
+      padding: clamp(28px, 4.5vw, 44px);
+      border-radius: 26px;
+      text-align: center;
+    }
+
+    .spotlight-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 15px;
+      border-radius: 999px;
+      background: var(--glass-hover);
+      border: 1px solid var(--border-glass-strong);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+    }
+
+    .writing-header-card h2 {
+      font-size: clamp(1.75rem, 3.2vw, 2.45rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .writing-header-card p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    .essays-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .essay-card {
+      padding: 24px;
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+    }
+
+    .essay-card:hover {
+      border-color: var(--accent-2);
+    }
+
+    .essay-tag {
+      font-family: var(--font-mono);
+      font-size: 0.69rem;
+      font-weight: 700;
+      color: var(--accent-2);
+      display: block;
+      margin-bottom: 7px;
+    }
+
+    .essay-card h3 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 7px;
+    }
+
+    .essay-card p {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .essay-read-btn {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* =====================================================================
+       10. ACADEMIC & LEADERSHIP RECORD
+    ===================================================================== */
+    .record-section {
+      padding: clamp(88px, 12vh, 112px) 0;
+      border-top: 1px solid var(--border-glass);
+    }
+
+    .accordion-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+    }
+
+    .acc-col-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .acc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .acc-item {
+      border-radius: 15px;
+      overflow: hidden;
+      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s var(--spring);
+    }
+
+    .acc-item.is-focused {
+      border-color: var(--accent-2);
+      box-shadow: var(--specular-top), 0 12px 28px -10px rgba(99, 102, 241, 0.26);
+    }
+
+    .acc-trigger {
+      width: 100%;
+      padding: 16px 18px;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .acc-plus {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent-2);
+      transition: transform 0.35s var(--bounce-spring);
+      flex-shrink: 0;
+    }
+
+    .acc-item.open .acc-plus {
+      transform: rotate(45deg);
+    }
+
+    .acc-panel-wrap {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.45s var(--spring);
+    }
+
+    .acc-item.open .acc-panel-wrap {
+      grid-template-rows: 1fr;
+    }
+
+    .acc-panel {
+      overflow: hidden;
+    }
+
+    .acc-panel-inner {
+      padding: 0 18px 16px;
+      font-size: 0.86rem;
+      line-height: 1.62;
+      color: var(--text-secondary);
+    }
+
+    /* =====================================================================
+       11. CLOSING CONTACT & FOOTER
+    ===================================================================== */
+    .closing-section {
+      position: relative;
+      padding: clamp(80px, 11vh, 104px) 0 42px;
+      border-top: 1px solid var(--border-glass);
+      overflow: hidden;
+    }
+
+    .closing-top {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 32px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .closing-top h2 {
+      font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.14;
+      margin-bottom: 10px;
+    }
+
+    .closing-top p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    #dotMatrixCanvas {
+      width: 100%;
+      height: 155px;
+      display: block;
+      margin-bottom: 24px;
+    }
+
+    .footer-bottom-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-glass);
+      margin-bottom: 18px;
+    }
+
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      font-size: 0.81rem;
+      color: var(--text-muted);
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .footer-nav a:hover {
+      color: var(--text-primary);
+    }
+
+    /* Toast Notification */
+    .toast-banner {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 300;
+      padding: 11px 16px;
+      border-radius: 14px;
+      background: var(--glass-bg-strong);
+      border: 1px solid var(--border-glass-strong);
+      backdrop-filter: blur(24px);
+      box-shadow: var(--specular-top), var(--shadow-glass);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      opacity: 0;
+      transform: translateY(16px);
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.35s var(--bounce-spring);
+    }
+
+    .toast-banner.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Essay Reader Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 250;
+      background: rgba(5, 7, 18, 0.72);
+      backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 620px;
+      border-radius: 22px;
+      padding: clamp(22px, 4vw, 36px);
+      background: var(--glass-bg-strong);
+      border: 1px solid var(--border-glass-strong);
+      box-shadow: var(--specular-top), var(--shadow-glass);
+      animation: cardMorphIn 0.35s var(--spring);
+    }
+
+    .modal-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-glass);
+    }
+
+    .modal-box h3 {
+      font-size: clamp(1.25rem, 2.5vw, 1.38rem);
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .modal-body p {
+      font-size: 0.92rem;
+      line-height: 1.74;
+      color: var(--text-secondary);
+      margin-bottom: 13px;
+    }
+
+    /* =====================================================================
+       12. MOBILE & TABLET ADAPTIVE BREAKPOINTS
+    ===================================================================== */
+    @media (max-width: 1060px) {
+      .dock-nav,
+      .dock-location-badge {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .showcase-frame-grid,
+      .story-grid,
+      .cases-split,
+      .eng-bento,
+      .accordion-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .case-display-card {
+        position: static;
+      }
+
+      .hero-orb-float {
+        height: 155px;
+      }
+
+      #heroWebGLOrb {
+        width: 160px;
+        height: 160px;
+      }
+
+      .rec-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pillars-grid,
+      .essays-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .top-dock-shell {
+        padding: 6px 10px 6px 12px;
+      }
+
+      .hero-section {
+        padding-top: 100px;
+      }
+
+      .hero-switcher-tabs {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-stage-header {
+        padding-top: 80px;
+      }
+
+      .tl-node {
+        width: 240px;
+      }
+
+      .tl-node-content {
+        width: 230px;
+      }
+
+      .rec-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-actions {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-actions .btn-luminous,
+      .footer-actions .btn-glass {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .ambient-field {
+        animation: none;
+      }
+
+      [data-reveal] {
+        opacity: 1;
+        filter: none;
+        transform: none;
+      }
+
+      .timeline-scroll-runway {
+        height: auto;
+      }
+
+      .timeline-sticky-stage {
+        position: static;
+        height: 600px;
+      }
+
+      .timeline-viewport {
+        overflow-x: auto;
+      }
+
+      .acc-panel-wrap {
+        grid-template-rows: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Fixed Theme Backdrop, Living Ambient Field & Subtle Grain -->
+  <div class="page-bg-gradient" aria-hidden="true"></div>
+  <div class="ambient-field" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- ===================================================================
+       RESPONSIVE GLASSMORPHIC TOP DOCK & MOBILE DRAWER
+  =================================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <div class="top-dock-shell" id="topDockShell">
+        <a href="#overview" class="brand-link">
+          <span class="brand-monogram" aria-hidden="true">SA</span>
+          <span>Samar Agshikar</span>
+        </a>
+
+        <nav class="dock-nav" id="dockNav" aria-label="Section Navigation">
+          <span class="nav-active-pill" id="navActivePill" aria-hidden="true"></span>
+          <a href="#overview" data-section="overview" class="active">Overview</a>
+          <a href="#story" data-section="story">Story</a>
+          <a href="#timeline" data-section="timeline">Timeline</a>
+          <a href="#projects" data-section="projects">Projects</a>
+          <a href="#engineering" data-section="engineering">Craft</a>
+          <a href="#writing" data-section="writing">Writing</a>
+          <a href="#record" data-section="record">Record</a>
+          <a href="#contact" data-section="contact">Contact</a>
+        </nav>
+
+        <div class="dock-right">
+          <span class="dock-location-badge" id="dockLocationBadge">Overview · 0%</span>
+
+          <button
+            class="icon-btn"
+            id="themeToggleBtn"
+            type="button"
+            aria-label="Switch between dark and light mode"
+            title="Switch Dark / Light Theme"
+          >
+            <svg id="themeIconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+            </svg>
+            <svg id="themeIconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" style="display: none;">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+            </svg>
+          </button>
+
+          <a href="https://www.linkedin.com/in/samar-agshikar/" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="LinkedIn" title="Connect on LinkedIn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+            </svg>
+          </a>
+
+          <a href="https://the-1.app" target="_blank" rel="noopener noreferrer" class="nav-cta-pill">
+            <span>THE 1</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+
+          <button class="icon-btn mobile-toggle" id="mobileMenuBtn" type="button" aria-label="Menu" aria-expanded="false">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+              <line x1="4" y1="7" x2="20" y2="7" />
+              <line x1="4" y1="12" x2="20" y2="12" />
+              <line x1="4" y1="17" x2="20" y2="17" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="dock-progress-track" aria-hidden="true">
+          <div class="dock-progress-fill" id="dockProgressFill"></div>
+        </div>
+      </div>
+
+      <nav class="mobile-menu-drawer" id="mobileMenuDrawer" aria-label="Mobile Navigation Drawer">
+        <a href="#overview" data-section="overview" class="active">Overview</a>
+        <a href="#story" data-section="story">Story</a>
+        <a href="#timeline" data-section="timeline">Timeline</a>
+        <a href="#projects" data-section="projects">Projects</a>
+        <a href="#engineering" data-section="engineering">Craft</a>
+        <a href="#writing" data-section="writing">Writing</a>
+        <a href="#record" data-section="record">Record</a>
+        <a href="#contact" data-section="contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- =================================================================
+         1. OVERVIEW / HERO SECTION
+    ================================================================= -->
+    <section class="hero-section" id="overview" data-scroll-section="Overview">
+      <div class="container">
+        <div class="hero-grid">
+          <div data-reveal>
+            <div class="hero-eyebrow">
+              <span class="eyebrow-dot" aria-hidden="true"></span>
+              <span>Student Founder · Software Developer · Ahmedabad, India</span>
+            </div>
+
+            <h1 class="hero-title">
+              Building <span class="italic-gradient">What’s Next.</span>
+            </h1>
+
+            <p class="hero-sub">
+              Hi, I’m <strong>Samar Agshikar</strong>. I build software at the intersection of <strong>artificial intelligence, mathematics, and education</strong>—turning everyday student friction into fast, thoughtful tools like <strong>THE 1</strong> and <strong>Kerniq</strong>.
+            </p>
+
+            <div class="hero-cta-row">
+              <a href="#projects" class="btn-luminous">
+                <span>Explore My Work</span>
+                <span aria-hidden="true">↓</span>
+              </a>
+              <a href="https://www.linkedin.com/in/samar-agshikar/" target="_blank" rel="noopener noreferrer" class="btn-glass">
+                <span>Connect on LinkedIn</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <div class="hero-journey-pill">
+              <span>🇩🇪 Gymnasium Coswig (2023–2025)</span>
+              <span>→</span>
+              <span>🇮🇳 Ahmedabad (2025–Present)</span>
+            </div>
+          </div>
+
+          <div class="hero-right-stack" data-reveal style="--delay: 120ms;">
+            <div class="hero-orb-float" aria-hidden="true">
+              <canvas id="heroWebGLOrb" width="400" height="400"></canvas>
+            </div>
+
+            <div class="hero-preview-card glass-panel" data-tilt>
+              <div class="preview-card-bar">
+                <div class="preview-dots"><span></span><span></span><span></span></div>
+                <span>RECENT HIGHLIGHTS · 2026</span>
+              </div>
+              <div class="preview-rows">
+                <div class="preview-row">
+                  <div>
+                    <strong>THE 1 — School Pilot &amp; Launch</strong>
+                    <div style="font-size: 0.74rem; color: var(--text-muted);">Piloted at Adani International School &amp; Product Hunt</div>
+                  </div>
+                  <span class="preview-tag">10/2026</span>
+                </div>
+                <div class="preview-row">
+                  <div>
+                    <strong>Kerniq &amp; Building What’s Next</strong>
+                    <div style="font-size: 0.74rem; color: var(--text-muted);">AI learning platform &amp; Substack essays</div>
+                  </div>
+                  <span class="preview-tag">11/2026</span>
+                </div>
+                <div class="preview-row">
+                  <div>
+                    <strong>Google Gemini Invitation</strong>
+                    <div style="font-size: 0.74rem; color: var(--text-muted);">Invited regarding potential future version involvement</div>
+                  </div>
+                  <span class="preview-tag">11/2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Featured Software Switcher -->
+        <div class="hero-switcher-wrap" id="heroSwitcherWrap" data-reveal style="--delay: 180ms;">
+          <div class="hero-switcher-tabs" role="tablist" aria-label="Featured software">
+            <button class="switcher-tab active" data-showcase="the1" data-tab-idx="0" type="button">
+              <span class="switcher-tab-title">THE 1 (the-1.app)</span>
+              <span class="switcher-tab-sub">All-in-one workspace built for students</span>
+              <span class="tab-dwell-bar"></span>
+            </button>
+            <button class="switcher-tab" data-showcase="kerniq" data-tab-idx="1" type="button">
+              <span class="switcher-tab-title">Kerniq (kerniq.the-1.app)</span>
+              <span class="switcher-tab-sub">AI-powered learning &amp; software systems</span>
+              <span class="tab-dwell-bar"></span>
+            </button>
+          </div>
+
+          <div class="hero-showcase-frame glass-panel" id="heroShowcaseFrame" data-tilt>
+            <div class="showcase-frame-grid">
+              <div class="showcase-copy">
+                <h3>THE 1 — One home for every student workflow</h3>
+                <p>
+                  Students juggle five disconnected apps just to get through a school day. I started building THE 1 in June 2026 to unify timetables, structured notes, homework, revision quizzes, and AI study tools into one completely free workspace.
+                </p>
+                <div class="showcase-pills">
+                  <span>Smart Timetable</span>
+                  <span>Structured Notes</span>
+                  <span>AI Quizzes &amp; Revision</span>
+                  <span>100% Free</span>
+                </div>
+                <a href="https://the-1.app" target="_blank" rel="noopener noreferrer" class="btn-glass" style="padding: 9px 18px; font-size: 0.82rem;">
+                  <span>Visit the-1.app</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+              <div class="showcase-mock">
+                <div class="mock-window-bar">
+                  <span>WORKSPACE MILESTONES</span>
+                  <span>LIVE IN PRODUCTION</span>
+                </div>
+                <div class="mock-item">
+                  <span><strong>06/2026</strong> · Started designing &amp; coding THE 1</span>
+                  <span class="preview-tag">v1.0</span>
+                </div>
+                <div class="mock-item">
+                  <span><strong>10/2026</strong> · Real-world school pilot at Adani International School</span>
+                  <span class="preview-tag">Validated</span>
+                </div>
+                <div class="mock-item">
+                  <span><strong>10/2026</strong> · Public launch on Product Hunt</span>
+                  <span class="preview-tag">Shipped</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         2. PERSONAL STORY & RECOGNITION
+    ================================================================= -->
+    <section class="story-section" id="story" data-scroll-section="Story" aria-label="Personal Story and Highlights">
+      <div class="container">
+        <div class="story-grid">
+          <div class="story-letter-card glass-panel" data-tilt data-reveal>
+            <span class="section-kicker">Why I Build</span>
+            <h2>From Coswig to Ahmedabad—learning to build where I am.</h2>
+            <p>
+              Between August 2023 and June 2025, I studied at <strong>Gymnasium Coswig in Germany</strong>. Moving to <strong>Ahmedabad, India</strong> in July 2025 meant adapting to a completely new academic rhythm, culture, and peer group.
+            </p>
+            <p>
+              Experiencing two different education systems up close showed me a universal problem: students spend more energy organizing scattered tools than actually mastering ideas. Instead of waiting for someone else to fix it, I started shipping software—launching <strong>College Chances India</strong>, piloting <strong>THE 1</strong> inside my own school community, and building <strong>Kerniq</strong>.
+            </p>
+            <div class="story-signature">
+              <span class="signature-script">Samar Agshikar</span>
+              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted);">AI · Mathematics · Product Engineering</span>
+            </div>
+          </div>
+
+          <div class="now-card glass-panel" data-tilt data-reveal style="--delay: 120ms;">
+            <div>
+              <span class="section-kicker">Current Focus · 11/2026</span>
+              <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 12px;">What I’m working on right now</h3>
+              <div class="now-list">
+                <div class="now-item">
+                  <span class="now-item-label">Building</span>
+                  <span class="now-item-val">Scaling THE 1 &amp; developing Kerniq (kerniq.the-1.app)</span>
+                </div>
+                <div class="now-item">
+                  <span class="now-item-label">Writing</span>
+                  <span class="now-item-val">Publishing essays on AI &amp; education in <em>Building What’s Next</em></span>
+                </div>
+                <div class="now-item">
+                  <span class="now-item-label">Leadership &amp; Recognition</span>
+                  <span class="now-item-val">Round Square Committee 2026–27, Internshala Student Partner &amp; Google Gemini invitation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rec-strip" data-reveal style="--delay: 160ms;">
+          <div class="rec-badge glass-panel">
+            Gymnasium Coswig
+            <span>2023 – 2025 · Germany</span>
+          </div>
+          <div class="rec-badge glass-panel">
+            SOF Math Gold
+            <span>Medal of Excellence</span>
+          </div>
+          <div class="rec-badge glass-panel">
+            ASSET Math 98%
+            <span>Gold · Science 93%</span>
+          </div>
+          <div class="rec-badge glass-panel">
+            ADIS School Pilot
+            <span>Real Student Testing</span>
+          </div>
+          <div class="rec-badge glass-panel">
+            Google Gemini
+            <span>Future Version Invite</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         3. TIMELINE — ARCHITECTURAL HORIZONTAL-WAVE TRACK
+    ================================================================= -->
+    <section class="timeline-scroll-runway" id="timeline" data-scroll-section="Timeline" aria-label="Chronological Timeline">
+      <div class="timeline-sticky-stage">
+        <canvas id="tunnelWebGLCanvas" aria-hidden="true"></canvas>
+        <div class="timeline-arch-grid" aria-hidden="true"></div>
+
+        <div class="container timeline-stage-header">
+          <div>
+            <h2 class="timeline-stage-title">08/2023 to 11/2026</h2>
+            <p class="timeline-stage-sub">16 milestones across Germany and India. Scroll or use ← / → keys.</p>
+          </div>
+
+          <div class="timeline-controls-bar">
+            <button class="tl-step-btn" id="tlPrevBtn" type="button" aria-label="Previous milestone">←</button>
+            <span class="tl-counter-text" id="tlCounterText">01 / 16 · 08/2023</span>
+            <button class="tl-step-btn" id="tlNextBtn" type="button" aria-label="Next milestone">→</button>
+          </div>
+        </div>
+
+        <div class="timeline-viewport" id="timelineViewport">
+          <div class="timeline-track-canvas" id="timelineTrackCanvas">
+            <div class="timeline-baseline" id="timelineBaseline">
+              <div class="timeline-baseline-progress" id="timelineBaselineProgress"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         4. PROJECTS SECTION — THREE INITIATIVES + CASE STUDIES
+    ================================================================= -->
+    <section class="pillars-section" id="projects" data-scroll-section="Projects">
+      <div class="container">
+        <div class="centered-header" data-reveal>
+          <span class="section-kicker">Shipped Software</span>
+          <h2>Projects built for real students.</h2>
+          <p>Every product started from a problem I personally faced in the classroom.</p>
+        </div>
+
+        <div class="pillars-grid">
+          <div class="pillar-card glass-panel" data-tilt data-reveal style="--delay: 60ms;">
+            <div>
+              <span class="pillar-badge">06/2026 · Live</span>
+              <h3>THE 1</h3>
+              <p>An all-in-one, completely free student workspace uniting timetables, structured notes, revision quizzes, and practical AI study tools.</p>
+            </div>
+            <a href="https://the-1.app" target="_blank" rel="noopener noreferrer" class="pillar-link">
+              <span>the-1.app</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <div class="pillar-card glass-panel" data-tilt data-reveal style="--delay: 140ms;">
+            <div>
+              <span class="pillar-badge">11/2026 · Active</span>
+              <h3>Kerniq</h3>
+              <p>An AI-powered learning and intelligent software platform inside the THE 1 ecosystem designed for deeper concept mastery and automation.</p>
+            </div>
+            <a href="https://kerniq.the-1.app" target="_blank" rel="noopener noreferrer" class="pillar-link">
+              <span>kerniq.the-1.app</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <div class="pillar-card glass-panel" data-tilt data-reveal style="--delay: 220ms;">
+            <div>
+              <span class="pillar-badge">05/2026–08/2026</span>
+              <h3>College Chances India</h3>
+              <p>An AI-assisted university exploration platform built to help students across India evaluate admissions pathways and academic fit.</p>
+            </div>
+            <span class="pillar-link" style="color: var(--text-muted);">
+              <span>Concluded 08/2026</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cases-section" id="casesSection" aria-label="Project Case Studies">
+      <div class="container">
+        <div class="cases-split">
+          <div class="cases-left" data-reveal>
+            <span class="section-kicker">Deep Dive</span>
+            <h2>From classroom friction to shipped products.</h2>
+            <p>Scroll through each build to see how it went from idea to real-world adoption, or click to inspect.</p>
+
+            <div class="case-selector-list" role="tablist">
+              <button class="case-select-btn active" data-project="the1" data-case-idx="0" type="button">
+                <span class="case-btn-header">
+                  <span class="case-select-num">01</span>
+                  <span>THE 1</span>
+                </span>
+                <span class="case-btn-sub">Unified timetables, notes, revision &amp; AI study tools · Piloted 10/2026</span>
+                <span class="case-dwell-bar"></span>
+              </button>
+
+              <button class="case-select-btn" data-project="kerniq" data-case-idx="1" type="button">
+                <span class="case-btn-header">
+                  <span class="case-select-num">02</span>
+                  <span>Kerniq</span>
+                </span>
+                <span class="case-btn-sub">AI learning &amp; intelligent software systems inside THE 1 · Started 11/2026</span>
+                <span class="case-dwell-bar"></span>
+              </button>
+
+              <button class="case-select-btn" data-project="cci" data-case-idx="2" type="button">
+                <span class="case-btn-header">
+                  <span class="case-select-num">03</span>
+                  <span>College Chances India (05/2026–08/2026)</span>
+                </span>
+                <span class="case-btn-sub">AI-assisted university exploration platform for students in India</span>
+                <span class="case-dwell-bar"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="case-display-card glass-panel" id="caseDisplayCard" data-tilt data-reveal style="--delay: 120ms;">
+            <div class="case-display-inner">
+              <div class="case-display-top">
+                <h3 class="case-display-title">THE 1</h3>
+                <a href="https://the-1.app" target="_blank" rel="noopener noreferrer" class="btn-glass" style="padding: 8px 16px; font-size: 0.8rem;">
+                  <span>Open the-1.app</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+              <div class="case-display-body">
+                <p>
+                  Started in June 2026, THE 1 replaces fragmented note-taking, scheduling, and revision apps with one unified, zero-cost student workspace.
+                </p>
+                <ul class="case-highlights">
+                  <li><strong>School Pilot (10/2026):</strong> Tested directly with students during THE 1’s school pilot at Adani International School.</li>
+                  <li><strong>Product Hunt Launch (10/2026):</strong> Shipped publicly on Product Hunt after iterating on student feedback.</li>
+                  <li><strong>Core Philosophy:</strong> Keep essential student productivity and AI study tools 100% free and accessible.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         5. ENGINEERING & PRODUCT CRAFT
+    ================================================================= -->
+    <section class="engineering-section" id="engineering" data-scroll-section="Engineering">
+      <div class="container">
+        <div class="eng-bento">
+          <div class="eng-hero-card glass-panel" data-tilt data-reveal>
+            <div>
+              <span class="section-kicker">Engineering Philosophy</span>
+              <h2>How I build software.</h2>
+              <p>
+                Great student software shouldn’t feel bloated or intimidating. I focus on clean interfaces, fast feedback loops, and AI that strengthens human thinking rather than replacing it.
+              </p>
+            </div>
+            <div class="eng-spectrum-box">
+              <span style="opacity: 0.8; font-size: 0.7rem;">CORE STACK &amp; PRINCIPLES</span>
+              <span>HTML · CSS · JavaScript · AI Systems · Rapid Iteration</span>
+            </div>
+          </div>
+
+          <div class="eng-stack-col">
+            <div class="eng-sub-card glass-panel" data-tilt data-reveal style="--delay: 80ms;">
+              <h3>1. Connected Student Workflows</h3>
+              <p>Designing timetables, notes, homework, and revision in one coherent environment so context is never lost between tabs.</p>
+            </div>
+            <div class="eng-sub-card glass-panel" data-tilt data-reveal style="--delay: 160ms;">
+              <h3>2. Pedagogical AI Assistance</h3>
+              <p>Building AI inside THE 1 and Kerniq that breaks down complex concepts into structured quizzes and guided exploration.</p>
+            </div>
+            <div class="eng-sub-card glass-panel" data-tilt data-reveal style="--delay: 240ms;">
+              <h3>3. Classroom-First Validation</h3>
+              <p>Testing features with real classmates—like THE 1’s pilot at Adani International School—before scaling publicly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         6. WRITING SPOTLIGHT (SUBSTACK)
+    ================================================================= -->
+    <section class="writing-spotlight" id="writing" data-scroll-section="Writing">
+      <div class="radial-beams" aria-hidden="true"></div>
+      <div class="container">
+        <div class="writing-header-card glass-panel" data-tilt data-reveal>
+          <span class="spotlight-pill">Started 11/2026 · Substack Publication</span>
+          <h2>Building What’s Next</h2>
+          <p>
+            Essays and builder notes on artificial intelligence, mathematics, the future of education, and lessons learned while shipping software as a student.
+          </p>
+        </div>
+
+        <div class="essays-grid">
+          <article class="essay-card glass-panel" data-tilt data-essay="0" data-reveal style="--delay: 60ms;">
+            <div>
+              <span class="essay-tag">ESSAY 01 · EDTECH &amp; AI</span>
+              <h3>Why AI in Education Should Teach, Not Just Answer</h3>
+              <p>Most AI tools hand students a shortcut. Here is how we can design AI systems that build real intuition instead.</p>
+            </div>
+            <span class="essay-read-btn">Read Note →</span>
+          </article>
+
+          <article class="essay-card glass-panel" data-tilt data-essay="1" data-reveal style="--delay: 140ms;">
+            <div>
+              <span class="essay-tag">ESSAY 02 · PRODUCT</span>
+              <h3>What Piloting THE 1 at School Taught Me About UX</h3>
+              <p>Watching real students use your software in between classes reveals things no analytics dashboard ever will.</p>
+            </div>
+            <span class="essay-read-btn">Read Note →</span>
+          </article>
+
+          <article class="essay-card glass-panel" data-tilt data-essay="2" data-reveal style="--delay: 220ms;">
+            <div>
+              <span class="essay-tag">ESSAY 03 · PERSPECTIVE</span>
+              <h3>Two Countries, Two Classrooms: Coswig to Ahmedabad</h3>
+              <p>Reflections on moving from Germany to India and how contrasting academic environments shape how I think.</p>
+            </div>
+            <span class="essay-read-btn">Read Note →</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         7. ACADEMIC & LEADERSHIP RECORD
+    ================================================================= -->
+    <section class="record-section" id="record" data-scroll-section="Record" aria-label="Academic and Leadership Record">
+      <div class="container">
+        <div class="centered-header" data-reveal style="margin-bottom: 38px;">
+          <span class="section-kicker">Credentials &amp; Milestones</span>
+          <h2>Education, academics &amp; leadership.</h2>
+          <p>Academic distinctions, student leadership, and industry milestones from 08/2023 to 11/2026.</p>
+        </div>
+
+        <div class="accordion-columns">
+          <div>
+            <div class="acc-col-title">Education &amp; Academic Distinctions</div>
+            <div class="acc-list">
+              <div class="acc-item glass-panel" data-acc-order="0">
+                <button class="acc-trigger" type="button">
+                  <span>Gymnasium Coswig, Germany (08/2023 – 06/2025)</span>
+                  <span class="acc-plus">+</span>
+                </button>
+                <div class="acc-panel-wrap">
+                  <div class="acc-panel">
+                    <div class="acc-panel-inner">
+                      Studied at Gymnasium Coswig in Germany from August 2023 until concluding secondary school studies in Germany in June 2025.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="acc-item glass-panel" data-acc-order="2">
+                <button class="acc-trigger" type="button">
+                  <span>Moved to Ahmedabad, India (07/2025)</span>
+                  <span class="acc-plus">+</span>
+                </button>
+                <div class="acc-panel-wrap">
+                  <div class="acc-panel">
+                    <div class="acc-panel-inner">
+                      Relocated to Ahmedabad, India in July 2025 to continue academic studies and software development.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="acc-item glass-panel" data-acc-order="4">
+                <button class="acc-trigger" type="button">
+                  <span>SOF Mathematics Gold Medal of Excellence (11/2025)</span>
+                  <span class="acc-plus">+</span>
+                </button>
+                <div class="acc-panel-wrap">
+                  <div class="acc-panel">
+                    <div class="acc-panel-inner">
+                      Awarded the SOF Mathematics Gold Medal of Excellence in November 2025.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="acc-item glass-panel" data-acc-order="6">
+                <button class="acc-trigger" type="button">
+                  <span>ASSET Mathematics Gold (98%) &amp; Science Silver (93%)</span>
+                  <span class="acc-plus">+</span>
+                </button>
+                <div class="acc-panel-wrap">
+                  <div class="acc-panel">
+                    <div class="acc-panel-inner">
+                      Achieved ASSET Mathematics Gold (98th percentile) and ASSET Science Silver (93rd percentile) in January 2026.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="acc-col-title">Leadership &amp; Recognition</div>
+            <div class="acc-list">
+              <div class="acc-item glass-panel" data-acc-order="1">
+                <button class="acc-trigger" type="button">
+                  <span>Student Council &amp; Culture &amp; Events (07/2026)</span>
+                  <span class="acc-plus">+</span>
+                </button>
+                <div class="acc-panel-wrap">
+                  <div class="acc-panel">
+                    <div class="acc-panel-inner">
+                      Joined the Student Council and Culture &amp; Events team in July 2026.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="acc-item glass-panel" data-acc-order="3">
+                <button class="acc-trigger" type="button">
+                  <span>Round Square Student Committee 2026–27 (10/2026)</span>
+                  <span class="acc-plus">+</span>
+                </button>
+                <div class="acc-panel-wrap">
+                  <div class="acc-panel">
+                    <div class="acc-panel-inner">
+                      Selected for the Round Square Student Committee for 2026–27 in October 2026.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="acc-item glass-panel" data-acc-order="5">
+                <button class="acc-trigger" type="button">
+                  <span>Internshala Student Partner (11/2026)</span>
+                  <span class="acc-plus">+</span>
+                </button>
+                <div class="acc-panel-wrap">
+                  <div class="acc-panel">
+                    <div class="acc-panel-inner">
+                      Appointed as an Internshala Student Partner in November 2026.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="acc-item glass-panel" data-acc-order="7">
+                <button class="acc-trigger" type="button">
+                  <span>Google Gemini Invitation (11/2026)</span>
+                  <span class="acc-plus">+</span>
+                </button>
+                <div class="acc-panel-wrap">
+                  <div class="acc-panel">
+                    <div class="acc-panel-inner">
+                      Received an invitation from Google Gemini in November 2026 concerning potential involvement with a future version.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         8. CLOSING CONTACT & FOOTER
+    ================================================================= -->
+    <footer class="closing-section" id="contact" data-scroll-section="Contact">
+      <div class="container">
+        <div class="closing-top" data-reveal>
+          <span class="section-kicker">Say Hello</span>
+          <h2>Let’s build or talk ideas.</h2>
+          <p>Always happy to connect with fellow builders, educators, researchers, and founders working on AI and student tools.</p>
+        </div>
+
+        <canvas id="dotMatrixCanvas" aria-hidden="true"></canvas>
+
+        <div class="footer-bottom-row" data-reveal>
+          <a href="#overview" class="brand-link">
+            <span class="brand-monogram" aria-hidden="true">SA</span>
+            <span>Samar Agshikar</span>
+          </a>
+
+          <div class="footer-actions">
+            <button type="button" id="copyEmailBtn" class="btn-luminous">
+              <span>Copy samar@the-1.app</span>
+            </button>
+            <a href="mailto:samar@the-1.app" class="btn-glass">
+              <span>Send Email</span>
+            </a>
+            <a href="https://www.linkedin.com/in/samar-agshikar/" target="_blank" rel="noopener noreferrer" class="btn-glass">
+              <span>LinkedIn ↗</span>
+            </a>
+            <a href="https://github.com/samar-agshikar" target="_blank" rel="noopener noreferrer" class="btn-glass">
+              <span>GitHub ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-meta">
+          <nav class="footer-nav" aria-label="Footer">
+            <a href="#overview">Overview</a>
+            <a href="#story">Story</a>
+            <a href="#timeline">Timeline</a>
+            <a href="#projects">Projects</a>
+            <a href="https://the-1.app" target="_blank" rel="noopener noreferrer">THE 1</a>
+            <a href="https://kerniq.the-1.app" target="_blank" rel="noopener noreferrer">Kerniq</a>
+            <a href="#writing">Writing</a>
+          </nav>
+          <div>© 2026 Samar Agshikar · Building What’s Next</div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Toast Feedback Banner -->
+  <div class="toast-banner" id="toastBanner" role="status" aria-live="polite">
+    <span style="color: #10b981;">✓</span>
+    <span id="toastText">Copied samar@the-1.app to clipboard!</span>
+  </div>
+
+  <!-- Essay Preview Modal -->
+  <div class="modal-backdrop" id="essayModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <div class="modal-top">
+        <div>
+          <span class="essay-tag" id="modalTag">BUILDING WHAT'S NEXT</span>
+          <h3 id="modalTitle">Essay Title</h3>
+        </div>
+        <button type="button" class="icon-btn" id="closeModalBtn" aria-label="Close essay preview">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div style="margin-top: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted);">Published in Building What’s Next · Substack</span>
+        <a href="mailto:samar@the-1.app?subject=Building%20What's%20Next" class="btn-luminous" style="padding: 9px 18px; font-size: 0.82rem;">
+          <span>Discuss this essay</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* =======================================================================
+       0. FORCE START AT TOP ON OPEN / REFRESH
+    ======================================================================= */
+    window.addEventListener('DOMContentLoaded', () => {
+      if (!window.location.hash) {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      }
+    });
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted && !window.location.hash) {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      }
+    });
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastBanner');
+      const text = document.getElementById('toastText');
+      if (!toast || !text) return;
+      text.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(() => toast.classList.remove('show'), 2800);
+    }
+
+    const copyEmailBtn = document.getElementById('copyEmailBtn');
+    if (copyEmailBtn) {
+      copyEmailBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText('samar@the-1.app');
+          showToast('Copied samar@the-1.app to clipboard!');
+        } catch {
+          showToast('Email: samar@the-1.app');
+        }
+      });
+    }
+
+    /* =======================================================================
+       1. GENTLE READING-COMFORT CURVE
+    ======================================================================= */
+    function gentleEaseCurve(t, steps) {
+      if (steps <= 1) return t;
+      const clamped = Math.max(0, Math.min(1, t));
+      const scaled = clamped * steps;
+      const idx = Math.min(steps - 1, Math.floor(scaled));
+      const frac = scaled - idx;
+      const shaped = frac + 0.045 * Math.sin(2.0 * Math.PI * frac);
+      return (idx + shaped) / steps;
+    }
+
+    /* =======================================================================
+       2. ALL 16 MILESTONES IN CHRONOLOGICAL ORDER (08/2023 -> 11/2026)
+    ======================================================================= */
+    const MILESTONES = [
+      {
+        date: '08/2023',
+        cat: 'Education',
+        title: 'Gymnasium Coswig',
+        desc: 'Began secondary school studies at Gymnasium Coswig in Germany.',
+        stemH: 125
+      },
+      {
+        date: '06/2025',
+        cat: 'Education',
+        title: 'Completed studies in Germany',
+        desc: 'Concluded studies at Gymnasium Coswig in Germany.',
+        stemH: 160
+      },
+      {
+        date: '07/2025',
+        cat: 'Milestone',
+        title: 'Moved to Ahmedabad',
+        desc: 'Relocated to Ahmedabad, India to continue academic studies.',
+        stemH: 195
+      },
+      {
+        date: '11/2025',
+        cat: 'Academics',
+        title: 'SOF Mathematics Gold Medal',
+        desc: 'Received the SOF Mathematics Gold Medal of Excellence.',
+        stemH: 230
+      },
+      {
+        date: '01/2026',
+        cat: 'Academics',
+        title: 'ASSET Mathematics Gold',
+        desc: 'Achieved ASSET Mathematics Gold, scoring in the 98th percentile.',
+        stemH: 260
+      },
+      {
+        date: '01/2026',
+        cat: 'Academics',
+        title: 'ASSET Science Silver',
+        desc: 'Achieved ASSET Science Silver, scoring in the 93rd percentile.',
+        stemH: 285
+      },
+      {
+        date: '05/2026–08/2026',
+        cat: 'Product',
+        title: 'College Chances India',
+        desc: 'Founded and built College Chances India, an AI-assisted university exploration platform.',
+        stemH: 305
+      },
+      {
+        date: '06/2026',
+        cat: 'Product',
+        title: 'Started THE 1',
+        desc: 'Began building THE 1 (the-1.app), an all-in-one workspace for students.',
+        stemH: 315
+      },
+      {
+        date: '07/2026',
+        cat: 'Leadership',
+        title: 'Student Council & Culture',
+        desc: 'Joined the Student Council and Culture & Events team.',
+        stemH: 305
+      },
+      {
+        date: '10/2026',
+        cat: 'Product',
+        title: 'THE 1 School Pilot',
+        desc: 'Conducted THE 1’s live school pilot at Adani International School.',
+        stemH: 285
+      },
+      {
+        date: '10/2026',
+        cat: 'Launch',
+        title: 'THE 1 Product Hunt Launch',
+        desc: 'Launched THE 1 publicly on Product Hunt following the school pilot.',
+        stemH: 260
+      },
+      {
+        date: '10/2026',
+        cat: 'Leadership',
+        title: 'Round Square Committee',
+        desc: 'Joined the Round Square Student Committee for 2026–27.',
+        stemH: 235
+      },
+      {
+        date: '11/2026',
+        cat: 'Product',
+        title: 'Started Kerniq',
+        desc: 'Began developing Kerniq (kerniq.the-1.app) within the THE 1 ecosystem.',
+        stemH: 210
+      },
+      {
+        date: '11/2026',
+        cat: 'Leadership',
+        title: 'Internshala Student Partner',
+        desc: 'Appointed as an Internshala Student Partner.',
+        stemH: 185
+      },
+      {
+        date: '11/2026',
+        cat: 'Writing',
+        title: "Started Building What's Next",
+        desc: "Launched Building What's Next, a Substack publication on AI, tech, and education.",
+        stemH: 160
+      },
+      {
+        date: '11/2026',
+        cat: 'Recognition',
+        title: 'Google Gemini Invitation',
+        desc: 'Received an invitation from Google Gemini regarding potential involvement with a future version.',
+        stemH: 135
+      }
+    ];
+
+    /* =======================================================================
+       3. THEME SWITCHER
+    ======================================================================= */
+    const htmlEl = document.documentElement;
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const iconSun = document.getElementById('themeIconSun');
+    const iconMoon = document.getElementById('themeIconMoon');
+    const metaThemeColor = document.getElementById('metaThemeColor');
+
+    function applyTheme(theme) {
+      htmlEl.setAttribute('data-theme', theme);
+      localStorage.setItem('samar-theme', theme);
+      if (theme === 'light') {
+        iconSun.style.display = 'none';
+        iconMoon.style.display = 'block';
+        if (metaThemeColor) metaThemeColor.setAttribute('content', '#f8fafc');
+      } else {
+        iconSun.style.display = 'block';
+        iconMoon.style.display = 'none';
+        if (metaThemeColor) metaThemeColor.setAttribute('content', '#090912');
+      }
+    }
+
+    applyTheme(localStorage.getItem('samar-theme') || 'dark');
+
+    themeToggleBtn.addEventListener('click', () => {
+      const next = htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+    });
+
+    /* =======================================================================
+       4. RESPONSIVE TOP DOCK & MOBILE DRAWER (LIVE SCROLL TRACKER)
+    ======================================================================= */
+    const dockNav = document.getElementById('dockNav');
+    const navActivePill = document.getElementById('navActivePill');
+    const dockProgressFill = document.getElementById('dockProgressFill');
+    const dockLocationBadge = document.getElementById('dockLocationBadge');
+    const dockLinks = Array.from(dockNav.querySelectorAll('a[data-section]'));
+    const mobileLinks = Array.from(document.querySelectorAll('#mobileMenuDrawer a[data-section]'));
+    const trackedSections = Array.from(document.querySelectorAll('[data-scroll-section]'));
+
+    let currentActiveId = 'overview';
+
+    function positionActivePill(activeLink) {
+      if (!activeLink || !navActivePill || dockNav.offsetParent === null) return;
+      const navRect = dockNav.getBoundingClientRect();
+      const linkRect = activeLink.getBoundingClientRect();
+      const offsetX = linkRect.left - navRect.left - 3;
+      navActivePill.style.width = `${linkRect.width}px`;
+      navActivePill.style.transform = `translate3d(${offsetX}px, 0, 0)`;
+    }
+
+    function updateDockNavigation() {
+      const scrollY = window.scrollY;
+      const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      const pct = Math.min(100, Math.max(0, Math.round((scrollY / maxScroll) * 100)));
+
+      if (dockProgressFill) {
+        dockProgressFill.style.width = `${pct}%`;
+      }
+
+      const probeY = scrollY + window.innerHeight * 0.34;
+      let activeSec = trackedSections[0];
+      for (const sec of trackedSections) {
+        if (probeY >= sec.offsetTop) {
+          activeSec = sec;
+        }
+      }
+
+      if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 24) {
+        activeSec = trackedSections[trackedSections.length - 1];
+      }
+
+      const nextId = activeSec ? activeSec.id : 'overview';
+      const labelName = activeSec ? activeSec.dataset.scrollSection || 'Overview' : 'Overview';
+
+      if (dockLocationBadge) {
+        dockLocationBadge.textContent = `${labelName} · ${pct}%`;
+      }
+
+      if (nextId !== currentActiveId) {
+        currentActiveId = nextId;
+        dockLinks.forEach((a) => a.classList.toggle('active', a.dataset.section === nextId));
+        mobileLinks.forEach((a) => a.classList.toggle('active', a.dataset.section === nextId));
+      }
+
+      const activeLink = dockLinks.find((a) => a.dataset.section === currentActiveId);
+      positionActivePill(activeLink);
+    }
+
+    window.addEventListener('scroll', updateDockNavigation, { passive: true });
+    window.addEventListener('resize', updateDockNavigation, { passive: true });
+    window.addEventListener('load', updateDockNavigation);
+    requestAnimationFrame(updateDockNavigation);
+
+    /* =======================================================================
+       5. MOBILE DRAWER & TILT HOVER
+    ======================================================================= */
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
+    mobileMenuBtn.addEventListener('click', () => {
+      const open = mobileMenuDrawer.classList.toggle('open');
+      mobileMenuBtn.setAttribute('aria-expanded', String(open));
+    });
+    mobileMenuDrawer.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenuDrawer.classList.remove('open');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    if (!prefersReducedMotion) {
+      document.querySelectorAll('.glass-panel').forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--mx', `${x}px`);
+          card.style.setProperty('--my', `${y}px`);
+
+          if (card.hasAttribute('data-tilt') && window.innerWidth > 960) {
+            const rx = ((y / rect.height) - 0.5) * -3.2;
+            const ry = ((x / rect.width) - 0.5) * 3.2;
+            card.style.transform = `perspective(1000px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-2px)`;
+          }
+        });
+
+        card.addEventListener('mouseleave', () => {
+          if (card.hasAttribute('data-tilt')) {
+            card.style.transform = '';
+          }
+        });
+      });
+    }
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+    );
+    document.querySelectorAll('[data-reveal]').forEach((el) => revealObserver.observe(el));
+
+    /* =======================================================================
+       6. HERO 2-TAB FEATURE SWITCHER
+    ======================================================================= */
+    (function initHeroAutoSwitcher() {
+      const wrap = document.getElementById('heroSwitcherWrap');
+      const frame = document.getElementById('heroShowcaseFrame');
+      const tabs = Array.from(document.querySelectorAll('.switcher-tab'));
+      if (!wrap || !frame || !tabs.length) return;
+
+      const showcaseKeys = ['the1', 'kerniq'];
+      const showcaseContent = {
+        the1: `
+          <div class="showcase-frame-grid">
+            <div class="showcase-copy">
+              <h3>THE 1 — One home for every student workflow</h3>
+              <p>
+                Students juggle five disconnected apps just to get through a school day. I started building THE 1 in June 2026 to unify timetables, structured notes, homework, revision quizzes, and AI study tools into one completely free workspace.
+              </p>
+              <div class="showcase-pills">
+                <span>Smart Timetable</span>
+                <span>Structured Notes</span>
+                <span>AI Quizzes &amp; Revision</span>
+                <span>100% Free</span>
+              </div>
+              <a href="https://the-1.app" target="_blank" rel="noopener noreferrer" class="btn-glass" style="padding: 9px 18px; font-size: 0.82rem;">
+                <span>Visit the-1.app</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <div class="showcase-mock">
+              <div class="mock-window-bar">
+                <span>WORKSPACE MILESTONES</span>
+                <span>LIVE IN PRODUCTION</span>
+              </div>
+              <div class="mock-item">
+                <span><strong>06/2026</strong> · Started designing &amp; coding THE 1</span>
+                <span class="preview-tag">v1.0</span>
+              </div>
+              <div class="mock-item">
+                <span><strong>10/2026</strong> · Real-world school pilot at Adani International School</span>
+                <span class="preview-tag">Validated</span>
+              </div>
+              <div class="mock-item">
+                <span><strong>10/2026</strong> · Public launch on Product Hunt</span>
+                <span class="preview-tag">Shipped</span>
+              </div>
+            </div>
+          </div>
+        `,
+        kerniq: `
+          <div class="showcase-frame-grid">
+            <div class="showcase-copy">
+              <h3>Kerniq — Intelligent systems inside THE 1</h3>
+              <p>
+                Started in November 2026 within the THE 1 ecosystem, Kerniq focuses on AI-powered learning, structured concept exploration, and intelligent software systems that help people build and master complex subjects.
+              </p>
+              <div class="showcase-pills">
+                <span>THE 1 Ecosystem</span>
+                <span>Concept Exploration</span>
+                <span>Intelligent Automation</span>
+              </div>
+              <a href="https://kerniq.the-1.app" target="_blank" rel="noopener noreferrer" class="btn-glass" style="padding: 9px 18px; font-size: 0.82rem;">
+                <span>Visit kerniq.the-1.app</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <div class="showcase-mock">
+              <div class="mock-window-bar">
+                <span>KERNIQ ARCHITECTURE</span>
+                <span>ACTIVE DEVELOPMENT</span>
+              </div>
+              <div class="mock-item">
+                <span><strong>11/2026</strong> · Initiated Kerniq inside the THE 1 ecosystem</span>
+                <span class="preview-tag">Started</span>
+              </div>
+              <div class="mock-item">
+                <span><strong>Focus</strong> · AI-driven learning &amp; software workflows</span>
+                <span class="preview-tag">Active</span>
+              </div>
+            </div>
+          </div>
+        `
+      };
+
+      let activeIdx = 0;
+      let userOverride = false;
+
+      function setHeroTab(idx, progressInTab = 1) {
+        const clampedIdx = Math.max(0, Math.min(showcaseKeys.length - 1, idx));
+        if (clampedIdx !== activeIdx) {
+          activeIdx = clampedIdx;
+          frame.innerHTML = showcaseContent[showcaseKeys[activeIdx]];
+        }
+        tabs.forEach((tab, i) => {
+          const isCurr = i === activeIdx;
+          tab.classList.toggle('active', isCurr);
+          const bar = tab.querySelector('.tab-dwell-bar');
+          if (bar) {
+            bar.style.width = isCurr ? `${Math.round(progressInTab * 100)}%` : i < activeIdx ? '100%' : '0%';
+          }
+        });
+      }
+
+      tabs.forEach((tab, idx) => {
+        tab.addEventListener('click', () => {
+          userOverride = true;
+          setHeroTab(idx, 1);
+        });
+      });
+
+      function onScrollHeroSwitcher() {
+        if (prefersReducedMotion || userOverride) return;
+        const rect = wrap.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const startY = vh * 0.72;
+        const endY = vh * 0.18;
+        const raw = Math.min(1, Math.max(0, (startY - rect.top) / Math.max(1, startY - endY)));
+        const idx = raw < 0.52 ? 0 : 1;
+        const frac = idx === 0 ? Math.min(1, Math.max(0.15, raw / 0.52)) : Math.min(1, Math.max(0.15, (raw - 0.52) / 0.48));
+        setHeroTab(idx, frac);
+      }
+
+      window.addEventListener('scroll', onScrollHeroSwitcher, { passive: true });
+    })();
+
+    /* =======================================================================
+       7. SPLIT CASE STUDIES
+    ======================================================================= */
+    (function initScrollCaseStudies() {
+      const card = document.getElementById('caseDisplayCard');
+      const buttons = Array.from(document.querySelectorAll('.case-select-btn'));
+      if (!card || !buttons.length) return;
+
+      const projectKeys = ['the1', 'kerniq', 'cci'];
+      const projectCards = {
+        the1: `
+          <div class="case-display-inner">
+            <div class="case-display-top">
+              <h3 class="case-display-title">THE 1</h3>
+              <a href="https://the-1.app" target="_blank" rel="noopener noreferrer" class="btn-glass" style="padding: 8px 16px; font-size: 0.8rem;">
+                <span>Open the-1.app</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <div class="case-display-body">
+              <p>
+                Started in June 2026, THE 1 replaces fragmented note-taking, scheduling, and revision apps with one unified, zero-cost student workspace.
+              </p>
+              <ul class="case-highlights">
+                <li><strong>School Pilot (10/2026):</strong> Tested directly with students during THE 1’s school pilot at Adani International School.</li>
+                <li><strong>Product Hunt Launch (10/2026):</strong> Shipped publicly on Product Hunt after iterating on student feedback.</li>
+                <li><strong>Core Philosophy:</strong> Keep essential student productivity and AI study tools 100% free and accessible.</li>
+              </ul>
+            </div>
+          </div>
+        `,
+        kerniq: `
+          <div class="case-display-inner">
+            <div class="case-display-top">
+              <h3 class="case-display-title">Kerniq</h3>
+              <a href="https://kerniq.the-1.app" target="_blank" rel="noopener noreferrer" class="btn-glass" style="padding: 8px 16px; font-size: 0.8rem;">
+                <span>Open kerniq.the-1.app</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <div class="case-display-body">
+              <p>
+                Started in November 2026 within the THE 1 ecosystem, Kerniq is an AI-powered learning and software platform built to help people understand complex concepts and build intelligent systems.
+              </p>
+              <ul class="case-highlights">
+                <li><strong>Started (11/2026):</strong> Initiated development inside the THE 1 ecosystem.</li>
+                <li><strong>Live Domain:</strong> Accessible at kerniq.the-1.app.</li>
+              </ul>
+            </div>
+          </div>
+        `,
+        cci: `
+          <div class="case-display-inner">
+            <div class="case-display-top">
+              <h3 class="case-display-title">College Chances India</h3>
+              <span class="preview-tag">05/2026–08/2026</span>
+            </div>
+            <div class="case-display-body">
+              <p>
+                Founded in May 2026 and concluded in August 2026, College Chances India was an AI-assisted university exploration platform built for students across India.
+              </p>
+              <ul class="case-highlights">
+                <li><strong>Active Window:</strong> May 2026 – August 2026.</li>
+                <li><strong>Takeaway:</strong> Taught me how to ship fast, gather student user feedback, and focus energy on the highest-impact product (THE 1).</li>
+              </ul>
+            </div>
+          </div>
+        `
+      };
+
+      let activeCaseIdx = 0;
+
+      function setActiveCase(idx, progressInCase = 1) {
+        const clamped = Math.max(0, Math.min(projectKeys.length - 1, idx));
+        if (clamped !== activeCaseIdx) {
+          activeCaseIdx = clamped;
+          card.innerHTML = projectCards[projectKeys[activeCaseIdx]];
+        }
+        buttons.forEach((btn, i) => {
+          const isCurr = i === activeCaseIdx;
+          btn.classList.toggle('active', isCurr);
+          const bar = btn.querySelector('.case-dwell-bar');
+          if (bar) {
+            bar.style.width = isCurr ? `${Math.round(progressInCase * 100)}%` : i < activeCaseIdx ? '100%' : '0%';
+          }
+        });
+      }
+
+      buttons.forEach((btn, idx) => {
+        btn.addEventListener('click', () => setActiveCase(idx, 1));
+      });
+
+      function onScrollCases() {
+        if (prefersReducedMotion) return;
+        const focusY = window.innerHeight * 0.48;
+        let closestIdx = 0;
+        let minDistance = Infinity;
+        let activeProgress = 0.5;
+
+        buttons.forEach((btn, idx) => {
+          const rect = btn.getBoundingClientRect();
+          const centerY = rect.top + rect.height * 0.5;
+          const dist = Math.abs(centerY - focusY);
+          if (dist < minDistance) {
+            minDistance = dist;
+            closestIdx = idx;
+            activeProgress = Math.min(1, Math.max(0.15, 1 - Math.max(0, centerY - focusY) / Math.max(1, rect.height)));
+          }
+        });
+
+        setActiveCase(closestIdx, activeProgress);
+      }
+
+      window.addEventListener('scroll', onScrollCases, { passive: true });
+    })();
+
+    /* =======================================================================
+       8. ESSAY READER MODAL (SUBSTACK)
+    ======================================================================= */
+    (function initEssayModal() {
+      const modal = document.getElementById('essayModal');
+      const modalTag = document.getElementById('modalTag');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalBody = document.getElementById('modalBody');
+      const closeBtn = document.getElementById('closeModalBtn');
+      if (!modal) return;
+
+      const ESSAYS = [
+        {
+          tag: 'ESSAY 01 · EDTECH & AI',
+          title: 'Why AI in Education Should Teach, Not Just Answer',
+          paragraphs: [
+            'When generative AI first entered classrooms, the default interaction became copy-paste: paste a problem in, get an answer out. While fast, that loop bypasses the exact struggle where mathematical and conceptual intuition actually forms.',
+            'While building THE 1 and Kerniq, I wanted to flip that workflow. Instead of acting as an answer machine, AI should generate active-recall quizzes from a student’s own notes, surface weak spots before exams, and break hard topics into first principles.'
+          ]
+        },
+        {
+          tag: 'ESSAY 02 · PRODUCT',
+          title: 'What Piloting THE 1 at School Taught Me About UX',
+          paragraphs: [
+            'In October 2026, running THE 1’s school pilot at Adani International School changed how I build software. You quickly realize students don’t read onboarding manuals—if a timetable or note takes more than two taps to open between periods, they abandon it.',
+            'Real-world testing forced every screen to become faster, cleaner, and genuinely useful on day one before we launched on Product Hunt.'
+          ]
+        },
+        {
+          tag: 'ESSAY 03 · PERSPECTIVE',
+          title: 'Two Countries, Two Classrooms: Coswig to Ahmedabad',
+          paragraphs: [
+            'Studying at Gymnasium Coswig in Germany from 2023 to 2025 and then moving to Ahmedabad, India in July 2025 gave me two distinct lenses on learning.',
+            'Germany emphasized independent structure and self-paced inquiry; India brought intense analytical rigor and competitive drive in mathematics and science. Blending both mindsets is at the heart of everything I build today.'
+          ]
+        }
+      ];
+
+      document.querySelectorAll('.essay-card[data-essay]').forEach((card) => {
+        card.addEventListener('click', () => {
+          const item = ESSAYS[Number(card.dataset.essay)];
+          if (!item) return;
+          modalTag.textContent = item.tag;
+          modalTitle.textContent = item.title;
+          modalBody.innerHTML = item.paragraphs.map((p) => `<p>${p}</p>`).join('');
+          modal.classList.add('open');
+        });
+      });
+
+      function closeModal() {
+        modal.classList.remove('open');
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      });
+    })();
+
+    /* =======================================================================
+       9. ACADEMIC & LEADERSHIP ACCORDIONS
+    ======================================================================= */
+    (function initScrollRecordAccordions() {
+      const items = Array.from(document.querySelectorAll('.acc-item[data-acc-order]'));
+      if (!items.length) return;
+
+      const manuallyToggled = new Set();
+
+      items.forEach((item, idx) => {
+        const trigger = item.querySelector('.acc-trigger');
+        if (trigger) {
+          trigger.addEventListener('click', () => {
+            manuallyToggled.add(idx);
+            item.classList.toggle('open');
+          });
+        }
+      });
+
+      function onScrollRecord() {
+        if (prefersReducedMotion) return;
+        const vh = window.innerHeight;
+        const openLine = vh * 0.76;
+        const focusY = vh * 0.5;
+
+        let closestIdx = -1;
+        let minDist = Infinity;
+
+        items.forEach((item, idx) => {
+          const rect = item.getBoundingClientRect();
+          if (!manuallyToggled.has(idx) && rect.top < openLine) {
+            item.classList.add('open');
+          }
+          const centerY = rect.top + rect.height * 0.5;
+          const dist = Math.abs(centerY - focusY);
+          if (rect.top < vh * 0.8 && rect.bottom > vh * 0.2 && dist < minDist) {
+            minDist = dist;
+            closestIdx = idx;
+          }
+        });
+
+        items.forEach((item, idx) => {
+          item.classList.toggle('is-focused', idx === closestIdx);
+        });
+      }
+
+      window.addEventListener('scroll', onScrollRecord, { passive: true });
+    })();
+
+    /* =======================================================================
+       10. HERO 3D WEBGL ORB
+    ======================================================================= */
+    function createWebGLDisplacedOrb(canvas) {
+      if (!canvas) return null;
+      const gl = canvas.getContext('webgl', { alpha: true, antialias: true, premultipliedAlpha: false });
+      if (!gl) return null;
+
+      const vsSource = `
+        attribute vec3 aPos;
+        attribute vec2 aUv;
+        uniform float uTime;
+        uniform float uAmp;
+        varying vec3 vNormal;
+        varying vec3 vWorldPos;
+        varying vec2 vUv;
+
+        vec3 displace(vec3 p) {
+          float w1 = sin(p.x * 3.2 + uTime * 1.15) * cos(p.y * 3.0 - uTime * 0.9);
+          float w2 = sin(p.z * 3.6 + uTime * 1.35) * sin(p.x * 2.4 + p.y * 2.8);
+          float w3 = cos(p.y * 4.8 - uTime * 1.5) * 0.32;
+          float d = (w1 * 0.55 + w2 * 0.35 + w3 * 0.25) * uAmp;
+          return p * (1.0 + d);
+        }
+
+        void main() {
+          vUv = aUv;
+          vec3 p0 = displace(aPos);
+
+          vec3 up = abs(aPos.y) < 0.99 ? vec3(0.0, 1.0, 0.0) : vec3(1.0, 0.0, 0.0);
+          vec3 t1 = normalize(cross(up, aPos));
+          vec3 t2 = cross(aPos, t1);
+          float eps = 0.02;
+          vec3 p1 = displace(normalize(aPos + t1 * eps));
+          vec3 p2 = displace(normalize(aPos + t2 * eps));
+          vNormal = normalize(cross(p1 - p0, p2 - p0));
+          if (dot(vNormal, aPos) < 0.0) vNormal = -vNormal;
+
+          vWorldPos = p0;
+          gl_Position = vec4(p0 * 0.72, 1.0);
+        }
+      `;
+
+      const fsSource = `
+        precision highp float;
+        uniform float uTime;
+        uniform float uIsLight;
+        varying vec3 vNormal;
+        varying vec3 vWorldPos;
+        varying vec2 vUv;
+
+        void main() {
+          vec3 N = normalize(vNormal);
+          vec3 V = vec3(0.0, 0.0, 1.0);
+
+          float band1 = sin(vWorldPos.x * 2.1 + vWorldPos.y * 1.7 + uTime * 0.45) * 0.5 + 0.5;
+          float band2 = cos(vWorldPos.y * 2.3 - vWorldPos.z * 1.9 + uTime * 0.35) * 0.5 + 0.5;
+          float band3 = sin(vWorldPos.z * 2.0 + vWorldPos.x * 1.8 - uTime * 0.3) * 0.5 + 0.5;
+
+          vec3 dRose   = vec3(0.95, 0.24, 0.42);
+          vec3 dIndigo = vec3(0.38, 0.40, 0.96);
+          vec3 dCyan   = vec3(0.04, 0.74, 0.86);
+          vec3 darkCol = mix(dRose, dIndigo, band1);
+          darkCol = mix(darkCol, dCyan, band2 * 0.65 + band3 * 0.25);
+
+          vec3 lRose   = vec3(0.88, 0.16, 0.34);
+          vec3 lIndigo = vec3(0.31, 0.27, 0.88);
+          vec3 lSky    = vec3(0.02, 0.58, 0.88);
+          vec3 lightCol = mix(lRose, lIndigo, band1);
+          lightCol = mix(lightCol, lSky, band2 * 0.65 + band3 * 0.25);
+
+          vec3 baseCol = mix(darkCol, lightCol, uIsLight);
+
+          float ridge = smoothstep(0.86, 0.98, abs(sin(vUv.y * 3.14159 * 36.0))) * 0.25;
+          baseCol += vec3(1.0) * ridge * 0.30;
+
+          vec3 L = normalize(vec3(-0.55, 0.68, 0.85));
+          vec3 H = normalize(L + V);
+          float diff = max(dot(N, L), 0.0);
+          float spec = pow(max(dot(N, H), 0.0), 34.0);
+
+          float fresnel = pow(1.0 - max(dot(N, V), 0.0), 2.5);
+          vec3 rimCol = mix(dCyan, lSky, uIsLight);
+
+          vec3 finalColor = baseCol * (0.54 + 0.56 * diff) + vec3(1.0, 0.98, 0.96) * spec * 0.55 + rimCol * fresnel * 0.62;
+          float alpha = smoothstep(0.0, 0.14, max(dot(N, V), 0.0) + 0.06);
+
+          gl_FragColor = vec4(finalColor, alpha);
+        }
+      `;
+
+      function compile(type, src) {
+        const s = gl.createShader(type);
+        gl.shaderSource(s, src);
+        gl.compileShader(s);
+        return s;
+      }
+
+      const prog = gl.createProgram();
+      gl.attachShader(prog, compile(gl.VERTEX_SHADER, vsSource));
+      gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, fsSource));
+      gl.linkProgram(prog);
+      gl.useProgram(prog);
+
+      const latBands = 64;
+      const lonBands = 64;
+      const positions = [];
+      const uvs = [];
+      const indices = [];
+
+      for (let lat = 0; lat <= latBands; lat++) {
+        const theta = (lat * Math.PI) / latBands;
+        const sinT = Math.sin(theta);
+        const cosT = Math.cos(theta);
+        for (let lon = 0; lon <= lonBands; lon++) {
+          const phi = (lon * 2 * Math.PI) / lonBands;
+          positions.push(Math.cos(phi) * sinT, cosT, Math.sin(phi) * sinT);
+          uvs.push(lon / lonBands, lat / latBands);
+        }
+      }
+
+      for (let lat = 0; lat < latBands; lat++) {
+        for (let lon = 0; lon < lonBands; lon++) {
+          const first = lat * (lonBands + 1) + lon;
+          const second = first + lonBands + 1;
+          indices.push(first, second, first + 1);
+          indices.push(second, second + 1, first + 1);
+        }
+      }
+
+      const posBuf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+      const aPos = gl.getAttribLocation(prog, 'aPos');
+      gl.enableVertexAttribArray(aPos);
+      gl.vertexAttribPointer(aPos, 3, gl.FLOAT, false, 0, 0);
+
+      const uvBuf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, uvBuf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(uvs), gl.STATIC_DRAW);
+      const aUv = gl.getAttribLocation(prog, 'aUv');
+      gl.enableVertexAttribArray(aUv);
+      gl.vertexAttribPointer(aUv, 2, gl.FLOAT, false, 0, 0);
+
+      const idxBuf = gl.createBuffer();
+      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idxBuf);
+      gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
+
+      const uTimeLoc = gl.getUniformLocation(prog, 'uTime');
+      const uAmpLoc = gl.getUniformLocation(prog, 'uAmp');
+      const uIsLightLoc = gl.getUniformLocation(prog, 'uIsLight');
+
+      gl.enable(gl.DEPTH_TEST);
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+      return {
+        draw(timeSec, amp = 0.14, isLight = 0.0) {
+          gl.viewport(0, 0, canvas.width, canvas.height);
+          gl.clearColor(0, 0, 0, 0);
+          gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+          gl.uniform1f(uTimeLoc, timeSec);
+          gl.uniform1f(uAmpLoc, amp);
+          gl.uniform1f(uIsLightLoc, isLight);
+          gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
+        }
+      };
+    }
+
+    const heroOrbRenderer = createWebGLDisplacedOrb(document.getElementById('heroWebGLOrb'));
+
+    /* =======================================================================
+       11. ARCHITECTURAL HORIZONTAL-WAVE TIMELINE
+    ======================================================================= */
+    (function initArchitecturalTimeline() {
+      const runway = document.getElementById('timeline');
+      const trackCanvas = document.getElementById('timelineTrackCanvas');
+      const baseline = document.getElementById('timelineBaseline');
+      const baselineProgress = document.getElementById('timelineBaselineProgress');
+      const counterText = document.getElementById('tlCounterText');
+      const prevBtn = document.getElementById('tlPrevBtn');
+      const nextBtn = document.getElementById('tlNextBtn');
+      const tunnelCanvas = document.getElementById('tunnelWebGLCanvas');
+
+      if (!runway || !trackCanvas) return;
+
+      const nodeEls = MILESTONES.map((m, idx) => {
+        const node = document.createElement('article');
+        node.className = 'tl-node' + (idx === 0 ? ' is-uncovered is-current' : '');
+        node.innerHTML = `
+          <div class="tl-node-stem">
+            <span class="tl-node-anchor"></span>
+          </div>
+          <div class="tl-node-content">
+            <div class="tl-node-meta">
+              <span class="tl-node-date">${m.date}</span>
+              <span class="tl-node-cat">${m.cat}</span>
+            </div>
+            <h3 class="tl-node-title">${m.title}</h3>
+            <p class="tl-node-desc">${m.desc}</p>
+          </div>
+        `;
+        node.addEventListener('click', () => scrollToMilestone(idx));
+        trackCanvas.appendChild(node);
+        return node;
+      });
+
+      let colStep = 320;
+      let startPad = 80;
+      let totalTrackWidth = 0;
+
+      function layoutNodes() {
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        colStep = vw < 640 ? 260 : vw < 960 ? 290 : 320;
+        startPad = Math.max(20, Math.min(100, vw * 0.07));
+
+        const availH = Math.max(240, vh - 260);
+        const hScale = Math.min(1, availH / 350);
+
+        nodeEls.forEach((node, idx) => {
+          const x = startPad + idx * colStep;
+          const h = Math.round(MILESTONES[idx].stemH * hScale);
+          node.style.left = `${x}px`;
+          node.style.setProperty('--stem-h', `${h}px`);
+        });
+
+        const lastX = startPad + (MILESTONES.length - 1) * colStep;
+        totalTrackWidth = lastX + 320;
+        trackCanvas.style.width = `${totalTrackWidth}px`;
+        baseline.style.left = `${startPad}px`;
+        baseline.style.width = `${lastX - startPad}px`;
+      }
+
+      layoutNodes();
+      window.addEventListener('resize', layoutNodes, { passive: true });
+
+      function scrollToMilestone(idx) {
+        const clamped = Math.max(0, Math.min(MILESTONES.length - 1, idx));
+        const targetProgress = clamped / (MILESTONES.length - 1);
+        const runwayTop = runway.offsetTop;
+        const scrollable = Math.max(1, runway.offsetHeight - window.innerHeight);
+        window.scrollTo({
+          top: runwayTop + Math.min(1, targetProgress) * scrollable,
+          behavior: 'smooth'
+        });
+      }
+
+      let currentIdx = 0;
+      if (prevBtn) prevBtn.addEventListener('click', () => scrollToMilestone(currentIdx - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => scrollToMilestone(currentIdx + 1));
+
+      window.addEventListener('keydown', (e) => {
+        if (currentActiveId !== 'timeline') return;
+        if (e.key === 'ArrowRight') scrollToMilestone(currentIdx + 1);
+        if (e.key === 'ArrowLeft') scrollToMilestone(currentIdx - 1);
+      });
+
+      const gl = tunnelCanvas ? tunnelCanvas.getContext('webgl', { alpha: true, antialias: true }) : null;
+      let prog, uResLoc, uTimeLoc, uScrollLoc, uIsLightLoc;
+
+      if (gl && !prefersReducedMotion) {
+        const vsSrc = `
+          attribute vec2 aPos;
+          void main() {
+            gl_Position = vec4(aPos, 0.0, 1.0);
+          }
+        `;
+
+        const fsSrc = `
+          precision highp float;
+          uniform vec2 uRes;
+          uniform float uTime;
+          uniform float uScroll;
+          uniform float uIsLight;
+
+          void main() {
+            vec2 uv = (gl_FragCoord.xy - 0.5 * uRes.xy) / min(uRes.x, uRes.y);
+            float dist = length(uv);
+            float angle = atan(uv.y, uv.x);
+
+            float depth = 0.42 / (dist + 0.08) + uScroll * 7.5 + uTime * 0.35;
+            float spiral = angle * 3.0 + depth * 1.1;
+
+            float ribbon1 = smoothstep(0.4, 0.98, sin(spiral) * 0.5 + 0.5);
+            float ribbon2 = smoothstep(0.5, 0.99, cos(angle * 4.0 - depth * 1.4) * 0.5 + 0.5);
+            float ring = smoothstep(0.82, 1.0, sin(depth * 2.2) * 0.5 + 0.5);
+
+            vec3 dRose   = vec3(0.92, 0.20, 0.38);
+            vec3 dIndigo = vec3(0.32, 0.34, 0.92);
+            vec3 dCyan   = vec3(0.04, 0.68, 0.82);
+            vec3 darkCol = mix(dRose, dIndigo, ribbon1);
+            darkCol = mix(darkCol, dCyan, ribbon2 * 0.65 + ring * 0.25);
+
+            vec3 lRose   = vec3(0.88, 0.16, 0.34);
+            vec3 lIndigo = vec3(0.31, 0.27, 0.88);
+            vec3 lSky    = vec3(0.02, 0.58, 0.88);
+            vec3 lightCol = mix(lRose, lIndigo, ribbon1);
+            lightCol = mix(lightCol, lSky, ribbon2 * 0.65 + ring * 0.25);
+
+            vec3 col = mix(darkCol, lightCol, uIsLight);
+            float outerMask = smoothstep(0.04, 0.2, dist) * (1.0 - smoothstep(0.52, 1.05, dist));
+            float intensity = (ribbon1 * 0.36 + ribbon2 * 0.28 + ring * 0.18) * outerMask;
+
+            gl_FragColor = vec4(col, clamp(intensity * 0.48, 0.0, 0.48));
+          }
+        `;
+
+        function compile(type, src) {
+          const s = gl.createShader(type);
+          gl.shaderSource(s, src);
+          gl.compileShader(s);
+          return s;
+        }
+
+        prog = gl.createProgram();
+        gl.attachShader(prog, compile(gl.VERTEX_SHADER, vsSrc));
+        gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, fsSrc));
+        gl.linkProgram(prog);
+        gl.useProgram(prog);
+
+        const quad = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
+        const buf = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+        gl.bufferData(gl.ARRAY_BUFFER, quad, gl.STATIC_DRAW);
+
+        const aPos = gl.getAttribLocation(prog, 'aPos');
+        gl.enableVertexAttribArray(aPos);
+        gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+        uResLoc = gl.getUniformLocation(prog, 'uRes');
+        uTimeLoc = gl.getUniformLocation(prog, 'uTime');
+        uScrollLoc = gl.getUniformLocation(prog, 'uScroll');
+        uIsLightLoc = gl.getUniformLocation(prog, 'uIsLight');
+
+        gl.enable(gl.BLEND);
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+      }
+
+      function resizeTunnel() {
+        if (!tunnelCanvas) return;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        tunnelCanvas.width = Math.floor(window.innerWidth * dpr);
+        tunnelCanvas.height = Math.floor(window.innerHeight * dpr);
+      }
+      resizeTunnel();
+      window.addEventListener('resize', resizeTunnel, { passive: true });
+
+      let smoothProgress = 0;
+
+      function animateTimeline(nowMs) {
+        const tSec = nowMs * 0.001;
+        const isLight = htmlEl.getAttribute('data-theme') === 'light' ? 1.0 : 0.0;
+
+        if (heroOrbRenderer && !prefersReducedMotion) {
+          heroOrbRenderer.draw(tSec, 0.14, isLight);
+        }
+
+        const rect = runway.getBoundingClientRect();
+        const scrollable = Math.max(1, runway.offsetHeight - window.innerHeight);
+        const rawProgress = Math.min(1, Math.max(0, -rect.top / scrollable));
+        smoothProgress += (rawProgress - smoothProgress) * 0.16;
+
+        if (!prefersReducedMotion) {
+          const shapedProgress = gentleEaseCurve(smoothProgress, MILESTONES.length);
+          const maxPan = Math.max(0, totalTrackWidth - window.innerWidth + startPad * 0.5);
+          const panX = shapedProgress * maxPan;
+          trackCanvas.style.transform = `translate3d(${(-panX).toFixed(1)}px, 0, 0)`;
+
+          const activeFloat = shapedProgress * (MILESTONES.length - 1);
+          currentIdx = Math.round(activeFloat);
+
+          const activeLinePx = Math.min(
+            (MILESTONES.length - 1) * colStep,
+            Math.max(0, activeFloat * colStep)
+          );
+          baselineProgress.style.width = `${activeLinePx.toFixed(1)}px`;
+
+          nodeEls.forEach((node, idx) => {
+            const uncovered = idx <= activeFloat + 0.35;
+            const isCurr = idx === currentIdx;
+            node.classList.toggle('is-uncovered', uncovered);
+            node.classList.toggle('is-current', isCurr);
+            node.style.opacity = uncovered ? '1' : '0.26';
+          });
+
+          if (counterText && MILESTONES[currentIdx]) {
+            const numStr = String(currentIdx + 1).padStart(2, '0');
+            counterText.textContent = `${numStr} / ${MILESTONES.length} · ${MILESTONES[currentIdx].date}`;
+          }
+        } else {
+          nodeEls.forEach((node) => {
+            node.classList.add('is-uncovered');
+            node.style.opacity = '1';
+          });
+        }
+
+        if (gl && prog && !prefersReducedMotion) {
+          gl.viewport(0, 0, tunnelCanvas.width, tunnelCanvas.height);
+          gl.clearColor(0, 0, 0, 0);
+          gl.clear(gl.COLOR_BUFFER_BIT);
+          gl.uniform2f(uResLoc, tunnelCanvas.width, tunnelCanvas.height);
+          gl.uniform1f(uTimeLoc, tSec);
+          gl.uniform1f(uScrollLoc, smoothProgress);
+          gl.uniform1f(uIsLightLoc, isLight);
+          gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        }
+
+        requestAnimationFrame(animateTimeline);
+      }
+
+      requestAnimationFrame(animateTimeline);
+    })();
+
+    /* =======================================================================
+       12. DOTTED MATRIX FOOTER
+    ======================================================================= */
+    (function initDotMatrix() {
+      const canvas = document.getElementById('dotMatrixCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      function resize() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize, { passive: true });
+
+      const darkPalette = ['#f43f5e', '#6366f1', '#06b6d4', '#818cf8'];
+      const lightPalette = ['#e11d48', '#4f46e5', '#0284c7', '#6366f1'];
+
+      function render(t) {
+        const w = canvas.width;
+        const h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+
+        const isLight = htmlEl.getAttribute('data-theme') === 'light';
+        const palette = isLight ? lightPalette : darkPalette;
+
+        const gap = 14;
+        const cols = Math.floor(w / gap);
+        const rows = Math.floor(h / gap);
+
+        for (let c = 0; c < cols; c++) {
+          for (let r = 0; r < rows; r++) {
+            const x = c * gap + gap * 0.5;
+            const y = r * gap + gap * 0.5;
+            const wave =
+              Math.sin(c * 0.13 + (prefersReducedMotion ? 0 : t * 0.002)) +
+              Math.cos(r * 0.21 - (prefersReducedMotion ? 0 : t * 0.0015));
+            if (wave > 0.2) {
+              const colorIdx = (c + r) % palette.length;
+              ctx.fillStyle = palette[colorIdx];
+              ctx.globalAlpha = Math.min(0.82, (wave - 0.2) * 0.55);
+              ctx.beginPath();
+              ctx.arc(x, y, 2.2, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+        }
+        ctx.globalAlpha = 1;
+
+        if (!prefersReducedMotion) requestAnimationFrame(render);
+      }
+
+      requestAnimationFrame(render);
+    })();
+  </script>
+</body>
+</html>
