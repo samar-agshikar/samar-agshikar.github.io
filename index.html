@@ -487,7 +487,7 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: radial-gradient(circle at center, transparent 54%, rgba(2, 4, 8, 0.82) 100%);
+      background: radial-gradient(circle at center, transparent 56%, rgba(2, 4, 8, 0.85) 100%);
       z-index: 2;
     }
 
@@ -514,7 +514,7 @@
       pointer-events: auto;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(8, 12, 20, 0.82);
+      background: rgba(8, 12, 20, 0.84);
       backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.14);
       font-family: "JetBrains Mono", monospace;
@@ -526,7 +526,7 @@
       pointer-events: auto;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(8, 12, 20, 0.82);
+      background: rgba(8, 12, 20, 0.84);
       backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.18);
       font-family: "JetBrains Mono", monospace;
@@ -933,7 +933,8 @@
       <div class="machine-hud-top">
         <div class="hud-pill" id="scaleIndicator">SCALE 1:1 · WORKSTATION EXTERIOR</div>
         <div class="hud-group">
-          <button class="hud-toggle" id="rgbBtn">RGB LIGHTING: ON</button>
+          <button class="hud-toggle active" id="gateBiasBtn">V_GS BIAS: ON (0.75V)</button>
+          <button class="hud-toggle active" id="rgbBtn">RGB LIGHTING: ON</button>
           <button class="hud-toggle" id="explodeBtn">EXPLODE LAYERS: OFF</button>
           <div class="hud-pill">SCROLL TO FLY INSIDE · DRAG TO ORBIT</div>
         </div>
@@ -944,7 +945,7 @@
         <button class="rail-dot" data-chapter="1">02 Motherboard</button>
         <button class="rail-dot" data-chapter="2">03 RTX GPU</button>
         <button class="rail-dot" data-chapter="3">04 Silicon Die</button>
-        <button class="rail-dot" data-chapter="4">05 3nm FinFET</button>
+        <button class="rail-dot" data-chapter="4">05 3nm GAAFET</button>
       </div>
 
       <aside class="machine-card" aria-live="polite">
@@ -972,7 +973,7 @@
           <div class="eyebrow">The Language of Computing</div>
           <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; margin-bottom: 8px;">Interactive Logic Gates</h3>
           <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65;">
-            Those nanometer FinFET transistors you just scrolled through combine into logic gates. Toggle inputs A and B to see how voltage becomes Boolean computation.
+            Those 3nm nanosheet transistors you just scrolled through combine into CMOS logic gates. Toggle inputs A and B to see how gate voltage becomes Boolean computation.
           </p>
         </div>
         <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -1249,7 +1250,7 @@
     applyTheme(localStorage.getItem("site-theme") || "acid");
 
     /* ============================================================
-       3. HIGH-RESOLUTION PROCEDURAL STUDIO HDRI & PBR TEXTURES
+       3. STUDIO HDRI ENVIRONMENT & PHOTOREALISTIC PBR TEXTURES
        ============================================================ */
     function createStudioEnvMap(renderer) {
       const c = document.createElement("canvas");
@@ -1257,29 +1258,29 @@
       const ctx = c.getContext("2d");
 
       const bg = ctx.createLinearGradient(0, 0, 0, 512);
-      bg.addColorStop(0, "#141d2e");
-      bg.addColorStop(0.48, "#070b12");
-      bg.addColorStop(0.52, "#030508");
-      bg.addColorStop(1, "#090d16");
+      bg.addColorStop(0, "#1e293b");
+      bg.addColorStop(0.46, "#090d16");
+      bg.addColorStop(0.52, "#020408");
+      bg.addColorStop(1, "#0b1120");
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, 1024, 512);
 
-      // Studio Overhead Softboxes (creates crisp metallic reflections on gunmetal & copper)
+      // High-contrast studio overhead softboxes for realistic metallic specular highlights
       ctx.fillStyle = "#ffffff";
-      ctx.fillRect(180, 28, 660, 42);
-      ctx.fillStyle = "rgba(255,255,255,0.65)";
-      ctx.fillRect(120, 88, 220, 18);
-      ctx.fillRect(680, 88, 220, 18);
+      ctx.fillRect(160, 22, 700, 38);
+      ctx.fillStyle = "rgba(255,255,255,0.75)";
+      ctx.fillRect(90, 82, 260, 22);
+      ctx.fillRect(670, 82, 260, 22);
 
-      // Cool Key Strip & Warm Edge Rim
+      // Cool Rim & Warm Key Studio Strips
       ctx.fillStyle = "#bae6fd";
-      ctx.fillRect(42, 160, 140, 95);
-      ctx.fillStyle = "#fef08a";
-      ctx.fillRect(840, 150, 130, 85);
+      ctx.fillRect(36, 155, 155, 110);
+      ctx.fillStyle = "#fed7aa";
+      ctx.fillRect(835, 145, 145, 100);
 
-      // Floor Reflection Horizon Line
-      ctx.fillStyle = "rgba(56, 189, 248, 0.25)";
-      ctx.fillRect(0, 255, 1024, 3);
+      // Subtle Studio Horizon Reflection
+      ctx.fillStyle = "rgba(148, 163, 184, 0.22)";
+      ctx.fillRect(0, 256, 1024, 2);
 
       const tex = new THREE.CanvasTexture(c);
       tex.mapping = THREE.EquirectangularReflectionMapping;
@@ -1291,6 +1292,19 @@
       return envRT.texture;
     }
 
+    function makeContactShadowTexture() {
+      const c = document.createElement("canvas");
+      c.width = 512; c.height = 512;
+      const ctx = c.getContext("2d");
+      const g = ctx.createRadialGradient(256, 256, 20, 256, 256, 240);
+      g.addColorStop(0, "rgba(0, 0, 0, 0.88)");
+      g.addColorStop(0.55, "rgba(0, 0, 0, 0.45)");
+      g.addColorStop(1, "rgba(0, 0, 0, 0)");
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, 512, 512);
+      return new THREE.CanvasTexture(c);
+    }
+
     function makeBrushedMetalMaps() {
       const c = document.createElement("canvas");
       c.width = 512; c.height = 512;
@@ -1298,9 +1312,29 @@
       ctx.fillStyle = "#808080";
       ctx.fillRect(0, 0, 512, 512);
       for (let y = 0; y < 512; y++) {
-        const v = 115 + Math.floor(Math.random() * 28);
+        const v = 108 + Math.floor(Math.random() * 40);
         ctx.fillStyle = `rgb(${v},${v},${v})`;
         ctx.fillRect(0, y, 512, 1);
+      }
+      const tex = new THREE.CanvasTexture(c);
+      tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+      tex.repeat.set(4, 4);
+      return tex;
+    }
+
+    function makeCrystallineSiliconBump() {
+      const c = document.createElement("canvas");
+      c.width = 512; c.height = 512;
+      const ctx = c.getContext("2d");
+      ctx.fillStyle = "#787878";
+      ctx.fillRect(0, 0, 512, 512);
+      // Micro-cleave crystal lattice striations
+      for (let i = 0; i < 1800; i++) {
+        const x = Math.random() * 512;
+        const y = Math.random() * 512;
+        const shade = Math.random() > 0.5 ? 148 : 102;
+        ctx.fillStyle = `rgb(${shade},${shade},${shade})`;
+        ctx.fillRect(x, y, 14, 1.5);
       }
       const tex = new THREE.CanvasTexture(c);
       tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
@@ -1316,7 +1350,7 @@
       ctx.fillRect(0, 0, 128, 128);
       for (let y = 0; y < 128; y += 8) {
         for (let x = 0; x < 128; x += 8) {
-          ctx.fillStyle = ((x + y) / 8) % 2 === 0 ? "#181e29" : "#07090d";
+          ctx.fillStyle = ((x + y) / 8) % 2 === 0 ? "#1a202c" : "#07090d";
           ctx.fillRect(x, y, 7, 7);
         }
       }
@@ -1331,11 +1365,17 @@
       c.width = 1024; c.height = 1024;
       const ctx = c.getContext("2d");
 
-      // Matte Obsidian 8-Layer PCB
-      ctx.fillStyle = "#090d14";
+      ctx.fillStyle = "#080b11";
       ctx.fillRect(0, 0, 1024, 1024);
 
-      // Diagonal ROG Cyberpunk Silkscreen Graphic
+      // Fiberglass PCB weave micro-grid
+      ctx.fillStyle = "rgba(255,255,255,0.015)";
+      for (let y = 0; y < 1024; y += 4) {
+        for (let x = (y % 8 === 0 ? 0 : 2); x < 1024; x += 4) {
+          ctx.fillRect(x, y, 2, 2);
+        }
+      }
+
       ctx.save();
       ctx.translate(512, 512);
       ctx.rotate(-0.42);
@@ -1345,9 +1385,9 @@
       ctx.restore();
 
       // Precision 45-degree Copper & Gold Routing Traces
-      for (let i = 0; i < 140; i++) {
-        ctx.strokeStyle = i % 6 === 0 ? "rgba(234, 179, 8, 0.32)" : "rgba(56, 189, 248, 0.16)";
-        ctx.lineWidth = i % 5 === 0 ? 2.2 : 1.1;
+      for (let i = 0; i < 160; i++) {
+        ctx.strokeStyle = i % 6 === 0 ? "rgba(234, 179, 8, 0.34)" : "rgba(56, 189, 248, 0.16)";
+        ctx.lineWidth = i % 5 === 0 ? 2.0 : 1.0;
         let x = Math.floor(Math.random() * 64) * 16;
         let y = Math.floor(Math.random() * 64) * 16;
         ctx.beginPath();
@@ -1362,10 +1402,9 @@
         ctx.stroke();
 
         ctx.fillStyle = "#eab308";
-        ctx.beginPath(); ctx.arc(x, y, 2.5, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(x, y, 2.2, 0, Math.PI * 2); ctx.fill();
       }
 
-      // Gold Mounting Holes
       [[42, 42], [512, 42], [982, 42], [42, 512], [982, 512], [42, 982], [512, 982], [982, 982]].forEach(([mx, my]) => {
         ctx.fillStyle = "#eab308";
         ctx.beginPath(); ctx.arc(mx, my, 15, 0, Math.PI * 2); ctx.fill();
@@ -1373,7 +1412,6 @@
         ctx.beginPath(); ctx.arc(mx, my, 7, 0, Math.PI * 2); ctx.fill();
       });
 
-      // Authentic Board Silkscreen Labels
       ctx.fillStyle = "rgba(241, 245, 249, 0.72)";
       ctx.font = "700 20px JetBrains Mono, monospace";
       ctx.fillText("ROG MAXIMUS Z890 HERO // KERNIQ EDITION", 56, 964);
@@ -1396,7 +1434,6 @@
       ctx.fillStyle = "#cbd5e1";
       ctx.fillRect(0, 0, 512, 512);
 
-      // Machined Nickel-Plated Copper IHS border bevel
       ctx.strokeStyle = "#94a3b8";
       ctx.lineWidth = 24;
       ctx.strokeRect(12, 12, 488, 488);
@@ -1406,7 +1443,7 @@
         ctx.fillRect(0, y, 512, 1);
       }
 
-      ctx.fillStyle = "rgba(15, 23, 42, 0.78)";
+      ctx.fillStyle = "rgba(15, 23, 42, 0.82)";
       ctx.font = "700 34px Space Grotesk, sans-serif";
       ctx.fillText("KERNIQ // INTEL", 76, 155);
       ctx.font = "600 24px JetBrains Mono, monospace";
@@ -1415,7 +1452,6 @@
       ctx.fillText("TSMC N3B · 5.7 GHZ BOOST", 76, 250);
       ctx.fillText("BATCH# 2026-DE-IN", 76, 290);
 
-      // Gold Pin-1 Corner Triangle
       ctx.fillStyle = "#eab308";
       ctx.beginPath(); ctx.moveTo(42, 470); ctx.lineTo(90, 470); ctx.lineTo(42, 422); ctx.fill();
 
@@ -1431,22 +1467,24 @@
 
       const grad = ctx.createLinearGradient(0, 0, 1024, 1024);
       grad.addColorStop(0, "#090d16");
-      grad.addColorStop(0.5, "#17143b");
-      grad.addColorStop(1, "#062438");
+      grad.addColorStop(0.35, "#1e1b4b");
+      grad.addColorStop(0.7, "#064e3b");
+      grad.addColorStop(1, "#082f49");
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, 1024, 1024);
 
-      for (let y = 20; y < 1004; y += 14) {
-        for (let x = 20; x < 1004; x += 14) {
+      // Photolithography reticle functional blocks (L2 cache, Tensor arrays, I/O PHY)
+      for (let y = 20; y < 1004; y += 12) {
+        for (let x = 20; x < 1004; x += 12) {
           const v = (x * 11 + y * 17) % 100;
-          if (v < 35) ctx.fillStyle = "rgba(56, 189, 248, 0.24)";
-          else if (v < 55) ctx.fillStyle = "rgba(118, 185, 0, 0.24)";
-          else if (v < 72) ctx.fillStyle = "rgba(167, 139, 250, 0.22)";
-          else ctx.fillStyle = "rgba(10, 15, 28, 0.65)";
-          ctx.fillRect(x, y, 11, 11);
+          if (v < 35) ctx.fillStyle = "rgba(56, 189, 248, 0.28)";
+          else if (v < 55) ctx.fillStyle = "rgba(16, 185, 129, 0.26)";
+          else if (v < 72) ctx.fillStyle = "rgba(167, 139, 250, 0.25)";
+          else ctx.fillStyle = "rgba(10, 15, 28, 0.72)";
+          ctx.fillRect(x, y, 9, 9);
         }
       }
-      ctx.strokeStyle = "rgba(251, 191, 36, 0.2)";
+      ctx.strokeStyle = "rgba(251, 191, 36, 0.24)";
       ctx.lineWidth = 1;
       for (let i = 0; i < 1024; i += 64) {
         ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 1024); ctx.stroke();
@@ -1464,7 +1502,6 @@
       ctx.fillStyle = "#03050a";
       ctx.fillRect(0, 0, 512, 512);
 
-      // Outer Telemetry Ring
       ctx.strokeStyle = "#38bdf8";
       ctx.lineWidth = 14;
       ctx.beginPath(); ctx.arc(256, 256, 210, 0, Math.PI * 2); ctx.stroke();
@@ -1502,70 +1539,72 @@
     }
 
     /* ============================================================
-       4. SCROLL-DRIVEN 3D: PHOTOREALISTIC PC & NVIDIA FE ARCHITECTURE
+       4. SCROLL-DRIVEN 3D: PHOTOREALISTIC PC & 3NM GAAFET SILICON
        ============================================================ */
     const machineSection = document.getElementById("machine");
     const mCanvas = document.getElementById("machine-canvas");
     const mScene = new THREE.Scene();
-    mScene.fog = new THREE.FogExp2(0x03050a, 0.018);
+    mScene.fog = new THREE.FogExp2(0x03050a, 0.015);
 
-    const mCamera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 140);
+    const mCamera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 140);
     const mRenderer = new THREE.WebGLRenderer({ canvas: mCanvas, antialias: true, powerPreference: "high-performance" });
     mRenderer.setSize(window.innerWidth, window.innerHeight);
     mRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     mRenderer.toneMapping = THREE.ACESFilmicToneMapping;
-    mRenderer.toneMappingExposure = 1.22;
+    mRenderer.toneMappingExposure = 1.26;
     mRenderer.outputEncoding = THREE.sRGBEncoding;
 
     // Studio HDRI Reflections
     mScene.environment = createStudioEnvMap(mRenderer);
 
     // 3-Point Studio Photography Lighting
-    mScene.add(new THREE.AmbientLight(0xdbeafe, 0.32));
-    const keyLight = new THREE.DirectionalLight(0xffffff, 1.65);
+    mScene.add(new THREE.AmbientLight(0xdbeafe, 0.28));
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.85);
     keyLight.position.set(11, 16, 14);
     mScene.add(keyLight);
 
-    const fillCyan = new THREE.PointLight(0x38bdf8, 2.2, 42);
-    fillCyan.position.set(-11, 6, 10);
+    const fillCyan = new THREE.PointLight(0x38bdf8, 2.2, 45);
+    fillCyan.position.set(-12, 7, 11);
     mScene.add(fillCyan);
 
-    const rimNvidia = new THREE.PointLight(0x76b900, 1.8, 36);
-    rimNvidia.position.set(10, 4, -9);
-    mScene.add(rimNvidia);
+    const rimWarm = new THREE.PointLight(0xf59e0b, 1.6, 38);
+    rimWarm.position.set(11, 5, -10);
+    mScene.add(rimWarm);
 
     // Photorealistic PBR Material Library
     const brushedTex = makeBrushedMetalMaps();
+    const crystalBump = makeCrystallineSiliconBump();
     const carbonTex = makeCarbonFiberMaps();
     const pcbTex = makeROGMotherboardTexture();
     const ihsTex = makeIHSTexture();
     const dieTex = makeSiliconDieTexture();
     const aioScreenTex = makeAIOPumpScreenTexture();
     const rtxBadgeTex = makeNvidiaFEBadgeTexture();
+    const shadowTex = makeContactShadowTexture();
 
     const matAnodizedBlack = new THREE.MeshStandardMaterial({
-      color: 0x0f131a, metalness: 0.82, roughness: 0.32, roughnessMap: brushedTex
+      color: 0x0f131a, metalness: 0.84, roughness: 0.30, roughnessMap: brushedTex, bumpMap: brushedTex, bumpScale: 0.012
     });
     const matGunmetal = new THREE.MeshStandardMaterial({
-      color: 0x475569, metalness: 0.92, roughness: 0.22, roughnessMap: brushedTex
+      color: 0x475569, metalness: 0.94, roughness: 0.20, roughnessMap: brushedTex, bumpMap: brushedTex, bumpScale: 0.015
     });
     const matSilverAlum = new THREE.MeshStandardMaterial({
-      color: 0xcbd5e1, metalness: 0.94, roughness: 0.18, roughnessMap: brushedTex
+      color: 0xdbeafe, metalness: 0.95, roughness: 0.16, roughnessMap: brushedTex, bumpMap: brushedTex, bumpScale: 0.012
     });
     const matDarkHeatsink = new THREE.MeshStandardMaterial({
-      color: 0x1a202c, metalness: 0.86, roughness: 0.28
+      color: 0x1a202c, metalness: 0.88, roughness: 0.26, bumpMap: brushedTex, bumpScale: 0.01
     });
     const matCopper = new THREE.MeshStandardMaterial({
-      color: 0xd97706, metalness: 0.95, roughness: 0.18
+      color: 0xd97706, metalness: 0.96, roughness: 0.16, roughnessMap: brushedTex, bumpMap: brushedTex, bumpScale: 0.012
     });
     const matGold = new THREE.MeshStandardMaterial({
-      color: 0xfacc15, metalness: 0.96, roughness: 0.15
+      color: 0xfacc15, metalness: 0.97, roughness: 0.14
     });
     const matCarbon = new THREE.MeshStandardMaterial({
-      map: carbonTex, metalness: 0.35, roughness: 0.45
+      map: carbonTex, bumpMap: carbonTex, bumpScale: 0.02, metalness: 0.35, roughness: 0.42
     });
     const matMatteRubber = new THREE.MeshStandardMaterial({
-      color: 0x090c10, metalness: 0.08, roughness: 0.82
+      color: 0x090c10, metalness: 0.06, roughness: 0.84
     });
 
     const rgbMaterials = [];
@@ -1575,50 +1614,56 @@
       return m;
     }
 
+    // Grounded Studio Contact Shadow Plane
+    function addStudioFloorShadow(parent, yPos, scale = 14) {
+      const plane = new THREE.Mesh(
+        new THREE.PlaneGeometry(scale, scale),
+        new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, opacity: 0.85, depthWrite: false })
+      );
+      plane.rotation.x = -Math.PI / 2;
+      plane.position.y = yPos;
+      parent.add(plane);
+    }
+
     // Helper: Build a Photorealistic 9-Blade Lian Li Uni-Fan with Infinity Mirror Hub
     function createRealisticFan(radius, ledHex = 0x38bdf8) {
       const root = new THREE.Group();
 
-      // Square/octagonal outer shroud with rubber anti-vibration pads
       const outerRing = new THREE.Mesh(
-        new THREE.TorusGeometry(radius, radius * 0.085, 14, 42),
+        new THREE.TorusGeometry(radius, radius * 0.085, 16, 48),
         matAnodizedBlack
       );
       root.add(outerRing);
 
-      // Dual-zone diffuser LED ring
       const ledRing = new THREE.Mesh(
-        new THREE.TorusGeometry(radius * 0.94, radius * 0.025, 10, 42),
+        new THREE.TorusGeometry(radius * 0.94, radius * 0.024, 10, 48),
         makeRGBMat(ledHex)
       );
       ledRing.position.z = radius * 0.06;
       root.add(ledRing);
 
-      // Spinning Rotor Assembly
       const rotor = new THREE.Group();
       const hub = new THREE.Mesh(
-        new THREE.CylinderGeometry(radius * 0.28, radius * 0.28, radius * 0.18, 28),
+        new THREE.CylinderGeometry(radius * 0.28, radius * 0.28, radius * 0.18, 32),
         matAnodizedBlack
       );
       hub.rotation.x = Math.PI / 2;
       rotor.add(hub);
 
-      // Spun-Aluminum Infinity Mirror Center Cap
       const cap = new THREE.Mesh(
-        new THREE.CylinderGeometry(radius * 0.20, radius * 0.20, radius * 0.20, 28),
+        new THREE.CylinderGeometry(radius * 0.20, radius * 0.20, radius * 0.20, 32),
         matSilverAlum
       );
       cap.rotation.x = Math.PI / 2;
       rotor.add(cap);
 
       const capRing = new THREE.Mesh(
-        new THREE.TorusGeometry(radius * 0.16, radius * 0.015, 8, 28),
+        new THREE.TorusGeometry(radius * 0.16, radius * 0.015, 8, 32),
         makeRGBMat(ledHex)
       );
       capRing.position.z = radius * 0.105;
       rotor.add(capRing);
 
-      // 9 Swept Aerodynamic Impeller Blades
       for (let i = 0; i < 9; i++) {
         const blade = new THREE.Mesh(
           new THREE.BoxGeometry(radius * 0.16, radius * 0.65, radius * 0.025),
@@ -1626,8 +1671,8 @@
         );
         const a = (i / 9) * Math.PI * 2;
         blade.position.set(Math.cos(a) * radius * 0.54, Math.sin(a) * radius * 0.54, 0);
-        blade.rotation.z = a - Math.PI / 2 + 0.22; // Swept forward
-        blade.rotation.y = 0.42; // Pitch angle
+        blade.rotation.z = a - Math.PI / 2 + 0.22;
+        blade.rotation.y = 0.42;
         rotor.add(blade);
       }
       root.add(rotor);
@@ -1635,11 +1680,10 @@
       return root;
     }
 
-    // Helper: Build a Photorealistic NVIDIA GeForce RTX 4090 / 5090 Founders Edition GPU
+    // Helper: Build a Photorealistic NVIDIA GeForce RTX Founders Edition GPU
     function createNvidiaFoundersGPU(scale = 1.0) {
       const gpu = new THREE.Group();
 
-      // 1. Gunmetal CNC-Machined Unibody Hourglass Exo-Frame
       const frameTop = new THREE.Mesh(new THREE.BoxGeometry(6.4, 0.12, 2.2), matGunmetal);
       frameTop.position.set(0, 0.56, 0);
       gpu.add(frameTop);
@@ -1648,7 +1692,6 @@
       frameBot.position.set(0, -0.56, 0);
       gpu.add(frameBot);
 
-      // Angled X-brace Hourglass Bridge (Signature NVIDIA Founders Edition Design!)
       const braceA = new THREE.Mesh(new THREE.BoxGeometry(0.18, 1.18, 2.22), matGunmetal);
       braceA.position.set(0.35, 0, 0);
       braceA.rotation.z = 0.48;
@@ -1659,29 +1702,26 @@
       braceB.rotation.z = -0.48;
       gpu.add(braceB);
 
-      // 2. Dense Stacked Black Aluminum Heatsink Fin Array (left & right thermal chambers)
       for (let i = 0; i < 36; i++) {
         const fx = -2.95 + i * 0.165;
-        if (Math.abs(fx - 0.35) < 0.45) continue; // Leave center X-brace clear
+        if (Math.abs(fx - 0.35) < 0.45) continue;
         const fin = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.98, 2.04), matDarkHeatsink);
         fin.position.set(fx, 0, 0);
         gpu.add(fin);
       }
 
-      // 3. 6 Sintered Copper Heatpipes running through the fin stack
       for (let p = 0; p < 3; p++) {
-        const pipeFront = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 5.9, 12), matCopper);
+        const pipeFront = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 5.9, 14), matCopper);
         pipeFront.rotation.z = Math.PI / 2;
         pipeFront.position.set(0, -0.26 + p * 0.26, 0.96);
         gpu.add(pipeFront);
 
-        const pipeBack = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 5.9, 12), matCopper);
+        const pipeBack = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 5.9, 14), matCopper);
         pipeBack.rotation.z = Math.PI / 2;
         pipeBack.position.set(0, -0.26 + p * 0.26, -0.96);
         gpu.add(pipeBack);
       }
 
-      // 4. Dual Opposite-Side Flow-Through Axial Fans (Front Pull + Rear Exhaust)
       const fanFront = createRealisticFan(0.84, 0x76b900);
       fanFront.position.set(-1.55, 0, 1.06);
       gpu.add(fanFront);
@@ -1693,17 +1733,14 @@
       gpu.add(fanBack);
       spinningRotors.push(fanBack.userData.rotor);
 
-      // 5. Dual-Slot Stainless Steel PCIe I/O Bracket with DisplayPort/HDMI ports
       const ioBracket = new THREE.Mesh(new THREE.BoxGeometry(0.08, 1.32, 2.15), matSilverAlum);
       ioBracket.position.set(-3.24, -0.05, 0.05);
       gpu.add(ioBracket);
 
-      // 6. Gold PCIe 5.0 x16 Edge Connector Finger
       const pcieFinger = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.22, 0.08), matGold);
       pcieFinger.position.set(-1.5, -0.68, -0.55);
       gpu.add(pcieFinger);
 
-      // 7. Recessed 16-Pin 12V-2x6 Power Connector + White/Green GEFORCE RTX Edge Plate
       const pwrPlug = new THREE.Mesh(new THREE.BoxGeometry(0.55, 0.32, 0.38), matAnodizedBlack);
       pwrPlug.position.set(0.35, 0.56, 0.75);
       gpu.add(pwrPlug);
@@ -1715,7 +1752,6 @@
       badgePlate.position.set(-1.35, 0.38, 1.11);
       gpu.add(badgePlate);
 
-      // Subtle White V-Shape LED accent on top edge
       const vLed = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.04, 0.04), makeRGBMat(0xffffff));
       vLed.position.set(0.35, 0.58, 1.11);
       gpu.add(vLed);
@@ -1724,7 +1760,6 @@
       return gpu;
     }
 
-    // 5 Chapter Groups
     const chapters = [new THREE.Group(), new THREE.Group(), new THREE.Group(), new THREE.Group(), new THREE.Group()];
     chapters.forEach((g) => mScene.add(g));
     const spinningRotors = [];
@@ -1733,6 +1768,8 @@
        CHAPTER 0: DUAL-CHAMBER PANORAMIC ATX WORKSTATION
        ============================================================ */
     const chassisGroup = chapters[0];
+    addStudioFloorShadow(chassisGroup, -3.79, 13.5);
+
     const addBox = (parent, w, h, d, x, y, z, mat) => {
       const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
       m.position.set(x, y, z);
@@ -1740,25 +1777,21 @@
       return m;
     };
 
-    // Anodized Aluminum & Carbon-Accent Dual-Chamber Chassis
-    addBox(chassisGroup, 6.2, 0.16, 3.6, 0,  3.45, 0, matAnodizedBlack); // Top mesh roof
-    addBox(chassisGroup, 6.2, 0.16, 3.6, 0, -3.45, 0, matAnodizedBlack); // Bottom floor
-    addBox(chassisGroup, 6.2, 6.9,  0.14, 0, 0, -1.75, matDarkHeatsink); // Rear chamber divider
-    addBox(chassisGroup, 0.18, 6.9, 3.6,  3.05, 0, 0, matAnodizedBlack); // Rear I/O backplate
-    addBox(chassisGroup, 6.0, 1.25, 3.4,  0, -2.75, 0, matCarbon);       // Carbon-fiber PSU shroud
+    addBox(chassisGroup, 6.2, 0.16, 3.6, 0,  3.45, 0, matAnodizedBlack);
+    addBox(chassisGroup, 6.2, 0.16, 3.6, 0, -3.45, 0, matAnodizedBlack);
+    addBox(chassisGroup, 6.2, 6.9,  0.14, 0, 0, -1.75, matDarkHeatsink);
+    addBox(chassisGroup, 0.18, 6.9, 3.6,  3.05, 0, 0, matAnodizedBlack);
+    addBox(chassisGroup, 6.0, 1.25, 3.4,  0, -2.75, 0, matCarbon);
 
-    // Chamfered Corner Pillars (Panoramic Glass Front + Left Side)
     addBox(chassisGroup, 0.16, 7.0, 0.16, -3.02, 0, -1.72, matGunmetal);
     addBox(chassisGroup, 0.16, 7.0, 0.16,  3.02, 0,  1.72, matGunmetal);
 
-    // 4 CNC Machined Aluminum Isolation Feet
     [[-2.4, -1.25], [2.4, -1.25], [-2.4, 1.25], [2.4, 1.25]].forEach(([fx, fz]) => {
       const foot = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.28, 0.26, 28), matSilverAlum);
       foot.position.set(fx, -3.65, fz);
       chassisGroup.add(foot);
     });
 
-    // Top 360mm Liquid Radiator + 3 Lian Li Infinity Fans
     addBox(chassisGroup, 4.8, 0.34, 1.45, 0.2, 3.18, 0.2, matDarkHeatsink);
     for (let i = -1; i <= 1; i++) {
       const tf = createRealisticFan(0.68, 0x38bdf8);
@@ -1768,7 +1801,6 @@
       spinningRotors.push(tf.userData.rotor);
     }
 
-    // Side-Mounted 360mm Vertical Intake Fans
     for (let i = -1; i <= 1; i++) {
       const sf = createRealisticFan(0.68, 0x38bdf8);
       sf.position.set(-2.15, i * 1.48 + 0.45, -1.45);
@@ -1776,10 +1808,8 @@
       spinningRotors.push(sf.userData.rotor);
     }
 
-    // Interior ROG Motherboard
     addBox(chassisGroup, 3.7, 4.1, 0.08, 0.75, 0.55, -1.58, new THREE.MeshStandardMaterial({ map: pcbTex, roughness: 0.42, metalness: 0.35 }));
 
-    // Interior AIO LCD Pump Block + Braided Sleeved Tubing
     const aioPump = new THREE.Mesh(new THREE.CylinderGeometry(0.52, 0.52, 0.44, 36), matAnodizedBlack);
     aioPump.rotation.x = Math.PI / 2;
     aioPump.position.set(0.45, 1.15, -1.32);
@@ -1792,7 +1822,6 @@
     aioFace.position.set(0.45, 1.15, -1.09);
     chassisGroup.add(aioFace);
 
-    // Braided Black AIO Tubes curving from Pump to Top Radiator
     const tubeCurve1 = new THREE.CatmullRomCurve3([
       new THREE.Vector3(0.88, 1.25, -1.25),
       new THREE.Vector3(1.65, 1.85, -0.75),
@@ -1806,18 +1835,15 @@
     chassisGroup.add(new THREE.Mesh(new THREE.TubeGeometry(tubeCurve1, 24, 0.075, 12, false), matMatteRubber));
     chassisGroup.add(new THREE.Mesh(new THREE.TubeGeometry(tubeCurve2, 24, 0.075, 12, false), matMatteRubber));
 
-    // Interior 4× G.Skill Trident Z5 RGB RAM
     for (let i = 0; i < 4; i++) {
       addBox(chassisGroup, 0.08, 1.25, 0.28, 1.32 + i * 0.19, 1.15, -1.36, matSilverAlum);
       addBox(chassisGroup, 0.09, 1.24, 0.05, 1.32 + i * 0.19, 1.15, -1.21, makeRGBMat(0xa78bfa));
     }
 
-    // Interior Full-Scale NVIDIA GeForce RTX Founders Edition GPU!
     const interiorGPU = createNvidiaFoundersGPU(0.68);
     interiorGPU.position.set(0.65, -0.55, -0.55);
     chassisGroup.add(interiorGPU);
 
-    // Braided 16-Pin Custom GPU Power Cable
     const pwrCable = new THREE.CatmullRomCurve3([
       new THREE.Vector3(0.88, -0.18, -0.05),
       new THREE.Vector3(0.95, -0.95, 0.35),
@@ -1825,7 +1851,6 @@
     ]);
     chassisGroup.add(new THREE.Mesh(new THREE.TubeGeometry(pwrCable, 20, 0.08, 10, false), matCarbon));
 
-    // Detachable Panoramic Tempered Glass Side Panel + CNC Thumbscrews
     const glassAssembly = new THREE.Group();
     const glassPane = new THREE.Mesh(
       new THREE.BoxGeometry(5.85, 6.55, 0.06),
@@ -1848,7 +1873,6 @@
     glassAssembly.position.set(0, 0, 1.76);
     chassisGroup.add(glassAssembly);
 
-    // Front Tempered Glass Panel
     const frontGlass = new THREE.Mesh(
       new THREE.BoxGeometry(0.06, 6.55, 3.35),
       new THREE.MeshPhysicalMaterial({ color: 0x93c5fd, transparent: true, opacity: 0.13, roughness: 0.05, reflectivity: 0.95 })
@@ -1860,6 +1884,7 @@
        CHAPTER 1: ASUS ROG MAXIMUS Z890 MOTHERBOARD ARCHITECTURE
        ============================================================ */
     const moboGroup = chapters[1];
+    addStudioFloorShadow(moboGroup, -0.45, 16);
     const explodePartsCh1 = [];
 
     const pcbMesh = new THREE.Mesh(
@@ -1869,7 +1894,6 @@
     pcbMesh.position.y = -0.3;
     moboGroup.add(pcbMesh);
 
-    // Polymo Illuminated I/O Shroud + Finned VRM Heatsinks + Nickel Heatpipe
     const ioArmor = new THREE.Mesh(new THREE.BoxGeometry(1.25, 1.45, 4.5), matAnodizedBlack);
     ioArmor.position.set(-4.5, 0.52, -1.85);
     moboGroup.add(ioArmor);
@@ -1889,7 +1913,6 @@
       fin.position.set(-2.5 + i * 0.36, 0.22, -3.65);
       vrmGroup.add(fin);
     }
-    // 22+1+2 Power Stage Chokes & Gold-Top Capacitors
     for (let i = 0; i < 10; i++) {
       const choke = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.22, 0.24), matGunmetal);
       choke.position.set(-2.62, -0.08, -2.85 + i * 0.31);
@@ -1901,7 +1924,6 @@
     moboGroup.add(vrmGroup);
     explodePartsCh1.push({ mesh: vrmGroup, baseY: 0, lift: 0.95 });
 
-    // LGA1851 ILM Retention Frame + Laser-Etched Nickel IHS
     const cpuAssembly = new THREE.Group();
     const socketFrame = new THREE.Mesh(new THREE.BoxGeometry(2.35, 0.16, 2.35), matGunmetal);
     socketFrame.position.set(-1.05, -0.1, -1.4);
@@ -1916,7 +1938,6 @@
     moboGroup.add(cpuAssembly);
     explodePartsCh1.push({ mesh: cpuAssembly, baseY: 0, lift: 1.65 });
 
-    // 4× G.Skill Trident Z5 DDR5 Modules (Brushed Silver + Black Dual-Texture + RGB Light Bar)
     const ramGroup = new THREE.Group();
     for (let i = 0; i < 4; i++) {
       const rx = 1.25 + i * 0.48;
@@ -1939,7 +1960,6 @@
     moboGroup.add(ramGroup);
     explodePartsCh1.push({ mesh: ramGroup, baseY: 0, lift: 1.95 });
 
-    // Steel-Reinforced PCIe 5.0 SafeSlot + Full NVIDIA Founders Edition GPU Mounted!
     const pcieSlot = new THREE.Mesh(new THREE.BoxGeometry(3.4, 0.22, 0.36), matSilverAlum);
     pcieSlot.position.set(-1.5, -0.08, 1.65);
     moboGroup.add(pcieSlot);
@@ -1949,7 +1969,6 @@
     moboGroup.add(moboGPU);
     explodePartsCh1.push({ mesh: moboGPU, baseY: 0.72, lift: 2.35 });
 
-    // M.2 NVMe Heatsink & ROG Chipset Armor
     const nvme = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.28, 0.78), matGunmetal);
     nvme.position.set(3.55, -0.02, 1.45);
     moboGroup.add(nvme);
@@ -1959,13 +1978,14 @@
     chipset.position.set(3.55, 0.02, 2.95);
     moboGroup.add(chipset);
 
-    // High-Speed Orthogonal Bus Pulses
     const busPulses = [];
     for (let i = 0; i < 20; i++) {
       const p = new THREE.Mesh(
-        new THREE.SphereGeometry(0.09, 10, 10),
+        new THREE.CylinderGeometry(0.03, 0.03, 0.45, 8),
         new THREE.MeshBasicMaterial({ color: i % 2 === 0 ? 0xe8ff47 : 0x38bdf8 })
       );
+      p.rotation.z = i % 2 === 0 ? Math.PI / 2 : 0;
+      p.rotation.x = i % 2 === 0 ? 0 : Math.PI / 2;
       p.userData.phase = (i / 20) * Math.PI * 2;
       p.userData.lane = i % 2;
       moboGroup.add(p);
@@ -1976,6 +1996,7 @@
        CHAPTER 2: HERO NVIDIA GEFORCE RTX FOUNDERS EDITION GPU
        ============================================================ */
     const gpuHeroGroup = chapters[2];
+    addStudioFloorShadow(gpuHeroGroup, -1.6, 15);
     const heroGPU = createNvidiaFoundersGPU(1.55);
     gpuHeroGroup.add(heroGPU);
 
@@ -1983,15 +2004,15 @@
        CHAPTER 3: MACRO SILICON DIE & HBM3 / L3 CACHE FABRIC
        ============================================================ */
     const dieGroup = chapters[3];
+    addStudioFloorShadow(dieGroup, -0.7, 16);
 
     const interposer = new THREE.Mesh(
       new THREE.BoxGeometry(9.6, 0.34, 9.6),
-      new THREE.MeshStandardMaterial({ color: 0x064e3b, metalness: 0.38, roughness: 0.42 })
+      new THREE.MeshStandardMaterial({ color: 0x064e3b, metalness: 0.45, roughness: 0.35 })
     );
     interposer.position.y = -0.45;
     dieGroup.add(interposer);
 
-    // Perimeter Gold SMD Decoupling Capacitors
     for (let i = -3.8; i <= 3.8; i += 0.63) {
       [[i, -4.3], [i, 4.3], [-4.3, i], [4.3, i]].forEach(([cx, cz]) => {
         const smd = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.14, 0.12), matGold);
@@ -2000,7 +2021,6 @@
       });
     }
 
-    // 6× HBM3 High-Bandwidth Memory Stacks flanking the die
     for (let side of [-1, 1]) {
       for (let i = -1; i <= 1; i++) {
         const hbm = new THREE.Mesh(new THREE.BoxGeometry(1.15, 0.52, 2.1), matSilverAlum);
@@ -2009,83 +2029,247 @@
       }
     }
 
-    // Iridescent Photolithography Die Base
     const siliconDie = new THREE.Mesh(
       new THREE.BoxGeometry(6.8, 0.24, 7.6),
-      new THREE.MeshStandardMaterial({ map: dieTex, metalness: 0.88, roughness: 0.16 })
+      new THREE.MeshPhysicalMaterial({
+        map: dieTex,
+        metalness: 0.85,
+        roughness: 0.14,
+        iridescence: 1.0,
+        iridescenceIOR: 1.8
+      })
     );
     siliconDie.position.y = -0.15;
     dieGroup.add(siliconDie);
 
-    // 576 Instanced Parallel Streaming Multiprocessor (SM) & Tensor Blocks
     const gridN = 24;
     const totalShaders = gridN * gridN;
     const shaderGeo = new THREE.BoxGeometry(0.21, 0.28, 0.21);
-    const shaderMat = new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.78, roughness: 0.2 });
+    const shaderMat = new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.82, roughness: 0.18 });
     const gpuInstanced = new THREE.InstancedMesh(shaderGeo, shaderMat, totalShaders);
     dieGroup.add(gpuInstanced);
     const dummy = new THREE.Object3D();
     const tmpColor = new THREE.Color();
 
     /* ============================================================
-       CHAPTER 4: 3NM MULTI-FIN FINFET TRANSISTOR & COPPER VIAS
+       CHAPTER 4: PHOTOREALISTIC 3NM GAA / FINFET SEMICONDUCTOR
        ============================================================ */
     const finfetGroup = chapters[4];
+    addStudioFloorShadow(finfetGroup, -1.95, 16);
 
-    const siSub = new THREE.Mesh(
-      new THREE.BoxGeometry(9.6, 1.2, 6.2),
-      new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.65, roughness: 0.35 })
-    );
-    siSub.position.y = -1.2;
+    // 1. Crystalline Monocrystalline Silicon Wafer Substrate (deep metallic obsidian with cleave bump)
+    const matWaferSi = new THREE.MeshPhysicalMaterial({
+      color: 0x162033,
+      metalness: 0.88,
+      roughness: 0.22,
+      bumpMap: crystalBump,
+      bumpScale: 0.028,
+      iridescence: 0.65,
+      iridescenceIOR: 2.1
+    });
+    const siSub = new THREE.Mesh(new THREE.BoxGeometry(9.8, 1.15, 6.4), matWaferSi);
+    siSub.position.y = -1.25;
     finfetGroup.add(siSub);
 
-    const stiOxide = new THREE.Mesh(
-      new THREE.BoxGeometry(9.2, 0.32, 5.8),
-      new THREE.MeshPhysicalMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.18, roughness: 0.1 })
-    );
-    stiOxide.position.y = -0.45;
+    // 2. Shallow Trench Isolation (STI) SiO2 Glassy Dielectric Layer
+    const matSTIGlass = new THREE.MeshPhysicalMaterial({
+      color: 0x0ea5e9,
+      transparent: true,
+      opacity: 0.26,
+      roughness: 0.06,
+      metalness: 0.05,
+      reflectivity: 0.98
+    });
+    const stiOxide = new THREE.Mesh(new THREE.BoxGeometry(9.5, 0.34, 6.1), matSTIGlass);
+    stiOxide.position.y = -0.50;
     finfetGroup.add(stiOxide);
 
-    const srcWell = new THREE.Mesh(new THREE.BoxGeometry(2.1, 0.9, 4.8), matSilverAlum);
-    srcWell.position.set(-3.1, -0.05, 0);
-    finfetGroup.add(srcWell);
+    // 3. Strained Silicon-Germanium (SiGe) Epitaxial Source & Drain Wells (Faceted Diamond Geometry)
+    const matEpiSiGe = new THREE.MeshPhysicalMaterial({
+      color: 0x64748b,
+      metalness: 0.92,
+      roughness: 0.18,
+      bumpMap: crystalBump,
+      bumpScale: 0.02,
+      iridescence: 0.85,
+      iridescenceIOR: 1.9
+    });
 
-    const drnWell = new THREE.Mesh(new THREE.BoxGeometry(2.1, 0.9, 4.8), matSilverAlum);
-    drnWell.position.set(3.1, -0.05, 0);
+    function createFacetedEpiWell(xPos) {
+      const wellGroup = new THREE.Group();
+      // Main crystalline block
+      const core = new THREE.Mesh(new THREE.BoxGeometry(2.15, 0.86, 4.9), matEpiSiGe);
+      wellGroup.add(core);
+      // Faceted <111> crystal growth bevels
+      const bevelTop = new THREE.Mesh(new THREE.BoxGeometry(1.85, 0.16, 4.7), matSilverAlum);
+      bevelTop.position.y = 0.48;
+      wellGroup.add(bevelTop);
+      // Cobalt Silicide (CoSi2) Contact Liner
+      const silicide = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.08, 4.4), matGunmetal);
+      silicide.position.y = 0.58;
+      wellGroup.add(silicide);
+
+      wellGroup.position.set(xPos, -0.04, 0);
+      return wellGroup;
+    }
+
+    const srcWell = createFacetedEpiWell(-3.15);
+    const drnWell = createFacetedEpiWell(3.15);
+    finfetGroup.add(srcWell);
     finfetGroup.add(drnWell);
 
-    [-3.1, 3.1].forEach((vx) => {
-      for (let vz of [-1.4, 0, 1.4]) {
-        const via = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 1.4, 18), matCopper);
-        via.position.set(vx, 1.05, vz);
-        finfetGroup.add(via);
+    // 4. Dual-Damascene Electroplated Copper M0/M1 Interconnect Vias & Bus Rails
+    const interconnectGroup = new THREE.Group();
+    [-3.15, 3.15].forEach((vx) => {
+      // Top M1 Copper Rail
+      const m1Rail = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.24, 4.8), matCopper);
+      m1Rail.position.set(vx, 1.82, 0);
+      interconnectGroup.add(m1Rail);
+
+      // Tantalum Nitride (TaN) Barrier Liner + Vertical Copper Vias
+      for (let vz of [-1.45, 0, 1.45]) {
+        const liner = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.19, 1.25, 24), matGunmetal);
+        liner.position.set(vx, 1.12, vz);
+        interconnectGroup.add(liner);
+
+        const via = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.15, 1.28, 24), matCopper);
+        via.position.set(vx, 1.12, vz);
+        interconnectGroup.add(via);
       }
     });
+    finfetGroup.add(interconnectGroup);
 
-    const finZPositions = [-1.4, 0, 1.4];
-    finZPositions.forEach((fz) => {
-      const fin = new THREE.Mesh(new THREE.BoxGeometry(4.2, 0.72, 0.42), matGunmetal);
-      fin.position.set(0, -0.02, fz);
-      finfetGroup.add(fin);
+    // 5. 3nm Stacked Silicon Nanosheet Channels + High-k Hafnium Oxide (HfO2) Dielectric Sleeves
+    const finZPositions = [-1.45, 0, 1.45];
+    const sheetYOffsets = [-0.20, 0.04, 0.28]; // 3 vertically stacked Gate-All-Around (GAA) nanosheets per fin!
+    const matNanosheet = new THREE.MeshPhysicalMaterial({
+      color: 0x38bdf8,
+      metalness: 0.75,
+      roughness: 0.14,
+      iridescence: 1.0,
+      iridescenceIOR: 2.2
+    });
+    const matHighK = new THREE.MeshPhysicalMaterial({
+      color: 0xa78bfa,
+      transparent: true,
+      opacity: 0.36,
+      roughness: 0.08
     });
 
-    const gate = new THREE.Mesh(
-      new THREE.BoxGeometry(1.45, 1.55, 5.1),
-      new THREE.MeshStandardMaterial({
-        color: 0xe8ff47, emissive: 0xe8ff47, emissiveIntensity: 0.22, metalness: 0.88, roughness: 0.18
-      })
-    );
-    gate.position.set(0, 0.35, 0);
-    finfetGroup.add(gate);
+    finZPositions.forEach((fz) => {
+      // Fin base mesa
+      const mesa = new THREE.Mesh(new THREE.BoxGeometry(4.3, 0.22, 0.44), matWaferSi);
+      mesa.position.set(0, -0.36, fz);
+      finfetGroup.add(mesa);
 
-    const electrons = [];
-    for (let i = 0; i < 30; i++) {
-      const e = new THREE.Mesh(new THREE.SphereGeometry(0.09, 10, 10), new THREE.MeshBasicMaterial({ color: 0xe8ff47 }));
-      e.userData.offset = i / 30;
-      e.userData.finZ = finZPositions[i % 3] + (Math.random() - 0.5) * 0.16;
-      finfetGroup.add(e);
-      electrons.push(e);
+      sheetYOffsets.forEach((sy) => {
+        // High-k HfO2 dielectric wrap
+        const hfo2 = new THREE.Mesh(new THREE.BoxGeometry(4.25, 0.13, 0.48), matHighK);
+        hfo2.position.set(0, sy, fz);
+        finfetGroup.add(hfo2);
+
+        // Monocrystalline Silicon Nanosheet Channel
+        const sheet = new THREE.Mesh(new THREE.BoxGeometry(4.3, 0.08, 0.42), matNanosheet);
+        sheet.position.set(0, sy, fz);
+        finfetGroup.add(sheet);
+      });
+    });
+
+    // 6. Low-k SiCOH Dielectric Gate Spacers flanking the Metal Gate
+    const matSpacer = new THREE.MeshPhysicalMaterial({
+      color: 0x94a3b8,
+      transparent: true,
+      opacity: 0.28,
+      roughness: 0.12
+    });
+    [-0.84, 0.84].forEach((sx) => {
+      const spacer = new THREE.Mesh(new THREE.BoxGeometry(0.18, 1.48, 5.15), matSpacer);
+      spacer.position.set(sx, 0.36, 0);
+      finfetGroup.add(spacer);
+    });
+
+    // 7. Work-Function Titanium Nitride (TiN) / Tungsten (W) Wrap-Around Metal Gate + M1 Gate Contact
+    const gateAssembly = new THREE.Group();
+    const matMetalGate = new THREE.MeshStandardMaterial({
+      color: 0xd4af37,
+      emissive: 0x38bdf8,
+      emissiveIntensity: 0.16,
+      metalness: 0.94,
+      roughness: 0.18,
+      roughnessMap: brushedTex,
+      bumpMap: brushedTex,
+      bumpScale: 0.015
+    });
+    const gateBlock = new THREE.Mesh(new THREE.BoxGeometry(1.48, 1.48, 5.12), matMetalGate);
+    gateBlock.position.set(0, 0.36, 0);
+    gateAssembly.add(gateBlock);
+
+    // Top Tungsten Gate Contact Cap + Copper Gate Feed Line
+    const gateCap = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.18, 4.9), matSilverAlum);
+    gateCap.position.set(0, 1.18, 0);
+    gateAssembly.add(gateCap);
+
+    const gateFeed = new THREE.Mesh(new THREE.BoxGeometry(0.55, 0.22, 5.2), matCopper);
+    gateFeed.position.set(0, 1.38, 0);
+    gateAssembly.add(gateFeed);
+    finfetGroup.add(gateAssembly);
+
+    // 8. Photorealistic Quantum Drift-Current Filaments & Electrostatic Gate Field Rings
+    const carrierFilaments = [];
+    const filamentMat = new THREE.MeshBasicMaterial({
+      color: 0x38bdf8,
+      transparent: true,
+      opacity: 0.9,
+      blending: THREE.AdditiveBlending
+    });
+    const coreDotMat = new THREE.MeshBasicMaterial({
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.95,
+      blending: THREE.AdditiveBlending
+    });
+
+    for (let i = 0; i < 54; i++) {
+      const group = new THREE.Group();
+      // Elongated quantum wave-packet streak
+      const streak = new THREE.Mesh(new THREE.CylinderGeometry(0.016, 0.016, 0.52, 8), filamentMat);
+      streak.rotation.z = Math.PI / 2;
+      group.add(streak);
+
+      // Bright carrier core
+      const core = new THREE.Mesh(new THREE.SphereGeometry(0.032, 8, 8), coreDotMat);
+      core.scale.set(2.2, 0.8, 0.8);
+      group.add(core);
+
+      const fz = finZPositions[i % 3] + ((i % 5) - 2) * 0.06;
+      const sy = sheetYOffsets[Math.floor(i / 3) % 3];
+      group.userData = {
+        offset: (i / 54) + Math.random() * 0.1,
+        speed: 0.48 + (i % 4) * 0.08,
+        finZ: fz,
+        sheetY: sy
+      };
+      finfetGroup.add(group);
+      carrierFilaments.push(group);
     }
+
+    // Subtle Electrostatic Inversion Field Rings around the nanosheets under the Gate
+    const fieldRings = [];
+    finZPositions.forEach((fz) => {
+      const ring = new THREE.Mesh(
+        new THREE.TorusGeometry(0.46, 0.012, 8, 36),
+        new THREE.MeshBasicMaterial({
+          color: 0x38bdf8,
+          transparent: true,
+          opacity: 0.45,
+          blending: THREE.AdditiveBlending
+        })
+      );
+      ring.rotation.y = Math.PI / 2;
+      ring.position.set(0, 0.04, fz);
+      finfetGroup.add(ring);
+      fieldRings.push(ring);
+    });
 
     // Narrative Data for 5 Chapters
     const chapterData = [
@@ -2118,11 +2302,11 @@
         connects: "High-speed silicon interposer links compute SMs to HBM3 memory."
       },
       {
-        scale: "SCALE: 3 NANOMETERS · SEMICONDUCTOR", cat: "05 / 3D FINFET TRANSISTOR", title: "Silicon & Electrons",
-        simple: "At 3 nanometers, a transistor is a microscopic switch. Voltage on the yellow Metal Gate lets electrons flow across vertical silicon fins—creating 1s and 0s.",
-        detailed: "A 3D Multi-Fin FinFET wraps a High-k Metal Gate around vertical silicon channels to eliminate current leakage.",
-        deep: "Billions of CMOS FinFETs wired via vertical copper M0/M1 vias are patterned by EUV lithography to build logic gates.",
-        connects: "Scroll past to test Logic Gates in the interactive playground below."
+        scale: "SCALE: 3 NANOMETERS · GAA NANOSHEET", cat: "05 / 3NM SEMICONDUCTOR", title: "3nm GAAFET & Drift Current",
+        simple: "At 3 nanometers, a Gate-All-Around (GAA) transistor surrounds stacked silicon nanosheets with a metal gate. Toggle 'V_GS Bias' above to switch the electron channel ON and OFF.",
+        detailed: "Strained SiGe Source/Drain wells inject high-mobility electrons through three horizontally stacked monocrystalline silicon nanosheets wrapped in High-k HfO2 dielectric.",
+        deep: "Dual-damascene copper M0/M1 vias with TaN barrier liners route signals from the TiN/W metal gate across billions of EUV-patterned nanosheet FETs.",
+        connects: "Scroll past to test Boolean Logic Gates built from these transistors."
       }
     ];
 
@@ -2132,7 +2316,16 @@
     let exploded = false;
     let explodeLerp = 0;
     let rgbEnabled = true;
+    let gateBiasOn = true;
+    let biasLerp = 1.0;
     let dragYaw = 0, dragPitch = 0, isDragging = false, lastX = 0, lastY = 0;
+
+    const gateBiasBtn = document.getElementById("gateBiasBtn");
+    gateBiasBtn.addEventListener("click", () => {
+      gateBiasOn = !gateBiasOn;
+      gateBiasBtn.classList.toggle("active", gateBiasOn);
+      gateBiasBtn.textContent = gateBiasOn ? "V_GS BIAS: ON (0.75V)" : "V_GS BIAS: OFF (0.00V)";
+    });
 
     const explodeBtn = document.getElementById("explodeBtn");
     explodeBtn.addEventListener("click", () => {
@@ -2142,7 +2335,6 @@
     });
 
     const rgbBtn = document.getElementById("rgbBtn");
-    rgbBtn.classList.add("active");
     rgbBtn.addEventListener("click", () => {
       rgbEnabled = !rgbEnabled;
       rgbBtn.classList.toggle("active", rgbEnabled);
@@ -2210,7 +2402,7 @@
       { pos: [0.4, 8.2, 9.6]  },
       { pos: [1.2, 2.4, 10.2] },
       { pos: [0.0, 7.6, 9.2]  },
-      { pos: [0.8, 3.8, 8.6]  }
+      { pos: [0.6, 3.3, 8.2]  }
     ];
 
     let mTime = 0;
@@ -2218,6 +2410,7 @@
       requestAnimationFrame(animateMachine);
       mTime += 0.025;
       explodeLerp += ((exploded ? 1 : 0) - explodeLerp) * 0.08;
+      biasLerp += ((gateBiasOn ? 1 : 0) - biasLerp) * 0.08;
 
       const scaled = scrollProgress * 5;
       const idx = Math.min(4, Math.floor(scaled));
@@ -2231,7 +2424,6 @@
         }
       });
 
-      // Spin all axial fans
       spinningRotors.forEach((r) => { r.rotation.z -= 0.14; });
 
       // Chapter 0: Detach panoramic glass side panel
@@ -2280,7 +2472,6 @@
             dummy.updateMatrix();
             gpuInstanced.setMatrixAt(ptr, dummy.matrix);
 
-            // Shift color between NVIDIA green & electric cyan
             tmpColor.setHSL(0.52 - (wave + 1) * 0.14, 0.92, 0.50);
             gpuInstanced.setColorAt(ptr, tmpColor);
             ptr++;
@@ -2290,12 +2481,27 @@
         if (gpuInstanced.instanceColor) gpuInstanced.instanceColor.needsUpdate = true;
       }
 
-      // Chapter 4: FinFET Electrons + Gate explode lift
+      // Chapter 4: Photorealistic 3nm GAAFET Drift-Current Filaments & Gate Bias Field
       if (idx === 4) {
-        gate.position.y = 0.35 + explodeLerp * 1.1;
-        electrons.forEach((e) => {
-          const t = (mTime * 0.42 + e.userData.offset) % 1;
-          e.position.set(-3.1 + t * 6.2, -0.02 + Math.sin(t * Math.PI * 6) * 0.08, e.userData.finZ);
+        gateAssembly.position.y = explodeLerp * 1.15;
+        interconnectGroup.position.y = explodeLerp * 0.55;
+        matMetalGate.emissiveIntensity = 0.04 + biasLerp * 0.24;
+        filamentMat.opacity = biasLerp * 0.88;
+        coreDotMat.opacity = biasLerp * 0.95;
+
+        fieldRings.forEach((ring, rIdx) => {
+          ring.material.opacity = biasLerp * (0.35 + Math.sin(mTime * 4 + rIdx) * 0.15);
+          ring.scale.setScalar(0.95 + biasLerp * 0.08 + Math.sin(mTime * 3 + rIdx) * 0.03);
+        });
+
+        carrierFilaments.forEach((f) => {
+          f.visible = biasLerp > 0.04;
+          const t = (mTime * f.userData.speed * (0.2 + biasLerp * 0.8) + f.userData.offset) % 1;
+          const xPos = -3.1 + t * 6.2;
+          // Slight ballistic acceleration under the high-field metal gate channel
+          const gateBoost = Math.exp(-(xPos * xPos) / 1.2) * 0.35 * biasLerp;
+          f.scale.set(1 + gateBoost, 1, 1);
+          f.position.set(xPos, f.userData.sheetY, f.userData.finZ);
         });
       }
 
