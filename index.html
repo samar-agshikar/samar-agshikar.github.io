@@ -1,2149 +1,669 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="acid">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samar Agshikar — Student, Developer &amp; Technology Founder</title>
-  <meta name="description" content="Samar Agshikar — Student, developer, and technology founder building KerniqOS and THE 1. Exploring AI, software engineering, operating systems, and human-computer interaction.">
-  <meta name="author" content="Samar Agshikar">
-  <meta name="theme-color" content="#05070b">
-
-  <!-- Open Graph / Social -->
-  <meta property="og:title" content="Samar Agshikar — Student, Developer &amp; Technology Founder">
-  <meta property="og:description" content="Building technology. Exploring what's possible. Founder of KerniqOS and THE 1.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://samar-agshikar.github.io">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Samar Agshikar — Student, Developer &amp; Technology Founder">
-  <meta name="twitter:description" content="Building technology. Exploring what's possible. Founder of KerniqOS and THE 1.">
-
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2305070b'/><circle cx='16' cy='16' r='5' fill='%232997ff'/></svg>">
-
-  <!-- Typography: SF Pro on Apple devices, Inter as crisp cross-platform fallback -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liquid Glass — Interactive 3D Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
   <style>
-    /* ======================== DESIGN TOKENS ======================== */
-    :root {
-      --bg-base: #05070b;
-      --bg-elevated: #0b0e16;
-      --bg-surface: rgba(255, 255, 255, 0.032);
-      --bg-surface-hover: rgba(255, 255, 255, 0.058);
-      --bg-glass: rgba(14, 18, 28, 0.68);
-      --bg-glass-strong: rgba(12, 16, 26, 0.84);
-
-      --border-subtle: rgba(255, 255, 255, 0.085);
-      --border-hover: rgba(255, 255, 255, 0.18);
-      --border-blue: rgba(41, 151, 255, 0.35);
-
-      --text-primary: #f5f5f7;
-      --text-secondary: #a1a1a6;
-      --text-tertiary: #6e6e73;
-
-      --accent: #2997ff;
-      --accent-solid: #0071e3;
-      --accent-hover: #0077ed;
-      --accent-soft: rgba(41, 151, 255, 0.12);
-      --status-live: #30d158;
-      --status-dev: #2997ff;
-      --status-archive: #8e8e93;
-
-      --radius-sm: 10px;
-      --radius-md: 18px;
-      --radius-lg: 24px;
-      --radius-pill: 999px;
-
-      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Helvetica Neue", sans-serif;
-      --font-mono: "SF Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-
-      --ease-apple: cubic-bezier(0.25, 0.1, 0.25, 1);
-      --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
-
-      --shadow-card: 0 20px 50px -20px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      --shadow-nav: 0 12px 36px -8px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    :root,
+    [data-theme="acid"] {
+      --bg: #07080a;
+      --bg-gradient:
+        radial-gradient(circle at 15% 15%, rgba(232, 255, 71, 0.14), transparent 45%),
+        radial-gradient(circle at 85% 30%, rgba(96, 165, 250, 0.12), transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(167, 139, 250, 0.12), transparent 50%),
+        linear-gradient(160deg, #07080a 0%, #0d1017 50%, #07080a 100%);
+      --orb-1: rgba(232, 255, 71, 0.35);
+      --orb-2: rgba(96, 165, 250, 0.28);
+      --orb-3: rgba(167, 139, 250, 0.24);
+      --accent: #e8ff47;
+      --accent-rgb: 232, 255, 71;
+      --text: #f4f5f7;
+      --text-secondary: #a4a7ae;
+      --text-muted: #767a84;
+      --glass-bg: linear-gradient(155deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+      --glass-bg-hover: linear-gradient(155deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.04) 100%);
+      --glass-border: rgba(255, 255, 255, 0.14);
+      --btn-text: #07080a;
     }
 
-    /* ======================== RESET & BASE ======================== */
-    *, *::before, *::after {
+    [data-theme="ocean"] {
+      --bg: #040b14;
+      --bg-gradient:
+        radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.18), transparent 45%),
+        radial-gradient(circle at 80% 40%, rgba(45, 212, 191, 0.14), transparent 50%),
+        radial-gradient(circle at 40% 85%, rgba(99, 102, 241, 0.16), transparent 50%),
+        linear-gradient(160deg, #040b14 0%, #071726 50%, #040b14 100%);
+      --orb-1: rgba(56, 189, 248, 0.36);
+      --orb-2: rgba(45, 212, 191, 0.30);
+      --orb-3: rgba(99, 102, 241, 0.28);
+      --accent: #38bdf8;
+      --accent-rgb: 56, 189, 248;
+      --text: #f0f9ff;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --glass-bg: linear-gradient(155deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+      --glass-bg-hover: linear-gradient(155deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.04) 100%);
+      --glass-border: rgba(255, 255, 255, 0.14);
+      --btn-text: #040b14;
+    }
+
+    [data-theme="sunset"] {
+      --bg: #0d070a;
+      --bg-gradient:
+        radial-gradient(circle at 18% 18%, rgba(251, 146, 60, 0.18), transparent 45%),
+        radial-gradient(circle at 82% 35%, rgba(244, 63, 94, 0.16), transparent 50%),
+        radial-gradient(circle at 45% 88%, rgba(168, 85, 247, 0.16), transparent 50%),
+        linear-gradient(160deg, #0d070a 0%, #1a0c14 50%, #0d070a 100%);
+      --orb-1: rgba(251, 146, 60, 0.36);
+      --orb-2: rgba(244, 63, 94, 0.30);
+      --orb-3: rgba(168, 85, 247, 0.28);
+      --accent: #fb923c;
+      --accent-rgb: 251, 146, 60;
+      --text: #fff7ed;
+      --text-secondary: #c4a7b2;
+      --text-muted: #8a6d78;
+      --glass-bg: linear-gradient(155deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+      --glass-bg-hover: linear-gradient(155deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.04) 100%);
+      --glass-border: rgba(255, 255, 255, 0.14);
+      --btn-text: #0d070a;
+    }
+
+    [data-theme="light"] {
+      --bg: #f4f6fb;
+      --bg-gradient:
+        radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.16), transparent 45%),
+        radial-gradient(circle at 85% 25%, rgba(236, 72, 153, 0.12), transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(14, 165, 233, 0.14), transparent 50%),
+        linear-gradient(160deg, #f4f6fb 0%, #eef2ff 50%, #f8fafc 100%);
+      --orb-1: rgba(99, 102, 241, 0.25);
+      --orb-2: rgba(236, 72, 153, 0.20);
+      --orb-3: rgba(14, 165, 233, 0.22);
+      --accent: #4f46e5;
+      --accent-rgb: 79, 70, 229;
+      --text: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --glass-bg: linear-gradient(155deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.35) 100%);
+      --glass-bg-hover: linear-gradient(155deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.52) 100%);
+      --glass-border: rgba(15, 23, 42, 0.12);
+      --btn-text: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     html {
-      font-size: 16px;
       scroll-behavior: smooth;
-      background-color: var(--bg-base);
-      color: var(--text-primary);
-      font-family: var(--font-sans);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
     }
 
     body {
-      background-color: var(--bg-base);
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      background-image: var(--bg-gradient);
+      background-attachment: fixed;
+      color: var(--text);
+      min-height: 100vh;
       overflow-x: hidden;
-      line-height: 1.5;
-      position: relative;
+      transition: background-color 0.5s ease, color 0.4s ease;
     }
 
-    ::selection {
-      background: rgba(41, 151, 255, 0.28);
-      color: #ffffff;
+    @media (pointer: fine) {
+      body, a, button {
+        cursor: none;
+      }
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font-family: inherit;
-      cursor: pointer;
-    }
-
-    :focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
-
-    .skip-link {
-      position: fixed;
-      top: -100px;
-      left: 16px;
-      z-index: 2000;
-      background: var(--accent-solid);
-      color: #fff;
-      padding: 10px 18px;
-      border-radius: var(--radius-pill);
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: top 0.2s var(--ease-apple);
-    }
-
-    .skip-link:focus {
-      top: 16px;
-    }
-
-    /* ======================== ATMOSPHERIC BACKGROUND ======================== */
-    .ambient-backdrop {
+    /* 3D Canvas & Ambient Orbs */
+    #bg-canvas {
       position: fixed;
       inset: 0;
+      width: 100%;
+      height: 100%;
       z-index: 0;
       pointer-events: none;
-      overflow: hidden;
     }
 
-    .ambient-glow {
-      position: absolute;
+    .ambient-orb {
+      position: fixed;
       border-radius: 50%;
-      filter: blur(130px);
-      opacity: 0.28;
-      will-change: transform;
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+      animation: floatOrb 18s ease-in-out infinite alternate;
     }
 
-    .ambient-glow--primary {
-      width: 68vw;
-      height: 52vw;
-      top: -22vw;
+    .ambient-orb.orb-1 {
+      width: 420px;
+      height: 420px;
+      top: -100px;
+      left: -80px;
+      background: radial-gradient(circle, var(--orb-1), transparent 70%);
+    }
+
+    .ambient-orb.orb-2 {
+      width: 500px;
+      height: 500px;
+      top: 30%;
+      right: -140px;
+      background: radial-gradient(circle, var(--orb-2), transparent 70%);
+      animation-delay: -6s;
+    }
+
+    .ambient-orb.orb-3 {
+      width: 460px;
+      height: 460px;
+      bottom: -140px;
+      left: 35%;
+      background: radial-gradient(circle, var(--orb-3), transparent 70%);
+      animation-delay: -12s;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(35px, -30px) scale(1.08); }
+    }
+
+    /* Custom Cursor */
+    .cursor-dot,
+    .cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+
+    @media (pointer: fine) {
+      .cursor-dot,
+      .cursor-ring {
+        display: block;
+      }
+    }
+
+    .cursor-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      transition: background 0.3s ease;
+    }
+
+    .cursor-ring {
+      width: 34px;
+      height: 34px;
+      border: 1.5px solid rgba(var(--accent-rgb), 0.55);
+      transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .cursor-ring.hovering {
+      width: 52px;
+      height: 52px;
+      border-color: var(--accent);
+      background: rgba(var(--accent-rgb), 0.08);
+    }
+
+    /* Liquid Glass Surface */
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+
+    /* Navbar */
+    #navbar {
+      position: fixed;
+      top: 20px;
       left: 50%;
       transform: translateX(-50%);
-      background: radial-gradient(circle, rgba(24, 78, 168, 0.55) 0%, rgba(10, 26, 62, 0.22) 55%, transparent 75%);
-      animation: drift-slow 24s ease-in-out infinite alternate;
-    }
-
-    .ambient-glow--secondary {
-      width: 44vw;
-      height: 44vw;
-      bottom: -14vw;
-      right: -10vw;
-      background: radial-gradient(circle, rgba(41, 151, 255, 0.22) 0%, transparent 70%);
-      animation: drift-reverse 28s ease-in-out infinite alternate;
-    }
-
-    @keyframes drift-slow {
-      0% { transform: translate(-50%, 0) scale(1); }
-      100% { transform: translate(-48%, 3vh) scale(1.06); }
-    }
-
-    @keyframes drift-reverse {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(-4vw, -4vh) scale(1.08); }
-    }
-
-    /* ======================== LAYOUT ======================== */
-    main, footer {
-      position: relative;
-      z-index: 1;
-    }
-
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 32px;
-    }
-
-    .section {
-      padding: 128px 0;
-      position: relative;
-    }
-
-    .section + .section {
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .eyebrow {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 14px;
-      display: inline-block;
-    }
-
-    .section-heading {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      color: var(--text-primary);
-    }
-
-    .section-lead {
-      font-size: clamp(1rem, 1.3vw, 1.15rem);
-      color: var(--text-secondary);
-      line-height: 1.65;
-      max-width: 580px;
-      margin-top: 16px;
-      font-weight: 400;
-    }
-
-    .section-header {
-      margin-bottom: 64px;
-    }
-
-    /* ======================== NAVIGATION ======================== */
-    .nav-wrapper {
-      position: fixed;
-      top: 16px;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: center;
-      padding: 0 20px;
-      pointer-events: none;
-    }
-
-    .nav-bar {
-      pointer-events: auto;
-      width: 100%;
-      max-width: 1040px;
-      height: 54px;
-      padding: 0 10px 0 22px;
-      border-radius: var(--radius-pill);
+      width: min(1080px, calc(100% - 32px));
+      padding: 12px 20px;
+      border-radius: 999px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: var(--bg-glass);
-      backdrop-filter: saturate(180%) blur(24px);
-      -webkit-backdrop-filter: saturate(180%) blur(24px);
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-nav);
-      transition: max-width 0.45s var(--ease-out-quint), background 0.3s var(--ease-apple), border-color 0.3s;
+      gap: 16px;
+      z-index: 100;
     }
 
-    .nav-bar.scrolled {
-      max-width: 920px;
-      background: var(--bg-glass-strong);
-      border-color: rgba(255, 255, 255, 0.13);
+    .logo {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
     }
 
-    .nav-brand {
-      font-size: 0.92rem;
-      font-weight: 600;
-      letter-spacing: -0.015em;
-      color: var(--text-primary);
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      white-space: nowrap;
-    }
-
-    .nav-brand-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 10px rgba(41, 151, 255, 0.65);
+    .logo span {
+      color: var(--accent);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 4px;
-      list-style: none;
+      gap: 24px;
     }
 
     .nav-links a {
-      font-size: 0.82rem;
-      font-weight: 400;
       color: var(--text-secondary);
-      padding: 7px 13px;
-      border-radius: var(--radius-pill);
-      transition: color 0.2s var(--ease-apple), background 0.2s var(--ease-apple);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.25s ease;
     }
 
     .nav-links a:hover {
-      color: var(--text-primary);
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .nav-links a.active {
-      color: var(--text-primary);
-      background: rgba(255, 255, 255, 0.1);
-      font-weight: 500;
+      color: var(--text);
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
+    }
+
+    /* Theme Switcher */
+    .theme-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--glass-border);
+    }
+
+    .theme-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .theme-dot:hover {
+      transform: scale(1.15);
+    }
+
+    .theme-dot.active {
+      border-color: var(--text);
+      transform: scale(1.15);
     }
 
     .nav-cta {
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: #ffffff;
-      background: var(--accent-solid);
-      padding: 8px 16px;
-      border-radius: var(--radius-pill);
-      transition: background 0.2s var(--ease-apple), transform 0.2s var(--ease-apple);
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--btn-text);
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: transform 0.25s ease, opacity 0.25s ease;
     }
 
     .nav-cta:hover {
-      background: var(--accent-hover);
+      transform: translateY(-1px);
+      opacity: 0.92;
     }
 
-    .nav-toggle {
-      display: none;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: 1px solid var(--border-subtle);
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-primary);
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Mobile Drawer */
-    .mobile-menu {
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      background: rgba(5, 7, 11, 0.92);
-      backdrop-filter: blur(28px) saturate(180%);
-      -webkit-backdrop-filter: blur(28px) saturate(180%);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 96px 32px 48px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s var(--ease-apple);
-    }
-
-    .mobile-menu.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .mobile-menu-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .mobile-menu-list a {
-      display: block;
-      font-size: 1.75rem;
-      font-weight: 600;
-      letter-spacing: -0.025em;
-      color: var(--text-secondary);
-      padding: 8px 0;
-      transition: color 0.2s;
-    }
-
-    .mobile-menu-list a:hover,
-    .mobile-menu-list a.active {
-      color: var(--text-primary);
-    }
-
-    /* ======================== HERO ======================== */
-    .hero {
-      min-height: 92vh;
-      display: flex;
-      align-items: center;
-      padding: 150px 0 110px;
+    /* Main Content */
+    main {
       position: relative;
+      z-index: 10;
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 150px 0 96px;
     }
 
-    .hero-inner {
-      max-width: 820px;
+    .hero {
+      max-width: 720px;
+      margin-bottom: 84px;
     }
 
-    .hero-identity {
-      display: inline-flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 32px;
-    }
-
-    .hero-name {
-      font-size: 1.05rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      color: var(--text-primary);
-    }
-
-    .hero-role {
-      font-size: 0.92rem;
-      color: var(--text-secondary);
-      letter-spacing: 0.01em;
-    }
-
-    .hero-headline {
-      font-size: clamp(2.65rem, 5.6vw, 4.5rem);
-      font-weight: 600;
-      letter-spacing: -0.038em;
-      line-height: 1.06;
-      color: var(--text-primary);
-      margin-bottom: 28px;
-      background: linear-gradient(180deg, #ffffff 0%, #c8d2e6 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-intro {
-      font-size: clamp(1.06rem, 1.45vw, 1.24rem);
-      color: var(--text-secondary);
-      line-height: 1.65;
-      max-width: 600px;
-      margin-bottom: 42px;
-      font-weight: 400;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
+    .badge {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 8px;
-      padding: 13px 26px;
-      border-radius: var(--radius-pill);
-      font-size: 0.94rem;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      transition: background 0.22s var(--ease-apple), border-color 0.22s, transform 0.25s var(--ease-out-quint), color 0.22s;
-    }
-
-    .btn-primary {
-      background: var(--accent-solid);
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-primary);
-      border: 1px solid var(--border-subtle);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: var(--border-hover);
-      transform: translateY(-1px);
-    }
-
-    .btn-text {
-      color: var(--accent);
-      font-size: 0.92rem;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: gap 0.2s var(--ease-apple), opacity 0.2s;
-    }
-
-    .btn-text:hover {
-      gap: 8px;
-      opacity: 0.9;
-    }
-
-    /* ======================== GLASS CARD SYSTEM ======================== */
-    .card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-card);
-      transition: border-color 0.3s var(--ease-apple), background 0.3s var(--ease-apple), transform 0.4s var(--ease-out-quint);
-    }
-
-    .card-interactive:hover {
-      background: var(--bg-surface-hover);
-      border-color: var(--border-hover);
-      transform: translateY(-3px);
-    }
-
-    /* ======================== ABOUT ======================== */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 0.85fr;
-      gap: 64px;
-      align-items: start;
-    }
-
-    .about-copy p {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      line-height: 1.75;
-      margin-bottom: 20px;
-    }
-
-    .about-copy p strong {
-      color: var(--text-primary);
-      font-weight: 500;
-    }
-
-    .about-sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .fact-card {
-      padding: 24px 26px;
-      border-radius: var(--radius-md);
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-    }
-
-    .fact-label {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-tertiary);
-      margin-bottom: 6px;
-    }
-
-    .fact-value {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text-primary);
-      line-height: 1.45;
-    }
-
-    .fact-sub {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      margin-top: 4px;
-    }
-
-    /* ======================== VENTURES & PROJECTS ======================== */
-    .venture-flagship {
-      padding: 48px;
-      margin-bottom: 28px;
-      background: linear-gradient(155deg, rgba(19, 34, 66, 0.48) 0%, rgba(10, 14, 24, 0.72) 55%, rgba(7, 10, 18, 0.86) 100%);
-      border: 1px solid var(--border-blue);
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
-      align-items: center;
-      cursor: pointer;
-    }
-
-    .venture-flagship:hover {
-      border-color: rgba(41, 151, 255, 0.55);
-      transform: translateY(-3px);
-    }
-
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-secondary);
-      margin-bottom: 20px;
-    }
-
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-    }
-
-    .status-dot--dev { background: var(--status-dev); box-shadow: 0 0 8px var(--status-dev); }
-    .status-dot--live { background: var(--status-live); box-shadow: 0 0 8px var(--status-live); }
-    .status-dot--archive { background: var(--status-archive); }
-
-    .venture-title {
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      margin-bottom: 14px;
-      color: var(--text-primary);
-    }
-
-    .venture-desc {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      line-height: 1.68;
-      margin-bottom: 24px;
-    }
-
-    .venture-meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      margin-bottom: 24px;
-    }
-
-    .venture-meta-item span {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-tertiary);
-      margin-bottom: 3px;
-    }
-
-    .venture-meta-item strong {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-
-    /* Architectural Window Mockup for KerniqOS */
-    .kerniq-stage {
-      background: rgba(6, 9, 16, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.11);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
-    }
-
-    .kerniq-titlebar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 16px;
-      background: rgba(255, 255, 255, 0.03);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-    }
-
-    .window-dots {
-      display: flex;
-      gap: 7px;
-    }
-
-    .window-dots span {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.16);
-    }
-
-    .kerniq-titlebar-label {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--text-tertiary);
-    }
-
-    .kerniq-body {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .kerniq-layer {
-      padding: 14px 16px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .kerniq-layer--highlight {
-      background: rgba(41, 151, 255, 0.09);
-      border-color: rgba(41, 151, 255, 0.28);
-    }
-
-    .kerniq-layer-title {
-      font-size: 0.86rem;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-
-    .kerniq-layer-sub {
-      font-size: 0.76rem;
-      color: var(--text-secondary);
-      margin-top: 2px;
-    }
-
-    .kerniq-layer-tag {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      color: var(--accent);
-      white-space: nowrap;
-    }
-
-    .ventures-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .venture-card {
-      padding: 36px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-    }
-
-    .venture-card h3 {
-      font-size: 1.45rem;
-      font-weight: 600;
-      letter-spacing: -0.025em;
-      margin-bottom: 12px;
-    }
-
-    .tech-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 20px 0 24px;
-    }
-
-    .tech-tag {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      padding: 4px 10px;
-      border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.045);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--text-secondary);
-    }
-
-    .venture-card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255, 255, 255, 0.07);
-    }
-
-    /* Experimental Labs Sub-band */
-    .labs-block {
-      margin-top: 48px;
-      padding: 32px 36px;
-      border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border-subtle);
-    }
-
-    .labs-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .labs-header h3 {
-      font-size: 1.15rem;
-      font-weight: 600;
-      letter-spacing: -0.015em;
-    }
-
-    .labs-header span {
-      font-size: 0.84rem;
-      color: var(--text-tertiary);
-    }
-
-    .labs-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .lab-item h4 {
-      font-size: 0.96rem;
-      font-weight: 500;
-      color: var(--text-primary);
-      margin-bottom: 6px;
-    }
-
-    .lab-item p {
-      font-size: 0.86rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    /* ======================== LEADERSHIP & EXTRACURRICULARS ======================== */
-    .leadership-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .leadership-card {
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .leadership-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 16px;
-    }
-
-    .leadership-org {
+      padding: 6px 14px;
+      border-radius: 999px;
       font-size: 0.82rem;
-      color: var(--accent);
       font-weight: 500;
-      margin-bottom: 6px;
+      color: var(--accent);
+      margin-bottom: 24px;
     }
 
-    .leadership-role {
-      font-size: 1.2rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--text-primary);
+    .badge::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
     }
 
-    .leadership-period {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--text-tertiary);
-      white-space: nowrap;
-      padding-top: 4px;
+    h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
     }
 
-    .leadership-desc {
-      font-size: 0.92rem;
-      color: var(--text-secondary);
+    .hero p {
+      font-size: 1.12rem;
       line-height: 1.65;
-    }
-
-    /* ======================== ACADEMIC ACHIEVEMENTS ======================== */
-    .achievements-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .achievement-card {
-      padding: 36px 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .achievement-metric {
-      font-size: clamp(2rem, 3.2vw, 2.6rem);
-      font-weight: 600;
-      letter-spacing: -0.035em;
-      color: var(--text-primary);
-      line-height: 1.1;
-      margin-bottom: 12px;
-    }
-
-    .achievement-metric span {
-      color: var(--accent);
-    }
-
-    .achievement-title {
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--text-primary);
-      margin-bottom: 8px;
-    }
-
-    .achievement-desc {
-      font-size: 0.88rem;
       color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    /* ======================== FOCUS AREAS & CAPABILITIES ======================== */
-    .segmented-control {
-      display: inline-flex;
-      padding: 4px;
-      border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-subtle);
-      margin-bottom: 36px;
-      flex-wrap: wrap;
-      gap: 4px;
-    }
-
-    .segment-btn {
-      padding: 10px 20px;
-      border-radius: var(--radius-pill);
-      border: none;
-      background: transparent;
-      color: var(--text-secondary);
-      font-size: 0.88rem;
-      font-weight: 500;
-      transition: background 0.25s var(--ease-apple), color 0.25s;
-    }
-
-    .segment-btn:hover {
-      color: var(--text-primary);
-    }
-
-    .segment-btn.active {
-      background: rgba(255, 255, 255, 0.12);
-      color: var(--text-primary);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
-    }
-
-    .focus-panel {
-      display: none;
-      padding: 44px;
-      animation: panelFade 0.35s var(--ease-out-quint);
-    }
-
-    .focus-panel.active {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    @keyframes panelFade {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .focus-panel h3 {
-      font-size: 1.65rem;
-      font-weight: 600;
-      letter-spacing: -0.025em;
-      margin-bottom: 14px;
-    }
-
-    .focus-panel p {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-
-    .capability-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .capability-item {
-      padding: 16px 20px;
-      border-radius: var(--radius-sm);
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .capability-item strong {
-      font-size: 0.92rem;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-
-    .capability-item span {
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      color: var(--text-tertiary);
-    }
-
-    /* ======================== WRITING ======================== */
-    .writing-card {
-      padding: 44px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 36px;
-      flex-wrap: wrap;
-    }
-
-    .writing-copy {
-      max-width: 600px;
-    }
-
-    .writing-copy h3 {
-      font-size: 1.45rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      margin-bottom: 10px;
-    }
-
-    .writing-copy p {
-      color: var(--text-secondary);
-      font-size: 0.98rem;
-      line-height: 1.68;
-    }
-
-    /* ======================== FAQ ======================== */
-    .faq-grid {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 64px;
-      align-items: start;
-    }
-
-    .accordion {
-      display: flex;
-      flex-direction: column;
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .accordion-item {
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .accordion-trigger {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 22px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      text-align: left;
-      color: var(--text-primary);
-      font-size: 1.02rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .accordion-trigger:hover {
-      color: var(--accent);
-    }
-
-    .accordion-icon {
-      font-size: 1.25rem;
-      font-weight: 300;
-      color: var(--text-secondary);
-      transition: transform 0.3s var(--ease-out-quint), color 0.2s;
-      flex-shrink: 0;
-    }
-
-    .accordion-item.open .accordion-icon {
-      transform: rotate(45deg);
-      color: var(--accent);
-    }
-
-    .accordion-panel {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.38s var(--ease-out-quint);
-    }
-
-    .accordion-body {
-      padding-bottom: 22px;
-      color: var(--text-secondary);
-      font-size: 0.94rem;
-      line-height: 1.7;
+      margin-bottom: 32px;
       max-width: 580px;
     }
 
-    /* ======================== CONTACT & FOOTER ======================== */
-    .contact-section {
-      text-align: center;
-      padding: 140px 0 110px;
-    }
-
-    .contact-section .section-lead {
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 36px;
-    }
-
-    .contact-links {
+    .hero-buttons {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-wrap: wrap;
       gap: 14px;
-      flex-wrap: wrap;
     }
 
-    footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.07);
-      padding: 32px 0;
+    .btn-primary,
+    .btn-secondary {
+      padding: 13px 26px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.25s ease, background 0.25s ease;
     }
 
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      font-size: 0.82rem;
-      color: var(--text-tertiary);
+    .btn-primary {
+      background: var(--accent);
+      color: var(--btn-text);
     }
 
-    .footer-nav {
-      display: flex;
+    .btn-secondary {
+      color: var(--text);
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Feature Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
     }
 
-    .footer-nav a {
-      color: var(--text-secondary);
-      transition: color 0.2s;
+    .card {
+      padding: 28px;
+      border-radius: 24px;
+      transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
     }
 
-    .footer-nav a:hover {
-      color: var(--text-primary);
+    .card:hover {
+      transform: translateY(-6px);
+      background: var(--glass-bg-hover);
+      border-color: rgba(var(--accent-rgb), 0.45);
     }
 
-    /* ======================== MODAL ======================== */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      background: rgba(3, 5, 10, 0.72);
-      backdrop-filter: blur(20px) saturate(160%);
-      -webkit-backdrop-filter: blur(20px) saturate(160%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.28s var(--ease-apple);
-    }
-
-    .modal-backdrop.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .modal-dialog {
-      width: 100%;
-      max-width: 620px;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 40px;
-      border-radius: var(--radius-lg);
-      background: #0d111a;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.75);
-      position: relative;
-      transform: translateY(16px) scale(0.98);
-      transition: transform 0.35s var(--ease-out-quint);
-    }
-
-    .modal-backdrop.open .modal-dialog {
-      transform: translateY(0) scale(1);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      border: 1px solid var(--border-subtle);
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-secondary);
-      font-size: 1.15rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .modal-close:hover {
-      background: rgba(255, 255, 255, 0.12);
-      color: var(--text-primary);
-    }
-
-    .modal-title {
-      font-size: 1.75rem;
+    .card-tag {
+      font-size: 0.78rem;
       font-weight: 600;
-      letter-spacing: -0.025em;
-      margin-bottom: 14px;
-    }
-
-    .modal-body {
-      font-size: 0.98rem;
-      color: var(--text-secondary);
-      line-height: 1.72;
-      margin-bottom: 24px;
-    }
-
-    .modal-meta {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      padding: 18px 0;
-      border-top: 1px solid var(--border-subtle);
-      border-bottom: 1px solid var(--border-subtle);
-      margin-bottom: 26px;
-    }
-
-    .modal-meta-label {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--text-tertiary);
-      margin-bottom: 4px;
+      color: var(--accent);
+      margin-bottom: 12px;
     }
 
-    .modal-meta-val {
+    .card h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 32px 16px 48px;
+      color: var(--text-muted);
       font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--text-primary);
     }
 
-    /* ======================== SCROLL REVEAL ======================== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s var(--ease-out-quint), transform 0.7s var(--ease-out-quint);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ======================== ACCESSIBILITY ======================== */
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .ambient-glow { animation: none !important; }
-      .reveal { opacity: 1; transform: none; transition: none; }
-      *, *::before, *::after { transition-duration: 0.01ms !important; }
-    }
-
-    @media (prefers-reduced-transparency: reduce) {
-      .nav-bar, .mobile-menu, .modal-backdrop {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        background: #0b0e16 !important;
-      }
-    }
-
-    /* ======================== RESPONSIVE ======================== */
-    @media (max-width: 960px) {
-      .about-grid,
-      .venture-flagship,
-      .focus-panel.active,
-      .faq-grid {
-        grid-template-columns: 1fr;
-        gap: 36px;
-      }
-
-      .ventures-grid,
-      .leadership-list,
-      .achievements-grid,
-      .labs-grid {
-        grid-template-columns: 1fr;
-      }
-
+    @media (max-width: 720px) {
       .nav-links {
         display: none;
       }
-
-      .nav-toggle {
-        display: inline-flex;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .container {
-        padding: 0 20px;
-      }
-
-      .section {
-        padding: 88px 0;
-      }
-
-      .hero {
-        min-height: auto;
-        padding: 132px 0 80px;
-      }
-
-      .venture-flagship,
-      .venture-card,
-      .focus-panel,
-      .writing-card,
-      .modal-dialog {
-        padding: 28px 22px;
-      }
-
-      .modal-meta {
-        grid-template-columns: 1fr;
+      .nav-cta {
+        display: none;
       }
     }
   </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to content</a>
+  <!-- Ambient Orbs -->
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+  <div class="ambient-orb orb-3"></div>
 
-  <!-- Subtle Atmospheric Lighting -->
-  <div class="ambient-backdrop" aria-hidden="true">
-    <div class="ambient-glow ambient-glow--primary"></div>
-    <div class="ambient-glow ambient-glow--secondary"></div>
-  </div>
+  <!-- Three.js 3D Background -->
+  <canvas id="bg-canvas"></canvas>
 
-  <!-- Floating Translucent Navigation -->
-  <header class="nav-wrapper">
-    <nav class="nav-bar" id="navbar" aria-label="Primary">
-      <a href="#top" class="nav-brand">
-        <span class="nav-brand-dot" aria-hidden="true"></span>
-        Samar Agshikar
-      </a>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
 
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#ventures">Ventures</a></li>
-        <li><a href="#leadership">Leadership</a></li>
-        <li><a href="#achievements">Achievements</a></li>
-        <li><a href="#focus">Focus</a></li>
-        <li><a href="#writing">Writing</a></li>
-      </ul>
-
-      <div class="nav-actions">
-        <a href="#contact" class="nav-cta">Contact</a>
-        <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <path d="M2.5 5.5H15.5M2.5 12.5H15.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </button>
+  <!-- Navbar -->
+  <nav id="navbar" class="glass">
+    <a href="#" class="logo">LIQUID<span>.</span></a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <div class="theme-switcher" role="group" aria-label="Theme switcher">
+        <button class="theme-dot active" data-set-theme="acid" style="background: #e8ff47;" aria-label="Acid theme"></button>
+        <button class="theme-dot" data-set-theme="ocean" style="background: #38bdf8;" aria-label="Ocean theme"></button>
+        <button class="theme-dot" data-set-theme="sunset" style="background: #fb923c;" aria-label="Sunset theme"></button>
+        <button class="theme-dot" data-set-theme="light" style="background: #4f46e5;" aria-label="Light theme"></button>
       </div>
-    </nav>
-  </header>
+      <a href="#contact" class="nav-cta">Get Started</a>
+    </div>
+  </nav>
 
-  <!-- Mobile Navigation Drawer -->
-  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-    <ul class="mobile-menu-list">
-      <li><a href="#about">About</a></li>
-      <li><a href="#ventures">Ventures</a></li>
-      <li><a href="#leadership">Leadership</a></li>
-      <li><a href="#achievements">Achievements</a></li>
-      <li><a href="#focus">Focus</a></li>
-      <li><a href="#writing">Writing</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-
-  <main id="main-content">
-    <!-- ======================== HERO ======================== -->
-    <section class="hero" id="top">
-      <div class="container">
-        <div class="hero-inner">
-          <div class="hero-identity">
-            <span class="hero-name">Samar Agshikar</span>
-            <span class="hero-role">Student · Developer · Technology Founder</span>
-          </div>
-
-          <h1 class="hero-headline">
-            Building technology.<br>Exploring what's possible.
-          </h1>
-
-          <p class="hero-intro">
-            Grade 8 student, developer, and founder working across artificial intelligence, software engineering, and operating systems—building KerniqOS and THE 1 while studying at Adani International School.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#ventures" class="btn btn-primary">Explore Ventures</a>
-            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-          </div>
-        </div>
+  <!-- Main Content -->
+  <main>
+    <section class="hero">
+      <div class="badge glass">Interactive 3D + Liquid Glass</div>
+      <h1>Fluid interfaces that react to every theme.</h1>
+      <p>
+        Switch themes in the navbar to dynamically shift the background gradients, ambient glow orbs, custom cursor, and live 3D wireframe geometry in real time.
+      </p>
+      <div class="hero-buttons">
+        <a href="#features" class="btn-primary">Explore Features</a>
+        <a href="https://github.com" target="_blank" rel="noreferrer" class="btn-secondary glass">View on GitHub</a>
       </div>
     </section>
 
-    <!-- ======================== ABOUT ME ======================== -->
-    <section class="section" id="about">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">About</span>
-          <h2 class="section-heading">Curiosity grounded in execution.</h2>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-copy reveal">
-            <p>
-              I am a <strong>Grade 8 student at Adani International School (ADIS)</strong> in Ahmedabad, India. Prior to moving to India in July 2025, I completed Grades 5 and 6 at <strong>Gymnasium Coswig in Germany</strong>, shaping an international perspective across both German and Indian education systems.
-            </p>
-            <p>
-              I believe you do not need to wait until university or adulthood to start building meaningful software. My work focuses on three pillars: <strong>academic excellence</strong>, <strong>technical engineering capability</strong>, and <strong>leadership through real contribution</strong>.
-            </p>
-            <p>
-              Whether designing developer tools, shipping student workspaces, or studying mathematics and aviation, I approach problems from first principles—prototyping early, listening to real users, and iterating with discipline.
-            </p>
-          </div>
-
-          <div class="about-sidebar reveal">
-            <div class="fact-card">
-              <div class="fact-label">Education &amp; Location</div>
-              <div class="fact-value">Adani International School, Ahmedabad</div>
-              <div class="fact-sub">Formerly Gymnasium Coswig, Germany (Grades 5–6)</div>
-            </div>
-            <div class="fact-card">
-              <div class="fact-label">Languages</div>
-              <div class="fact-value">English &amp; German (Fluent)</div>
-              <div class="fact-sub">Hindi (Conversational) · French (Learning)</div>
-            </div>
-            <div class="fact-card">
-              <div class="fact-label">Current Objective</div>
-              <div class="fact-value">Ship a polished KerniqOS desktop product</div>
-              <div class="fact-sub">Target milestone: 31 December 2026</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================== VENTURES & PROJECTS ======================== -->
-    <section class="section" id="ventures">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Ventures &amp; Projects</span>
-          <h2 class="section-heading">From live products to long-term systems.</h2>
-          <p class="section-lead">
-            A clear look at what is currently shipped, what is in active development, and the long-term ambitions I am working toward.
-          </p>
-        </div>
-
-        <!-- Flagship Venture: KerniqOS -->
-        <article class="card venture-flagship reveal" data-project="0" tabindex="0" role="button" aria-label="View details for KerniqOS">
-          <div>
-            <div class="status-pill">
-              <span class="status-dot status-dot--dev" aria-hidden="true"></span>
-              Active Development · Flagship Venture
-            </div>
-            <h3 class="venture-title">KerniqOS</h3>
-            <p class="venture-desc">
-              My primary long-term technology venture: a personalised developer ecosystem starting as a cross-platform desktop application tailored to a user's hardware and development targets. The longer-term ambition is to expand into a connected developer ecosystem and proprietary Linux-based operating system.
-            </p>
-
-            <div class="venture-meta-row">
-              <div class="venture-meta-item">
-                <span>Current Phase</span>
-                <strong>Cross-Platform Desktop App</strong>
-              </div>
-              <div class="venture-meta-item">
-                <span>Target Milestone</span>
-                <strong>31 December 2026</strong>
-              </div>
-              <div class="venture-meta-item">
-                <span>Long-Term Vision</span>
-                <strong>Proprietary Linux-Based OS</strong>
-              </div>
-            </div>
-
-            <span class="btn-text">
-              View architecture &amp; details <span aria-hidden="true">→</span>
-            </span>
-          </div>
-
-          <div class="kerniq-stage" aria-hidden="true">
-            <div class="kerniq-titlebar">
-              <div class="window-dots">
-                <span></span><span></span><span></span>
-              </div>
-              <span class="kerniq-titlebar-label">kerniq-os / roadmap</span>
-            </div>
-            <div class="kerniq-body">
-              <div class="kerniq-layer kerniq-layer--highlight">
-                <div>
-                  <div class="kerniq-layer-title">Desktop Application</div>
-                  <div class="kerniq-layer-sub">Device-aware onboarding &amp; AI workflows</div>
-                </div>
-                <span class="kerniq-layer-tag">IN PROGRESS</span>
-              </div>
-              <div class="kerniq-layer">
-                <div>
-                  <div class="kerniq-layer-title">Interaction Models</div>
-                  <div class="kerniq-layer-sub">Native-feeling desktop HCI &amp; tooling</div>
-                </div>
-                <span class="kerniq-layer-tag">EXPLORING</span>
-              </div>
-              <div class="kerniq-layer">
-                <div>
-                  <div class="kerniq-layer-title">Linux-Based OS</div>
-                  <div class="kerniq-layer-sub">Proprietary developer operating system</div>
-                </div>
-                <span class="kerniq-layer-tag">LONG-TERM</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Secondary Ventures -->
-        <div class="ventures-grid">
-          <article class="card card-interactive venture-card reveal" data-project="1" tabindex="0" role="button" aria-label="View details for THE 1">
-            <div>
-              <div class="status-pill">
-                <span class="status-dot status-dot--live" aria-hidden="true"></span>
-                Live Product · EdTech
-              </div>
-              <h3>THE 1</h3>
-              <p class="venture-desc">
-                An all-in-one student workspace unifying a Today dashboard, notes, study library, homework, timetable, revision, quizzes, presentations, and an interactive AI Tutor. Piloted with students at Adani International School and launched on Product Hunt.
-              </p>
-              <div class="tech-list">
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">TypeScript</span>
-                <span class="tech-tag">TanStack Start</span>
-                <span class="tech-tag">Supabase</span>
-                <span class="tech-tag">Groq</span>
-              </div>
-            </div>
-            <div class="venture-card-footer">
-              <span class="btn-text">Read details <span aria-hidden="true">→</span></span>
-              <a href="https://the-1.app" target="_blank" rel="noopener noreferrer" class="btn-text" onclick="event.stopPropagation()">the-1.app ↗</a>
-            </div>
-          </article>
-
-          <article class="card card-interactive venture-card reveal" data-project="2" tabindex="0" role="button" aria-label="View details for College Chances India">
-            <div>
-              <div class="status-pill">
-                <span class="status-dot status-dot--archive" aria-hidden="true"></span>
-                Earlier Venture · Discontinued
-              </div>
-              <h3>College Chances India</h3>
-              <p class="venture-desc">
-                An earlier AI-powered platform built to make university discovery more accessible for students without relying solely on expensive consultants. Reached ~50 platform users in its first three months before being discontinued, teaching essential lessons in validation and user needs.
-              </p>
-              <div class="tech-list">
-                <span class="tech-tag">EdTech</span>
-                <span class="tech-tag">AI Discovery</span>
-                <span class="tech-tag">Product Validation</span>
-              </div>
-            </div>
-            <div class="venture-card-footer">
-              <span class="btn-text">Read details <span aria-hidden="true">→</span></span>
-              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-tertiary);">~50 early users</span>
-            </div>
-          </article>
-        </div>
-
-        <!-- Experimental Prototypes (Clearly distinguished from commercial products) -->
-        <div class="labs-block reveal">
-          <div class="labs-header">
-            <h3>Experimental Labs &amp; Prototypes</h3>
-            <span>Hands-on technical explorations — not commercial products</span>
-          </div>
-          <div class="labs-grid">
-            <div class="lab-item">
-              <h4>macOS Notch Companion</h4>
-              <p>Interface concepts exploring native-feeling desktop interactions around the macOS notch.</p>
-            </div>
-            <div class="lab-item">
-              <h4>PrivacyShield / PrivacyGuard</h4>
-              <p>Computer vision privacy prototype built with Python, OpenCV, and face recognition.</p>
-            </div>
-            <div class="lab-item">
-              <h4>SamarOS</h4>
-              <p>Personalised tablet interface prototype designed and tested on the Xiaomi Pad 8.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================== LEADERSHIP & EXTRACURRICULARS ======================== -->
-    <section class="section" id="leadership">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Leadership &amp; Extracurriculars</span>
-          <h2 class="section-heading">Leading through contribution.</h2>
-          <p class="section-lead">
-            Active roles across school governance, global student networks, event execution, and campus ambassadorship.
-          </p>
-        </div>
-
-        <div class="leadership-list">
-          <div class="card leadership-card reveal">
-            <div class="leadership-top">
-              <div>
-                <div class="leadership-org">Adani International School</div>
-                <h3 class="leadership-role">Student Council</h3>
-              </div>
-              <span class="leadership-period">Active</span>
-            </div>
-            <p class="leadership-desc">
-              Representing student perspectives and collaborating with faculty and peers to strengthen school initiatives and community culture.
-            </p>
-          </div>
-
-          <div class="card leadership-card reveal">
-            <div class="leadership-top">
-              <div>
-                <div class="leadership-org">Round Square</div>
-                <h3 class="leadership-role">Student Committee</h3>
-              </div>
-              <span class="leadership-period">2026–2027</span>
-            </div>
-            <p class="leadership-desc">
-              Contributing to internationalism, leadership, and service-oriented student programmes within the Round Square framework.
-            </p>
-          </div>
-
-          <div class="card leadership-card reveal">
-            <div class="leadership-top">
-              <div>
-                <div class="leadership-org">Internshala</div>
-                <h3 class="leadership-role">Internshala Student Partner</h3>
-              </div>
-              <span class="leadership-period">Selected Nov 2026</span>
-            </div>
-            <p class="leadership-desc">
-              Selected to represent Internshala initiatives, focusing on outreach, peer engagement, and practical skill-building opportunities.
-            </p>
-          </div>
-
-          <div class="card leadership-card reveal">
-            <div class="leadership-top">
-              <div>
-                <div class="leadership-org">Adani International School</div>
-                <h3 class="leadership-role">Culture &amp; Events Team</h3>
-              </div>
-              <span class="leadership-period">Active</span>
-            </div>
-            <p class="leadership-desc">
-              Coordinating school-wide cultural programmes and student events with an emphasis on organisation and execution.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================== ACADEMIC ACHIEVEMENTS ======================== -->
-    <section class="section" id="achievements">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Academic Achievements</span>
-          <h2 class="section-heading">Analytical rigour in mathematics &amp; science.</h2>
-        </div>
-
-        <div class="achievements-grid">
-          <div class="card achievement-card reveal">
-            <div>
-              <div class="achievement-metric">Gold</div>
-              <h3 class="achievement-title">SOF Mathematics</h3>
-              <p class="achievement-desc">Awarded the Gold Medal of Excellence in the Science Olympiad Foundation Mathematics Olympiad.</p>
-            </div>
-          </div>
-
-          <div class="card achievement-card reveal">
-            <div>
-              <div class="achievement-metric">98<span>th</span></div>
-              <h3 class="achievement-title">ASSET Mathematics</h3>
-              <p class="achievement-desc">98th percentile nationally (Gold), reflecting strong mathematical reasoning and problem-solving.</p>
-            </div>
-          </div>
-
-          <div class="card achievement-card reveal">
-            <div>
-              <div class="achievement-metric">93<span>rd</span></div>
-              <h3 class="achievement-title">ASSET Science</h3>
-              <p class="achievement-desc">93rd percentile nationally (Silver), demonstrating analytical clarity across scientific concepts.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================== FOCUS AREAS & CAPABILITIES ======================== -->
-    <section class="section" id="focus">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Focus Areas &amp; Capabilities</span>
-          <h2 class="section-heading">Interdisciplinary by design.</h2>
-          <p class="section-lead">
-            Building across modern web engineering, operating systems, human-computer interaction, and broader analytical disciplines.
-          </p>
-        </div>
-
-        <div class="reveal">
-          <div class="segmented-control" role="tablist" aria-label="Focus Areas">
-            <button class="segment-btn active" type="button" role="tab" aria-selected="true" data-tab="0">Software &amp; AI</button>
-            <button class="segment-btn" type="button" role="tab" aria-selected="false" data-tab="1">Computing &amp; HCI</button>
-            <button class="segment-btn" type="button" role="tab" aria-selected="false" data-tab="2">Beyond Software</button>
-          </div>
-
-          <div class="card focus-panel active" role="tabpanel" data-panel="0">
-            <div>
-              <h3>Turning ideas into working software products.</h3>
-              <p>
-                I build full-stack web applications and AI-assisted workflows—exploring how large language models can power interactive learning environments like THE 1 and intelligent developer tooling inside KerniqOS.
-              </p>
-            </div>
-            <div class="capability-list">
-              <div class="capability-item">
-                <strong>React &amp; TypeScript</strong>
-                <span>Core Web Stack</span>
-              </div>
-              <div class="capability-item">
-                <strong>TanStack Start, Vite &amp; Tailwind</strong>
-                <span>Application Tooling</span>
-              </div>
-              <div class="capability-item">
-                <strong>Supabase, Zustand &amp; Groq</strong>
-                <span>Backend, State &amp; AI</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="card focus-panel" role="tabpanel" data-panel="1">
-            <div>
-              <h3>Understanding systems beyond the browser.</h3>
-              <p>
-                I study operating systems, hardware-aware software, and human-computer interaction—experimenting with macOS desktop experiences, Linux ecosystems, and OpenCV computer vision prototypes.
-              </p>
-            </div>
-            <div class="capability-list">
-              <div class="capability-item">
-                <strong>macOS &amp; Linux</strong>
-                <span>OS Exploration</span>
-              </div>
-              <div class="capability-item">
-                <strong>Python &amp; OpenCV</strong>
-                <span>Computer Vision</span>
-              </div>
-              <div class="capability-item">
-                <strong>HCI &amp; Interface Design</strong>
-                <span>Desktop &amp; Tablet UI</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="card focus-panel" role="tabpanel" data-panel="2">
-            <div>
-              <h3>Analytical thinking across flight, science, and strategy.</h3>
-              <p>
-                Outside of software, I have a deep interest in aviation and aerospace—including pathways in aerospace engineering or becoming a pilot—alongside mathematics, science, and understanding how durable companies are built.
-              </p>
-            </div>
-            <div class="capability-list">
-              <div class="capability-item">
-                <strong>Aviation &amp; Aerospace</strong>
-                <span>Flight &amp; Systems</span>
-              </div>
-              <div class="capability-item">
-                <strong>Mathematics &amp; Science</strong>
-                <span>Analytical Core</span>
-              </div>
-              <div class="capability-item">
-                <strong>Economics &amp; Strategy</strong>
-                <span>Company Building</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================== WRITING ======================== -->
-    <section class="section" id="writing">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Writing</span>
-          <h2 class="section-heading">Notes on building &amp; systems.</h2>
-        </div>
-
-        <div class="card writing-card reveal">
-          <div class="writing-copy">
-            <h3>Essays &amp; technical notes — in progress.</h3>
-            <p>
-              I am documenting lessons from building KerniqOS, shipping THE 1, and learning computer systems as a student founder. Published notes will appear here as they are ready; in the meantime, you can follow my code and updates on GitHub and LinkedIn.
-            </p>
-          </div>
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="https://github.com/samar-agshikar" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub ↗</a>
-            <a href="https://www.linkedin.com/in/samar-agshikar/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn ↗</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================== FAQ ======================== -->
-    <section class="section" id="faq">
-      <div class="container">
-        <div class="faq-grid">
-          <div class="reveal">
-            <span class="eyebrow">Context</span>
-            <h2 class="section-heading">Frequently asked.</h2>
-            <p class="section-lead">
-              Straightforward answers about what is live, what is in progress, and how to connect.
-            </p>
-          </div>
-
-          <div class="accordion reveal">
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="faq-1">
-                What is the current status of KerniqOS?
-                <span class="accordion-icon" aria-hidden="true">+</span>
-              </button>
-              <div class="accordion-panel" id="faq-1">
-                <div class="accordion-body">
-                  KerniqOS is in active development. The immediate focus is shipping a genuinely usable, polished cross-platform developer desktop application by 31 December 2026, while the broader developer ecosystem and proprietary Linux-based OS remain long-term ambitions.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="faq-2">
-                Can I try THE 1 right now?
-                <span class="accordion-icon" aria-hidden="true">+</span>
-              </button>
-              <div class="accordion-panel" id="faq-2">
-                <div class="accordion-body">
-                  Yes—THE 1 is live at the-1.app. It brings together a Today dashboard, notes, study library, homework, timetable, revision, quizzes, presentations, and an AI Tutor, and has been piloted with students at Adani International School.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="faq-3">
-                What happened to College Chances India?
-                <span class="accordion-icon" aria-hidden="true">+</span>
-              </button>
-              <div class="accordion-panel" id="faq-3">
-                <div class="accordion-body">
-                  College Chances India was an earlier venture aimed at making university discovery more accessible. It reached around 50 platform users in its first three months before being discontinued, serving as a foundational lesson in product validation.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="faq-4">
-                How can we connect?
-                <span class="accordion-icon" aria-hidden="true">+</span>
-              </button>
-              <div class="accordion-panel" id="faq-4">
-                <div class="accordion-body">
-                  You can reach out directly via email at kerniq@the-1.app, connect on LinkedIn, or follow my repositories and experiments on GitHub.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================== CONTACT ======================== -->
-    <section class="section contact-section" id="contact">
-      <div class="container reveal">
-        <span class="eyebrow">Contact</span>
-        <h2 class="section-heading">Let's talk technology.</h2>
-        <p class="section-lead">
-          Interested in KerniqOS, THE 1, or collaborating on ideas in AI, software engineering, and product design? I'd be glad to connect.
-        </p>
-        <div class="contact-links">
-          <a href="mailto:kerniq@the-1.app" class="btn btn-primary">kerniq@the-1.app</a>
-          <a href="https://github.com/samar-agshikar" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
-          <a href="https://www.linkedin.com/in/samar-agshikar/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
-        </div>
-      </div>
+    <section id="features" class="grid">
+      <article class="card glass">
+        <div class="card-tag">01 / Visuals</div>
+        <h2>Theme-Reactive Gradients</h2>
+        <p>Multi-layered radial gradients and floating ambient orbs smoothly adapt to Acid, Ocean, Sunset, and Light modes with zero flicker.</p>
+      </article>
+      <article class="card glass">
+        <div class="card-tag">02 / WebGL</div>
+        <h2>3D Wireframe Geometry</h2>
+        <p>Powered by Three.js, floating geometric meshes and background particles respond to mouse parallax and recolor instantly with your theme.</p>
+      </article>
+      <article class="card glass">
+        <div class="card-tag">03 / Interaction</div>
+        <h2>Custom Magnetic Cursor</h2>
+        <p>A smooth-interpolated dual-layer cursor expands over interactive links and buttons while automatically disabling on touch devices.</p>
+      </article>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <span>© 2026 Samar Agshikar.</span>
-        <nav class="footer-nav" aria-label="Footer">
-          <a href="https://github.com/samar-agshikar" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/in/samar-agshikar/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://the-1.app" target="_blank" rel="noopener noreferrer">THE 1</a>
-          <a href="mailto:kerniq@the-1.app">Email</a>
-        </nav>
-      </div>
-    </div>
+  <footer id="contact">
+    Built with HTML, CSS, and Three.js — Ready for GitHub Pages.
   </footer>
 
-  <!-- Venture Details Modal -->
-  <div class="modal-backdrop" id="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
-    <div class="modal-dialog">
-      <button class="modal-close" id="modal-close" type="button" aria-label="Close modal">×</button>
-      <span class="eyebrow" id="modal-tag">Venture</span>
-      <h3 class="modal-title" id="modal-title">Venture Title</h3>
-      <p class="modal-body" id="modal-body"></p>
-      <div class="modal-meta">
-        <div>
-          <div class="modal-meta-label">Role</div>
-          <div class="modal-meta-val" id="modal-role"></div>
-        </div>
-        <div>
-          <div class="modal-meta-label">Status</div>
-          <div class="modal-meta-val" id="modal-status"></div>
-        </div>
-        <div>
-          <div class="modal-meta-label">Highlight</div>
-          <div class="modal-meta-val" id="modal-highlight"></div>
-        </div>
-      </div>
-      <a href="#contact" class="btn btn-primary" id="modal-cta">Get in Touch</a>
-    </div>
-  </div>
-
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // 1. Custom Cursor
+    const cursorDot = document.getElementById("cursorDot");
+    const cursorRing = document.getElementById("cursorRing");
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ringX = mouseX;
+    let ringY = mouseY;
 
-      /* ======================== 1. NAVBAR SCROLL & ACTIVE SECTION ======================== */
-      const navbar = document.getElementById('navbar');
-      const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu-list a');
-      const sections = document.querySelectorAll('main section[id]');
-
-      const updateNavbar = () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 32);
-      };
-      window.addEventListener('scroll', updateNavbar, { passive: true });
-      updateNavbar();
-
-      const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            navLinks.forEach(link => {
-              link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-            });
-          }
-        });
-      }, { rootMargin: '-35% 0px -55% 0px' });
-
-      sections.forEach(sec => sectionObserver.observe(sec));
-
-      /* ======================== 2. MOBILE MENU ======================== */
-      const navToggle = document.getElementById('nav-toggle');
-      const mobileMenu = document.getElementById('mobile-menu');
-
-      const setMenuOpen = (isOpen) => {
-        mobileMenu.classList.toggle('open', isOpen);
-        mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-        navToggle.setAttribute('aria-expanded', String(isOpen));
-        navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-      };
-
-      navToggle.addEventListener('click', () => {
-        setMenuOpen(!mobileMenu.classList.contains('open'));
-      });
-
-      mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => setMenuOpen(false));
-      });
-
-      /* ======================== 3. SCROLL REVEAL ======================== */
-      if (!prefersReducedMotion) {
-        const revealObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              revealObserver.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-      } else {
-        document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
-      }
-
-      /* ======================== 4. FOCUS SEGMENTED CONTROL ======================== */
-      const segmentBtns = document.querySelectorAll('.segment-btn');
-      const focusPanels = document.querySelectorAll('.focus-panel');
-
-      segmentBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const target = btn.dataset.tab;
-          segmentBtns.forEach(b => {
-            const active = b.dataset.tab === target;
-            b.classList.toggle('active', active);
-            b.setAttribute('aria-selected', String(active));
-          });
-          focusPanels.forEach(p => {
-            p.classList.toggle('active', p.dataset.panel === target);
-          });
-        });
-      });
-
-      /* ======================== 5. FAQ ACCORDION ======================== */
-      const accordionItems = document.querySelectorAll('.accordion-item');
-      accordionItems.forEach(item => {
-        const trigger = item.querySelector('.accordion-trigger');
-        const panel = item.querySelector('.accordion-panel');
-
-        trigger.addEventListener('click', () => {
-          const isOpen = item.classList.contains('open');
-
-          accordionItems.forEach(other => {
-            other.classList.remove('open');
-            other.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
-            other.querySelector('.accordion-panel').style.maxHeight = null;
-          });
-
-          if (!isOpen) {
-            item.classList.add('open');
-            trigger.setAttribute('aria-expanded', 'true');
-            panel.style.maxHeight = `${panel.scrollHeight}px`;
-          }
-        });
-      });
-
-      /* ======================== 6. VENTURE MODAL ======================== */
-      const projects = [
-        {
-          tag: 'Flagship Venture · In Development',
-          title: 'KerniqOS',
-          body: 'KerniqOS is my current major technology venture—starting as a cross-platform developer desktop application tailored to a user\'s specific hardware and development targets, with a longer-term vision of expanding into a connected developer ecosystem and proprietary Linux-based OS. Current execution objective: ship a genuinely usable, polished product by 31 December 2026.',
-          role: 'Founder & Developer',
-          status: 'Active Development',
-          highlight: 'Target: Dec 31, 2026',
-          ctaText: 'Contact KerniqOS',
-          ctaHref: 'mailto:kerniq@the-1.app',
-          external: false
-        },
-        {
-          tag: 'Live Product · EdTech',
-          title: 'THE 1',
-          body: 'An all-in-one student workspace designed to reduce app fragmentation by combining a Today dashboard, Notes, Study Library, Homework, Timetable, Revision, Quizzes, Presentations, and an interactive AI Tutor. Built with React, TypeScript, TanStack Start, Vite, Tailwind CSS, Supabase, Zustand, and Groq. Piloted at Adani International School and launched on Product Hunt.',
-          role: 'Founder & Developer',
-          status: 'Live (V2 / V3)',
-          highlight: 'ADIS Student Pilot',
-          ctaText: 'Visit the-1.app',
-          ctaHref: 'https://the-1.app',
-          external: true
-        },
-        {
-          tag: 'Earlier Venture · Discontinued',
-          title: 'College Chances India (CCI)',
-          body: 'An earlier AI-powered platform founded to help students discover universities and explore admissions pathways without relying solely on expensive consultants. Reached approximately 50 platform users in its first three months before being discontinued, providing key lessons in product validation and user needs.',
-          role: 'Founder',
-          status: 'Discontinued',
-          highlight: '~50 Early Users',
-          ctaText: 'Get in Touch',
-          ctaHref: '#contact',
-          external: false
-        }
-      ];
-
-      const modalBackdrop = document.getElementById('modal-backdrop');
-      const modalClose = document.getElementById('modal-close');
-      const modalCta = document.getElementById('modal-cta');
-      let lastFocused = null;
-
-      const openModal = (index) => {
-        const data = projects[index];
-        if (!data) return;
-        lastFocused = document.activeElement;
-
-        document.getElementById('modal-tag').textContent = data.tag;
-        document.getElementById('modal-title').textContent = data.title;
-        document.getElementById('modal-body').textContent = data.body;
-        document.getElementById('modal-role').textContent = data.role;
-        document.getElementById('modal-status').textContent = data.status;
-        document.getElementById('modal-highlight').textContent = data.highlight;
-
-        modalCta.textContent = data.ctaText;
-        modalCta.href = data.ctaHref;
-        if (data.external) {
-          modalCta.setAttribute('target', '_blank');
-          modalCta.setAttribute('rel', 'noopener noreferrer');
-        } else {
-          modalCta.removeAttribute('target');
-          modalCta.removeAttribute('rel');
-        }
-
-        modalBackdrop.classList.add('open');
-        modalBackdrop.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-        modalClose.focus();
-      };
-
-      const closeModal = () => {
-        modalBackdrop.classList.remove('open');
-        modalBackdrop.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-        if (lastFocused) lastFocused.focus();
-      };
-
-      document.querySelectorAll('[data-project]').forEach(card => {
-        card.addEventListener('click', () => openModal(Number(card.dataset.project)));
-        card.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            openModal(Number(card.dataset.project));
-          }
-        });
-      });
-
-      modalClose.addEventListener('click', closeModal);
-      modalCta.addEventListener('click', closeModal);
-      modalBackdrop.addEventListener('click', (e) => {
-        if (e.target === modalBackdrop) closeModal();
-      });
-
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          if (modalBackdrop.classList.contains('open')) closeModal();
-          if (mobileMenu.classList.contains('open')) setMenuOpen(false);
-        }
-      });
+    window.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorDot.style.left = `${mouseX}px`;
+      cursorDot.style.top = `${mouseY}px`;
     });
+
+    function animateCursor() {
+      ringX += (mouseX - ringX) * 0.16;
+      ringY += (mouseY - ringY) * 0.16;
+      cursorRing.style.left = `${ringX}px`;
+      cursorRing.style.top = `${ringY}px`;
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.querySelectorAll("a, button, .card").forEach((el) => {
+      el.addEventListener("mouseenter", () => cursorRing.classList.add("hovering"));
+      el.addEventListener("mouseleave", () => cursorRing.classList.remove("hovering"));
+    });
+
+    // 2. Three.js 3D Wireframe Shapes & Particles
+    const canvas = document.getElementById("bg-canvas");
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
+    camera.position.z = 14;
+
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const themeAccentHex = {
+      acid: 0xe8ff47,
+      ocean: 0x38bdf8,
+      sunset: 0xfb923c,
+      light: 0x4f46e5,
+    };
+
+    const themedMaterials = [];
+
+    function createWireframe(geometry, position, opacity = 0.24) {
+      const material = new THREE.MeshBasicMaterial({
+        color: themeAccentHex.acid,
+        wireframe: true,
+        transparent: true,
+        opacity,
+      });
+      themedMaterials.push(material);
+      const mesh = new THREE.Mesh(geometry, material);
+      mesh.position.set(...position);
+      scene.add(mesh);
+      return mesh;
+    }
+
+    const shapes = [
+      createWireframe(new THREE.TorusKnotGeometry(2.2, 0.55, 80, 14), [5.8, 2.2, -2], 0.22),
+      createWireframe(new THREE.IcosahedronGeometry(1.8, 0), [-6.2, -2.5, -1], 0.25),
+      createWireframe(new THREE.TorusGeometry(1.5, 0.35, 16, 48), [-5.5, 3.6, -4], 0.18),
+      createWireframe(new THREE.DodecahedronGeometry(1.4, 0), [5.2, -3.4, -3], 0.20),
+    ];
+
+    // Background Particles
+    const particleCount = 160;
+    const positions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount * 3; i++) {
+      positions[i] = (Math.random() - 0.5) * 32;
+    }
+    const particleGeo = new THREE.BufferGeometry();
+    particleGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    const particleMat = new THREE.PointsMaterial({
+      color: themeAccentHex.acid,
+      size: 0.07,
+      transparent: true,
+      opacity: 0.45,
+    });
+    themedMaterials.push(particleMat);
+    const particles = new THREE.Points(particleGeo, particleMat);
+    scene.add(particles);
+
+    let targetX = 0;
+    let targetY = 0;
+    window.addEventListener("mousemove", (e) => {
+      targetX = (e.clientX / window.innerWidth - 0.5) * 1.2;
+      targetY = (e.clientY / window.innerHeight - 0.5) * 1.2;
+    });
+
+    function animateThree() {
+      requestAnimationFrame(animateThree);
+      shapes.forEach((mesh, i) => {
+        mesh.rotation.x += 0.002 + i * 0.0005;
+        mesh.rotation.y += 0.003 + i * 0.0004;
+      });
+      particles.rotation.y += 0.0006;
+
+      camera.position.x += (targetX - camera.position.x) * 0.04;
+      camera.position.y += (-targetY - camera.position.y) * 0.04;
+      camera.lookAt(scene.position);
+
+      renderer.render(scene, camera);
+    }
+    animateThree();
+
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // 3. Theme Switcher (CSS + Three.js Sync + LocalStorage)
+    function applyTheme(themeName) {
+      document.documentElement.setAttribute("data-theme", themeName);
+      localStorage.setItem("site-theme", themeName);
+
+      document.querySelectorAll(".theme-dot").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.setTheme === themeName);
+      });
+
+      const newColor = themeAccentHex[themeName] ?? themeAccentHex.acid;
+      themedMaterials.forEach((mat) => mat.color.setHex(newColor));
+    }
+
+    document.querySelectorAll(".theme-dot").forEach((btn) => {
+      btn.addEventListener("click", () => applyTheme(btn.dataset.setTheme));
+    });
+
+    const savedTheme = localStorage.getItem("site-theme") || "acid";
+    applyTheme(savedTheme);
   </script>
 </body>
 </html>
