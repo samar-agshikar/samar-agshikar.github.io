@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Samar Agshikar — Builder, Developer &amp; Student</title>
+  <title>Samar Agshikar — Personal Digital Universe</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
   <style>
     :root,
     [data-theme="acid"] {
@@ -28,6 +28,7 @@
       --glass-bg-hover: linear-gradient(155deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.04) 100%);
       --glass-border: rgba(255, 255, 255, 0.14);
       --btn-text: #07080a;
+      --panel-solid: rgba(12, 15, 22, 0.88);
     }
 
     [data-theme="ocean"] {
@@ -49,6 +50,7 @@
       --glass-bg-hover: linear-gradient(155deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.04) 100%);
       --glass-border: rgba(255, 255, 255, 0.14);
       --btn-text: #040b14;
+      --panel-solid: rgba(7, 20, 34, 0.90);
     }
 
     [data-theme="sunset"] {
@@ -70,6 +72,7 @@
       --glass-bg-hover: linear-gradient(155deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.04) 100%);
       --glass-border: rgba(255, 255, 255, 0.14);
       --btn-text: #0d070a;
+      --panel-solid: rgba(22, 11, 17, 0.90);
     }
 
     [data-theme="light"] {
@@ -91,17 +94,11 @@
       --glass-bg-hover: linear-gradient(155deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.52) 100%);
       --glass-border: rgba(15, 23, 42, 0.12);
       --btn-text: #ffffff;
+      --panel-solid: rgba(248, 250, 252, 0.92);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: "Inter", system-ui, -apple-system, sans-serif;
@@ -115,8 +112,14 @@
     }
 
     @media (pointer: fine) {
-      body, a, button {
-        cursor: none;
+      body, a, button, input[type="range"] { cursor: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
       }
     }
 
@@ -138,32 +141,9 @@
       z-index: 0;
       animation: floatOrb 18s ease-in-out infinite alternate;
     }
-
-    .ambient-orb.orb-1 {
-      width: 420px;
-      height: 420px;
-      top: -100px;
-      left: -80px;
-      background: radial-gradient(circle, var(--orb-1), transparent 70%);
-    }
-
-    .ambient-orb.orb-2 {
-      width: 500px;
-      height: 500px;
-      top: 30%;
-      right: -140px;
-      background: radial-gradient(circle, var(--orb-2), transparent 70%);
-      animation-delay: -6s;
-    }
-
-    .ambient-orb.orb-3 {
-      width: 460px;
-      height: 460px;
-      bottom: -140px;
-      left: 35%;
-      background: radial-gradient(circle, var(--orb-3), transparent 70%);
-      animation-delay: -12s;
-    }
+    .ambient-orb.orb-1 { width: 420px; height: 420px; top: -100px; left: -80px; background: radial-gradient(circle, var(--orb-1), transparent 70%); }
+    .ambient-orb.orb-2 { width: 500px; height: 500px; top: 30%; right: -140px; background: radial-gradient(circle, var(--orb-2), transparent 70%); animation-delay: -6s; }
+    .ambient-orb.orb-3 { width: 460px; height: 460px; bottom: -140px; left: 35%; background: radial-gradient(circle, var(--orb-3), transparent 70%); animation-delay: -12s; }
 
     @keyframes floatOrb {
       0% { transform: translate(0, 0) scale(1); }
@@ -171,42 +151,26 @@
     }
 
     /* Custom Cursor */
-    .cursor-dot,
-    .cursor-ring {
+    .cursor-dot, .cursor-ring {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       border-radius: 50%;
       pointer-events: none;
       z-index: 9999;
       transform: translate(-50%, -50%);
       display: none;
     }
-
     @media (pointer: fine) {
-      .cursor-dot,
-      .cursor-ring {
-        display: block;
-      }
+      .cursor-dot, .cursor-ring { display: block; }
     }
-
-    .cursor-dot {
-      width: 7px;
-      height: 7px;
-      background: var(--accent);
-      transition: background 0.3s ease;
-    }
-
+    .cursor-dot { width: 7px; height: 7px; background: var(--accent); transition: background 0.3s ease; }
     .cursor-ring {
-      width: 34px;
-      height: 34px;
+      width: 34px; height: 34px;
       border: 1.5px solid rgba(var(--accent-rgb), 0.55);
       transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background 0.25s ease;
     }
-
     .cursor-ring.hovering {
-      width: 52px;
-      height: 52px;
+      width: 52px; height: 52px;
       border-color: var(--accent);
       background: rgba(var(--accent-rgb), 0.08);
     }
@@ -226,7 +190,7 @@
       top: 20px;
       left: 50%;
       transform: translateX(-50%);
-      width: min(1080px, calc(100% - 32px));
+      width: min(1140px, calc(100% - 32px));
       padding: 12px 20px;
       border-radius: 999px;
       display: flex;
@@ -235,7 +199,6 @@
       gap: 16px;
       z-index: 100;
     }
-
     .logo {
       font-family: "Space Grotesk", sans-serif;
       font-weight: 700;
@@ -244,36 +207,18 @@
       color: var(--text);
       text-decoration: none;
     }
-
-    .logo span {
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
     .nav-links a {
       color: var(--text-secondary);
       text-decoration: none;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       font-weight: 500;
       transition: color 0.25s ease;
     }
+    .nav-links a:hover { color: var(--text); }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
 
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    /* Theme Switcher */
     .theme-switcher {
       display: inline-flex;
       align-items: center;
@@ -283,23 +228,14 @@
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--glass-border);
     }
-
     .theme-dot {
-      width: 16px;
-      height: 16px;
+      width: 16px; height: 16px;
       border-radius: 50%;
       border: 2px solid transparent;
       transition: transform 0.25s ease, border-color 0.25s ease;
     }
-
-    .theme-dot:hover {
-      transform: scale(1.15);
-    }
-
-    .theme-dot.active {
-      border-color: var(--text);
-      transform: scale(1.15);
-    }
+    .theme-dot:hover, .theme-dot.active { transform: scale(1.15); }
+    .theme-dot.active { border-color: var(--text); }
 
     .nav-cta {
       padding: 9px 18px;
@@ -307,30 +243,54 @@
       background: var(--accent);
       color: var(--btn-text);
       font-weight: 600;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       text-decoration: none;
       transition: transform 0.25s ease, opacity 0.25s ease;
     }
+    .nav-cta:hover { transform: translateY(-1px); opacity: 0.92; }
 
-    .nav-cta:hover {
-      transform: translateY(-1px);
-      opacity: 0.92;
-    }
-
-    /* Main Content */
+    /* Layout & Sections */
     main {
       position: relative;
       z-index: 10;
-      width: min(1080px, calc(100% - 32px));
+      width: min(1140px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 150px 0 96px;
+      padding: 148px 0 96px;
     }
 
-    .hero {
+    section.block {
+      margin-bottom: 128px;
+      scroll-margin-top: 110px;
+    }
+
+    .section-header {
+      margin-bottom: 36px;
       max-width: 720px;
-      margin-bottom: 84px;
+    }
+    .eyebrow {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .section-title {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 14px;
+    }
+    .section-desc {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.65;
     }
 
+    /* Hero */
+    .hero { max-width: 780px; margin-bottom: 112px; }
     .badge {
       display: inline-flex;
       align-items: center;
@@ -342,118 +302,463 @@
       color: var(--accent);
       margin-bottom: 24px;
     }
-
     .badge::before {
       content: "";
-      width: 7px;
-      height: 7px;
+      width: 7px; height: 7px;
       border-radius: 50%;
       background: var(--accent);
       box-shadow: 0 0 12px var(--accent);
     }
-
     h1 {
       font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(2.5rem, 6vw, 4.4rem);
-      line-height: 1.05;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.04;
       letter-spacing: -0.03em;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
-
     .hero p {
       font-size: 1.12rem;
-      line-height: 1.65;
+      line-height: 1.68;
       color: var(--text-secondary);
       margin-bottom: 32px;
-      max-width: 580px;
+      max-width: 640px;
     }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .btn-primary,
-    .btn-secondary {
+    .btn-primary, .btn-secondary {
       padding: 13px 26px;
       border-radius: 999px;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       text-decoration: none;
-      transition: transform 0.25s ease, background 0.25s ease;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    }
+    .btn-primary { background: var(--accent); color: var(--btn-text); }
+    .btn-secondary { color: var(--text); }
+    .btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); }
+
+    .fact-pill {
+      margin-top: 28px;
+      padding: 12px 18px;
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      max-width: 100%;
+    }
+    .fact-pill button {
+      background: rgba(var(--accent-rgb), 0.14);
+      color: var(--accent);
+      border: 1px solid rgba(var(--accent-rgb), 0.3);
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      flex-shrink: 0;
     }
 
-    .btn-primary {
-      background: var(--accent);
-      color: var(--btn-text);
-    }
-
-    .btn-secondary {
-      color: var(--text);
-    }
-
-    .btn-primary:hover,
-    .btn-secondary:hover {
-      transform: translateY(-2px);
-    }
-
-    /* Feature Grid */
+    /* Cards & Grids */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 24px;
     }
-
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 24px;
+    }
     .card {
       padding: 28px;
       border-radius: 24px;
       transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
     }
-
     .card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-4px);
       background: var(--glass-bg-hover);
-      border-color: rgba(var(--accent-rgb), 0.45);
+      border-color: rgba(var(--accent-rgb), 0.4);
     }
-
     .card-tag {
-      font-size: 0.78rem;
-      font-weight: 600;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--accent);
       margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-
-    .card h2 {
+    .status-chip {
+      font-size: 0.7rem;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(var(--accent-rgb), 0.12);
+      border: 1px solid rgba(var(--accent-rgb), 0.25);
+      color: var(--accent);
+    }
+    .card h3 {
       font-family: "Space Grotesk", sans-serif;
       font-size: 1.35rem;
       margin-bottom: 10px;
     }
-
     .card p {
       color: var(--text-secondary);
-      line-height: 1.6;
+      line-height: 1.65;
+      font-size: 0.94rem;
+    }
+    .card ul {
+      margin-top: 14px;
+      padding-left: 18px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+    .card ul li { margin-bottom: 6px; }
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    /* Interactive Timeline */
+    .timeline-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .pill-btn {
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.25s ease;
+    }
+    .pill-btn.active, .pill-btn:hover {
+      background: rgba(var(--accent-rgb), 0.15);
+      border-color: var(--accent);
+      color: var(--text);
+    }
+    .timeline-stage {
+      padding: 32px;
+      border-radius: 24px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .timeline-meta {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.82rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    /* ============================================================
+       SIGNATURE EXPERIENCE: BEYOND THE SCREEN — INSIDE THE MACHINE
+       ============================================================ */
+    .machine-shell {
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--glass-border);
+      background: #05070c;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+    }
+    .machine-topbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 20px;
+      background: rgba(10, 14, 22, 0.88);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .machine-modes, .machine-scales {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .m-btn {
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #cbd5e1;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    .m-btn:hover, .m-btn.active {
+      background: var(--accent);
+      color: var(--btn-text);
+      border-color: var(--accent);
+    }
+    .machine-viewport-wrap {
+      position: relative;
+      height: 580px;
+      width: 100%;
+    }
+    #machine-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .machine-hud-left {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      pointer-events: none;
+    }
+    .hud-chip {
+      pointer-events: auto;
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: rgba(7, 10, 18, 0.78);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #e2e8f0;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+    }
+    .machine-info-panel {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      bottom: 16px;
+      width: min(350px, calc(100% - 32px));
+      border-radius: 20px;
+      background: var(--panel-solid);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--glass-border);
+      padding: 20px;
+      z-index: 6;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .depth-tabs {
+      display: flex;
+      gap: 6px;
+      margin: 12px 0 14px;
+    }
+    .depth-tab {
+      flex: 1;
+      padding: 6px 8px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--glass-border);
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .depth-tab.active {
+      background: rgba(var(--accent-rgb), 0.18);
+      border-color: var(--accent);
+      color: var(--text);
+    }
+    .guided-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 20px;
+      background: rgba(10, 14, 22, 0.92);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+      font-size: 0.85rem;
+    }
+
+    /* Logic Gate Playground inside Computing Language */
+    .logic-box {
+      margin-top: 24px;
+      padding: 24px;
+      border-radius: 22px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      align-items: center;
+    }
+    .bit-toggle {
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 600;
       font-size: 0.95rem;
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+    }
+    .bit-toggle.on {
+      background: var(--accent);
+      color: var(--btn-text);
+      border-color: var(--accent);
+    }
+
+    /* ============================================================
+       THE LABORATORY
+       ============================================================ */
+    .lab-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .lab-panel {
+      display: none;
+      padding: 30px;
+      border-radius: 26px;
+    }
+    .lab-panel.active { display: block; }
+
+    .lab-split {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 28px;
+      align-items: start;
+    }
+    .control-group { margin-bottom: 14px; }
+    .control-group label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+      font-family: "JetBrains Mono", monospace;
+    }
+    .control-group input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+    }
+
+    /* Liquid Glass Stage */
+    .glass-stage {
+      position: relative;
+      height: 360px;
+      border-radius: 22px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--glass-border);
+      background: linear-gradient(135deg, #1e1b4b, #0f766e, #7c2d12);
+    }
+    .glass-stage-bg-shapes {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .stage-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+    #live-glass-card {
+      position: relative;
+      z-index: 2;
+      width: 280px;
+      padding: 26px;
+      border-radius: 24px;
+      color: #ffffff;
+      transition: transform 0.15s ease;
+    }
+
+    /* AI Attention Visualizer */
+    .token-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0;
+    }
+    .token-chip {
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.84rem;
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      transition: all 0.2s ease;
+    }
+    .token-chip.selected {
+      background: var(--accent);
+      color: var(--btn-text);
+      border-color: var(--accent);
+    }
+
+    /* Canvas Labs (Physics, Aerospace, OS/Network) */
+    .sim-canvas {
+      width: 100%;
+      height: 340px;
+      border-radius: 18px;
+      background: rgba(5, 8, 15, 0.85);
+      border: 1px solid var(--glass-border);
+      display: block;
+    }
+
+    /* Philosophy & Notebook */
+    .quote-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .topic-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .topic-pill {
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      color: var(--text);
     }
 
     footer {
       position: relative;
       z-index: 10;
       text-align: center;
-      padding: 32px 16px 48px;
+      padding: 40px 16px 56px;
       color: var(--text-muted);
       font-size: 0.88rem;
+      border-top: 1px solid var(--glass-border);
     }
 
-    @media (max-width: 720px) {
-      .nav-links {
-        display: none;
+    @media (max-width: 900px) {
+      .timeline-stage, .lab-split { grid-template-columns: 1fr; }
+      .machine-info-panel {
+        position: static;
+        width: 100%;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
       }
-      .nav-cta {
-        display: none;
-      }
+      .machine-viewport-wrap { height: 420px; }
+    }
+    @media (max-width: 780px) {
+      .nav-links, .nav-cta { display: none; }
     }
   </style>
 </head>
@@ -463,7 +768,7 @@
   <div class="ambient-orb orb-2"></div>
   <div class="ambient-orb orb-3"></div>
 
-  <!-- Three.js 3D Background -->
+  <!-- Three.js Ambient Background -->
   <canvas id="bg-canvas"></canvas>
 
   <!-- Custom Cursor -->
@@ -474,9 +779,11 @@
   <nav id="navbar" class="glass">
     <a href="#" class="logo">SAMAR<span>.</span></a>
     <div class="nav-links">
+      <a href="#meet">About</a>
       <a href="#ventures">Ventures</a>
-      <a href="#profile">Profile</a>
-      <a href="#contact">Contact</a>
+      <a href="#machine">Inside the Machine</a>
+      <a href="#laboratory">Laboratory</a>
+      <a href="#notebook">Notebook</a>
     </div>
     <div class="nav-actions">
       <div class="theme-switcher" role="group" aria-label="Theme switcher">
@@ -485,195 +792,461 @@
         <button class="theme-dot" data-set-theme="sunset" style="background: #fb923c;" aria-label="Sunset theme"></button>
         <button class="theme-dot" data-set-theme="light" style="background: #4f46e5;" aria-label="Light theme"></button>
       </div>
-      <a href="https://the-1.app" target="_blank" rel="noreferrer" class="nav-cta">THE 1</a>
+      <a href="#machine" class="nav-cta">Enter Machine</a>
     </div>
   </nav>
 
-  <!-- Main Content -->
   <main>
+    <!-- HERO -->
     <section class="hero">
       <div class="badge glass">Ahmedabad, India · Grade 8 at Adani International School</div>
-      <h1>Samar Agshikar. Building software that solves real problems.</h1>
+      <h1>Samar Agshikar. Exploring systems, building software.</h1>
       <p>
-        13-year-old developer, student, and aspiring founder working at the intersection of artificial intelligence, software engineering, entrepreneurship, education technology, and aerospace. Having lived and studied in both Germany and India, I speak English and German and focus on turning ideas into real, useful products.
+        Student, developer, and aspiring founder working at the intersection of artificial intelligence, software engineering, computer architecture, operating systems, and aerospace. Having lived and studied in both Germany and India, I build real products, run technical experiments, and explore how complex systems work from the ground up.
       </p>
       <div class="hero-buttons">
-        <a href="#ventures" class="btn-primary">Explore Ventures</a>
+        <a href="#machine" class="btn-primary">Enter the Machine (3D)</a>
+        <a href="#laboratory" class="btn-secondary glass">Open The Laboratory</a>
         <a href="https://github.com/samar-agshikar" target="_blank" rel="noreferrer" class="btn-secondary glass">GitHub</a>
+      </div>
+      <div class="fact-pill glass" id="factBox">
+        <span id="factText">Random note: I speak English and German, having studied in both education systems.</span>
+        <button type="button" id="nextFactBtn">Another</button>
       </div>
     </section>
 
-    <section id="ventures" class="grid">
-      <article class="card glass">
-        <div class="card-tag">01 / Primary Venture</div>
-        <h2>KerniqOS</h2>
-        <p>My primary long-term technology venture focused on rethinking how people interact with devices and build software. Its vision combines a cross-platform developer desktop application, intelligent device-aware environments, integrated templates, gesture-based interaction, and eventually a proprietary Linux-based OS—starting with a polished, genuinely useful software product.</p>
-      </article>
+    <!-- 1. MEET SAMAR & JOURNEY -->
+    <section id="meet" class="block">
+      <div class="section-header">
+        <span class="eyebrow">01 / Identity &amp; Journey</span>
+        <h2 class="section-title">You don't need to wait until university to start building.</h2>
+        <p class="section-desc">
+          I'm a 13-year-old student at Adani International School in Ahmedabad, India. I enjoy turning ideas into working software, dissecting how computers and aircraft operate, and combining engineering rigor with thoughtful product design.
+        </p>
+      </div>
 
-      <article class="card glass">
-        <div class="card-tag">02 / EdTech · the-1.app</div>
-        <h2>THE 1</h2>
-        <p>An AI-powered student workspace unifying AI tutoring, notes, homework management, timetables, revision tools, quizzes, and presentations in one place. I have led its product development, technical architecture, user experience, school pilot, and launches. Explore it at <a href="https://the-1.app" target="_blank" rel="noreferrer" style="color: var(--accent); text-decoration: none;">the-1.app</a>.</p>
-      </article>
+      <div class="timeline-controls" role="tablist" aria-label="Journey timeline">
+        <button class="pill-btn active" data-step="0">Germany</button>
+        <button class="pill-btn" data-step="1">Move to Ahmedabad</button>
+        <button class="pill-btn" data-step="2">Technology &amp; Code</button>
+        <button class="pill-btn" data-step="3">Building THE 1</button>
+        <button class="pill-btn" data-step="4">KerniqOS Vision</button>
+        <button class="pill-btn" data-step="5">Leadership (2026–27)</button>
+      </div>
 
-      <article class="card glass">
-        <div class="card-tag">03 / Education Platform</div>
-        <h2>College Chances India (CCI)</h2>
-        <p>An AI-powered education platform built to help students discover universities, educational opportunities, and academic pathways without relying entirely on expensive consultancy services—reflecting my commitment to making educational information more accessible.</p>
-      </article>
+      <div class="timeline-stage glass" id="timelineStage">
+        <div>
+          <div class="timeline-meta" id="tlMeta">CHAPTER 01 · INTERNATIONAL PERSPECTIVE</div>
+          <h3 id="tlTitle" style="font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem;">Studying in Germany</h3>
+        </div>
+        <p id="tlDesc" style="color: var(--text-secondary); line-height: 1.7;">
+          Living and studying in Germany gave me an early appreciation for engineering precision, structured problem-solving, and learning across cultures. It also made me bilingual in English and German, shaping how I think about global problems.
+        </p>
+      </div>
+    </section>
 
-      <article id="profile" class="card glass">
-        <div class="card-tag">04 / Leadership &amp; Community</div>
-        <h2>School Involvement</h2>
-        <p>Active in student leadership at Adani International School through the Student Council, the Culture and Events team, and the Round Square Student Committee (2026–27). I contribute to event planning, coordination, student engagement, and community initiatives.</p>
-      </article>
+    <!-- 2. VENTURES -->
+    <section id="ventures" class="block">
+      <div class="section-header">
+        <span class="eyebrow">02 / Ventures &amp; Projects</span>
+        <h2 class="section-title">Ideas turned into real software.</h2>
+        <p class="section-desc">
+          My entrepreneurial explorations—distinguishing what is actively built today from the long-term technical ambitions I am working toward.
+        </p>
+      </div>
 
-      <article class="card glass">
-        <div class="card-tag">05 / Academics</div>
-        <h2>Academic Achievements</h2>
-        <p>Strong focus on mathematics, science, and analytical problem-solving. Recognised with the SOF Mathematics Gold Medal of Excellence, ASSET Mathematics Gold recognition (98th percentile), and ASSET Science Silver recognition (93rd percentile).</p>
-      </article>
+      <div class="grid">
+        <article class="card glass">
+          <div class="card-tag"><span>Primary Venture</span><span class="status-chip">Active Development</span></div>
+          <h3>KerniqOS</h3>
+          <p>My primary long-term technology venture focused on rethinking how people interact with devices and build software.</p>
+          <ul>
+            <li><strong>Current Focus:</strong> Building a polished, cross-platform developer desktop application with intelligent, device-aware environments and integrated templates.</li>
+            <li><strong>Long-Term Vision:</strong> Exploring natural, gesture-based computer interaction and eventually developing a proprietary Linux-based operating system.</li>
+          </ul>
+        </article>
 
-      <article class="card glass">
-        <div class="card-tag">06 / Focus &amp; Philosophy</div>
-        <h2>Interests &amp; Approach</h2>
-        <p>Actively exploring AI, computer systems, entrepreneurship, aerospace engineering, leadership, and minimalist product design. My approach is simple: start building instead of waiting for permission, learn by shipping real products, stay curious, and focus on execution.</p>
-      </article>
+        <article class="card glass">
+          <div class="card-tag"><span>EdTech Workspace</span><span class="status-chip">Live Product</span></div>
+          <h3>THE 1</h3>
+          <p>An AI-powered student workspace designed to bring studying, organisation, and learning together in one cohesive environment.</p>
+          <ul>
+            <li>Unifies AI tutoring, notes, study materials, homework management, timetables, revision tools, quizzes, and presentations.</li>
+            <li>I worked across product development, technical architecture, user experience, school pilot, and launches.</li>
+          </ul>
+          <a href="https://the-1.app" target="_blank" rel="noreferrer" class="card-link">Visit the-1.app &rarr;</a>
+        </article>
+
+        <article class="card glass">
+          <div class="card-tag"><span>Education Platform</span><span class="status-chip">Project</span></div>
+          <h3>College Chances India (CCI)</h3>
+          <p>An AI-powered education platform designed to help students discover universities, educational opportunities, and potential academic pathways.</p>
+          <ul>
+            <li>Built to make educational information more accessible without depending entirely on expensive consultancy services.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. SIGNATURE EXPERIENCE: BEYOND THE SCREEN -->
+    <section id="machine" class="block">
+      <div class="section-header">
+        <span class="eyebrow">03 / Signature 3D Experience</span>
+        <h2 class="section-title">Beyond the Screen: Inside the Machine</h2>
+        <p class="section-desc">
+          Shrink down and travel inside a computer—from the chassis and motherboard to a CPU core, a GPU's parallel shader array, and down to a semiconductor transistor and logic gates. <em>(Interactive educational 3D models built with Three.js.)</em>
+        </p>
+      </div>
+
+      <div class="machine-shell">
+        <div class="machine-topbar">
+          <div class="machine-modes">
+            <button class="m-btn active" data-mode="enter">Enter the Machine</button>
+            <button class="m-btn" data-mode="free">Explore Freely</button>
+            <button class="m-btn" data-mode="guided">Guided Tour</button>
+            <button class="m-btn" data-mode="system">System Data Flow</button>
+          </div>
+          <div class="machine-scales">
+            <button class="m-btn active" data-scale="exterior">Exterior</button>
+            <button class="m-btn" data-scale="hardware">Motherboard &amp; Hardware</button>
+            <button class="m-btn" data-scale="cpu">Inside CPU</button>
+            <button class="m-btn" data-scale="gpu">Inside GPU</button>
+            <button class="m-btn" data-scale="silicon">Semiconductor</button>
+          </div>
+        </div>
+
+        <div class="machine-viewport-wrap">
+          <canvas id="machine-canvas"></canvas>
+
+          <div class="machine-hud-left">
+            <div class="hud-chip" id="scaleIndicator">SCALE: 1:1 · COMPUTER EXTERIOR</div>
+            <div class="hud-chip">Drag to orbit · Scroll to zoom · Click components · WASD to move</div>
+          </div>
+
+          <aside class="machine-info-panel" aria-live="polite">
+            <div class="eyebrow" id="infoCategory" style="margin-bottom: 4px;">COMPUTER ARCHITECTURE</div>
+            <h3 id="infoTitle" style="font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem;">Desktop Workstation</h3>
+            <div class="depth-tabs">
+              <button class="depth-tab active" data-depth="simple">Simple</button>
+              <button class="depth-tab" data-depth="detailed">Detailed</button>
+              <button class="depth-tab" data-depth="deep">Deep Dive</button>
+            </div>
+            <p id="infoBody" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.65;">
+              Click "Enter the Machine" to shrink inside the chassis, or select any scale above to inspect the motherboard, CPU, GPU, RAM, SSD, and microscopic silicon transistors.
+            </p>
+            <div style="margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--glass-border);">
+              <div style="font-size: 0.76rem; color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px;">CONNECTIONS &amp; ROLE</div>
+              <p id="infoConnects" style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.55;">
+                Houses power delivery, thermal management, and high-speed interconnects linking compute, memory, and storage.
+              </p>
+            </div>
+          </aside>
+        </div>
+
+        <div class="guided-bar">
+          <span id="guidedText">Guided Tour Ready — Step 1 of 5: Exterior Chassis</span>
+          <div style="display: flex; gap: 8px;">
+            <button class="m-btn" id="guidePrev">&larr; Prev</button>
+            <button class="m-btn" id="guideNext">Next &rarr;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Language of Computing: Interactive Logic Gate Playground -->
+      <div class="logic-box glass">
+        <div>
+          <div class="eyebrow">The Language of Computing</div>
+          <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; margin-bottom: 8px;">Interactive Logic Gates</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+            Transistors act as microscopic switches representing 0s and 1s. Combine them into logic gates to perform computation. Toggle inputs A and B and switch gates to see Boolean logic in action.
+          </p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button class="bit-toggle on" id="bitA">Input A: 1</button>
+            <button class="bit-toggle" id="bitB">Input B: 0</button>
+            <select id="gateSelect" class="bit-toggle" aria-label="Select logic gate">
+              <option value="AND">AND Gate</option>
+              <option value="OR">OR Gate</option>
+              <option value="XOR">XOR Gate</option>
+              <option value="NAND">NAND Gate</option>
+              <option value="NOT">NOT Gate (A)</option>
+            </select>
+          </div>
+          <div class="glass" style="padding: 14px 18px; border-radius: 14px; display: flex; justify-content: space-between; align-items: center;">
+            <span id="gateFormula" style="font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; color: var(--text-secondary);">1 AND 0</span>
+            <span id="gateOutput" style="font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 700; color: var(--accent);">OUTPUT: 0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. THE LABORATORY -->
+    <section id="laboratory" class="block">
+      <div class="section-header">
+        <span class="eyebrow">04 / The Laboratory</span>
+        <h2 class="section-title">Interactive experiments &amp; prototypes.</h2>
+        <p class="section-desc">
+          A collection of working visualisations and engineering playgrounds—from Liquid Glass optics and AI attention to aerodynamics, operating systems, and particle physics.
+        </p>
+      </div>
+
+      <div class="lab-tabs" role="tablist">
+        <button class="pill-btn active" data-lab="glass">01 · Liquid Glass Playground</button>
+        <button class="pill-btn" data-lab="ai">02 · AI Attention Explorer</button>
+        <button class="pill-btn" data-lab="aero">03 · Flight &amp; Aerospace</button>
+        <button class="pill-btn" data-lab="os">04 · OS &amp; Network Flow</button>
+        <button class="pill-btn" data-lab="physics">05 · Creative Physics Lab</button>
+      </div>
+
+      <!-- LAB 01: LIQUID GLASS PLAYGROUND -->
+      <div class="lab-panel glass active" id="lab-glass">
+        <div class="lab-split">
+          <div>
+            <h3 style="font-family: 'Space Grotesk', sans-serif; margin-bottom: 14px;">Liquid Glass Parameters</h3>
+            <div class="control-group">
+              <label><span>Background Blur</span><span id="valBlur">20px</span></label>
+              <input type="range" id="ctrlBlur" min="0" max="48" value="20" />
+            </div>
+            <div class="control-group">
+              <label><span>Surface Opacity</span><span id="valOpacity">0.12</span></label>
+              <input type="range" id="ctrlOpacity" min="0.02" max="0.45" step="0.01" value="0.12" />
+            </div>
+            <div class="control-group">
+              <label><span>Border Intensity</span><span id="valBorder">0.24</span></label>
+              <input type="range" id="ctrlBorder" min="0.05" max="0.8" step="0.02" value="0.24" />
+            </div>
+            <div class="control-group">
+              <label><span>Specular Light Angle</span><span id="valAngle">145°</span></label>
+              <input type="range" id="ctrlAngle" min="0" max="360" value="145" />
+            </div>
+            <div class="control-group">
+              <label><span>Saturation / Refraction</span><span id="valSat">160%</span></label>
+              <input type="range" id="ctrlSat" min="100" max="260" value="160" />
+            </div>
+            <div class="control-group">
+              <label><span>Depth Elevation</span><span id="valDepth">24px</span></label>
+              <input type="range" id="ctrlDepth" min="0" max="60" value="24" />
+            </div>
+          </div>
+          <div class="glass-stage" id="glassStage">
+            <div class="glass-stage-bg-shapes">
+              <div class="stage-blob" style="width: 170px; height: 170px; background: #e8ff47; top: 20px; left: 30px;"></div>
+              <div class="stage-blob" style="width: 200px; height: 200px; background: #38bdf8; bottom: -20px; right: 20px;"></div>
+              <div class="stage-blob" style="width: 130px; height: 130px; background: #f43f5e; top: 120px; right: 140px;"></div>
+            </div>
+            <div id="live-glass-card">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; opacity: 0.85; margin-bottom: 8px;">LIQUID GLASS SURFACE</div>
+              <div style="font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 8px;">Optical Depth</div>
+              <p style="font-size: 0.85rem; line-height: 1.5; opacity: 0.9;">Move the sliders to adjust refraction, blur, specular highlights, and elevation in real time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAB 02: AI ATTENTION EXPLORER -->
+      <div class="lab-panel glass" id="lab-ai">
+        <h3 style="font-family: 'Space Grotesk', sans-serif; margin-bottom: 8px;">How Transformers Attend to Words</h3>
+        <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 16px;">
+          Click any token below to inspect a conceptual self-attention distribution—showing which surrounding tokens carry the strongest contextual weight.
+        </p>
+        <div class="token-row" id="aiTokens"></div>
+        <div class="glass" style="padding: 20px; border-radius: 16px; margin-top: 14px;">
+          <div id="aiExplain" style="font-family: 'JetBrains Mono', monospace; font-size: 0.84rem; color: var(--accent); margin-bottom: 10px;"></div>
+          <div id="aiBars" style="display: grid; gap: 8px;"></div>
+        </div>
+      </div>
+
+      <!-- LAB 03: FLIGHT & AEROSPACE -->
+      <div class="lab-panel glass" id="lab-aero">
+        <div class="lab-split">
+          <div>
+            <h3 style="font-family: 'Space Grotesk', sans-serif; margin-bottom: 12px;">Airfoil &amp; Forces of Flight</h3>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; margin-bottom: 18px;">
+              Adjust Angle of Attack and Airspeed to observe simplified Lift, Drag, and airflow streamlines over an airfoil.
+            </p>
+            <div class="control-group">
+              <label><span>Angle of Attack (α)</span><span id="valAoA">6°</span></label>
+              <input type="range" id="ctrlAoA" min="-4" max="20" value="6" />
+            </div>
+            <div class="control-group">
+              <label><span>Airspeed (Knots)</span><span id="valSpeed">180 kt</span></label>
+              <input type="range" id="ctrlSpeed" min="80" max="320" value="180" />
+            </div>
+            <div class="glass" style="padding: 14px; border-radius: 14px; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;">
+              <div id="aeroReadout">LIFT: HIGH · DRAG: LOW · STATUS: STABLE CLIMB</div>
+            </div>
+          </div>
+          <canvas id="aeroCanvas" class="sim-canvas"></canvas>
+        </div>
+      </div>
+
+      <!-- LAB 04: OS & NETWORK FLOW -->
+      <div class="lab-panel glass" id="lab-os">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+          <div>
+            <h3 style="font-family: 'Space Grotesk', sans-serif;">OS Kernel &amp; Internet Packet Simulator</h3>
+            <p style="color: var(--text-secondary); font-size: 0.88rem;">Trigger a system call or send an HTTP packet to watch how layers communicate.</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="m-btn active" id="osTriggerBtn">Dispatch Syscall</button>
+            <button class="m-btn" id="netTriggerBtn">Send Network Packet</button>
+          </div>
+        </div>
+        <canvas id="osCanvas" class="sim-canvas"></canvas>
+      </div>
+
+      <!-- LAB 05: CREATIVE PHYSICS LAB -->
+      <div class="lab-panel glass" id="lab-physics">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+          <div>
+            <h3 style="font-family: 'Space Grotesk', sans-serif;">Interactive Particle Field</h3>
+            <p style="color: var(--text-secondary); font-size: 0.88rem;">Move your cursor across the canvas to apply forces to the particle system.</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="m-btn active" data-force="attract">Attract</button>
+            <button class="m-btn" data-force="repel">Repel</button>
+            <button class="m-btn" data-force="vortex">Vortex</button>
+          </div>
+        </div>
+        <canvas id="physicsCanvas" class="sim-canvas"></canvas>
+      </div>
+    </section>
+
+    <!-- 5. LEADERSHIP & ACADEMICS -->
+    <section id="profile" class="block">
+      <div class="section-header">
+        <span class="eyebrow">05 / Leadership &amp; Academics</span>
+        <h2 class="section-title">Beyond the keyboard.</h2>
+      </div>
+      <div class="grid-2">
+        <article class="card glass">
+          <div class="card-tag"><span>Adani International School</span></div>
+          <h3>Student Leadership</h3>
+          <p>I enjoy taking initiative, working with people, organising activities, and contributing to the school community.</p>
+          <ul>
+            <li>Student Council member.</li>
+            <li>Culture and Events team.</li>
+            <li>Round Square Student Committee, 2026–27.</li>
+            <li>Event planning, coordination, student engagement, and community initiatives.</li>
+          </ul>
+        </article>
+        <article class="card glass">
+          <div class="card-tag"><span>Mathematics &amp; Science</span></div>
+          <h3>Academic Achievements</h3>
+          <p>Strong focus on mathematics, science, analytical thinking, and structured problem-solving.</p>
+          <ul>
+            <li>SOF Mathematics Gold Medal of Excellence.</li>
+            <li>ASSET Mathematics: 98th percentile, Gold recognition.</li>
+            <li>ASSET Science: 93rd percentile, Silver recognition.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- 6. PHILOSOPHY, NOTEBOOK & CURRENTLY EXPLORING -->
+    <section id="notebook" class="block">
+      <div class="section-header">
+        <span class="eyebrow">06 / Philosophy &amp; Ideas Notebook</span>
+        <h2 class="section-title">How I think &amp; what I'm exploring.</h2>
+      </div>
+
+      <div class="quote-grid" style="margin-bottom: 36px;">
+        <div class="card glass">
+          <div class="card-tag">Principle 01</div>
+          <h3>Curiosity over convention.</h3>
+          <p>Explore how complex systems actually work and question existing approaches.</p>
+        </div>
+        <div class="card glass">
+          <div class="card-tag">Principle 02</div>
+          <h3>Build to understand.</h3>
+          <p>Learn by creating, testing, experimenting, and iterating on real software.</p>
+        </div>
+        <div class="card glass">
+          <div class="card-tag">Principle 03</div>
+          <h3>Thoughtful technology.</h3>
+          <p>Care equally about what software does under the hood and how it feels to use.</p>
+        </div>
+        <div class="card glass">
+          <div class="card-tag">Principle 04</div>
+          <h3>Ambitious yet practical.</h3>
+          <p>Explore big long-term possibilities while shipping useful work today.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card glass">
+          <div class="card-tag"><span>Ideas Notebook</span><span class="status-chip">Concepts &amp; Questions</span></div>
+          <h3>Future Explorations</h3>
+          <ul>
+            <li><strong>Spatial &amp; Gesture HCI:</strong> Can natural hand gestures replace repetitive window-management shortcuts?</li>
+            <li><strong>Device-Aware IDEs:</strong> How can a developer environment automatically adapt to hardware constraints?</li>
+            <li><strong>Linux Systems:</strong> Understanding custom kernel builds, compositors, and minimal boot pipelines.</li>
+          </ul>
+        </div>
+        <div class="card glass">
+          <div class="card-tag"><span>Currently Exploring</span><span class="status-chip">Learning</span></div>
+          <h3>Active Focus Areas</h3>
+          <p>Topics I am actively reading about, prototyping, and studying:</p>
+          <div class="topic-pills">
+            <span class="topic-pill glass">Operating System Architecture</span>
+            <span class="topic-pill glass">AI-Assisted Development</span>
+            <span class="topic-pill glass">Liquid Glass &amp; UI Design</span>
+            <span class="topic-pill glass">Gesture HCI</span>
+            <span class="topic-pill glass">Aerospace Engineering</span>
+            <span class="topic-pill glass">Computer Architecture</span>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer id="contact">
-    Samar Agshikar · <a href="https://samar-agshikar.github.io" style="color: var(--text-secondary); text-decoration: none;">samar-agshikar.github.io</a> · <a href="https://github.com/samar-agshikar" target="_blank" rel="noreferrer" style="color: var(--text-secondary); text-decoration: none;">GitHub</a>
+    Samar Agshikar · Ahmedabad, India ·
+    <a href="https://samar-agshikar.github.io" style="color: var(--text-secondary); text-decoration: none;">samar-agshikar.github.io</a> ·
+    <a href="https://github.com/samar-agshikar" target="_blank" rel="noreferrer" style="color: var(--text-secondary); text-decoration: none;">GitHub</a> ·
+    <a href="https://the-1.app" target="_blank" rel="noreferrer" style="color: var(--text-secondary); text-decoration: none;">THE 1</a>
   </footer>
 
   <!-- Three.js CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
-    // 1. Custom Cursor
+    /* ============================================================
+       1. CUSTOM CURSOR & THEME SWITCHER
+       ============================================================ */
     const cursorDot = document.getElementById("cursorDot");
     const cursorRing = document.getElementById("cursorRing");
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let ringX = mouseX;
-    let ringY = mouseY;
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let ringX = mouseX, ringY = mouseY;
 
     window.addEventListener("mousemove", (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+      mouseX = e.clientX; mouseY = e.clientY;
       cursorDot.style.left = `${mouseX}px`;
       cursorDot.style.top = `${mouseY}px`;
     });
 
-    function animateCursor() {
+    (function animateCursor() {
       ringX += (mouseX - ringX) * 0.16;
       ringY += (mouseY - ringY) * 0.16;
       cursorRing.style.left = `${ringX}px`;
       cursorRing.style.top = `${ringY}px`;
       requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
+    })();
 
-    document.querySelectorAll("a, button, .card").forEach((el) => {
+    document.querySelectorAll("a, button, .card, input, select").forEach((el) => {
       el.addEventListener("mouseenter", () => cursorRing.classList.add("hovering"));
       el.addEventListener("mouseleave", () => cursorRing.classList.remove("hovering"));
     });
 
-    // 2. Three.js 3D Wireframe Shapes & Particles
-    const canvas = document.getElementById("bg-canvas");
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
-    camera.position.z = 14;
-
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    const themeAccentHex = {
-      acid: 0xe8ff47,
-      ocean: 0x38bdf8,
-      sunset: 0xfb923c,
-      light: 0x4f46e5,
-    };
-
+    const themeAccentHex = { acid: 0xe8ff47, ocean: 0x38bdf8, sunset: 0xfb923c, light: 0x4f46e5 };
     const themedMaterials = [];
 
-    function createWireframe(geometry, position, opacity = 0.24) {
-      const material = new THREE.MeshBasicMaterial({
-        color: themeAccentHex.acid,
-        wireframe: true,
-        transparent: true,
-        opacity,
-      });
-      themedMaterials.push(material);
-      const mesh = new THREE.Mesh(geometry, material);
-      mesh.position.set(...position);
-      scene.add(mesh);
-      return mesh;
-    }
-
-    const shapes = [
-      createWireframe(new THREE.TorusKnotGeometry(2.2, 0.55, 80, 14), [5.8, 2.2, -2], 0.22),
-      createWireframe(new THREE.IcosahedronGeometry(1.8, 0), [-6.2, -2.5, -1], 0.25),
-      createWireframe(new THREE.TorusGeometry(1.5, 0.35, 16, 48), [-5.5, 3.6, -4], 0.18),
-      createWireframe(new THREE.DodecahedronGeometry(1.4, 0), [5.2, -3.4, -3], 0.20),
-    ];
-
-    // Background Particles
-    const particleCount = 160;
-    const positions = new Float32Array(particleCount * 3);
-    for (let i = 0; i < particleCount * 3; i++) {
-      positions[i] = (Math.random() - 0.5) * 32;
-    }
-    const particleGeo = new THREE.BufferGeometry();
-    particleGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-    const particleMat = new THREE.PointsMaterial({
-      color: themeAccentHex.acid,
-      size: 0.07,
-      transparent: true,
-      opacity: 0.45,
-    });
-    themedMaterials.push(particleMat);
-    const particles = new THREE.Points(particleGeo, particleMat);
-    scene.add(particles);
-
-    let targetX = 0;
-    let targetY = 0;
-    window.addEventListener("mousemove", (e) => {
-      targetX = (e.clientX / window.innerWidth - 0.5) * 1.2;
-      targetY = (e.clientY / window.innerHeight - 0.5) * 1.2;
-    });
-
-    function animateThree() {
-      requestAnimationFrame(animateThree);
-      shapes.forEach((mesh, i) => {
-        mesh.rotation.x += 0.002 + i * 0.0005;
-        mesh.rotation.y += 0.003 + i * 0.0004;
-      });
-      particles.rotation.y += 0.0006;
-
-      camera.position.x += (targetX - camera.position.x) * 0.04;
-      camera.position.y += (-targetY - camera.position.y) * 0.04;
-      camera.lookAt(scene.position);
-
-      renderer.render(scene, camera);
-    }
-    animateThree();
-
-    window.addEventListener("resize", () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-
-    // 3. Theme Switcher (CSS + Three.js Sync + LocalStorage)
     function applyTheme(themeName) {
       document.documentElement.setAttribute("data-theme", themeName);
       localStorage.setItem("site-theme", themeName);
-
       document.querySelectorAll(".theme-dot").forEach((btn) => {
         btn.classList.toggle("active", btn.dataset.setTheme === themeName);
       });
-
       const newColor = themeAccentHex[themeName] ?? themeAccentHex.acid;
       themedMaterials.forEach((mat) => mat.color.setHex(newColor));
     }
@@ -682,8 +1255,669 @@
       btn.addEventListener("click", () => applyTheme(btn.dataset.setTheme));
     });
 
-    const savedTheme = localStorage.getItem("site-theme") || "acid";
-    applyTheme(savedTheme);
+    /* ============================================================
+       2. AMBIENT 3D BACKGROUND
+       ============================================================ */
+    const bgCanvas = document.getElementById("bg-canvas");
+    const bgScene = new THREE.Scene();
+    const bgCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
+    bgCamera.position.z = 14;
+    const bgRenderer = new THREE.WebGLRenderer({ canvas: bgCanvas, alpha: true, antialias: true });
+    bgRenderer.setSize(window.innerWidth, window.innerHeight);
+    bgRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    function createBgWire(geometry, pos, opacity = 0.2) {
+      const mat = new THREE.MeshBasicMaterial({ color: themeAccentHex.acid, wireframe: true, transparent: true, opacity });
+      themedMaterials.push(mat);
+      const mesh = new THREE.Mesh(geometry, mat);
+      mesh.position.set(...pos);
+      bgScene.add(mesh);
+      return mesh;
+    }
+
+    const bgShapes = [
+      createBgWire(new THREE.TorusKnotGeometry(2.2, 0.55, 72, 12), [6, 2.2, -2], 0.18),
+      createBgWire(new THREE.IcosahedronGeometry(1.8, 0), [-6.2, -2.5, -1], 0.2),
+      createBgWire(new THREE.TorusGeometry(1.5, 0.35, 16, 42), [-5.5, 3.6, -4], 0.15)
+    ];
+
+    let bgTargetX = 0, bgTargetY = 0;
+    window.addEventListener("mousemove", (e) => {
+      bgTargetX = (e.clientX / window.innerWidth - 0.5) * 1.1;
+      bgTargetY = (e.clientY / window.innerHeight - 0.5) * 1.1;
+    });
+
+    (function animateBg() {
+      requestAnimationFrame(animateBg);
+      bgShapes.forEach((m, i) => { m.rotation.x += 0.0018 + i * 0.0004; m.rotation.y += 0.0025; });
+      bgCamera.position.x += (bgTargetX - bgCamera.position.x) * 0.04;
+      bgCamera.position.y += (-bgTargetY - bgCamera.position.y) * 0.04;
+      bgCamera.lookAt(bgScene.position);
+      bgRenderer.render(bgScene, bgCamera);
+    })();
+
+    applyTheme(localStorage.getItem("site-theme") || "acid");
+
+    /* ============================================================
+       3. RANDOM FACT & INTERACTIVE TIMELINE
+       ============================================================ */
+    const facts = [
+      "I speak English and German, having studied in both education systems.",
+      "I'm fascinated by aviation, aerodynamics, and how aircraft control surfaces work.",
+      "I believe you don't need to wait until university to start building meaningful software.",
+      "I serve on the Round Square Student Committee (2026–27) at Adani International School.",
+      "KerniqOS started from a simple question: how can developer tools feel more natural?"
+    ];
+    let factIdx = 0;
+    document.getElementById("nextFactBtn").addEventListener("click", () => {
+      factIdx = (factIdx + 1) % facts.length;
+      document.getElementById("factText").textContent = "Random note: " + facts[factIdx];
+    });
+
+    const timelineData = [
+      { meta: "CHAPTER 01 · INTERNATIONAL PERSPECTIVE", title: "Studying in Germany", desc: "Living and studying in Germany gave me an early appreciation for engineering precision, structured problem-solving, and learning across cultures. It also made me bilingual in English and German." },
+      { meta: "CHAPTER 02 · NEW ENVIRONMENT", title: "Moving to Ahmedabad", desc: "Transitioning to Adani International School in Ahmedabad broadened my perspective, combining international education with India's fast-growing technology ecosystem." },
+      { meta: "CHAPTER 03 · CURIOSITY TO EXECUTION", title: "Diving into Technology & Math", desc: "My interest in mathematics, science, and analytical problem-solving grew alongside software engineering—earning the SOF Mathematics Gold Medal of Excellence and ASSET Gold (98th percentile) in Mathematics." },
+      { meta: "CHAPTER 04 · SHIPPING PRODUCTS", title: "Building THE 1", desc: "Created THE 1 (the-1.app), an AI-powered student workspace unifying AI tutoring, notes, homework, timetables, quizzes, and presentations—working across architecture, UX, and a school pilot." },
+      { meta: "CHAPTER 05 · LONG-TERM VENTURE", title: "Developing KerniqOS", desc: "Launched my primary long-term venture, KerniqOS—focusing first on a polished cross-platform developer desktop app, with a long-term vision toward gesture HCI and a Linux-based OS." },
+      { meta: "CHAPTER 06 · COMMUNITY", title: "Student Leadership (2026–27)", desc: "Active in the Student Council, Culture and Events team, and the Round Square Student Committee (2026–27), helping organise school initiatives and student engagement." }
+    ];
+
+    document.querySelectorAll(".timeline-controls .pill-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".timeline-controls .pill-btn").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const item = timelineData[Number(btn.dataset.step)];
+        document.getElementById("tlMeta").textContent = item.meta;
+        document.getElementById("tlTitle").textContent = item.title;
+        document.getElementById("tlDesc").textContent = item.desc;
+      });
+    });
+
+    /* ============================================================
+       4. SIGNATURE 3D EXPERIENCE: BEYOND THE SCREEN
+       ============================================================ */
+    const mCanvas = document.getElementById("machine-canvas");
+    const mScene = new THREE.Scene();
+    mScene.fog = new THREE.FogExp2(0x05070c, 0.032);
+
+    const mCamera = new THREE.PerspectiveCamera(50, mCanvas.clientWidth / mCanvas.clientHeight, 0.1, 120);
+    mCamera.position.set(0, 4.5, 12);
+
+    const mRenderer = new THREE.WebGLRenderer({ canvas: mCanvas, antialias: true });
+    mRenderer.setSize(mCanvas.clientWidth, mCanvas.clientHeight);
+    mRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Lighting
+    mScene.add(new THREE.AmbientLight(0xffffff, 0.55));
+    const dirLight = new THREE.DirectionalLight(0x38bdf8, 1.1);
+    dirLight.position.set(8, 12, 8);
+    mScene.add(dirLight);
+    const ptLight = new THREE.PointLight(0xe8ff47, 1.2, 30);
+    ptLight.position.set(-6, 5, 6);
+    mScene.add(ptLight);
+
+    // Component Knowledge Base (Simple / Detailed / Deep Dive)
+    const componentDB = {
+      exterior: {
+        cat: "SCALE 1:1 · CHASSIS", title: "Desktop Workstation",
+        simple: "The outer case protects delicate electronics, directs cooling airflow, and holds every component in place.",
+        detailed: "An aluminum-and-glass enclosure engineered for thermal management, electromagnetic shielding, and modular hardware mounting.",
+        deep: "Maintains positive air pressure across intake fans while isolating the ATX motherboard tray, PSU shroud, and PCIe expansion slots.",
+        connects: "Houses the Motherboard, CPU, GPU, RAM, SSD, Power Supply, and Cooling System."
+      },
+      motherboard: {
+        cat: "HARDWARE · PCB", title: "Motherboard",
+        simple: "The main circuit board that connects every part of the computer so they can share power and talk to each other.",
+        detailed: "A multi-layer printed circuit board (PCB) with microscopic copper traces carrying high-speed data signals and regulated voltage.",
+        deep: "Routes PCIe lanes, DDR memory channels, and chipset I/O buses across 6–12 copper layers with impedance-matched differential pairs.",
+        connects: "Links CPU, GPU, RAM, NVMe SSD, Chipset, VRM power phases, and I/O ports."
+      },
+      cpu: {
+        cat: "PROCESSOR · COMPUTE", title: "Central Processing Unit (CPU)",
+        simple: "The brain of the computer—it fetches instructions from software and executes calculations billions of times per second.",
+        detailed: "Contains multiple cores, Arithmetic Logic Units (ALUs), Control Units, Registers, and ultra-fast L1/L2/L3 cache memory.",
+        deep: "Executes an out-of-order superscalar pipeline (Fetch → Decode → Execute → Writeback) with branch prediction to keep execution units saturated.",
+        connects: "Directly attached to RAM via the memory controller and to the GPU/SSD via PCIe lanes."
+      },
+      gpu: {
+        cat: "PARALLEL COMPUTE", title: "Graphics Processing Unit (GPU)",
+        simple: "Built to do thousands of small math problems at the exact same time—ideal for 3D graphics and AI.",
+        detailed: "Packs thousands of shader cores, texture units, and high-bandwidth VRAM to render frames and run parallel matrix operations.",
+        deep: "Uses SIMT (Single Instruction, Multiple Threads) architecture to schedule warps/wavefronts across streaming multiprocessors simultaneously.",
+        connects: "Communicates with the CPU over high-bandwidth PCIe lanes and outputs frames to displays."
+      },
+      ram: {
+        cat: "VOLATILE MEMORY", title: "RAM (System Memory)",
+        simple: "The computer's short-term desk space. It holds active apps and data so the CPU can reach them instantly, but clears when powered off.",
+        detailed: "Dynamic Random-Access Memory stores each bit as an electrical charge in a tiny capacitor-transistor cell, organized by rows and columns.",
+        deep: "Operates across dual/quad memory channels; memory controllers refresh capacitor charges every few milliseconds while servicing burst reads.",
+        connects: "Feeds instructions and data directly to the CPU's cache hierarchy."
+      },
+      ssd: {
+        cat: "PERSISTENT STORAGE", title: "NVMe Solid-State Drive (SSD)",
+        simple: "Long-term storage that keeps your operating system, apps, and files safe even when the computer is turned off.",
+        detailed: "Uses NAND flash memory cells and a dedicated controller to read and write gigabytes per second with no moving parts.",
+        deep: "Stores charge states in floating-gate or charge-trap transistors over PCIe NVMe queues, eliminating legacy SATA bottlenecks.",
+        connects: "Loads OS and application data into RAM over PCIe lanes."
+      },
+      silicon: {
+        cat: "MICROSCOPIC · NANOMETERS", title: "MOSFET Transistor & Silicon",
+        simple: "A microscopic electronic switch. When voltage hits the Gate, electricity flows from Source to Drain—creating the 1s and 0s of computing.",
+        detailed: "CMOS transistors combine N-type and P-type doped silicon with an insulated gate to switch states with minimal power loss.",
+        deep: "Billions of FinFET/GAAFET transistors are patterned via photolithography to form logic gates (NAND, NOR, XOR), which scale up into ALUs and entire CPUs.",
+        connects: "Forms Logic Gates → Registers & ALUs → CPU/GPU Cores."
+      }
+    };
+
+    let currentInfoKey = "exterior";
+    let currentDepth = "simple";
+
+    function updateInfoPanel(key) {
+      currentInfoKey = key;
+      const d = componentDB[key] || componentDB.exterior;
+      document.getElementById("infoCategory").textContent = d.cat;
+      document.getElementById("infoTitle").textContent = d.title;
+      document.getElementById("infoBody").textContent = d[currentDepth];
+      document.getElementById("infoConnects").textContent = d.connects;
+    }
+
+    document.querySelectorAll(".depth-tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".depth-tab").forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
+        currentDepth = tab.dataset.depth;
+        updateInfoPanel(currentInfoKey);
+      });
+    });
+
+    // Build 3D Scale Groups
+    const scaleGroups = {
+      exterior: new THREE.Group(),
+      hardware: new THREE.Group(),
+      cpu: new THREE.Group(),
+      gpu: new THREE.Group(),
+      silicon: new THREE.Group()
+    };
+    Object.values(scaleGroups).forEach((g) => mScene.add(g));
+    const clickableMeshes = [];
+
+    function makeComp(geo, color, pos, key, parent, opacity = 0.92) {
+      const mat = new THREE.MeshStandardMaterial({
+        color, roughness: 0.35, metalness: 0.5, transparent: opacity < 1, opacity
+      });
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.position.set(...pos);
+      mesh.userData.compKey = key;
+      parent.add(mesh);
+      clickableMeshes.push(mesh);
+      return mesh;
+    }
+
+    // 1. Exterior Chassis
+    makeComp(new THREE.BoxGeometry(5.4, 6.2, 3.2), 0x1e293b, [0, 0, 0], "exterior", scaleGroups.exterior, 0.35);
+    const frameWire = new THREE.LineSegments(
+      new THREE.EdgesGeometry(new THREE.BoxGeometry(5.45, 6.25, 3.25)),
+      new THREE.LineBasicMaterial({ color: 0x38bdf8 })
+    );
+    scaleGroups.exterior.add(frameWire);
+    // Glowing inner core preview
+    makeComp(new THREE.BoxGeometry(1.4, 1.4, 0.4), 0xe8ff47, [-0.6, 1.1, -0.5], "cpu", scaleGroups.exterior);
+    makeComp(new THREE.BoxGeometry(3.4, 0.7, 1.2), 0x38bdf8, [0, -0.8, 0.2], "gpu", scaleGroups.exterior);
+    makeComp(new THREE.BoxGeometry(0.25, 2.2, 0.6), 0xa78bfa, [1.2, 1.1, -0.4], "ram", scaleGroups.exterior);
+
+    // 2. Motherboard & Hardware
+    makeComp(new THREE.BoxGeometry(9.5, 0.3, 7.5), 0x0f172a, [0, -0.4, 0], "motherboard", scaleGroups.hardware);
+    makeComp(new THREE.BoxGeometry(2.0, 0.45, 2.0), 0xe8ff47, [-1.8, 0, -1.2], "cpu", scaleGroups.hardware);
+    makeComp(new THREE.BoxGeometry(4.4, 0.85, 1.4), 0x38bdf8, [-0.5, 0.25, 1.6], "gpu", scaleGroups.hardware);
+    for (let i = 0; i < 4; i++) {
+      makeComp(new THREE.BoxGeometry(0.28, 0.9, 2.6), 0xa78bfa, [1.2 + i * 0.45, 0.25, -1.2], "ram", scaleGroups.hardware);
+    }
+    makeComp(new THREE.BoxGeometry(2.2, 0.22, 0.8), 0x2dd4bf, [2.4, 0, 1.8], "ssd", scaleGroups.hardware);
+
+    // Animated Data Packets for System Flow
+    const dataPackets = [];
+    const pktGeo = new THREE.SphereGeometry(0.13, 12, 12);
+    for (let i = 0; i < 12; i++) {
+      const p = new THREE.Mesh(pktGeo, new THREE.MeshBasicMaterial({ color: i % 2 === 0 ? 0xe8ff47 : 0x38bdf8 }));
+      p.userData.phase = (i / 12) * Math.PI * 2;
+      scaleGroups.hardware.add(p);
+      dataPackets.push(p);
+    }
+
+    // 3. Inside CPU (Cores, ALU, Cache)
+    makeComp(new THREE.BoxGeometry(7.2, 0.3, 7.2), 0x111827, [0, -0.5, 0], "cpu", scaleGroups.cpu);
+    for (let r = 0; r < 2; r++) {
+      for (let c = 0; c < 2; c++) {
+        makeComp(new THREE.BoxGeometry(2.4, 0.6, 2.4), 0xe8ff47, [-1.5 + c * 3, 0, -1.5 + r * 3], "cpu", scaleGroups.cpu, 0.85);
+      }
+    }
+    // L3 Cache ring
+    makeComp(new THREE.BoxGeometry(6.4, 0.35, 0.7), 0x38bdf8, [0, -0.1, 3.1], "ram", scaleGroups.cpu);
+
+    // 4. Inside GPU (Parallel Shader Array)
+    const gpuCores = [];
+    for (let x = -3; x <= 3; x++) {
+      for (let z = -2; z <= 2; z++) {
+        const core = makeComp(new THREE.BoxGeometry(0.65, 0.45, 0.65), 0x38bdf8, [x * 0.95, 0, z * 0.95], "gpu", scaleGroups.gpu, 0.88);
+        core.userData.gridIdx = x + z;
+        gpuCores.push(core);
+      }
+    }
+
+    // 5. Semiconductor / MOSFET Transistor
+    makeComp(new THREE.BoxGeometry(7.5, 1.0, 4.5), 0x1e293b, [0, -1.0, 0], "silicon", scaleGroups.silicon);
+    makeComp(new THREE.BoxGeometry(1.8, 0.9, 3.6), 0x38bdf8, [-2.4, -0.1, 0], "silicon", scaleGroups.silicon); // Source
+    makeComp(new THREE.BoxGeometry(1.8, 0.9, 3.6), 0x38bdf8, [2.4, -0.1, 0], "silicon", scaleGroups.silicon);  // Drain
+    makeComp(new THREE.BoxGeometry(1.6, 1.3, 3.6), 0xe8ff47, [0, 0.3, 0], "silicon", scaleGroups.silicon);      // Gate
+
+    // Scale Switching & Smooth Camera
+    let activeScale = "exterior";
+    const camTarget = new THREE.Vector3(0, 4.2, 11.5);
+    const scaleLabels = {
+      exterior: "SCALE: 1:1 · COMPUTER EXTERIOR",
+      hardware: "SCALE: 1:10 · MOTHERBOARD & HARDWARE",
+      cpu: "SCALE: 1:1,000 · CPU CORES & PIPELINE",
+      gpu: "SCALE: 1:1,000 · GPU PARALLEL SHADERS",
+      silicon: "SCALE: NANOMETERS · MOSFET TRANSISTOR"
+    };
+    const scaleCamPos = {
+      exterior: [0, 3.5, 11.5],
+      hardware: [0, 7.5, 9.5],
+      cpu: [0, 6.8, 7.8],
+      gpu: [0, 6.8, 8.2],
+      silicon: [0, 4.2, 8.8]
+    };
+
+    function setScale(scale) {
+      activeScale = scale;
+      Object.entries(scaleGroups).forEach(([k, g]) => { g.visible = (k === scale); });
+      camTarget.set(...scaleCamPos[scale]);
+      document.getElementById("scaleIndicator").textContent = scaleLabels[scale];
+      document.querySelectorAll(".machine-scales .m-btn").forEach((b) => b.classList.toggle("active", b.dataset.scale === scale));
+      updateInfoPanel(scale === "hardware" ? "motherboard" : scale);
+    }
+    setScale("exterior");
+
+    document.querySelectorAll(".machine-scales .m-btn").forEach((btn) => {
+      btn.addEventListener("click", () => setScale(btn.dataset.scale));
+    });
+
+    // Mode buttons & Guided Tour
+    const tourOrder = ["exterior", "hardware", "cpu", "gpu", "silicon"];
+    const tourNames = ["Exterior Chassis", "Motherboard & Hardware", "Inside the CPU", "Inside the GPU", "Semiconductor Transistor"];
+    let tourStep = 0;
+
+    function syncTour() {
+      setScale(tourOrder[tourStep]);
+      document.getElementById("guidedText").textContent = `Guided Tour — Step ${tourStep + 1} of ${tourOrder.length}: ${tourNames[tourStep]}`;
+    }
+
+    document.getElementById("guideNext").addEventListener("click", () => {
+      tourStep = (tourStep + 1) % tourOrder.length;
+      syncTour();
+    });
+    document.getElementById("guidePrev").addEventListener("click", () => {
+      tourStep = (tourStep - 1 + tourOrder.length) % tourOrder.length;
+      syncTour();
+    });
+
+    document.querySelectorAll(".machine-modes .m-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".machine-modes .m-btn").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const mode = btn.dataset.mode;
+        if (mode === "enter") setScale("hardware");
+        if (mode === "guided") { tourStep = 0; syncTour(); }
+        if (mode === "system") setScale("hardware");
+      });
+    });
+
+    // Pointer Orbit, Raycasting & WASD
+    let isDragging = false, prevX = 0, prevY = 0, yaw = 0, pitch = 0.25;
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+
+    mCanvas.addEventListener("pointerdown", (e) => { isDragging = true; prevX = e.clientX; prevY = e.clientY; });
+    window.addEventListener("pointerup", () => { isDragging = false; });
+    window.addEventListener("pointermove", (e) => {
+      if (!isDragging) return;
+      yaw -= (e.clientX - prevX) * 0.006;
+      pitch = Math.max(-0.4, Math.min(1.1, pitch + (e.clientY - prevY) * 0.005));
+      prevX = e.clientX; prevY = e.clientY;
+    });
+
+    mCanvas.addEventListener("click", (e) => {
+      const rect = mCanvas.getBoundingClientRect();
+      pointer.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      pointer.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+      raycaster.setFromCamera(pointer, mCamera);
+      const visibleClickables = clickableMeshes.filter((m) => m.parent.visible);
+      const hits = raycaster.intersectObjects(visibleClickables);
+      if (hits.length > 0) {
+        updateInfoPanel(hits[0].object.userData.compKey);
+      }
+    });
+
+    window.addEventListener("keydown", (e) => {
+      const k = e.key.toLowerCase();
+      if (k === "w") camTarget.z = Math.max(4, camTarget.z - 0.6);
+      if (k === "s") camTarget.z = Math.min(16, camTarget.z + 0.6);
+      if (k === "a") yaw += 0.08;
+      if (k === "d") yaw -= 0.08;
+    });
+
+    let mTime = 0;
+    (function animateMachine() {
+      requestAnimationFrame(animateMachine);
+      mTime += 0.025;
+
+      // Smooth orbit + scale camera interpolation
+      const radius = camTarget.z;
+      const desiredX = Math.sin(yaw) * radius;
+      const desiredZ = Math.cos(yaw) * radius;
+      const desiredY = camTarget.y + Math.sin(pitch) * 2.2;
+      mCamera.position.x += (desiredX - mCamera.position.x) * 0.07;
+      mCamera.position.y += (desiredY - mCamera.position.y) * 0.07;
+      mCamera.position.z += (desiredZ - mCamera.position.z) * 0.07;
+      mCamera.lookAt(0, 0, 0);
+
+      // Animate Hardware Data Packets (CPU <-> RAM <-> GPU)
+      dataPackets.forEach((p) => {
+        const t = (mTime + p.userData.phase) % (Math.PI * 2);
+        const norm = t / (Math.PI * 2);
+        p.position.set(-1.8 + norm * 3.6, 0.35 + Math.sin(norm * Math.PI) * 0.6, -1.2 + Math.sin(t) * 2.2);
+      });
+
+      // Animate GPU Parallel Wave
+      gpuCores.forEach((c) => {
+        c.position.y = Math.sin(mTime * 2 + c.userData.gridIdx * 0.6) * 0.16;
+      });
+
+      mRenderer.render(mScene, mCamera);
+    })();
+
+    /* ============================================================
+       5. LOGIC GATE PLAYGROUND
+       ============================================================ */
+    let valA = 1, valB = 0;
+    const bitA = document.getElementById("bitA");
+    const bitB = document.getElementById("bitB");
+    const gateSelect = document.getElementById("gateSelect");
+
+    function updateGate() {
+      const g = gateSelect.value;
+      let out = 0;
+      if (g === "AND") out = valA & valB;
+      if (g === "OR") out = valA | valB;
+      if (g === "XOR") out = valA ^ valB;
+      if (g === "NAND") out = (valA & valB) ? 0 : 1;
+      if (g === "NOT") out = valA ? 0 : 1;
+      document.getElementById("gateFormula").textContent = g === "NOT" ? `NOT ${valA}` : `${valA} ${g} ${valB}`;
+      document.getElementById("gateOutput").textContent = `OUTPUT: ${out}`;
+    }
+
+    bitA.addEventListener("click", () => {
+      valA = valA ? 0 : 1;
+      bitA.textContent = `Input A: ${valA}`;
+      bitA.classList.toggle("on", valA === 1);
+      updateGate();
+    });
+    bitB.addEventListener("click", () => {
+      valB = valB ? 0 : 1;
+      bitB.textContent = `Input B: ${valB}`;
+      bitB.classList.toggle("on", valB === 1);
+      updateGate();
+    });
+    gateSelect.addEventListener("change", updateGate);
+    updateGate();
+
+    /* ============================================================
+       6. THE LABORATORY TABS & EXPERIMENTS
+       ============================================================ */
+    document.querySelectorAll(".lab-tabs .pill-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".lab-tabs .pill-btn").forEach((b) => b.classList.remove("active"));
+        document.querySelectorAll(".lab-panel").forEach((p) => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("lab-" + btn.dataset.lab).classList.add("active");
+      });
+    });
+
+    // LAB 01: LIQUID GLASS PLAYGROUND
+    const liveCard = document.getElementById("live-glass-card");
+    function updateLiquidGlass() {
+      const blur = document.getElementById("ctrlBlur").value;
+      const op = document.getElementById("ctrlOpacity").value;
+      const border = document.getElementById("ctrlBorder").value;
+      const angle = document.getElementById("ctrlAngle").value;
+      const sat = document.getElementById("ctrlSat").value;
+      const depth = document.getElementById("ctrlDepth").value;
+
+      document.getElementById("valBlur").textContent = `${blur}px`;
+      document.getElementById("valOpacity").textContent = op;
+      document.getElementById("valBorder").textContent = border;
+      document.getElementById("valAngle").textContent = `${angle}°`;
+      document.getElementById("valSat").textContent = `${sat}%`;
+      document.getElementById("valDepth").textContent = `${depth}px`;
+
+      liveCard.style.backdropFilter = `blur(${blur}px) saturate(${sat}%)`;
+      liveCard.style.webkitBackdropFilter = `blur(${blur}px) saturate(${sat}%)`;
+      liveCard.style.background = `linear-gradient(${angle}deg, rgba(255,255,255,${Number(op) + 0.14}), rgba(255,255,255,${op}))`;
+      liveCard.style.border = `1px solid rgba(255,255,255,${border})`;
+      liveCard.style.boxShadow = `0 ${depth}px ${depth * 2}px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,${Math.min(0.8, Number(border) + 0.2)})`;
+    }
+    ["ctrlBlur", "ctrlOpacity", "ctrlBorder", "ctrlAngle", "ctrlSat", "ctrlDepth"].forEach((id) => {
+      document.getElementById(id).addEventListener("input", updateLiquidGlass);
+    });
+    updateLiquidGlass();
+
+    // LAB 02: AI ATTENTION EXPLORER
+    const sentence = ["Software", "transforms", "ideas", "into", "working", "systems"];
+    const attentionMap = [
+      [0.35, 0.25, 0.10, 0.05, 0.10, 0.15],
+      [0.28, 0.20, 0.26, 0.06, 0.08, 0.12],
+      [0.12, 0.24, 0.34, 0.06, 0.10, 0.14],
+      [0.08, 0.18, 0.20, 0.14, 0.20, 0.20],
+      [0.15, 0.10, 0.10, 0.05, 0.30, 0.30],
+      [0.26, 0.14, 0.12, 0.04, 0.24, 0.20]
+    ];
+    const tokenWrap = document.getElementById("aiTokens");
+    function renderAttention(idx) {
+      document.querySelectorAll(".token-chip").forEach((c, i) => c.classList.toggle("selected", i === idx));
+      document.getElementById("aiExplain").textContent = `Query Token: "${sentence[idx]}" — Conceptual Self-Attention Weights`;
+      const bars = document.getElementById("aiBars");
+      bars.innerHTML = "";
+      attentionMap[idx].forEach((w, i) => {
+        const pct = Math.round(w * 100);
+        bars.innerHTML += `
+          <div style="display:grid; grid-template-columns: 100px 1fr 42px; gap:10px; align-items:center; font-size:0.82rem; font-family:'JetBrains Mono',monospace;">
+            <span>${sentence[i]}</span>
+            <div style="height:8px; border-radius:99px; background:rgba(255,255,255,0.08); overflow:hidden;">
+              <div style="height:100%; width:${pct}%; background:var(--accent);"></div>
+            </div>
+            <span>${pct}%</span>
+          </div>`;
+      });
+    }
+    sentence.forEach((word, i) => {
+      const b = document.createElement("button");
+      b.className = "token-chip";
+      b.textContent = word;
+      b.addEventListener("click", () => renderAttention(i));
+      tokenWrap.appendChild(b);
+    });
+    renderAttention(0);
+
+    // LAB 03: FLIGHT & AEROSPACE CANVAS
+    const aeroCanvas = document.getElementById("aeroCanvas");
+    const aeroCtx = aeroCanvas.getContext("2d");
+    let aeroOffset = 0;
+
+    function drawAero() {
+      aeroCanvas.width = aeroCanvas.clientWidth || 500;
+      aeroCanvas.height = 340;
+      const aoa = Number(document.getElementById("ctrlAoA").value);
+      const spd = Number(document.getElementById("ctrlSpeed").value);
+      document.getElementById("valAoA").textContent = `${aoa}°`;
+      document.getElementById("valSpeed").textContent = `${spd} kt`;
+
+      const stalled = aoa > 15;
+      const lift = stalled ? Math.max(20, spd * 0.3) : Math.max(0, (aoa + 4) * spd * 0.08);
+      const drag = (Math.abs(aoa) * 1.4 + 4) * (spd / 150);
+      document.getElementById("aeroReadout").textContent =
+        `LIFT: ${Math.round(lift)} · DRAG: ${Math.round(drag)} · STATUS: ${stalled ? "STALL WARNING" : aoa > 2 ? "CLIMBING" : "LEVEL"}`;
+
+      aeroCtx.clearRect(0, 0, aeroCanvas.width, aeroCanvas.height);
+      const cx = aeroCanvas.width * 0.48, cy = aeroCanvas.height * 0.52;
+
+      // Streamlines
+      aeroCtx.strokeStyle = stalled ? "rgba(244,63,94,0.55)" : "rgba(56,189,248,0.5)";
+      aeroCtx.lineWidth = 1.5;
+      for (let i = -4; i <= 4; i++) {
+        aeroCtx.beginPath();
+        for (let x = 0; x < aeroCanvas.width; x += 12) {
+          const dx = x - cx;
+          const deflect = Math.exp(-(dx * dx) / 9000) * (i < 0 ? -18 - aoa : 14);
+          const wave = stalled && dx > 30 ? Math.sin(x * 0.1 + aeroOffset) * 10 : 0;
+          const y = cy + i * 26 + deflect + wave;
+          if (x === 0) aeroCtx.moveTo(x, y); else aeroCtx.lineTo(x, y);
+        }
+        aeroCtx.stroke();
+      }
+
+      // Airfoil
+      aeroCtx.save();
+      aeroCtx.translate(cx, cy);
+      aeroCtx.rotate((-aoa * Math.PI) / 180);
+      aeroCtx.fillStyle = "#e8ff47";
+      aeroCtx.beginPath();
+      aeroCtx.moveTo(-75, 0);
+      aeroCtx.quadraticCurveTo(-20, -28, 75, 0);
+      aeroCtx.quadraticCurveTo(-10, 12, -75, 0);
+      aeroCtx.fill();
+      aeroCtx.restore();
+
+      aeroOffset += spd * 0.0012;
+      requestAnimationFrame(drawAero);
+    }
+    drawAero();
+
+    // LAB 04: OS & NETWORK FLOW
+    const osCanvas = document.getElementById("osCanvas");
+    const osCtx = osCanvas.getContext("2d");
+    const osSignals = [];
+    const osLayers = ["User Application", "System Call API", "OS Kernel", "Device Driver", "Hardware / NIC"];
+
+    document.getElementById("osTriggerBtn").addEventListener("click", () => {
+      osSignals.push({ x: 0.1, color: "#e8ff47", label: "SYSCALL" });
+    });
+    document.getElementById("netTriggerBtn").addEventListener("click", () => {
+      osSignals.push({ x: 0.1, color: "#38bdf8", label: "TCP/IP" });
+    });
+
+    (function drawOS() {
+      osCanvas.width = osCanvas.clientWidth || 600;
+      osCanvas.height = 340;
+      osCtx.clearRect(0, 0, osCanvas.width, osCanvas.height);
+
+      const step = osCanvas.width / (osLayers.length + 1);
+      osCtx.strokeStyle = "rgba(255,255,255,0.16)";
+      osCtx.lineWidth = 2;
+      osCtx.beginPath();
+      osCtx.moveTo(step, 170);
+      osCtx.lineTo(step * osLayers.length, 170);
+      osCtx.stroke();
+
+      osLayers.forEach((name, i) => {
+        const x = step * (i + 1);
+        osCtx.fillStyle = "rgba(255,255,255,0.08)";
+        osCtx.strokeStyle = "rgba(232,255,71,0.5)";
+        osCtx.beginPath();
+        osCtx.roundRect(x - 54, 142, 108, 56, 12);
+        osCtx.fill();
+        osCtx.stroke();
+        osCtx.fillStyle = "#f4f5f7";
+        osCtx.font = "11px Inter, sans-serif";
+        osCtx.textAlign = "center";
+        osCtx.fillText(name, x, 174);
+      });
+
+      for (let i = osSignals.length - 1; i >= 0; i--) {
+        const s = osSignals[i];
+        s.x += 0.008;
+        const px = step + s.x * (step * (osLayers.length - 1));
+        osCtx.fillStyle = s.color;
+        osCtx.beginPath();
+        osCtx.arc(px, 170, 7, 0, Math.PI * 2);
+        osCtx.fill();
+        if (s.x >= 1) osSignals.splice(i, 1);
+      }
+      requestAnimationFrame(drawOS);
+    })();
+
+    // LAB 05: CREATIVE PHYSICS LAB
+    const pCanvas = document.getElementById("physicsCanvas");
+    const pCtx = pCanvas.getContext("2d");
+    let forceMode = "attract";
+    let pmx = -999, pmy = -999;
+
+    document.querySelectorAll("[data-force]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("[data-force]").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        forceMode = btn.dataset.force;
+      });
+    });
+
+    pCanvas.addEventListener("mousemove", (e) => {
+      const r = pCanvas.getBoundingClientRect();
+      pmx = e.clientX - r.left; pmy = e.clientY - r.top;
+    });
+    pCanvas.addEventListener("mouseleave", () => { pmx = -999; pmy = -999; });
+
+    const pts = Array.from({ length: 90 }, () => ({
+      x: Math.random() * 600, y: Math.random() * 340,
+      vx: (Math.random() - 0.5) * 1.4, vy: (Math.random() - 0.5) * 1.4
+    }));
+
+    (function drawPhysics() {
+      pCanvas.width = pCanvas.clientWidth || 600;
+      pCanvas.height = 340;
+      pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+
+      pts.forEach((p) => {
+        const dx = pmx - p.x, dy = pmy - p.y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < 140 && dist > 1) {
+          if (forceMode === "attract") { p.vx += (dx / dist) * 0.25; p.vy += (dy / dist) * 0.25; }
+          if (forceMode === "repel")   { p.vx -= (dx / dist) * 0.35; p.vy -= (dy / dist) * 0.35; }
+          if (forceMode === "vortex")  { p.vx += (-dy / dist) * 0.3; p.vy += (dx / dist) * 0.3; }
+        }
+        p.vx *= 0.97; p.vy *= 0.97;
+        p.x = (p.x + p.vx + pCanvas.width) % pCanvas.width;
+        p.y = (p.y + p.vy + pCanvas.height) % pCanvas.height;
+
+        pCtx.fillStyle = "#e8ff47";
+        pCtx.beginPath();
+        pCtx.arc(p.x, p.y, 2.4, 0, Math.PI * 2);
+        pCtx.fill();
+      });
+      requestAnimationFrame(drawPhysics);
+    })();
+
+    // Resize Handler
+    window.addEventListener("resize", () => {
+      bgCamera.aspect = window.innerWidth / window.innerHeight;
+      bgCamera.updateProjectionMatrix();
+      bgRenderer.setSize(window.innerWidth, window.innerHeight);
+
+      if (mCanvas.clientWidth && mCanvas.clientHeight) {
+        mCamera.aspect = mCanvas.clientWidth / mCanvas.clientHeight;
+        mCamera.updateProjectionMatrix();
+        mRenderer.setSize(mCanvas.clientWidth, mCanvas.clientHeight);
+      }
+    });
   </script>
 </body>
 </html>
