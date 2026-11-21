@@ -94,7 +94,7 @@
       --glass-bg-hover: linear-gradient(155deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.55) 100%);
       --glass-border: rgba(15, 23, 42, 0.12);
       --btn-text: #ffffff;
-      --panel-solid: rgba(248, 250, 252, 0.90);
+      --panel-solid: rgba(15, 23, 42, 0.88);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -463,13 +463,13 @@
     }
 
     /* ============================================================
-       SCROLL-DRIVEN 3D EXPERIENCE: BEYOND THE SCREEN
+       SCROLL-DRIVEN 3D EXPERIENCE: BEYOND THE SCREEN (REALISTIC)
        ============================================================ */
     #machine {
       position: relative;
       z-index: 20;
-      height: 520vh;
-      background: #03050a;
+      height: 540vh;
+      background: #04060b;
       border-top: 1px solid var(--glass-border);
       border-bottom: 1px solid var(--glass-border);
     }
@@ -490,12 +490,11 @@
       display: block;
     }
 
-    /* Cinematic Vignette & HUD */
     .machine-vignette {
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: radial-gradient(circle at center, transparent 48%, rgba(3, 5, 10, 0.82) 100%);
+      background: radial-gradient(circle at center, transparent 52%, rgba(3, 5, 10, 0.78) 100%);
       z-index: 2;
     }
 
@@ -507,20 +506,46 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
       z-index: 5;
       pointer-events: none;
+    }
+    .hud-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      pointer-events: auto;
     }
     .hud-pill {
       pointer-events: auto;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(6, 9, 16, 0.78);
+      background: rgba(8, 12, 20, 0.78);
       backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.14);
       font-family: "JetBrains Mono", monospace;
       font-size: 0.74rem;
       color: #e2e8f0;
       letter-spacing: 0.06em;
+    }
+    .hud-toggle {
+      pointer-events: auto;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(8, 12, 20, 0.78);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.74rem;
+      color: #e2e8f0;
+      letter-spacing: 0.05em;
+      transition: all 0.25s ease;
+    }
+    .hud-toggle.active, .hud-toggle:hover {
+      border-color: var(--accent);
+      background: rgba(var(--accent-rgb), 0.16);
+      color: #ffffff;
     }
 
     /* Vertical Chapter Rail */
@@ -918,7 +943,10 @@
 
       <div class="machine-hud-top">
         <div class="hud-pill" id="scaleIndicator">SCALE 1:1 · WORKSTATION EXTERIOR</div>
-        <div class="hud-pill">SCROLL TO FLY INSIDE · DRAG TO LOOK AROUND</div>
+        <div class="hud-group">
+          <button class="hud-toggle" id="explodeBtn">EXPLODE LAYERS: OFF</button>
+          <div class="hud-pill">SCROLL TO FLY INSIDE · DRAG TO ORBIT</div>
+        </div>
       </div>
 
       <div class="machine-rail" aria-label="Machine chapters">
@@ -1233,255 +1261,654 @@
     applyTheme(localStorage.getItem("site-theme") || "acid");
 
     /* ============================================================
-       3. PROCEDURAL TEXTURES FOR HIGH-DETAIL 3D HARDWARE
+       3. STUDIO PBR ENVIRONMENT & PROCEDURAL HARDWARE TEXTURES
        ============================================================ */
-    function makePCBTexture() {
+    function createStudioEnvMap(renderer) {
+      const c = document.createElement("canvas");
+      c.width = 512; c.height = 256;
+      const ctx = c.getContext("2d");
+
+      // Dark studio gradient
+      const bg = ctx.createLinearGradient(0, 0, 0, 256);
+      bg.addColorStop(0, "#101828");
+      bg.addColorStop(0.5, "#080c14");
+      bg.addColorStop(1, "#03050a");
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, 512, 256);
+
+      // Overhead studio softbox
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(110, 18, 290, 26);
+
+      // Cool cyan rim light strip
+      ctx.fillStyle = "#7dd3fc";
+      ctx.fillRect(28, 86, 85, 58);
+
+      // Warm key accent strip
+      ctx.fillStyle = "#fef08a";
+      ctx.fillRect(395, 76, 80, 50);
+
+      // Subtle purple bounce
+      ctx.fillStyle = "#a78bfa";
+      ctx.fillRect(210, 145, 92, 18);
+
+      const tex = new THREE.CanvasTexture(c);
+      tex.mapping = THREE.EquirectangularReflectionMapping;
+      const pmrem = new THREE.PMREMGenerator(renderer);
+      pmrem.compileEquirectangularShader();
+      const envRT = pmrem.fromEquirectangular(tex);
+      tex.dispose();
+      pmrem.dispose();
+      return envRT.texture;
+    }
+
+    function makeRealisticPCBTexture() {
       const c = document.createElement("canvas");
       c.width = 1024; c.height = 1024;
       const ctx = c.getContext("2d");
-      ctx.fillStyle = "#08101c";
+
+      // Matte dark charcoal-slate solder mask
+      ctx.fillStyle = "#0b111b";
       ctx.fillRect(0, 0, 1024, 1024);
 
-      // Subtle grid
-      ctx.strokeStyle = "rgba(56, 189, 248, 0.08)";
+      // Fine fiberglass weave
+      ctx.strokeStyle = "rgba(255,255,255,0.018)";
       ctx.lineWidth = 1;
-      for (let i = 0; i < 1024; i += 32) {
+      for (let i = 0; i < 1024; i += 8) {
         ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 1024); ctx.stroke();
         ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(1024, i); ctx.stroke();
       }
 
-      // Copper circuit traces & vias
-      for (let i = 0; i < 95; i++) {
-        ctx.strokeStyle = i % 3 === 0 ? "rgba(232, 255, 71, 0.35)" : "rgba(56, 189, 248, 0.35)";
-        ctx.lineWidth = i % 4 === 0 ? 3 : 1.5;
+      // Differential pair copper bus traces (under solder mask)
+      for (let i = 0; i < 110; i++) {
+        ctx.strokeStyle = i % 5 === 0 ? "rgba(212, 175, 55, 0.28)" : "rgba(56, 189, 248, 0.20)";
+        ctx.lineWidth = i % 4 === 0 ? 2.5 : 1.2;
         let x = Math.floor(Math.random() * 32) * 32;
         let y = Math.floor(Math.random() * 32) * 32;
         ctx.beginPath();
         ctx.moveTo(x, y);
-        for (let s = 0; s < 4; s++) {
-          if (Math.random() > 0.5) x += (Math.random() > 0.5 ? 1 : -1) * 64;
-          else y += (Math.random() > 0.5 ? 1 : -1) * 64;
+        for (let s = 0; s < 5; s++) {
+          const dir = Math.floor(Math.random() * 3);
+          if (dir === 0) x += (Math.random() > 0.5 ? 1 : -1) * 48;
+          else if (dir === 1) y += (Math.random() > 0.5 ? 1 : -1) * 48;
+          else { x += 24; y += 24; }
           ctx.lineTo(x, y);
         }
         ctx.stroke();
-        ctx.fillStyle = "#e8ff47";
-        ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI * 2); ctx.fill();
+
+        // Gold plated via
+        ctx.fillStyle = "#d4af37";
+        ctx.beginPath(); ctx.arc(x, y, 2.8, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "#05070b";
+        ctx.beginPath(); ctx.arc(x, y, 1.1, 0, Math.PI * 2); ctx.fill();
+      }
+
+      // Gold ATX mounting holes
+      [[42, 42], [512, 42], [982, 42], [42, 512], [982, 512], [42, 982], [512, 982], [982, 982]].forEach(([mx, my]) => {
+        ctx.fillStyle = "#d4af37";
+        ctx.beginPath(); ctx.arc(mx, my, 14, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "#05070b";
+        ctx.beginPath(); ctx.arc(mx, my, 7, 0, Math.PI * 2); ctx.fill();
+      });
+
+      // Crisp white silkscreen markings
+      ctx.fillStyle = "rgba(226, 232, 240, 0.55)";
+      ctx.font = "600 18px JetBrains Mono, monospace";
+      ctx.fillText("KERNIQ PRO-X ATX // REV 4.2", 58, 960);
+      ctx.font = "500 13px JetBrains Mono, monospace";
+      ctx.fillText("PCIEX16_GEN5", 160, 650);
+      ctx.fillText("DIMM_A1 A2 B1 B2", 590, 175);
+      ctx.fillText("M2_NVME_1", 700, 640);
+      ctx.fillText("CPU_OPT / VRM_18+2", 180, 165);
+
+      const tex = new THREE.CanvasTexture(c);
+      tex.anisotropy = 8;
+      return tex;
+    }
+
+    function makeIHSTexture() {
+      const c = document.createElement("canvas");
+      c.width = 512; c.height = 512;
+      const ctx = c.getContext("2d");
+      ctx.fillStyle = "#cbd5e1";
+      ctx.fillRect(0, 0, 512, 512);
+
+      // Subtle brushed nickel horizontal grain
+      for (let y = 0; y < 512; y += 2) {
+        ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.08})`;
+        ctx.fillRect(0, y, 512, 1);
+      }
+
+      // Laser-etched markings
+      ctx.fillStyle = "rgba(15, 23, 42, 0.72)";
+      ctx.font = "700 34px Space Grotesk, sans-serif";
+      ctx.fillText("KERNIQ", 80, 160);
+      ctx.font = "600 22px JetBrains Mono, monospace";
+      ctx.fillText("CORE X9-9900K", 80, 210);
+      ctx.font = "400 18px JetBrains Mono, monospace";
+      ctx.fillText("3NM FINFET · 6.2GHZ", 80, 255);
+      ctx.fillText("S/N 2026-IND-DE", 80, 295);
+
+      // Gold pin-1 triangle
+      ctx.fillStyle = "#d4af37";
+      ctx.beginPath(); ctx.moveTo(40, 472); ctx.lineTo(85, 472); ctx.lineTo(40, 427); ctx.fill();
+
+      const tex = new THREE.CanvasTexture(c);
+      tex.anisotropy = 8;
+      return tex;
+    }
+
+    function makeSiliconDieTexture() {
+      const c = document.createElement("canvas");
+      c.width = 1024; c.height = 1024;
+      const ctx = c.getContext("2d");
+
+      // Iridescent dark silicon wafer base
+      const grad = ctx.createLinearGradient(0, 0, 1024, 1024);
+      grad.addColorStop(0, "#0f172a");
+      grad.addColorStop(0.5, "#1e1b4b");
+      grad.addColorStop(1, "#082f49");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 1024, 1024);
+
+      // Photolithography micro-blocks (SRAM & logic)
+      for (let y = 24; y < 1000; y += 16) {
+        for (let x = 24; x < 1000; x += 16) {
+          const v = (x * 7 + y * 13) % 100;
+          if (v < 35) ctx.fillStyle = "rgba(56, 189, 248, 0.22)";
+          else if (v < 55) ctx.fillStyle = "rgba(232, 255, 71, 0.16)";
+          else if (v < 70) ctx.fillStyle = "rgba(167, 139, 250, 0.20)";
+          else ctx.fillStyle = "rgba(15, 23, 42, 0.6)";
+          ctx.fillRect(x, y, 13, 13);
+        }
+      }
+      // Fine copper interconnect grid
+      ctx.strokeStyle = "rgba(251, 191, 36, 0.18)";
+      ctx.lineWidth = 1;
+      for (let i = 0; i < 1024; i += 64) {
+        ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 1024); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(1024, i); ctx.stroke();
       }
       const tex = new THREE.CanvasTexture(c);
       tex.anisotropy = 8;
       return tex;
     }
 
-    function makeDieTexture() {
-      const c = document.createElement("canvas");
-      c.width = 512; c.height = 512;
-      const ctx = c.getContext("2d");
-      ctx.fillStyle = "#090d16";
-      ctx.fillRect(0, 0, 512, 512);
-      for (let y = 16; y < 496; y += 24) {
-        for (let x = 16; x < 496; x += 24) {
-          ctx.fillStyle = (x + y) % 48 === 0 ? "rgba(232, 255, 71, 0.28)" : "rgba(56, 189, 248, 0.22)";
-          ctx.fillRect(x, y, 18, 18);
-        }
-      }
-      return new THREE.CanvasTexture(c);
-    }
-
     /* ============================================================
-       4. SCROLL-DRIVEN 3D: BEYOND THE SCREEN (INSIDE THE MACHINE)
+       4. SCROLL-DRIVEN 3D: BEYOND THE SCREEN (REALISTIC HARDWARE)
        ============================================================ */
     const machineSection = document.getElementById("machine");
     const mCanvas = document.getElementById("machine-canvas");
     const mScene = new THREE.Scene();
-    mScene.fog = new THREE.FogExp2(0x03050a, 0.028);
+    mScene.fog = new THREE.FogExp2(0x04060b, 0.022);
 
-    const mCamera = new THREE.PerspectiveCamera(46, window.innerWidth / window.innerHeight, 0.1, 140);
+    const mCamera = new THREE.PerspectiveCamera(44, window.innerWidth / window.innerHeight, 0.1, 140);
     const mRenderer = new THREE.WebGLRenderer({ canvas: mCanvas, antialias: true, powerPreference: "high-performance" });
     mRenderer.setSize(window.innerWidth, window.innerHeight);
     mRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    mRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+    mRenderer.toneMappingExposure = 1.15;
+    mRenderer.outputEncoding = THREE.sRGBEncoding;
 
-    // Studio Lighting
-    mScene.add(new THREE.AmbientLight(0xffffff, 0.45));
-    const keyLight = new THREE.DirectionalLight(0x38bdf8, 1.3);
-    keyLight.position.set(10, 14, 12);
+    // Apply procedural studio HDR reflections
+    mScene.environment = createStudioEnvMap(mRenderer);
+
+    // Three-point Studio Lighting
+    mScene.add(new THREE.AmbientLight(0xdbeafe, 0.35));
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.45);
+    keyLight.position.set(10, 15, 12);
     mScene.add(keyLight);
-    const rimLight = new THREE.PointLight(0xe8ff47, 1.8, 35);
-    rimLight.position.set(-8, 6, 8);
-    mScene.add(rimLight);
-    const fillLight = new THREE.PointLight(0xa78bfa, 1.2, 30);
-    fillLight.position.set(6, -5, -8);
-    mScene.add(fillLight);
 
-    const pcbTex = makePCBTexture();
-    const dieTex = makeDieTexture();
+    const rimCyan = new THREE.PointLight(0x38bdf8, 2.2, 36);
+    rimCyan.position.set(-10, 6, 8);
+    mScene.add(rimCyan);
+
+    const rimAccent = new THREE.PointLight(0xe8ff47, 1.4, 30);
+    rimAccent.position.set(9, 4, -8);
+    mScene.add(rimAccent);
+
+    // Shared PBR Materials
+    const matAnodizedBlack = new THREE.MeshStandardMaterial({ color: 0x11151d, metalness: 0.78, roughness: 0.34 });
+    const matBrushedAlum   = new THREE.MeshStandardMaterial({ color: 0x94a3b8, metalness: 0.88, roughness: 0.24 });
+    const matDarkAlum      = new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.84, roughness: 0.28 });
+    const matCopper        = new THREE.MeshStandardMaterial({ color: 0xd97706, metalness: 0.92, roughness: 0.22 });
+    const matGold          = new THREE.MeshStandardMaterial({ color: 0xfacc15, metalness: 0.95, roughness: 0.18 });
+    const matMattePlastic  = new THREE.MeshStandardMaterial({ color: 0x0b0f17, metalness: 0.15, roughness: 0.72 });
+
+    const pcbTex = makeRealisticPCBTexture();
+    const ihsTex = makeIHSTexture();
+    const dieTex = makeSiliconDieTexture();
+
+    // Helper: Build a realistic 7-blade axial cooling fan
+    function createAxialFan(radius, accentColor = 0x38bdf8) {
+      const fanRoot = new THREE.Group();
+      const frame = new THREE.Mesh(
+        new THREE.TorusGeometry(radius, radius * 0.08, 12, 36),
+        matMattePlastic
+      );
+      fanRoot.add(frame);
+
+      const ledRing = new THREE.Mesh(
+        new THREE.TorusGeometry(radius * 0.95, radius * 0.025, 8, 36),
+        new THREE.MeshBasicMaterial({ color: accentColor })
+      );
+      ledRing.position.z = radius * 0.06;
+      fanRoot.add(ledRing);
+
+      const rotor = new THREE.Group();
+      const hub = new THREE.Mesh(
+        new THREE.CylinderGeometry(radius * 0.28, radius * 0.28, radius * 0.16, 24),
+        matDarkAlum
+      );
+      hub.rotation.x = Math.PI / 2;
+      rotor.add(hub);
+
+      const hubCap = new THREE.Mesh(
+        new THREE.CylinderGeometry(radius * 0.18, radius * 0.18, radius * 0.18, 24),
+        matBrushedAlum
+      );
+      hubCap.rotation.x = Math.PI / 2;
+      rotor.add(hubCap);
+
+      for (let i = 0; i < 7; i++) {
+        const blade = new THREE.Mesh(
+          new THREE.BoxGeometry(radius * 0.19, radius * 0.66, radius * 0.03),
+          matAnodizedBlack
+        );
+        const a = (i / 7) * Math.PI * 2;
+        blade.position.set(Math.cos(a) * radius * 0.54, Math.sin(a) * radius * 0.54, 0);
+        blade.rotation.z = a - Math.PI / 2;
+        blade.rotation.y = 0.36; // Pitch angle
+        rotor.add(blade);
+      }
+      fanRoot.add(rotor);
+      fanRoot.userData.rotor = rotor;
+      return fanRoot;
+    }
 
     // 5 Chapter Groups
     const chapters = [new THREE.Group(), new THREE.Group(), new THREE.Group(), new THREE.Group(), new THREE.Group()];
     chapters.forEach((g) => mScene.add(g));
+    const spinningRotors = [];
 
-    // --- CHAPTER 0: WORKSTATION EXTERIOR ---
-    const chassisBody = new THREE.Mesh(
-      new THREE.BoxGeometry(5.2, 6.4, 3.0),
-      new THREE.MeshStandardMaterial({ color: 0x111827, roughness: 0.35, metalness: 0.75 })
-    );
-    chapters[0].add(chassisBody);
+    /* ============================================================
+       CHAPTER 0: HOLLOWED-OUT WORKSTATION CHASSIS + REAL INTERIOR
+       ============================================================ */
+    const chassisGroup = chapters[0];
 
-    const chassisWire = new THREE.LineSegments(
-      new THREE.EdgesGeometry(new THREE.BoxGeometry(5.25, 6.45, 3.05)),
-      new THREE.LineBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.55 })
-    );
-    chapters[0].add(chassisWire);
+    // Structural Chassis Plates (Top, Bottom, Back, Rear I/O, PSU Shroud)
+    const addPlate = (w, h, d, x, y, z, mat = matAnodizedBlack) => {
+      const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
+      m.position.set(x, y, z);
+      chassisGroup.add(m);
+      return m;
+    };
+    addPlate(5.6, 0.16, 3.2, 0,  3.25, 0, matAnodizedBlack); // Top panel
+    addPlate(5.6, 0.16, 3.2, 0, -3.25, 0, matAnodizedBlack); // Bottom panel
+    addPlate(5.6, 6.5,  0.14, 0, 0, -1.55, matDarkAlum);     // Motherboard tray / back panel
+    addPlate(0.18, 6.5, 3.2,  2.75, 0, 0, matAnodizedBlack); // Rear panel
+    addPlate(5.4, 1.35, 3.0,  0, -2.5, 0, matAnodizedBlack); // PSU Shroud
 
-    // Detachable Tempered Glass Side Panel
-    const glassPanel = new THREE.Mesh(
-      new THREE.BoxGeometry(4.8, 5.9, 0.08),
-      new THREE.MeshPhysicalMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.18, roughness: 0.1, metalness: 0.1 })
-    );
-    glassPanel.position.set(0, 0, 1.56);
-    chapters[0].add(glassPanel);
+    // Front Brushed Aluminum Bezel Frame
+    addPlate(0.16, 6.6, 0.25, -2.75, 0,  1.48, matBrushedAlum);
+    addPlate(0.16, 6.6, 0.25, -2.75, 0, -1.48, matBrushedAlum);
 
-    // 3 Spinning Front Intake Fans
-    const fans = [];
+    // 4 Machined Aluminum Feet
+    [[-2.2, -1.1], [2.2, -1.1], [-2.2, 1.1], [2.2, 1.1]].forEach(([fx, fz]) => {
+      const foot = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.24, 0.24, 24), matBrushedAlum);
+      foot.position.set(fx, -3.45, fz);
+      chassisGroup.add(foot);
+    });
+
+    // 3 Realistic Front Intake Fans
     for (let i = -1; i <= 1; i++) {
-      const fanGroup = new THREE.Group();
-      fanGroup.position.set(-2.62, i * 1.75, 0);
-      fanGroup.rotation.y = Math.PI / 2;
-      const ring = new THREE.Mesh(new THREE.TorusGeometry(0.68, 0.06, 12, 32), new THREE.MeshBasicMaterial({ color: 0xe8ff47 }));
-      fanGroup.add(ring);
-      for (let b = 0; b < 5; b++) {
-        const blade = new THREE.Mesh(new THREE.BoxGeometry(0.16, 1.15, 0.04), new THREE.MeshStandardMaterial({ color: 0x38bdf8, metalness: 0.6 }));
-        blade.rotation.z = (b / 5) * Math.PI * 2;
-        fanGroup.add(blade);
-      }
-      chapters[0].add(fanGroup);
-      fans.push(fanGroup);
+      const f = createAxialFan(0.72, 0x38bdf8);
+      f.position.set(-2.65, i * 1.55 + 0.45, 0);
+      f.rotation.y = Math.PI / 2;
+      chassisGroup.add(f);
+      spinningRotors.push(f.userData.rotor);
     }
 
-    // --- CHAPTER 1: MOTHERBOARD & HARDWARE ---
-    const pcb = new THREE.Mesh(
-      new THREE.BoxGeometry(10.4, 0.28, 8.2),
-      new THREE.MeshStandardMaterial({ map: pcbTex, roughness: 0.45, metalness: 0.35 })
-    );
-    pcb.position.y = -0.3;
-    chapters[1].add(pcb);
+    // Visible Interior Hardware inside the Chassis!
+    const miniMobo = addPlate(3.6, 3.9, 0.08, 0.55, 0.65, -1.35, new THREE.MeshStandardMaterial({ map: pcbTex, roughness: 0.45, metalness: 0.35 }));
+    // Interior AIO CPU Pump Block
+    const aioBlock = new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.45, 0.38, 32), matDarkAlum);
+    aioBlock.rotation.x = Math.PI / 2;
+    aioBlock.position.set(0.3, 1.2, -1.1);
+    chassisGroup.add(aioBlock);
+    const aioRing = new THREE.Mesh(new THREE.TorusGeometry(0.34, 0.03, 10, 32), new THREE.MeshBasicMaterial({ color: 0xe8ff47 }));
+    aioRing.position.set(0.3, 1.2, -0.9);
+    chassisGroup.add(aioRing);
 
-    // CPU Socket + Heatspreader
-    const cpuIHS = new THREE.Mesh(
-      new THREE.BoxGeometry(2.1, 0.42, 2.1),
-      new THREE.MeshStandardMaterial({ color: 0xe2e8f0, metalness: 0.85, roughness: 0.2 })
-    );
-    cpuIHS.position.set(-1.8, 0.05, -1.2);
-    chapters[1].add(cpuIHS);
-
-    // VRM Heatsinks
-    const vrm1 = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.85, 3.2), new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.8, roughness: 0.3 }));
-    vrm1.position.set(-3.7, 0.25, -1.2);
-    chapters[1].add(vrm1);
-
-    // 4 RAM Modules with glowing tops
+    // Interior 4 RAM sticks
     for (let i = 0; i < 4; i++) {
-      const stick = new THREE.Mesh(new THREE.BoxGeometry(0.24, 1.05, 3.1), new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.7, roughness: 0.25 }));
-      stick.position.set(0.8 + i * 0.48, 0.35, -1.2);
-      chapters[1].add(stick);
-      const led = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.08, 3.12), new THREE.MeshBasicMaterial({ color: 0xa78bfa }));
-      led.position.set(0.8 + i * 0.48, 0.9, -1.2);
-      chapters[1].add(led);
+      addPlate(0.08, 1.2, 0.25, 1.1 + i * 0.18, 1.25, -1.15, matDarkAlum);
+      addPlate(0.08, 1.18, 0.04, 1.1 + i * 0.18, 1.25, -1.01, new THREE.MeshBasicMaterial({ color: 0xa78bfa }));
     }
 
-    // Discrete GPU Card
-    const gpuCard = new THREE.Mesh(
-      new THREE.BoxGeometry(5.6, 0.95, 1.65),
-      new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.75, roughness: 0.28 })
+    // Interior Flagship GPU
+    addPlate(3.4, 0.55, 1.25, 0.45, -0.35, -0.65, matDarkAlum);
+    addPlate(3.38, 0.06, 0.06, 0.45, -0.08, 0.0, new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
+
+    // Detachable Tempered Glass Side Panel + Silk-screen Frame + 4 Thumbscrews
+    const glassAssembly = new THREE.Group();
+    const glassPane = new THREE.Mesh(
+      new THREE.BoxGeometry(5.2, 6.1, 0.06),
+      new THREE.MeshPhysicalMaterial({
+        color: 0x93c5fd,
+        transparent: true,
+        opacity: 0.16,
+        roughness: 0.06,
+        metalness: 0.1,
+        reflectivity: 0.95
+      })
     );
-    gpuCard.position.set(-0.6, 0.32, 1.85);
-    chapters[1].add(gpuCard);
-    const gpuStrip = new THREE.Mesh(new THREE.BoxGeometry(5.5, 0.08, 0.08), new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
-    gpuStrip.position.set(-0.6, 0.82, 2.66);
-    chapters[1].add(gpuStrip);
+    glassAssembly.add(glassPane);
+    const glassBorder = new THREE.LineSegments(
+      new THREE.EdgesGeometry(new THREE.BoxGeometry(5.22, 6.12, 0.07)),
+      new THREE.LineBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.5 })
+    );
+    glassAssembly.add(glassBorder);
 
-    // NVMe SSD
-    const ssd = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.2, 0.75), new THREE.MeshStandardMaterial({ color: 0x2dd4bf, metalness: 0.6, roughness: 0.3 }));
-    ssd.position.set(3.0, -0.05, 1.85);
-    chapters[1].add(ssd);
+    // 4 Knurled Thumbscrews
+    [[-2.35, 2.8], [2.35, 2.8], [-2.35, -2.8], [2.35, -2.8]].forEach(([sx, sy]) => {
+      const screw = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 0.14, 18), matBrushedAlum);
+      screw.rotation.x = Math.PI / 2;
+      screw.position.set(sx, sy, 0.05);
+      glassAssembly.add(screw);
+    });
+    glassAssembly.position.set(0, 0, 1.56);
+    chassisGroup.add(glassAssembly);
 
-    // Data Bus Pulses (CPU <-> RAM <-> GPU)
+    /* ============================================================
+       CHAPTER 1: HIGH-DETAIL ATX MOTHERBOARD & COMPONENTS
+       ============================================================ */
+    const moboGroup = chapters[1];
+    const explodePartsCh1 = [];
+
+    // Multi-layer ATX PCB
+    const pcbMesh = new THREE.Mesh(
+      new THREE.BoxGeometry(10.2, 0.22, 8.6),
+      new THREE.MeshStandardMaterial({ map: pcbTex, roughness: 0.42, metalness: 0.35 })
+    );
+    pcbMesh.position.y = -0.3;
+    moboGroup.add(pcbMesh);
+
+    // Rear I/O Armor Shroud
+    const ioArmor = new THREE.Mesh(new THREE.BoxGeometry(1.1, 1.35, 4.4), matAnodizedBlack);
+    ioArmor.position.set(-4.55, 0.48, -1.8);
+    moboGroup.add(ioArmor);
+    explodePartsCh1.push({ mesh: ioArmor, baseY: 0.48, lift: 0.8 });
+
+    // Finned VRM Heatsinks (Left + Top)
+    const vrmGroup = new THREE.Group();
+    for (let i = 0; i < 10; i++) {
+      const fin = new THREE.Mesh(new THREE.BoxGeometry(0.75, 0.85, 0.14), matDarkAlum);
+      fin.position.set(-3.3, 0.25, -2.8 + i * 0.34);
+      vrmGroup.add(fin);
+    }
+    for (let i = 0; i < 8; i++) {
+      const fin = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.72, 0.72), matDarkAlum);
+      fin.position.set(-2.5 + i * 0.36, 0.2, -3.55);
+      vrmGroup.add(fin);
+    }
+    // VRM Solid Capacitors & Ferrite Chokes
+    for (let i = 0; i < 8; i++) {
+      const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 0.36, 16), matBrushedAlum);
+      cap.position.set(-2.65, 0.0, -2.5 + i * 0.34);
+      vrmGroup.add(cap);
+    }
+    moboGroup.add(vrmGroup);
+    explodePartsCh1.push({ mesh: vrmGroup, baseY: 0, lift: 0.9 });
+
+    // CPU Socket + Laser-Etched Nickel IHS
+    const cpuAssembly = new THREE.Group();
+    const socketFrame = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.16, 2.2), matDarkAlum);
+    socketFrame.position.set(-1.1, -0.1, -1.4);
+    cpuAssembly.add(socketFrame);
+
+    const cpuIHS = new THREE.Mesh(
+      new THREE.BoxGeometry(1.85, 0.28, 1.85),
+      new THREE.MeshStandardMaterial({ map: ihsTex, metalness: 0.88, roughness: 0.22 })
+    );
+    cpuIHS.position.set(-1.1, 0.12, -1.4);
+    cpuAssembly.add(cpuIHS);
+    moboGroup.add(cpuAssembly);
+    explodePartsCh1.push({ mesh: cpuAssembly, baseY: 0, lift: 1.5 });
+
+    // 4× DDR5 RAM Modules with Diffused RGB Bars & Gold Contacts
+    const ramGroup = new THREE.Group();
+    for (let i = 0; i < 4; i++) {
+      const rx = 1.2 + i * 0.46;
+      const slot = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.22, 3.6), matMattePlastic);
+      slot.position.set(rx, -0.08, -1.35);
+      moboGroup.add(slot);
+
+      const stick = new THREE.Mesh(new THREE.BoxGeometry(0.20, 1.15, 3.45), matAnodizedBlack);
+      stick.position.set(rx, 0.55, -1.35);
+      ramGroup.add(stick);
+
+      const accentBar = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.11, 3.46), new THREE.MeshBasicMaterial({ color: 0xa78bfa }));
+      accentBar.position.set(rx, 1.15, -1.35);
+      ramGroup.add(accentBar);
+    }
+    moboGroup.add(ramGroup);
+    explodePartsCh1.push({ mesh: ramGroup, baseY: 0, lift: 1.8 });
+
+    // Flagship Triple-Fan GPU Card
+    const gpuGroup = new THREE.Group();
+    const pcieSlot = new THREE.Mesh(new THREE.BoxGeometry(3.2, 0.2, 0.35), matBrushedAlum);
+    pcieSlot.position.set(-1.6, -0.08, 1.65);
+    moboGroup.add(pcieSlot);
+
+    const gpuShroud = new THREE.Mesh(new THREE.BoxGeometry(6.2, 0.95, 1.85), matAnodizedBlack);
+    gpuShroud.position.set(-0.6, 0.58, 1.75);
+    gpuGroup.add(gpuShroud);
+
+    const gpuBackplate = new THREE.Mesh(new THREE.BoxGeometry(6.22, 0.08, 1.87), matBrushedAlum);
+    gpuBackplate.position.set(-0.6, 1.08, 1.75);
+    gpuGroup.add(gpuBackplate);
+
+    // Copper heatpipes visible along GPU edge
+    for (let i = 0; i < 2; i++) {
+      const pipe = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 5.6, 12), matCopper);
+      pipe.rotation.z = Math.PI / 2;
+      pipe.position.set(-0.6, 0.35 + i * 0.22, 2.68);
+      gpuGroup.add(pipe);
+    }
+
+    const gpuLed = new THREE.Mesh(new THREE.BoxGeometry(5.8, 0.07, 0.06), new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
+    gpuLed.position.set(-0.6, 0.95, 2.68);
+    gpuGroup.add(gpuLed);
+
+    // 3 Spinning Fans on GPU face
+    for (let i = -1; i <= 1; i++) {
+      const gf = createAxialFan(0.42, 0x38bdf8);
+      gf.position.set(-0.6 + i * 1.85, 0.58, 2.7);
+      gpuGroup.add(gf);
+      spinningRotors.push(gf.userData.rotor);
+    }
+    moboGroup.add(gpuGroup);
+    explodePartsCh1.push({ mesh: gpuGroup, baseY: 0, lift: 2.2 });
+
+    // M.2 NVMe SSD + Chipset Heatsink
+    const nvme = new THREE.Mesh(new THREE.BoxGeometry(2.3, 0.24, 0.72), matDarkAlum);
+    nvme.position.set(3.45, -0.04, 1.45);
+    moboGroup.add(nvme);
+    explodePartsCh1.push({ mesh: nvme, baseY: -0.04, lift: 1.1 });
+
+    const chipset = new THREE.Mesh(new THREE.BoxGeometry(2.1, 0.36, 2.1), matAnodizedBlack);
+    chipset.position.set(3.45, 0.02, 2.95);
+    moboGroup.add(chipset);
+
+    // Orthogonal Data Bus Pulses (CPU <-> RAM <-> GPU)
     const busPulses = [];
-    for (let i = 0; i < 18; i++) {
-      const p = new THREE.Mesh(new THREE.SphereGeometry(0.11, 10, 10), new THREE.MeshBasicMaterial({ color: i % 2 === 0 ? 0xe8ff47 : 0x38bdf8 }));
-      p.userData.phase = (i / 18) * Math.PI * 2;
-      chapters[1].add(p);
+    for (let i = 0; i < 20; i++) {
+      const p = new THREE.Mesh(
+        new THREE.SphereGeometry(0.09, 10, 10),
+        new THREE.MeshBasicMaterial({ color: i % 2 === 0 ? 0xe8ff47 : 0x38bdf8 })
+      );
+      p.userData.phase = (i / 20) * Math.PI * 2;
+      p.userData.lane = i % 2;
+      moboGroup.add(p);
       busPulses.push(p);
     }
 
-    // --- CHAPTER 2: INSIDE THE CPU DIE ---
-    const dieSubstrate = new THREE.Mesh(
-      new THREE.BoxGeometry(8.4, 0.32, 8.4),
-      new THREE.MeshStandardMaterial({ map: dieTex, metalness: 0.7, roughness: 0.25 })
-    );
-    dieSubstrate.position.y = -0.35;
-    chapters[2].add(dieSubstrate);
+    /* ============================================================
+       CHAPTER 2: MACRO CPU SILICON DIE & INTERPOSER
+       ============================================================ */
+    const cpuDieGroup = chapters[2];
 
+    // Fiberglass Interposer Substrate
+    const interposer = new THREE.Mesh(
+      new THREE.BoxGeometry(8.8, 0.32, 8.8),
+      new THREE.MeshStandardMaterial({ color: 0x064e3b, metalness: 0.35, roughness: 0.45 })
+    );
+    interposer.position.y = -0.45;
+    cpuDieGroup.add(interposer);
+
+    // Perimeter Gold SMD Decoupling Capacitors
+    for (let i = -3.4; i <= 3.4; i += 0.68) {
+      [[i, -3.9], [i, 3.9], [-3.9, i], [3.9, i]].forEach(([cx, cz]) => {
+        const smd = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.14, 0.12), matGold);
+        smd.position.set(cx, -0.22, cz);
+        cpuDieGroup.add(smd);
+      });
+    }
+
+    // Iridescent Etched Silicon Die
+    const siliconDie = new THREE.Mesh(
+      new THREE.BoxGeometry(6.6, 0.24, 6.6),
+      new THREE.MeshStandardMaterial({ map: dieTex, metalness: 0.85, roughness: 0.18 })
+    );
+    siliconDie.position.y = -0.15;
+    cpuDieGroup.add(siliconDie);
+
+    // 8 Raised Performance Cores
     const cpuCoreMeshes = [];
     for (let r = 0; r < 2; r++) {
       for (let c = 0; c < 4; c++) {
         const core = new THREE.Mesh(
-          new THREE.BoxGeometry(1.55, 0.55, 2.3),
-          new THREE.MeshStandardMaterial({ color: 0xe8ff47, emissive: 0xe8ff47, emissiveIntensity: 0.18, metalness: 0.6, roughness: 0.25 })
+          new THREE.BoxGeometry(1.28, 0.36, 1.95),
+          new THREE.MeshStandardMaterial({
+            color: 0xe8ff47,
+            emissive: 0xe8ff47,
+            emissiveIntensity: 0.16,
+            metalness: 0.72,
+            roughness: 0.22
+          })
         );
-        core.position.set(-2.7 + c * 1.8, 0.08, -1.6 + r * 3.2);
+        core.position.set(-2.25 + c * 1.5, 0.15, -1.45 + r * 2.9);
         core.userData.idx = r * 4 + c;
-        chapters[2].add(core);
+        core.userData.baseY = 0.15;
+        cpuDieGroup.add(core);
         cpuCoreMeshes.push(core);
       }
     }
-    // Shared L3 Cache Ring
-    const l3Ring = new THREE.Mesh(new THREE.TorusGeometry(3.4, 0.09, 12, 64), new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
+
+    // Shared L3 Cache Ring Bus
+    const l3Ring = new THREE.Mesh(new THREE.TorusGeometry(2.85, 0.08, 12, 64), new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
     l3Ring.rotation.x = Math.PI / 2;
     l3Ring.position.y = 0.45;
-    chapters[2].add(l3Ring);
+    cpuDieGroup.add(l3Ring);
 
-    // --- CHAPTER 3: INSIDE THE GPU (INSTANCED PARALLEL SHADERS) ---
-    const gridN = 16;
+    /* ============================================================
+       CHAPTER 3: GPU DIE & 576-CORE PARALLEL SM ARRAY + HBM3
+       ============================================================ */
+    const gpuDieGroup = chapters[3];
+
+    // GPU Silicon Package Base
+    const gpuPkg = new THREE.Mesh(new THREE.BoxGeometry(10.6, 0.35, 9.6), matAnodizedBlack);
+    gpuPkg.position.y = -0.5;
+    gpuDieGroup.add(gpuPkg);
+
+    // 6× HBM3 High-Bandwidth Memory Stacks flanking the die
+    for (let side of [-1, 1]) {
+      for (let i = -1; i <= 1; i++) {
+        const hbm = new THREE.Mesh(new THREE.BoxGeometry(1.15, 0.55, 2.2), matBrushedAlum);
+        hbm.position.set(side * 4.35, -0.05, i * 2.65);
+        gpuDieGroup.add(hbm);
+      }
+    }
+
+    // 24×24 (576) Instanced Tensor/Shader Cores grouped into SM clusters
+    const gridN = 24;
     const totalShaders = gridN * gridN;
-    const shaderGeo = new THREE.BoxGeometry(0.36, 0.36, 0.36);
-    const shaderMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0284c7, emissiveIntensity: 0.45, metalness: 0.6, roughness: 0.2 });
+    const shaderGeo = new THREE.BoxGeometry(0.22, 0.28, 0.22);
+    const shaderMat = new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.7, roughness: 0.22 });
     const gpuInstanced = new THREE.InstancedMesh(shaderGeo, shaderMat, totalShaders);
-    chapters[3].add(gpuInstanced);
+    gpuDieGroup.add(gpuInstanced);
     const dummy = new THREE.Object3D();
+    const tmpColor = new THREE.Color();
 
-    // --- CHAPTER 4: NANOMETER FINFET TRANSISTOR ---
-    const siSub = new THREE.Mesh(new THREE.BoxGeometry(9.0, 1.1, 5.2), new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.5, roughness: 0.5 }));
-    siSub.position.y = -1.1;
-    chapters[4].add(siSub);
+    /* ============================================================
+       CHAPTER 4: NANOMETER 3D MULTI-FIN FINFET TRANSISTOR
+       ============================================================ */
+    const finfetGroup = chapters[4];
 
-    const srcWell = new THREE.Mesh(new THREE.BoxGeometry(2.1, 0.95, 4.2), new THREE.MeshStandardMaterial({ color: 0x38bdf8, metalness: 0.6, roughness: 0.25 }));
-    srcWell.position.set(-2.8, -0.1, 0);
-    chapters[4].add(srcWell);
+    // Crystalline Silicon Wafer Substrate
+    const siSub = new THREE.Mesh(
+      new THREE.BoxGeometry(9.6, 1.2, 6.2),
+      new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.65, roughness: 0.35 })
+    );
+    siSub.position.y = -1.2;
+    finfetGroup.add(siSub);
 
-    const drnWell = new THREE.Mesh(new THREE.BoxGeometry(2.1, 0.95, 4.2), new THREE.MeshStandardMaterial({ color: 0x38bdf8, metalness: 0.6, roughness: 0.25 }));
-    drnWell.position.set(2.8, -0.1, 0);
-    chapters[4].add(drnWell);
+    // Translucent Shallow Trench Isolation (STI) Oxide Layer
+    const stiOxide = new THREE.Mesh(
+      new THREE.BoxGeometry(9.2, 0.32, 5.8),
+      new THREE.MeshPhysicalMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.18, roughness: 0.1 })
+    );
+    stiOxide.position.y = -0.45;
+    finfetGroup.add(stiOxide);
 
-    // Silicon Fin Channel
-    const fin = new THREE.Mesh(new THREE.BoxGeometry(3.6, 0.65, 1.1), new THREE.MeshStandardMaterial({ color: 0x64748b, metalness: 0.7, roughness: 0.2 }));
-    fin.position.set(0, -0.1, 0);
-    chapters[4].add(fin);
+    // Doped Source & Drain Epitaxial Regions
+    const srcWell = new THREE.Mesh(new THREE.BoxGeometry(2.1, 0.9, 4.8), matBrushedAlum);
+    srcWell.position.set(-3.1, -0.05, 0);
+    finfetGroup.add(srcWell);
 
-    // Metallic Gate wrapping the Fin
+    const drnWell = new THREE.Mesh(new THREE.BoxGeometry(2.1, 0.9, 4.8), matBrushedAlum);
+    drnWell.position.set(3.1, -0.05, 0);
+    finfetGroup.add(drnWell);
+
+    // Vertical Copper M0/M1 Interconnect Vias rising from Source & Drain
+    [-3.1, 3.1].forEach((vx) => {
+      for (let vz of [-1.4, 0, 1.4]) {
+        const via = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 1.4, 16), matCopper);
+        via.position.set(vx, 1.05, vz);
+        finfetGroup.add(via);
+      }
+    });
+
+    // 3 Parallel Silicon Fins
+    const finZPositions = [-1.4, 0, 1.4];
+    finZPositions.forEach((fz) => {
+      const fin = new THREE.Mesh(new THREE.BoxGeometry(4.2, 0.72, 0.42), matDarkAlum);
+      fin.position.set(0, -0.02, fz);
+      finfetGroup.add(fin);
+    });
+
+    // High-k Metal Gate wrapping all 3 Fins
     const gate = new THREE.Mesh(
-      new THREE.BoxGeometry(1.5, 1.45, 4.3),
-      new THREE.MeshStandardMaterial({ color: 0xe8ff47, emissive: 0xe8ff47, emissiveIntensity: 0.25, metalness: 0.8, roughness: 0.2 })
+      new THREE.BoxGeometry(1.45, 1.55, 5.1),
+      new THREE.MeshStandardMaterial({
+        color: 0xe8ff47,
+        emissive: 0xe8ff47,
+        emissiveIntensity: 0.22,
+        metalness: 0.85,
+        roughness: 0.18
+      })
     );
     gate.position.set(0, 0.35, 0);
-    chapters[4].add(gate);
+    finfetGroup.add(gate);
 
-    // Flowing Electrons
+    // Flowing Electrons across all 3 Fins
     const electrons = [];
-    for (let i = 0; i < 24; i++) {
-      const e = new THREE.Mesh(new THREE.SphereGeometry(0.11, 10, 10), new THREE.MeshBasicMaterial({ color: 0xe8ff47 }));
-      e.userData.offset = i / 24;
-      e.userData.z = (Math.random() - 0.5) * 0.7;
-      chapters[4].add(e);
+    for (let i = 0; i < 30; i++) {
+      const e = new THREE.Mesh(new THREE.SphereGeometry(0.09, 10, 10), new THREE.MeshBasicMaterial({ color: 0xe8ff47 }));
+      e.userData.offset = i / 30;
+      e.userData.finZ = finZPositions[i % 3] + (Math.random() - 0.5) * 0.16;
+      finfetGroup.add(e);
       electrons.push(e);
     }
 
@@ -1489,37 +1916,37 @@
     const chapterData = [
       {
         scale: "SCALE 1:1 · WORKSTATION EXTERIOR", cat: "01 / CHASSIS & AIRFLOW", title: "Desktop Workstation",
-        simple: "The outer case protects delicate electronics, pulls in cool air through spinning fans, and houses every component.",
-        detailed: "An aluminum-and-glass enclosure engineered for positive-pressure airflow, EMI shielding, and modular ATX mounting.",
-        deep: "Maintains laminar intake across front fans while isolating the motherboard tray, PSU shroud, and PCIe expansion bays.",
-        connects: "Keep scrolling to detach the glass side panel and fly inside."
+        simple: "The outer machined-aluminum case protects delicate electronics, pulls cool air through triple intake fans, and houses every component.",
+        detailed: "An open-frame ATX enclosure engineered for positive-pressure airflow, EMI shielding, and clear thermal separation via a PSU shroud.",
+        deep: "Maintains laminar intake across 7-blade axial fans while isolating the motherboard tray, AIO liquid loop, and PCIe expansion bays.",
+        connects: "Keep scrolling to unscrew the tempered glass panel and fly inside."
       },
       {
         scale: "SCALE 1:10 · MOTHERBOARD & HARDWARE", cat: "02 / SYSTEM INTERCONNECT", title: "Motherboard & Buses",
-        simple: "The main circuit board connects the CPU, GPU, RAM, and SSD so they can share power and exchange data at light speed.",
-        detailed: "A multi-layer PCB with microscopic copper traces routing regulated voltage and high-speed differential data signals.",
-        deep: "Routes PCIe Gen4/5 lanes, dual-channel DDR memory buses, and chipset I/O across impedance-matched copper layers.",
-        connects: "Links CPU ↔ RAM ↔ GPU ↔ NVMe Storage."
+        simple: "The main circuit board links the CPU, triple-fan GPU, DDR5 RAM, and NVMe SSD so they share regulated power and exchange data at light speed.",
+        detailed: "A multi-layer fiberglass PCB with impedance-matched copper traces, finned VRM heatsinks, and solid-state power delivery capacitors.",
+        deep: "Routes PCIe Gen5 x16 lanes, dual-channel DDR5 memory buses, and chipset I/O. Try clicking 'Explode Layers' in the top bar.",
+        connects: "Links CPU ↔ DDR5 RAM ↔ Flagship GPU ↔ NVMe Storage."
       },
       {
         scale: "SCALE 1:1,000 · SILICON DIE", cat: "03 / CENTRAL PROCESSING UNIT", title: "Inside the CPU Die",
-        simple: "The brain of the computer—multiple cores fetch instructions and execute billions of calculations every second.",
-        detailed: "Packs independent cores, ALUs, Control Units, and ultra-fast L1/L2/L3 cache rings onto a single piece of silicon.",
+        simple: "Under the nickel heatspreader lies a tiny etched silicon die—multiple cores fetch instructions and execute billions of calculations every second.",
+        detailed: "Packs independent performance cores, ALUs, and ultra-fast L1/L2/L3 cache rings onto a single piece of silicon mounted on an interposer.",
         deep: "Runs an out-of-order superscalar pipeline (Fetch → Decode → Execute → Writeback) with speculative branch prediction.",
         connects: "Shared L3 cache ring keeps all 8 cores fed with minimal latency."
       },
       {
         scale: "SCALE 1:1,000 · PARALLEL COMPUTE", cat: "04 / GRAPHICS PROCESSING UNIT", title: "GPU Shader Array",
-        simple: "Instead of a few giant cores, a GPU uses thousands of tiny cores working in parallel—perfect for 3D graphics and AI.",
-        detailed: "Schedules massive waves of threads across Streaming Multiprocessors to compute pixels and matrix multiplications simultaneously.",
-        deep: "Uses SIMT (Single Instruction, Multiple Threads) execution to hide memory latency and maximize throughput.",
-        connects: "Powers real-time 3D rendering, physics, and transformer neural networks."
+        simple: "Instead of a few giant cores, a GPU uses hundreds of clustered Streaming Multiprocessors working in parallel—ideal for 3D graphics and AI.",
+        detailed: "Flanked by High-Bandwidth Memory (HBM3) stacks, the shader array executes massive waves of threads simultaneously.",
+        deep: "Uses SIMT (Single Instruction, Multiple Threads) execution to hide memory latency and maximize matrix-multiply throughput.",
+        connects: "Powers real-time 3D rendering, physics simulations, and transformer AI."
       },
       {
-        scale: "SCALE: NANOMETERS · SEMICONDUCTOR", cat: "05 / FINFET TRANSISTOR", title: "Silicon & Electrons",
-        simple: "At the smallest scale, a transistor is a microscopic switch. Voltage on the Gate lets electrons flow from Source to Drain—creating 1s and 0s.",
-        detailed: "A 3D FinFET wraps the conductive Gate around a silicon Fin to control current with nanometer precision and minimal leakage.",
-        deep: "Billions of CMOS FinFETs are patterned via EUV photolithography to form logic gates (NAND, XOR), scaling up into entire processors.",
+        scale: "SCALE: 3 NANOMETERS · SEMICONDUCTOR", cat: "05 / 3D FINFET TRANSISTOR", title: "Silicon & Electrons",
+        simple: "At the smallest scale, a transistor is a microscopic switch. Voltage on the yellow Gate lets electrons flow across the silicon fins—creating 1s and 0s.",
+        detailed: "A 3D Multi-Fin FinFET wraps a High-k Metal Gate around vertical silicon fins to control current with nanometer precision.",
+        deep: "Billions of CMOS FinFETs wired via copper M0/M1 vias are patterned by EUV photolithography to form logic gates.",
         connects: "Scroll past to test Logic Gates in the interactive playground below."
       }
     ];
@@ -1527,7 +1954,16 @@
     let activeChapter = 0;
     let currentDepth = "simple";
     let scrollProgress = 0;
+    let exploded = false;
+    let explodeLerp = 0;
     let dragYaw = 0, dragPitch = 0, isDragging = false, lastX = 0, lastY = 0;
+
+    const explodeBtn = document.getElementById("explodeBtn");
+    explodeBtn.addEventListener("click", () => {
+      exploded = !exploded;
+      explodeBtn.classList.toggle("active", exploded);
+      explodeBtn.textContent = `EXPLODE LAYERS: ${exploded ? "ON" : "OFF"}`;
+    });
 
     function renderChapterText(idx) {
       const d = chapterData[idx];
@@ -1549,7 +1985,6 @@
       });
     });
 
-    // Click rail dots to smooth-scroll to exact chapter
     document.querySelectorAll(".rail-dot").forEach((dot) => {
       dot.addEventListener("click", () => {
         const idx = Number(dot.dataset.chapter);
@@ -1559,17 +1994,15 @@
       });
     });
 
-    // Subtle drag-to-look parallax
     mCanvas.addEventListener("pointerdown", (e) => { isDragging = true; lastX = e.clientX; lastY = e.clientY; });
     window.addEventListener("pointerup", () => { isDragging = false; });
     window.addEventListener("pointermove", (e) => {
       if (!isDragging) return;
-      dragYaw = Math.max(-0.9, Math.min(0.9, dragYaw - (e.clientX - lastX) * 0.005));
-      dragPitch = Math.max(-0.4, Math.min(0.5, dragPitch + (e.clientY - lastY) * 0.004));
+      dragYaw = Math.max(-1.2, Math.min(1.2, dragYaw - (e.clientX - lastX) * 0.005));
+      dragPitch = Math.max(-0.45, Math.min(0.65, dragPitch + (e.clientY - lastY) * 0.004));
       lastX = e.clientX; lastY = e.clientY;
     });
 
-    // Scroll Progress Calculation for #machine
     function updateMachineScroll() {
       const rect = machineSection.getBoundingClientRect();
       const total = machineSection.offsetHeight - window.innerHeight;
@@ -1585,79 +2018,103 @@
     window.addEventListener("scroll", updateMachineScroll, { passive: true });
     updateMachineScroll();
 
-    // Camera Keyframes per Chapter
     const camKeyframes = [
-      { pos: [1.5, 2.2, 11.2], look: [0, 0, 0] },
-      { pos: [0.5, 7.6, 9.2],  look: [0, 0, 0] },
-      { pos: [0, 7.2, 7.4],    look: [0, 0, 0] },
-      { pos: [0, 6.8, 8.6],    look: [0, 0, 0] },
-      { pos: [0.8, 3.6, 8.4],  look: [0, 0, 0] }
+      { pos: [1.6, 1.8, 10.6] },
+      { pos: [0.4, 7.8, 9.4]  },
+      { pos: [0.0, 7.2, 7.6]  },
+      { pos: [0.0, 7.4, 9.0]  },
+      { pos: [0.8, 3.8, 8.6]  }
     ];
 
     let mTime = 0;
     (function animateMachine() {
       requestAnimationFrame(animateMachine);
       mTime += 0.025;
+      explodeLerp += ((exploded ? 1 : 0) - explodeLerp) * 0.08;
 
-      // Local chapter progress (0 to 1 within current 20% slice)
       const scaled = scrollProgress * 5;
       const idx = Math.min(4, Math.floor(scaled));
       const localT = Math.min(1, scaled - idx);
 
-      // Show active chapter + smooth scale entrance
       chapters.forEach((g, i) => {
         g.visible = (i === idx);
         if (i === idx) {
-          const s = 0.88 + Math.sin(Math.min(1, localT * 1.4) * Math.PI * 0.5) * 0.12;
+          const s = 0.90 + Math.sin(Math.min(1, localT * 1.5) * Math.PI * 0.5) * 0.10;
           g.scale.setScalar(s);
         }
       });
 
-      // Chapter 0: Detach glass panel & spin fans
-      glassPanel.position.z = 1.56 + localT * 3.8;
-      glassPanel.position.x = localT * 2.2;
-      fans.forEach((f) => { f.rotation.x += 0.08; });
+      // Spin all axial cooling fans
+      spinningRotors.forEach((r) => { r.rotation.z -= 0.11; });
 
-      // Chapter 1: Data Bus Pulses
+      // Chapter 0: Detach tempered glass side panel smoothly
+      const glassOpen = Math.max(localT, explodeLerp * 0.85);
+      glassAssembly.position.z = 1.56 + glassOpen * 3.4;
+      glassAssembly.position.x = glassOpen * 2.2;
+      glassAssembly.rotation.y = glassOpen * 0.25;
+
+      // Chapter 1: Explode components + Orthogonal Bus Pulses
+      explodePartsCh1.forEach((item) => {
+        item.mesh.position.y = item.baseY + explodeLerp * item.lift;
+      });
       busPulses.forEach((p) => {
-        const t = (mTime * 1.4 + p.userData.phase) % (Math.PI * 2);
-        const n = t / (Math.PI * 2);
-        p.position.set(-1.8 + n * 4.2, 0.35 + Math.sin(n * Math.PI) * 0.55, -1.2 + Math.sin(t) * 2.6);
+        const t = ((mTime * 1.2 + p.userData.phase) % (Math.PI * 2)) / (Math.PI * 2);
+        if (p.userData.lane === 0) {
+          // CPU -> RAM horizontal bus
+          p.position.set(-1.1 + t * 3.0, 0.05, -1.4);
+        } else {
+          // CPU -> GPU vertical PCIe bus
+          p.position.set(-1.1, 0.05, -1.4 + t * 3.1);
+        }
       });
 
-      // Chapter 2: CPU Cores pulse
+      // Chapter 2: CPU Cores pulse + explode lift
       cpuCoreMeshes.forEach((c) => {
-        c.material.emissiveIntensity = 0.15 + Math.abs(Math.sin(mTime * 2 + c.userData.idx * 0.7)) * 0.45;
+        c.material.emissiveIntensity = 0.14 + Math.abs(Math.sin(mTime * 2.2 + c.userData.idx * 0.7)) * 0.45;
+        c.position.y = c.userData.baseY + explodeLerp * 0.9;
       });
       l3Ring.rotation.z = mTime * 0.5;
+      l3Ring.position.y = 0.45 + explodeLerp * 1.4;
 
-      // Chapter 3: GPU 256 Instanced Shaders Wave
+      // Chapter 3: 576 Instanced GPU Cores grouped into SM clusters with live load color
       let ptr = 0;
       for (let x = 0; x < gridN; x++) {
         for (let z = 0; z < gridN; z++) {
-          const px = (x - gridN / 2 + 0.5) * 0.52;
-          const pz = (z - gridN / 2 + 0.5) * 0.52;
-          const py = Math.sin(mTime * 2.6 + (x + z) * 0.45) * 0.25;
+          const clusterGapX = Math.floor(x / 6) * 0.22;
+          const clusterGapZ = Math.floor(z / 6) * 0.22;
+          const px = (x - gridN / 2 + 0.5) * 0.26 + clusterGapX - 0.33;
+          const pz = (z - gridN / 2 + 0.5) * 0.26 + clusterGapZ - 0.33;
+          const wave = Math.sin(mTime * 2.8 + (x * 0.35 + z * 0.35));
+          const py = wave * 0.16 + explodeLerp * 0.6;
+
           dummy.position.set(px, py, pz);
+          dummy.scale.set(1, 0.8 + (wave + 1) * 0.35, 1);
           dummy.updateMatrix();
-          gpuInstanced.setMatrixAt(ptr++, dummy.matrix);
+          gpuInstanced.setMatrixAt(ptr, dummy.matrix);
+
+          // Shift color from deep cyan to electric lime under peak wave
+          tmpColor.setHSL(0.54 - (wave + 1) * 0.16, 0.92, 0.52);
+          gpuInstanced.setColorAt(ptr, tmpColor);
+          ptr++;
         }
       }
       gpuInstanced.instanceMatrix.needsUpdate = true;
+      if (gpuInstanced.instanceColor) gpuInstanced.instanceColor.needsUpdate = true;
 
-      // Chapter 4: Electrons flowing through FinFET Channel
+      // Chapter 4: FinFET Electrons + Gate explode lift
+      gate.position.y = 0.35 + explodeLerp * 1.1;
       electrons.forEach((e) => {
-        const t = (mTime * 0.35 + e.userData.offset) % 1;
-        e.position.set(-3.2 + t * 6.4, -0.05 + Math.sin(t * Math.PI * 4) * 0.12, e.userData.z);
+        const t = (mTime * 0.38 + e.userData.offset) % 1;
+        e.position.set(-3.1 + t * 6.2, -0.02 + Math.sin(t * Math.PI * 6) * 0.08, e.userData.finZ);
       });
 
       // Smooth Camera Interpolation + Scroll Orbit + Drag Offset
       const kf = camKeyframes[idx];
-      const autoYaw = (localT - 0.5) * 0.65 + dragYaw;
-      const radius = kf.pos[2] - localT * 1.4;
-      const targetX = Math.sin(autoYaw) * radius + kf.pos[0] * 0.3;
+      const autoYaw = (localT - 0.5) * 0.6 + dragYaw;
+      const radius = kf.pos[2] - localT * 1.25;
+      const targetX = Math.sin(autoYaw) * radius + kf.pos[0] * 0.25;
       const targetZ = Math.cos(autoYaw) * radius;
-      const targetY = kf.pos[1] + dragPitch * 3.0;
+      const targetY = kf.pos[1] + dragPitch * 3.2;
 
       mCamera.position.x += (targetX - mCamera.position.x) * 0.08;
       mCamera.position.y += (targetY - mCamera.position.y) * 0.08;
