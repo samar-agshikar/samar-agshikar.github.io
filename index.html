@@ -7,7 +7,7 @@
   <title>Samar Agshikar — Personal Digital Universe</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
   <style>
     :root,
     [data-theme="acid"] {
@@ -29,7 +29,7 @@
       --glass-bg-hover: linear-gradient(155deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.04) 100%);
       --glass-border: rgba(255, 255, 255, 0.13);
       --btn-text: #050608;
-      --panel-solid: rgba(8, 11, 17, 0.90);
+      --panel-solid: rgba(9, 12, 18, 0.88);
     }
 
     [data-theme="ocean"] {
@@ -51,7 +51,7 @@
       --glass-bg-hover: linear-gradient(155deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.04) 100%);
       --glass-border: rgba(255, 255, 255, 0.14);
       --btn-text: #030912;
-      --panel-solid: rgba(6, 18, 30, 0.90);
+      --panel-solid: rgba(6, 18, 30, 0.88);
     }
 
     [data-theme="sunset"] {
@@ -73,7 +73,7 @@
       --glass-bg-hover: linear-gradient(155deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.04) 100%);
       --glass-border: rgba(255, 255, 255, 0.14);
       --btn-text: #0b0508;
-      --panel-solid: rgba(20, 9, 15, 0.90);
+      --panel-solid: rgba(20, 9, 15, 0.88);
     }
 
     [data-theme="light"] {
@@ -95,7 +95,7 @@
       --glass-bg-hover: linear-gradient(155deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.58) 100%);
       --glass-border: rgba(15, 23, 42, 0.12);
       --btn-text: #ffffff;
-      --panel-solid: rgba(10, 15, 28, 0.92);
+      --panel-solid: rgba(15, 23, 42, 0.90);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -109,11 +109,10 @@
       color: var(--text);
       min-height: 100vh;
       overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
       transition: background-color 0.5s ease, color 0.4s ease;
     }
 
-    button, select { cursor: pointer; font-family: inherit; }
+    button { cursor: pointer; font-family: inherit; }
     :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
     #scroll-progress {
@@ -163,8 +162,8 @@
 
     .reveal {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .reveal.visible {
       opacity: 1;
@@ -180,10 +179,10 @@
     /* Navbar */
     #navbar {
       position: fixed;
-      top: 16px;
+      top: 18px;
       left: 50%;
       transform: translateX(-50%);
-      width: min(1180px, calc(100% - 32px));
+      width: min(1160px, calc(100% - 32px));
       padding: 10px 18px;
       border-radius: 999px;
       display: flex;
@@ -199,30 +198,17 @@
       letter-spacing: -0.02em;
       color: var(--text);
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
     }
     .logo span { color: var(--accent); }
     .nav-links { display: flex; align-items: center; gap: 20px; }
     .nav-links a {
       color: var(--text-secondary);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       font-weight: 500;
-      padding: 4px 2px;
-      position: relative;
       transition: color 0.25s ease;
     }
-    .nav-links a:hover, .nav-links a.active { color: var(--text); }
-    .nav-links a.active::after {
-      content: "";
-      position: absolute;
-      left: 0; right: 0; bottom: -3px;
-      height: 2px;
-      border-radius: 99px;
-      background: var(--accent);
-    }
+    .nav-links a:hover { color: var(--text); }
     .nav-actions { display: flex; align-items: center; gap: 10px; }
 
     .theme-switcher {
@@ -287,14 +273,14 @@
     .mobile-drawer {
       display: none;
       position: fixed;
-      top: 76px;
+      top: 78px;
       left: 16px;
       right: 16px;
       padding: 16px;
       border-radius: 22px;
       z-index: 199;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
     .mobile-drawer.open { display: flex; }
     .mobile-drawer a {
@@ -310,7 +296,7 @@
     .container {
       position: relative;
       z-index: 10;
-      width: min(1180px, calc(100% - 32px));
+      width: min(1160px, calc(100% - 32px));
       margin: 0 auto;
     }
 
@@ -321,11 +307,11 @@
 
     .section-header {
       margin-bottom: 40px;
-      max-width: 760px;
+      max-width: 740px;
     }
     .eyebrow {
       font-family: "JetBrains Mono", monospace;
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       color: var(--accent);
@@ -352,15 +338,15 @@
       flex-direction: column;
       justify-content: center;
       padding-top: 110px;
-      max-width: 850px;
+      max-width: 840px;
     }
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
+      gap: 8px;
       padding: 7px 15px;
       border-radius: 999px;
-      font-size: 0.81rem;
+      font-size: 0.82rem;
       font-weight: 500;
       color: var(--accent);
       margin-bottom: 24px;
@@ -385,7 +371,7 @@
       line-height: 1.68;
       color: var(--text-secondary);
       margin-bottom: 32px;
-      max-width: 660px;
+      max-width: 650px;
     }
     .hero-buttons { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 
@@ -411,7 +397,7 @@
       align-items: center;
       gap: 10px;
       font-family: "JetBrains Mono", monospace;
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       color: var(--text-muted);
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -419,7 +405,7 @@
     .scroll-cue-line {
       width: 36px; height: 1px;
       background: var(--accent);
-      opacity: 0.65;
+      opacity: 0.6;
     }
 
     /* Cards & Grids */
@@ -451,7 +437,7 @@
       padding: 3px 9px;
       border-radius: 999px;
       background: rgba(var(--accent-rgb), 0.12);
-      border: 1px solid rgba(var(--accent-rgb), 0.28);
+      border: 1px solid rgba(var(--accent-rgb), 0.25);
       color: var(--accent);
     }
     .card h3 { font-family: "Space Grotesk", sans-serif; font-size: 1.38rem; margin-bottom: 10px; }
@@ -478,7 +464,7 @@
     }
     .journey-sticky {
       position: sticky;
-      top: 116px;
+      top: 120px;
       padding: 32px;
       border-radius: 26px;
     }
@@ -493,7 +479,7 @@
       border: 1px solid var(--glass-border);
       background: rgba(255, 255, 255, 0.025);
       opacity: 0.45;
-      transform: scale(0.985);
+      transform: scale(0.98);
       transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .journey-step.active {
@@ -505,13 +491,13 @@
     }
 
     /* ============================================================
-       03. PRECISION ENGINEERING CAD & SILICON VIEWPORT (#MACHINE)
+       SCROLL-DRIVEN 3D EXPERIENCE: PHOTOREALISTIC HARDWARE
        ============================================================ */
     #machine {
       position: relative;
       z-index: 20;
       height: 540vh;
-      background: #04060b;
+      background: #03050a;
       border-top: 1px solid var(--glass-border);
       border-bottom: 1px solid var(--glass-border);
     }
@@ -522,7 +508,6 @@
       height: 100vh;
       width: 100%;
       overflow: hidden;
-      background: radial-gradient(circle at 46% 48%, #0e1525 0%, #050810 58%, #020307 100%);
     }
 
     #machine-canvas {
@@ -532,114 +517,61 @@
       height: 100%;
       display: block;
       cursor: grab;
-      touch-action: none;
     }
     #machine-canvas:active { cursor: grabbing; }
-
-    /* CAD Callout Overlay SVG */
-    #cad-overlay {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 4;
-    }
 
     .machine-vignette {
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: radial-gradient(circle at center, transparent 60%, rgba(2, 4, 8, 0.78) 100%);
+      background: radial-gradient(circle at center, transparent 56%, rgba(2, 4, 8, 0.85) 100%);
       z-index: 2;
     }
 
     .machine-hud-top {
       position: absolute;
-      top: 82px;
-      left: 28px;
-      right: 28px;
+      top: 86px;
+      left: 32px;
+      right: 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 10px;
-      z-index: 7;
+      z-index: 5;
       pointer-events: none;
     }
     .hud-group {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 10px;
       pointer-events: auto;
     }
     .hud-pill {
       pointer-events: auto;
-      padding: 7px 13px;
+      padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(8, 12, 20, 0.86);
-      backdrop-filter: blur(16px);
+      background: rgba(8, 12, 20, 0.84);
+      backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.14);
       font-family: "JetBrains Mono", monospace;
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       color: #e2e8f0;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
     }
-
-    /* CAD Segmented Mode Control */
-    .cad-segmented {
-      display: inline-flex;
-      padding: 3px;
-      border-radius: 999px;
-      background: rgba(8, 12, 20, 0.88);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      gap: 2px;
-    }
-    .cad-seg-btn {
-      padding: 5px 12px;
-      border-radius: 999px;
-      border: none;
-      background: transparent;
-      color: #94a3b8;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.71rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      transition: all 0.2s ease;
-    }
-    .cad-seg-btn:hover { color: #ffffff; }
-    .cad-seg-btn.active {
-      background: var(--accent);
-      color: var(--btn-text);
-    }
-
-    .hud-select {
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(8, 12, 20, 0.88);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      color: #f4f5f7;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.72rem;
-      outline: none;
-    }
-    .hud-select:focus { border-color: var(--accent); }
-
     .hud-toggle {
       pointer-events: auto;
-      padding: 7px 13px;
+      padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(8, 12, 20, 0.86);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(8, 12, 20, 0.84);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       font-family: "JetBrains Mono", monospace;
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       color: #e2e8f0;
-      letter-spacing: 0.04em;
-      transition: all 0.2s ease;
+      letter-spacing: 0.05em;
+      transition: all 0.25s ease;
     }
     .hud-toggle.active, .hud-toggle:hover {
       border-color: var(--accent);
@@ -649,7 +581,7 @@
 
     .machine-rail {
       position: absolute;
-      left: 28px;
+      left: 32px;
       top: 50%;
       transform: translateY(-50%);
       z-index: 6;
@@ -665,7 +597,7 @@
       border: none;
       color: rgba(255, 255, 255, 0.45);
       font-family: "JetBrains Mono", monospace;
-      font-size: 0.71rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       transition: color 0.25s ease;
@@ -674,7 +606,7 @@
       content: "";
       width: 9px; height: 9px;
       border-radius: 50%;
-      border: 1.5px solid rgba(255, 255, 255, 0.42);
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
       transition: all 0.25s ease;
     }
     .rail-dot.active { color: var(--accent); }
@@ -685,56 +617,23 @@
       transform: scale(1.25);
     }
 
-    /* Bottom-left CAD Camera Controls */
-    .cad-cam-bar {
-      position: absolute;
-      left: 28px;
-      bottom: 28px;
-      z-index: 7;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .cam-icon-btn {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: rgba(8, 12, 20, 0.86);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      color: #f4f5f7;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.9rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-    }
-    .cam-icon-btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* Right Engineering Inspector Card */
     .machine-card {
       position: absolute;
-      right: 28px;
-      bottom: 28px;
-      width: min(440px, calc(100% - 56px));
-      padding: 22px 24px;
-      border-radius: 22px;
+      right: 32px;
+      bottom: 32px;
+      width: min(415px, calc(100% - 64px));
+      padding: 24px 26px;
+      border-radius: 24px;
       background: var(--panel-solid);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
-      z-index: 7;
+      backdrop-filter: blur(22px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      z-index: 6;
       color: #f4f5f7;
     }
     .depth-tabs {
       display: flex;
       gap: 6px;
-      margin: 12px 0;
+      margin: 14px 0;
     }
     .depth-tab {
       flex: 1;
@@ -752,60 +651,8 @@
       border-color: var(--accent);
       color: #ffffff;
     }
-
-    .spec-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-      margin: 12px 0;
-    }
-    .spec-cell {
-      padding: 8px 10px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.045);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .spec-cell .k {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.64rem;
-      text-transform: uppercase;
-      color: #94a3b8;
-      display: block;
-      margin-bottom: 2px;
-    }
-    .spec-cell .v {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.76rem;
-      font-weight: 600;
-      color: #f8fafc;
-    }
-
-    .inspect-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 12px;
-    }
-    .inspect-btn {
-      flex: 1;
-      padding: 8px 12px;
-      border-radius: 10px;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.73rem;
-      font-weight: 600;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(255, 255, 255, 0.07);
-      color: #f4f5f7;
-      transition: all 0.2s ease;
-    }
-    .inspect-btn.primary {
-      background: var(--accent);
-      color: var(--btn-text);
-      border-color: var(--accent);
-    }
-    .inspect-btn:hover { opacity: 0.92; }
-
     .machine-progress-track {
-      margin-top: 14px;
+      margin-top: 16px;
       height: 3px;
       border-radius: 99px;
       background: rgba(255, 255, 255, 0.1);
@@ -818,34 +665,21 @@
       transition: width 0.08s linear;
     }
 
-    /* WebGL Fallback */
-    #webgl-fallback {
-      position: absolute;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      z-index: 3;
-      color: #e2e8f0;
-      text-align: center;
-    }
-
     /* Logic Gate Playground */
     .logic-box {
       padding: 28px;
       border-radius: 24px;
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
+      grid-template-columns: 1fr 1.15fr;
       gap: 24px;
       align-items: center;
     }
     .bit-toggle {
-      padding: 10px 16px;
+      padding: 10px 18px;
       border-radius: 12px;
       font-family: "JetBrains Mono", monospace;
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       border: 1px solid var(--glass-border);
       background: rgba(255, 255, 255, 0.06);
       color: var(--text);
@@ -907,7 +741,7 @@
     #live-glass-card {
       position: relative;
       z-index: 2;
-      width: 285px;
+      width: 280px;
       padding: 26px;
       border-radius: 24px;
       color: #ffffff;
@@ -931,16 +765,16 @@
 
     .sim-canvas {
       width: 100%;
-      height: 350px;
+      height: 340px;
       border-radius: 18px;
-      background: rgba(5, 8, 15, 0.90);
+      background: rgba(5, 8, 15, 0.88);
       border: 1px solid var(--glass-border);
       display: block;
     }
 
     /* Interactive Terminal inside Laboratory */
     .term-box {
-      background: rgba(5, 8, 15, 0.88);
+      background: rgba(5, 8, 15, 0.86);
       border: 1px solid var(--glass-border);
       border-radius: 18px;
       padding: 18px 20px;
@@ -1090,13 +924,11 @@
       border-top: 1px solid var(--glass-border);
     }
 
-    @media (max-width: 960px) {
+    @media (max-width: 900px) {
       .journey-grid, .lab-split, .logic-box { grid-template-columns: 1fr; }
       .journey-sticky { position: static; }
       .machine-rail { display: none; }
-      .cad-cam-bar { display: none; }
-      .machine-card { right: 14px; left: 14px; bottom: 14px; width: auto; padding: 16px 18px; }
-      .machine-hud-top { top: 74px; left: 14px; right: 14px; }
+      .machine-card { right: 16px; left: 16px; bottom: 16px; width: auto; }
     }
     @media (max-width: 780px) {
       .nav-links, .nav-cta, .cmd-trigger { display: none; }
@@ -1119,18 +951,18 @@
   <nav id="navbar" class="glass" aria-label="Primary navigation">
     <a href="#" class="logo">SAMAR<span>.</span></a>
     <div class="nav-links">
-      <a href="#meet" data-nav="meet">Journey</a>
-      <a href="#ventures" data-nav="ventures">Ventures</a>
-      <a href="#machine" data-nav="machine">Inside the Machine</a>
-      <a href="#laboratory" data-nav="laboratory">Laboratory</a>
-      <a href="#notebook" data-nav="notebook">Notebook</a>
+      <a href="#meet">Journey</a>
+      <a href="#ventures">Ventures</a>
+      <a href="#machine">Inside the Machine</a>
+      <a href="#laboratory">Laboratory</a>
+      <a href="#notebook">Notebook</a>
     </div>
     <div class="nav-actions">
       <div class="theme-switcher" role="group" aria-label="Theme switcher">
-        <button class="theme-dot active" data-set-theme="acid" style="background: #e8ff47;" aria-label="Acid theme" title="Acid Neon"></button>
-        <button class="theme-dot" data-set-theme="ocean" style="background: #38bdf8;" aria-label="Ocean theme" title="Ocean Cyan"></button>
-        <button class="theme-dot" data-set-theme="sunset" style="background: #fb923c;" aria-label="Sunset theme" title="Sunset Ember"></button>
-        <button class="theme-dot" data-set-theme="light" style="background: #4f46e5;" aria-label="Light theme" title="Light Prism"></button>
+        <button class="theme-dot active" data-set-theme="acid" style="background: #e8ff47;" aria-label="Acid theme"></button>
+        <button class="theme-dot" data-set-theme="ocean" style="background: #38bdf8;" aria-label="Ocean theme"></button>
+        <button class="theme-dot" data-set-theme="sunset" style="background: #fb923c;" aria-label="Sunset theme"></button>
+        <button class="theme-dot" data-set-theme="light" style="background: #4f46e5;" aria-label="Light theme"></button>
       </div>
       <button class="cmd-trigger" id="openCmdBtn" aria-label="Open command palette">⌘K</button>
       <a href="#machine" class="nav-cta">Enter Machine</a>
@@ -1260,100 +1092,41 @@
   </div>
 
   <!-- ============================================================
-       03. FULL-BLEED CAD & SILICON ARCHITECTURE VIEWPORT (#MACHINE)
+       03. FULL-BLEED SCROLL-DRIVEN 3D: PHOTOREALISTIC PC & SILICON
        ============================================================ -->
-  <section id="machine" aria-label="Beyond the Screen: Inside the Machine CAD & Silicon Experience">
+  <section id="machine" aria-label="Beyond the Screen: Inside the Machine 3D Experience">
     <div class="machine-sticky">
       <canvas id="machine-canvas"></canvas>
-
-      <!-- Live 3D-Projected Technical Leader Line Overlay -->
-      <svg id="cad-overlay" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
-
-      <!-- WebGL Fallback -->
-      <div id="webgl-fallback">
-        <div class="glass" style="max-width: 540px; padding: 28px; border-radius: 22px;">
-          <div class="eyebrow">CAD ARCHITECTURE SCHEMATIC</div>
-          <h3 style="font-family: 'Space Grotesk', sans-serif; margin-bottom: 10px;">WebGL Hardware Acceleration Unavailable</h3>
-          <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.6;">
-            Your browser or device has disabled WebGL 3D rendering. Use the component selector above or explore the interactive simulations below.
-          </p>
-        </div>
-      </div>
-
       <div class="machine-vignette"></div>
 
-      <!-- Top Precision CAD Toolbar -->
       <div class="machine-hud-top">
-        <div class="hud-pill" id="scaleIndicator">SCALE 1:1 · ATX WORKSTATION ASSEMBLY</div>
+        <div class="hud-pill" id="scaleIndicator">SCALE 1:1 · WORKSTATION EXTERIOR</div>
         <div class="hud-group">
-          <div class="cad-segmented" role="group" aria-label="Assembly state">
-            <button class="cad-seg-btn active" data-asm="assembled">Assembled</button>
-            <button class="cad-seg-btn" data-asm="exploded">Exploded</button>
-            <button class="cad-seg-btn" data-asm="isolated" id="isolateModeBtn" disabled style="opacity: 0.45;">Isolate</button>
-          </div>
-
-          <select class="hud-select" id="partSelector" aria-label="Inspect hardware component">
-            <option value="">Inspect Subsystem...</option>
-            <option value="chassis">01 · Dual-Chamber ATX Chassis</option>
-            <option value="motherboard">02 · ROG Z890 Motherboard</option>
-            <option value="cpu">03 · Core Ultra 9 &amp; LGA1851</option>
-            <option value="ram">04 · 64GB DDR5-8400 Kit</option>
-            <option value="gpu">05 · RTX Founders Edition GPU</option>
-            <option value="cooler">06 · 360mm AIO Liquid Cooler</option>
-            <option value="storage">07 · 2TB PCIe 5.0 NVMe SSD</option>
-            <option value="psu">08 · 1200W ATX 3.1 PSU</option>
-          </select>
-
-          <button class="hud-toggle active" id="gateBiasBtn" style="display: none;">V_GS BIAS: ON (0.75V)</button>
-          <button class="hud-toggle active" id="rgbBtn">RGB: ON</button>
+          <button class="hud-toggle active" id="gateBiasBtn">V_GS BIAS: ON (0.75V)</button>
+          <button class="hud-toggle active" id="rgbBtn">RGB LIGHTING: ON</button>
+          <button class="hud-toggle" id="explodeBtn">EXPLODE LAYERS: OFF</button>
+          <div class="hud-pill">SCROLL TO FLY INSIDE · DRAG TO ORBIT</div>
         </div>
       </div>
 
-      <!-- Left Scale & Chapter Rail -->
-      <div class="machine-rail" aria-label="Machine scale chapters">
+      <div class="machine-rail" aria-label="Machine chapters">
         <button class="rail-dot active" data-chapter="0">01 Workstation</button>
-        <button class="rail-dot" data-chapter="1">02 Internals &amp; Buses</button>
-        <button class="rail-dot" data-chapter="2">03 GPU &amp; Thermal</button>
+        <button class="rail-dot" data-chapter="1">02 Motherboard</button>
+        <button class="rail-dot" data-chapter="2">03 RTX GPU</button>
         <button class="rail-dot" data-chapter="3">04 Silicon Die</button>
         <button class="rail-dot" data-chapter="4">05 3nm GAAFET</button>
       </div>
 
-      <!-- Bottom-Left Camera Controls -->
-      <div class="cad-cam-bar">
-        <button class="cam-icon-btn" id="camZoomIn" title="Zoom In (+)" aria-label="Zoom In">+</button>
-        <button class="cam-icon-btn" id="camZoomOut" title="Zoom Out (-)" aria-label="Zoom Out">&minus;</button>
-        <button class="hud-toggle" id="camResetBtn" title="Reset Camera (R)">Reset View</button>
-        <div class="hud-pill">CLICK PART TO INSPECT · DRAG: ORBIT · RIGHT-DRAG: PAN · SCROLL: ZOOM</div>
-      </div>
-
-      <!-- Right Engineering Inspector Panel -->
       <aside class="machine-card" aria-live="polite">
-        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;">
-          <div class="eyebrow" id="infoCategory" style="margin-bottom: 2px;">01 / SCALE 1:1</div>
-          <button class="hud-toggle" id="clearSelectionBtn" style="display: none; padding: 4px 10px; font-size: 0.68rem;">&times; Full Assembly</button>
-        </div>
-        <h3 id="infoTitle" style="font-family: 'Space Grotesk', sans-serif; font-size: 1.42rem; line-height: 1.2;">Dual-Chamber ATX Workstation</h3>
-
-        <!-- Depth Tabs (Shown in Scroll Narrative Mode) -->
-        <div class="depth-tabs" id="depthTabsRow">
+        <div class="eyebrow" id="infoCategory" style="margin-bottom: 4px;">01 / SCALE 1:1</div>
+        <h3 id="infoTitle" style="font-family: 'Space Grotesk', sans-serif; font-size: 1.45rem;">Flagship ATX Workstation</h3>
+        <div class="depth-tabs">
           <button class="depth-tab active" data-depth="simple">Simple</button>
           <button class="depth-tab" data-depth="detailed">Detailed</button>
           <button class="depth-tab" data-depth="deep">Deep Dive</button>
         </div>
-
-        <p id="infoBody" style="color: #cbd5e1; font-size: 0.88rem; line-height: 1.62;"></p>
-
-        <!-- Engineering Specs Grid (Shown when a Hardware Component is Selected) -->
-        <div class="spec-grid" id="specGrid" style="display: none;"></div>
-
-        <div style="margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.78rem; color: #94a3b8; line-height: 1.5;" id="infoConnects"></div>
-
-        <!-- Component Isolation Actions -->
-        <div class="inspect-actions" id="inspectActions" style="display: none;">
-          <button class="inspect-btn primary" id="toggleIsolateBtn">Isolate Component</button>
-          <button class="inspect-btn" id="toggleExplodeFromCardBtn">Explode Assembly</button>
-        </div>
-
+        <p id="infoBody" style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.65;"></p>
+        <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: #94a3b8;" id="infoConnects"></div>
         <div class="machine-progress-track">
           <div id="machine-progress-fill"></div>
         </div>
@@ -1369,26 +1142,26 @@
           <div class="eyebrow">The Language of Computing</div>
           <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; margin-bottom: 8px;">Interactive CMOS Logic Gates</h3>
           <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65; margin-bottom: 18px;">
-            Those 3nm nanosheet transistors combine into complementary CMOS logic gates. Toggle inputs A and B to inspect IEEE gate topology, active signal routing, and transistor complexity.
+            Those 3nm nanosheet transistors you just scrolled through combine into CMOS logic gates. Toggle inputs A and B to see how gate voltage becomes Boolean computation.
           </p>
           <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px;">
             <button class="bit-toggle on" id="bitA">Input A: 1</button>
             <button class="bit-toggle" id="bitB">Input B: 0</button>
             <select id="gateSelect" class="bit-toggle" aria-label="Select logic gate">
-              <option value="AND">AND Gate (6T)</option>
-              <option value="OR">OR Gate (6T)</option>
-              <option value="XOR">XOR Gate (8T)</option>
-              <option value="NAND">NAND Gate (4T)</option>
-              <option value="NOR">NOR Gate (4T)</option>
-              <option value="NOT">NOT Gate (2T)</option>
+              <option value="AND">AND Gate</option>
+              <option value="OR">OR Gate</option>
+              <option value="XOR">XOR Gate</option>
+              <option value="NAND">NAND Gate</option>
+              <option value="NOR">NOR Gate</option>
+              <option value="NOT">NOT Gate (A)</option>
             </select>
           </div>
           <div class="glass" style="padding: 12px 16px; border-radius: 14px; display: flex; justify-content: space-between; align-items: center;">
-            <span id="gateFormula" style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-secondary);">1 AND 0 · 6 MOSFETs</span>
-            <span id="gateOutput" style="font-family: 'JetBrains Mono', monospace; font-size: 1.02rem; font-weight: 700; color: var(--accent);">OUTPUT: 0</span>
+            <span id="gateFormula" style="font-family: 'JetBrains Mono', monospace; font-size: 0.86rem; color: var(--text-secondary);">1 AND 0</span>
+            <span id="gateOutput" style="font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; font-weight: 700; color: var(--accent);">OUTPUT: 0</span>
           </div>
         </div>
-        <canvas id="logicCanvas" class="sim-canvas" style="height: 245px;" aria-label="IEEE CMOS logic gate schematic"></canvas>
+        <canvas id="logicCanvas" class="sim-canvas" style="height: 230px;" aria-label="CMOS logic gate schematic"></canvas>
       </div>
     </section>
 
@@ -1398,7 +1171,7 @@
         <span class="eyebrow">04 / The Laboratory</span>
         <h2 class="section-title">Interactive experiments &amp; prototypes.</h2>
         <p class="section-desc">
-          Working visualisations and engineering playgrounds—from Liquid Glass optics, Transformer attention, NACA airfoil aerodynamics, OS kernel architecture, and particle fields to the interactive Kerniq Shell.
+          Working visualisations and engineering playgrounds—from Liquid Glass optics, AI attention, aerodynamics, operating systems, and particle physics to the interactive Kerniq Terminal.
         </p>
       </div>
 
@@ -1415,25 +1188,22 @@
       <div class="lab-panel glass active" id="lab-glass">
         <div class="lab-split">
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
-              <h3 style="font-family: 'Space Grotesk', sans-serif;">Liquid Glass Optics</h3>
-              <button class="m-btn" id="copyGlassCssBtn">Copy CSS</button>
-            </div>
-            <div class="control-group"><label><span>Background Blur</span><span id="valBlur">22px</span></label><input type="range" id="ctrlBlur" min="0" max="48" value="22" /></div>
+            <h3 style="font-family: 'Space Grotesk', sans-serif; margin-bottom: 14px;">Liquid Glass Parameters</h3>
+            <div class="control-group"><label><span>Background Blur</span><span id="valBlur">20px</span></label><input type="range" id="ctrlBlur" min="0" max="48" value="20" /></div>
             <div class="control-group"><label><span>Surface Opacity</span><span id="valOpacity">0.12</span></label><input type="range" id="ctrlOpacity" min="0.02" max="0.45" step="0.01" value="0.12" /></div>
-            <div class="control-group"><label><span>Rim Specular Border</span><span id="valBorder">0.26</span></label><input type="range" id="ctrlBorder" min="0.05" max="0.8" step="0.02" value="0.26" /></div>
-            <div class="control-group"><label><span>Specular Incidence Angle</span><span id="valAngle">145°</span></label><input type="range" id="ctrlAngle" min="0" max="360" value="145" /></div>
-            <div class="control-group"><label><span>Chromatic Saturation</span><span id="valSat">165%</span></label><input type="range" id="ctrlSat" min="100" max="260" value="165" /></div>
-            <div class="control-group"><label><span>Shadow Elevation</span><span id="valDepth">24px</span></label><input type="range" id="ctrlDepth" min="0" max="60" value="24" /></div>
+            <div class="control-group"><label><span>Border Intensity</span><span id="valBorder">0.24</span></label><input type="range" id="ctrlBorder" min="0.05" max="0.8" step="0.02" value="0.24" /></div>
+            <div class="control-group"><label><span>Specular Angle</span><span id="valAngle">145°</span></label><input type="range" id="ctrlAngle" min="0" max="360" value="145" /></div>
+            <div class="control-group"><label><span>Saturation</span><span id="valSat">160%</span></label><input type="range" id="ctrlSat" min="100" max="260" value="160" /></div>
+            <div class="control-group"><label><span>Elevation</span><span id="valDepth">24px</span></label><input type="range" id="ctrlDepth" min="0" max="60" value="24" /></div>
           </div>
           <div class="glass-stage">
             <div class="stage-blob" style="width: 170px; height: 170px; background: #e8ff47; top: 20px; left: 30px;"></div>
             <div class="stage-blob" style="width: 200px; height: 200px; background: #38bdf8; bottom: -20px; right: 20px;"></div>
-            <div class="stage-blob" style="width: 130px; height: 130px; background: #f43f5e; top: 115px; right: 140px;"></div>
+            <div class="stage-blob" style="width: 130px; height: 130px; background: #f43f5e; top: 120px; right: 140px;"></div>
             <div id="live-glass-card">
-              <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; opacity: 0.85; margin-bottom: 8px;">KERNIQ UI // REFRACTION</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; opacity: 0.85; margin-bottom: 8px;">LIQUID GLASS SURFACE</div>
               <div style="font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 8px;">Optical Depth</div>
-              <p style="font-size: 0.85rem; line-height: 1.52; opacity: 0.92;">Real-time backdrop convolution, chromatic saturation boost, and directional specular rim reflection.</p>
+              <p style="font-size: 0.85rem; line-height: 1.5; opacity: 0.9;">Adjust refraction, blur, specular highlights, and elevation in real time.</p>
             </div>
           </div>
         </div>
@@ -1441,18 +1211,11 @@
 
       <!-- LAB 02 -->
       <div class="lab-panel glass" id="lab-ai">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 8px;">
-          <h3 style="font-family: 'Space Grotesk', sans-serif;">Multi-Head Transformer Self-Attention</h3>
-          <div style="display: flex; gap: 8px;">
-            <button class="m-btn active" data-attn-head="0">Head 1 · Semantic</button>
-            <button class="m-btn" data-attn-head="1">Head 2 · Syntactic</button>
-          </div>
-        </div>
-        <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 14px;">Select any query token to inspect normalized softmax attention weights and token-to-token arcs.</p>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; margin-bottom: 8px;">How Transformers Attend to Words</h3>
+        <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 16px;">Click any token to inspect conceptual self-attention weights across the sentence.</p>
         <div class="token-row" id="aiTokens"></div>
-        <canvas id="attnArcCanvas" class="sim-canvas" style="height: 145px; margin-bottom: 14px;" aria-label="Self-attention arcs"></canvas>
-        <div class="glass" style="padding: 18px; border-radius: 16px;">
-          <div id="aiExplain" style="font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--accent); margin-bottom: 10px;"></div>
+        <div class="glass" style="padding: 20px; border-radius: 16px; margin-top: 14px;">
+          <div id="aiExplain" style="font-family: 'JetBrains Mono', monospace; font-size: 0.84rem; color: var(--accent); margin-bottom: 10px;"></div>
           <div id="aiBars" style="display: grid; gap: 8px;"></div>
         </div>
       </div>
@@ -1461,12 +1224,12 @@
       <div class="lab-panel glass" id="lab-aero">
         <div class="lab-split">
           <div>
-            <h3 style="font-family: 'Space Grotesk', sans-serif; margin-bottom: 10px;">NACA 2412 Airfoil Wind Tunnel</h3>
-            <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px;">Adjust Angle of Attack (&alpha;) and True Airspeed to inspect streamline deflection, Lift/Drag force vectors, and boundary-layer stall separation.</p>
-            <div class="control-group"><label><span>Angle of Attack (&alpha;)</span><span id="valAoA">6°</span></label><input type="range" id="ctrlAoA" min="-4" max="20" value="6" /></div>
-            <div class="control-group"><label><span>True Airspeed (KTAS)</span><span id="valSpeed">180 kt</span></label><input type="range" id="ctrlSpeed" min="80" max="320" value="180" /></div>
-            <div class="glass" style="padding: 14px; border-radius: 14px; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.6;">
-              <div id="aeroReadout">C_L: 0.88 · C_D: 0.042 · L/D: 21.0 · STATUS: CLIMBING</div>
+            <h3 style="font-family: 'Space Grotesk', sans-serif; margin-bottom: 12px;">Airfoil &amp; Forces of Flight</h3>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; margin-bottom: 18px;">Adjust Angle of Attack and Airspeed to observe simplified Lift, Drag, and airflow streamlines.</p>
+            <div class="control-group"><label><span>Angle of Attack (α)</span><span id="valAoA">6°</span></label><input type="range" id="ctrlAoA" min="-4" max="20" value="6" /></div>
+            <div class="control-group"><label><span>Airspeed (Knots)</span><span id="valSpeed">180 kt</span></label><input type="range" id="ctrlSpeed" min="80" max="320" value="180" /></div>
+            <div class="glass" style="padding: 14px; border-radius: 14px; margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;">
+              <div id="aeroReadout">LIFT: HIGH · DRAG: LOW · STATUS: CLIMBING</div>
             </div>
           </div>
           <canvas id="aeroCanvas" class="sim-canvas"></canvas>
@@ -1477,13 +1240,12 @@
       <div class="lab-panel glass" id="lab-os">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
           <div>
-            <h3 style="font-family: 'Space Grotesk', sans-serif;">OS Kernel &amp; Ring 0/3 Pipeline Simulator</h3>
-            <p style="color: var(--text-secondary); font-size: 0.88rem;">Dispatch a POSIX syscall, hardware IRQ interrupt, or TCP/IP zero-copy DMA packet across privilege rings.</p>
+            <h3 style="font-family: 'Space Grotesk', sans-serif;">OS Kernel &amp; Packet Simulator</h3>
+            <p style="color: var(--text-secondary); font-size: 0.88rem;">Dispatch a syscall or TCP/IP packet across system layers.</p>
           </div>
-          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-            <button class="m-btn active" id="osTriggerBtn">Syscall (read)</button>
-            <button class="m-btn" id="irqTriggerBtn">Hardware IRQ</button>
-            <button class="m-btn" id="netTriggerBtn">TCP/IP DMA Packet</button>
+          <div style="display: flex; gap: 8px;">
+            <button class="m-btn active" id="osTriggerBtn">Dispatch Syscall</button>
+            <button class="m-btn" id="netTriggerBtn">Send Packet</button>
           </div>
         </div>
         <canvas id="osCanvas" class="sim-canvas"></canvas>
@@ -1493,8 +1255,8 @@
       <div class="lab-panel glass" id="lab-physics">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
           <div>
-            <h3 style="font-family: 'Space Grotesk', sans-serif;">Interactive Vector &amp; Particle Field</h3>
-            <p style="color: var(--text-secondary); font-size: 0.88rem;">Move your cursor across the field to apply central or rotational forces with proximity coupling.</p>
+            <h3 style="font-family: 'Space Grotesk', sans-serif;">Interactive Particle Field</h3>
+            <p style="color: var(--text-secondary); font-size: 0.88rem;">Move your cursor across the canvas to apply forces.</p>
           </div>
           <div style="display: flex; gap: 8px;">
             <button class="m-btn active" data-force="attract">Attract</button>
@@ -1509,20 +1271,19 @@
       <div class="lab-panel glass" id="lab-terminal">
         <div style="margin-bottom: 14px;">
           <h3 style="font-family: 'Space Grotesk', sans-serif;">Kerniq Interactive Shell</h3>
-          <p style="color: var(--text-secondary); font-size: 0.88rem;">Inspect ventures, academic awards, hardware components in 3D, or switch themes via CLI.</p>
+          <p style="color: var(--text-secondary); font-size: 0.88rem;">Explore projects, awards, leadership, and switch color themes via CLI.</p>
         </div>
         <div class="term-box">
           <div class="term-output" id="termOutput"></div>
           <div class="term-input-row">
             <span style="color: var(--accent);">samar@kerniq:~$</span>
-            <input type="text" id="termInput" class="term-input" autocomplete="off" spellcheck="false" aria-label="Terminal command input" placeholder="Type 'help' or 'inspect gpu' and press Enter..." />
+            <input type="text" id="termInput" class="term-input" autocomplete="off" spellcheck="false" aria-label="Terminal command input" placeholder="Type 'help' and press Enter..." />
           </div>
           <div class="term-chips">
             <button class="term-chip" data-cmd="help">help</button>
             <button class="term-chip" data-cmd="whoami">whoami</button>
             <button class="term-chip" data-cmd="ls">ls</button>
             <button class="term-chip" data-cmd="cat kerniqos.txt">cat kerniqos.txt</button>
-            <button class="term-chip" data-cmd="inspect gpu">inspect gpu</button>
             <button class="term-chip" data-cmd="achievements">achievements</button>
             <button class="term-chip" data-cmd="theme ocean">theme ocean</button>
             <button class="term-chip" data-cmd="neofetch">neofetch</button>
@@ -1578,7 +1339,7 @@
     <div class="cmd-modal glass">
       <div class="cmd-input-wrap">
         <span style="font-family: 'JetBrains Mono', monospace; color: var(--accent);">&gt;</span>
-        <input type="text" id="cmdInput" class="cmd-input" placeholder="Jump to section, inspect hardware, open lab, or switch theme..." autocomplete="off" />
+        <input type="text" id="cmdInput" class="cmd-input" placeholder="Jump to section, open lab, or switch theme..." autocomplete="off" />
         <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted);">ESC</span>
       </div>
       <div class="cmd-list" id="cmdList"></div>
@@ -1587,11 +1348,11 @@
 
   <div class="toast glass" id="toast" role="status" aria-live="polite"></div>
 
-  <!-- Three.js r128 CDN -->
+  <!-- Three.js CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
     /* ============================================================
-       1. THEME, TOAST, SCROLL PROGRESS, SCROLL SPY & COMMAND PALETTE
+       1. THEME SWITCHER, TOAST, SCROLL PROGRESS & COMMAND PALETTE
        ============================================================ */
     const toastEl = document.getElementById("toast");
     let toastTimer = null;
@@ -1615,7 +1376,6 @@
       const newColor = themeAccentHex[themeName];
       themedMaterials.forEach((mat) => mat.color.setHex(newColor));
       drawLogicGate();
-      if (typeof renderAttention === "function") renderAttention(currentTokenIdx);
     }
     document.querySelectorAll(".theme-dot").forEach((btn) => {
       btn.addEventListener("click", () => applyTheme(btn.dataset.setTheme));
@@ -1644,19 +1404,9 @@
     });
 
     const progressEl = document.getElementById("scroll-progress");
-    const navAnchors = document.querySelectorAll(".nav-links a[data-nav]");
-    const trackedSections = ["meet", "ventures", "machine", "laboratory", "notebook"].map((id) => document.getElementById(id));
-
     window.addEventListener("scroll", () => {
       const h = document.documentElement.scrollHeight - window.innerHeight;
       progressEl.style.width = `${h > 0 ? (window.scrollY / h) * 100 : 0}%`;
-
-      const y = window.scrollY + window.innerHeight * 0.35;
-      let currentId = "";
-      trackedSections.forEach((sec) => {
-        if (sec && y >= sec.offsetTop) currentId = sec.id;
-      });
-      navAnchors.forEach((a) => a.classList.toggle("active", a.dataset.nav === currentId));
     }, { passive: true });
 
     const revealObserver = new IntersectionObserver((entries) => {
@@ -1692,12 +1442,7 @@
     const commands = [
       { label: "Jump to Journey", meta: "SECTION", action: () => scrollToId("meet") },
       { label: "Jump to Ventures", meta: "SECTION", action: () => scrollToId("ventures") },
-      { label: "Enter 3D Machine CAD", meta: "3D CAD", action: () => scrollToId("machine") },
-      { label: "Explode PC Assembly in 3D", meta: "3D CAD", action: () => { scrollToId("machine"); setAssemblyMode("exploded"); } },
-      { label: "Inspect RTX GPU in 3D", meta: "HARDWARE", action: () => { scrollToId("machine"); selectSubsystem("gpu"); } },
-      { label: "Inspect Z890 Motherboard in 3D", meta: "HARDWARE", action: () => { scrollToId("machine"); selectSubsystem("motherboard"); } },
-      { label: "Inspect Core Ultra 9 CPU in 3D", meta: "HARDWARE", action: () => { scrollToId("machine"); selectSubsystem("cpu"); } },
-      { label: "Inspect 360mm AIO Cooler in 3D", meta: "HARDWARE", action: () => { scrollToId("machine"); selectSubsystem("cooler"); } },
+      { label: "Enter 3D Machine", meta: "3D", action: () => scrollToId("machine") },
       { label: "Open Liquid Glass Lab", meta: "LAB", action: () => openLabTab("glass") },
       { label: "Open AI Attention Lab", meta: "LAB", action: () => openLabTab("ai") },
       { label: "Open Aerospace Wind Tunnel", meta: "LAB", action: () => openLabTab("aero") },
@@ -1733,13 +1478,7 @@
     cmdInput.addEventListener("input", () => renderCommands(cmdInput.value));
     window.addEventListener("keydown", (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); cmdBackdrop.classList.contains("open") ? closeCmd() : openCmd(); }
-      else if (e.key === "Escape") {
-        if (cmdBackdrop.classList.contains("open")) closeCmd();
-        else if (selectedPartId) clearSelection();
-      }
-      else if (e.key.toLowerCase() === "r" && !cmdBackdrop.classList.contains("open") && document.activeElement.tagName !== "INPUT") {
-        resetCadCamera();
-      }
+      else if (e.key === "Escape" && cmdBackdrop.classList.contains("open")) closeCmd();
       else if (cmdBackdrop.classList.contains("open")) {
         if (e.key === "ArrowDown") { e.preventDefault(); cmdIdx = (cmdIdx + 1) % Math.max(1, filteredCmds.length); cmdList.querySelectorAll(".cmd-item").forEach((el, i) => el.classList.toggle("selected", i === cmdIdx)); }
         else if (e.key === "ArrowUp") { e.preventDefault(); cmdIdx = (cmdIdx - 1 + filteredCmds.length) % Math.max(1, filteredCmds.length); cmdList.querySelectorAll(".cmd-item").forEach((el, i) => el.classList.toggle("selected", i === cmdIdx)); }
@@ -1751,93 +1490,69 @@
        2. AMBIENT 3D BACKGROUND (PAUSES WHEN #MACHINE COVERS VIEW)
        ============================================================ */
     let machineVisible = false;
-    const isMobileDevice = window.innerWidth < 820;
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
     const bgCanvas = document.getElementById("bg-canvas");
-    if (window.THREE) {
-      const bgScene = new THREE.Scene();
-      const bgCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
-      bgCamera.position.z = 14;
-      const bgRenderer = new THREE.WebGLRenderer({ canvas: bgCanvas, alpha: true, antialias: !isMobileDevice });
-      bgRenderer.setSize(window.innerWidth, window.innerHeight);
-      bgRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobileDevice ? 1.5 : 2));
+    const bgScene = new THREE.Scene();
+    const bgCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
+    bgCamera.position.z = 14;
+    const bgRenderer = new THREE.WebGLRenderer({ canvas: bgCanvas, alpha: true, antialias: true });
+    bgRenderer.setSize(window.innerWidth, window.innerHeight);
+    bgRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-      function createBgWire(geo, pos, opacity = 0.15) {
-        const mat = new THREE.MeshBasicMaterial({ color: themeAccentHex.acid, wireframe: true, transparent: true, opacity });
-        themedMaterials.push(mat);
-        const mesh = new THREE.Mesh(geo, mat);
-        mesh.position.set(...pos);
-        bgScene.add(mesh);
-        return mesh;
-      }
-      const bgShapes = [
-        createBgWire(new THREE.TorusKnotGeometry(2.2, 0.55, 64, 12), [6.5, 2.2, -2], 0.14),
-        createBgWire(new THREE.IcosahedronGeometry(1.8, 0), [-6.5, -2.5, -1], 0.15)
-      ];
-
-      let bgTargetX = 0, bgTargetY = 0;
-      window.addEventListener("mousemove", (e) => {
-        bgTargetX = (e.clientX / window.innerWidth - 0.5) * 1.0;
-        bgTargetY = (e.clientY / window.innerHeight - 0.5) * 1.0;
-      }, { passive: true });
-
-      (function animateBg() {
-        requestAnimationFrame(animateBg);
-        if (machineVisible || prefersReducedMotion) return;
-        bgShapes.forEach((m, i) => { m.rotation.x += 0.0014 + i * 0.0004; m.rotation.y += 0.0018; });
-        bgCamera.position.x += (bgTargetX - bgCamera.position.x) * 0.04;
-        bgCamera.position.y += (-bgTargetY - bgCamera.position.y) * 0.04;
-        bgCamera.lookAt(bgScene.position);
-        bgRenderer.render(bgScene, bgCamera);
-      })();
-
-      window.addEventListener("resize", () => {
-        bgCamera.aspect = window.innerWidth / window.innerHeight;
-        bgCamera.updateProjectionMatrix();
-        bgRenderer.setSize(window.innerWidth, window.innerHeight);
-      });
+    function createBgWire(geo, pos, opacity = 0.16) {
+      const mat = new THREE.MeshBasicMaterial({ color: themeAccentHex.acid, wireframe: true, transparent: true, opacity });
+      themedMaterials.push(mat);
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.position.set(...pos);
+      bgScene.add(mesh);
+      return mesh;
     }
+    const bgShapes = [
+      createBgWire(new THREE.TorusKnotGeometry(2.2, 0.55, 64, 12), [6.5, 2.2, -2], 0.15),
+      createBgWire(new THREE.IcosahedronGeometry(1.8, 0), [-6.5, -2.5, -1], 0.16)
+    ];
+
+    let bgTargetX = 0, bgTargetY = 0;
+    window.addEventListener("mousemove", (e) => {
+      bgTargetX = (e.clientX / window.innerWidth - 0.5) * 1.0;
+      bgTargetY = (e.clientY / window.innerHeight - 0.5) * 1.0;
+    }, { passive: true });
+
+    (function animateBg() {
+      requestAnimationFrame(animateBg);
+      if (machineVisible) return;
+      bgShapes.forEach((m, i) => { m.rotation.x += 0.0015 + i * 0.0004; m.rotation.y += 0.002; });
+      bgCamera.position.x += (bgTargetX - bgCamera.position.x) * 0.04;
+      bgCamera.position.y += (-bgTargetY - bgCamera.position.y) * 0.04;
+      bgCamera.lookAt(bgScene.position);
+      bgRenderer.render(bgScene, bgCamera);
+    })();
 
     /* ============================================================
-       3. CAD-GRADE PROCEDURAL PBR TEXTURES & STUDIO HDRI ENVIRONMENT
+       3. STUDIO HDRI ENVIRONMENT & FULL-DETAIL PBR TEXTURES
        ============================================================ */
     function createStudioEnvMap(renderer) {
       const c = document.createElement("canvas");
       c.width = 1024; c.height = 512;
       const ctx = c.getContext("2d");
-
       const bg = ctx.createLinearGradient(0, 0, 0, 512);
-      bg.addColorStop(0.0, "#1e293b");
-      bg.addColorStop(0.35, "#0f172a");
-      bg.addColorStop(0.50, "#03050a");
-      bg.addColorStop(1.0, "#0b1120");
+      bg.addColorStop(0, "#1e293b");
+      bg.addColorStop(0.46, "#090d16");
+      bg.addColorStop(0.52, "#020408");
+      bg.addColorStop(1, "#0b1120");
       ctx.fillStyle = bg; ctx.fillRect(0, 0, 1024, 512);
-
-      // Overhead studio softboxes
-      ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
-      ctx.fillRect(140, 18, 744, 34);
-      ctx.fillStyle = "rgba(226, 232, 240, 0.65)";
-      ctx.fillRect(70, 74, 290, 22);
-      ctx.fillRect(664, 74, 290, 22);
-
-      // Cool & warm rim strip reflections for anodized aluminium & glass specular
-      ctx.fillStyle = "rgba(186, 230, 253, 0.85)";
-      ctx.fillRect(28, 145, 140, 125);
-      ctx.fillStyle = "rgba(254, 215, 170, 0.72)";
-      ctx.fillRect(856, 145, 140, 110);
-
-      // Subtle horizon reflection line
-      ctx.fillStyle = "rgba(148, 163, 184, 0.25)";
-      ctx.fillRect(0, 256, 1024, 2);
+      ctx.fillStyle = "#ffffff"; ctx.fillRect(160, 22, 700, 38);
+      ctx.fillStyle = "rgba(255,255,255,0.75)";
+      ctx.fillRect(90, 82, 260, 22); ctx.fillRect(670, 82, 260, 22);
+      ctx.fillStyle = "#bae6fd"; ctx.fillRect(36, 155, 155, 110);
+      ctx.fillStyle = "#fed7aa"; ctx.fillRect(835, 145, 145, 100);
+      ctx.fillStyle = "rgba(148, 163, 184, 0.22)"; ctx.fillRect(0, 256, 1024, 2);
 
       const tex = new THREE.CanvasTexture(c);
       tex.mapping = THREE.EquirectangularReflectionMapping;
       const pmrem = new THREE.PMREMGenerator(renderer);
       pmrem.compileEquirectangularShader();
       const envRT = pmrem.fromEquirectangular(tex);
-      tex.dispose();
-      pmrem.dispose();
+      tex.dispose(); pmrem.dispose();
       return envRT.texture;
     }
 
@@ -1845,9 +1560,9 @@
       const c = document.createElement("canvas");
       c.width = 512; c.height = 512;
       const ctx = c.getContext("2d");
-      const g = ctx.createRadialGradient(256, 256, 30, 256, 256, 245);
-      g.addColorStop(0, "rgba(0, 0, 0, 0.90)");
-      g.addColorStop(0.52, "rgba(0, 0, 0, 0.45)");
+      const g = ctx.createRadialGradient(256, 256, 20, 256, 256, 240);
+      g.addColorStop(0, "rgba(0, 0, 0, 0.88)");
+      g.addColorStop(0.55, "rgba(0, 0, 0, 0.45)");
       g.addColorStop(1, "rgba(0, 0, 0, 0)");
       ctx.fillStyle = g; ctx.fillRect(0, 0, 512, 512);
       return new THREE.CanvasTexture(c);
@@ -1859,88 +1574,59 @@
       const ctx = c.getContext("2d");
       ctx.fillStyle = "#808080"; ctx.fillRect(0, 0, 512, 512);
       for (let y = 0; y < 512; y++) {
-        const v = 104 + Math.floor(Math.random() * 48);
-        ctx.fillStyle = `rgb(${v},${v},${v})`;
-        ctx.fillRect(0, y, 512, 1);
+        const v = 108 + Math.floor(Math.random() * 40);
+        ctx.fillStyle = `rgb(${v},${v},${v})`; ctx.fillRect(0, y, 512, 1);
       }
       const tex = new THREE.CanvasTexture(c);
-      tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-      tex.repeat.set(4, 4);
+      tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(4, 4);
       return tex;
     }
 
-    function makeBraidedSleeveMap() {
+    function makeCrystallineSiliconBump() {
+      const c = document.createElement("canvas");
+      c.width = 512; c.height = 512;
+      const ctx = c.getContext("2d");
+      ctx.fillStyle = "#787878"; ctx.fillRect(0, 0, 512, 512);
+      for (let i = 0; i < 1800; i++) {
+        const shade = Math.random() > 0.5 ? 148 : 102;
+        ctx.fillStyle = `rgb(${shade},${shade},${shade})`;
+        ctx.fillRect(Math.random() * 512, Math.random() * 512, 14, 1.5);
+      }
+      const tex = new THREE.CanvasTexture(c);
+      tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(3, 3);
+      return tex;
+    }
+
+    function makeCarbonFiberMaps() {
       const c = document.createElement("canvas");
       c.width = 128; c.height = 128;
       const ctx = c.getContext("2d");
-      ctx.fillStyle = "#222"; ctx.fillRect(0, 0, 128, 128);
-      for (let i = -128; i < 256; i += 12) {
-        ctx.strokeStyle = "#b5b5b5"; ctx.lineWidth = 4;
-        ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i + 128, 128); ctx.stroke();
-        ctx.strokeStyle = "#686868"; ctx.lineWidth = 3;
-        ctx.beginPath(); ctx.moveTo(i + 128, 0); ctx.lineTo(i, 128); ctx.stroke();
-      }
-      const tex = new THREE.CanvasTexture(c);
-      tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-      tex.repeat.set(28, 3);
-      return tex;
-    }
-
-    function makeHoneycombMeshMaps() {
-      const c = document.createElement("canvas");
-      c.width = 256; c.height = 256;
-      const ctx = c.getContext("2d");
-      ctx.fillStyle = "#0b0e14"; ctx.fillRect(0, 0, 256, 256);
-      const r = 10, dx = r * 1.732, dy = r * 1.5;
-      ctx.fillStyle = "#020305";
-      ctx.strokeStyle = "#334155";
-      ctx.lineWidth = 2;
-      for (let row = 0; row < 20; row++) {
-        for (let col = 0; col < 18; col++) {
-          const cx = col * dx + (row % 2 ? dx * 0.5 : 0);
-          const cy = row * dy;
-          ctx.beginPath();
-          for (let s = 0; s < 6; s++) {
-            const a = (Math.PI / 3) * s + Math.PI / 6;
-            const px = cx + (r - 1.5) * Math.cos(a);
-            const py = cy + (r - 1.5) * Math.sin(a);
-            if (s === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
-          }
-          ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = "#0b0e14"; ctx.fillRect(0, 0, 128, 128);
+      for (let y = 0; y < 128; y += 8) {
+        for (let x = 0; x < 128; x += 8) {
+          ctx.fillStyle = ((x + y) / 8) % 2 === 0 ? "#1a202c" : "#07090d";
+          ctx.fillRect(x, y, 7, 7);
         }
       }
       const tex = new THREE.CanvasTexture(c);
-      tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-      tex.repeat.set(3, 3);
+      tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(16, 16);
       return tex;
     }
 
-    function makeMotherboardMaps() {
+    function makeROGMotherboardTexture() {
       const c = document.createElement("canvas");
       c.width = 1024; c.height = 1024;
       const ctx = c.getContext("2d");
-
-      // Matte-black solder mask base
-      ctx.fillStyle = "#090c12";
-      ctx.fillRect(0, 0, 1024, 1024);
-
-      // Subtle FR-4 fiberglass weave
-      ctx.fillStyle = "rgba(255,255,255,0.014)";
-      for (let y = 0; y < 1024; y += 4) {
-        for (let x = (y % 8 === 0 ? 0 : 2); x < 1024; x += 4) ctx.fillRect(x, y, 2, 2);
-      }
-
-      // Subtle dark geometric PCB silkscreen zones
-      ctx.fillStyle = "rgba(30, 41, 59, 0.25)";
-      ctx.fillRect(60, 60, 420, 440);
-      ctx.fillRect(540, 560, 410, 380);
-
-      // Differential copper/gold PCB trace routing
-      for (let i = 0; i < 190; i++) {
-        ctx.strokeStyle = i % 5 === 0 ? "rgba(234, 179, 8, 0.36)" : "rgba(148, 163, 184, 0.16)";
-        ctx.lineWidth = i % 6 === 0 ? 2.0 : 1.1;
-        let x = Math.floor(Math.random() * 64) * 16;
-        let y = Math.floor(Math.random() * 64) * 16;
+      ctx.fillStyle = "#080b11"; ctx.fillRect(0, 0, 1024, 1024);
+      ctx.fillStyle = "rgba(255,255,255,0.015)";
+      for (let y = 0; y < 1024; y += 4) for (let x = (y % 8 === 0 ? 0 : 2); x < 1024; x += 4) ctx.fillRect(x, y, 2, 2);
+      ctx.save(); ctx.translate(512, 512); ctx.rotate(-0.42);
+      ctx.fillStyle = "rgba(255, 255, 255, 0.025)"; ctx.font = "700 130px Space Grotesk, sans-serif";
+      ctx.fillText("MAXIMUS", -340, 0); ctx.restore();
+      for (let i = 0; i < 160; i++) {
+        ctx.strokeStyle = i % 6 === 0 ? "rgba(234, 179, 8, 0.34)" : "rgba(56, 189, 248, 0.16)";
+        ctx.lineWidth = i % 5 === 0 ? 2.0 : 1.0;
+        let x = Math.floor(Math.random() * 64) * 16, y = Math.floor(Math.random() * 64) * 16;
         ctx.beginPath(); ctx.moveTo(x, y);
         for (let s = 0; s < 5; s++) {
           const dir = Math.floor(Math.random() * 3);
@@ -1950,29 +1636,20 @@
           ctx.lineTo(x, y);
         }
         ctx.stroke();
-        ctx.fillStyle = "#eab308";
-        ctx.beginPath(); ctx.arc(x, y, 2.2, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "#eab308"; ctx.beginPath(); ctx.arc(x, y, 2.2, 0, Math.PI * 2); ctx.fill();
       }
-
-      // Gold mounting standoff rings
-      [[48, 48], [512, 48], [976, 48], [48, 512], [512, 512], [976, 512], [48, 976], [512, 976], [976, 976]].forEach(([mx, my]) => {
+      [[42, 42], [512, 42], [982, 42], [42, 512], [982, 512], [42, 982], [512, 982], [982, 982]].forEach(([mx, my]) => {
         ctx.fillStyle = "#eab308"; ctx.beginPath(); ctx.arc(mx, my, 15, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = "#04060a"; ctx.beginPath(); ctx.arc(mx, my, 7, 0, Math.PI * 2); ctx.fill();
       });
-
-      // Technical silkscreen labels
-      ctx.fillStyle = "rgba(241, 245, 249, 0.78)";
-      ctx.font = "700 20px JetBrains Mono, monospace";
-      ctx.fillText("ROG MAXIMUS Z890 HERO // KERNIQ CAD REV 4.2", 56, 956);
-      ctx.font = "600 13px JetBrains Mono, monospace";
-      ctx.fillStyle = "rgba(148, 163, 184, 0.80)";
-      ctx.fillText("PCIEX16(G5)_1  [SAFE SLOT]", 110, 615);
-      ctx.fillText("DDR5_A1  DDR5_A2  DDR5_B1  DDR5_B2", 565, 130);
-      ctx.fillText("M.2_1 (PCIe 5.0 x4 128Gbps)", 570, 540);
-      ctx.fillText("SOCKET LGA1851 // 22+1+2 VRM", 230, 130);
-
-      const tex = new THREE.CanvasTexture(c);
-      tex.anisotropy = 8;
+      ctx.fillStyle = "rgba(241, 245, 249, 0.72)"; ctx.font = "700 20px JetBrains Mono, monospace";
+      ctx.fillText("ROG MAXIMUS Z890 HERO // KERNIQ EDITION", 56, 964);
+      ctx.font = "500 13px JetBrains Mono, monospace"; ctx.fillStyle = "rgba(148, 163, 184, 0.75)";
+      ctx.fillText("PCIEX16(G5)_1  [SAFE SLOT]", 140, 625);
+      ctx.fillText("DDR5_A1  DDR5_A2  DDR5_B1  DDR5_B2", 575, 160);
+      ctx.fillText("M.2_1 (PCIe 5.0 x4)", 660, 620);
+      ctx.fillText("LGA1851 // 22+1+2 POWER STAGES", 220, 155);
+      const tex = new THREE.CanvasTexture(c); tex.anisotropy = 8;
       return tex;
     }
 
@@ -1981,78 +1658,16 @@
       c.width = 512; c.height = 512;
       const ctx = c.getContext("2d");
       ctx.fillStyle = "#cbd5e1"; ctx.fillRect(0, 0, 512, 512);
-      ctx.strokeStyle = "#94a3b8"; ctx.lineWidth = 22; ctx.strokeRect(11, 11, 490, 490);
-      for (let y = 0; y < 512; y += 2) {
-        ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.08})`;
-        ctx.fillRect(0, y, 512, 1);
-      }
-      ctx.fillStyle = "rgba(15, 23, 42, 0.85)";
-      ctx.font = "700 32px Space Grotesk, sans-serif"; ctx.fillText("KERNIQ // INTEL", 74, 155);
-      ctx.font = "700 24px JetBrains Mono, monospace"; ctx.fillText("CORE ULTRA 9 285K", 74, 205);
-      ctx.font = "500 17px JetBrains Mono, monospace"; ctx.fillText("TSMC N3B · 24 CORES · 5.7 GHZ", 74, 248);
-      ctx.fillText("LGA1851 · BATCH# 2026-DE-IN", 74, 286);
-      ctx.fillStyle = "#eab308";
-      ctx.beginPath(); ctx.moveTo(42, 470); ctx.lineTo(92, 470); ctx.lineTo(42, 420); ctx.fill();
-      const tex = new THREE.CanvasTexture(c);
-      tex.anisotropy = 8;
+      ctx.strokeStyle = "#94a3b8"; ctx.lineWidth = 24; ctx.strokeRect(12, 12, 488, 488);
+      for (let y = 0; y < 512; y += 2) { ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.08})`; ctx.fillRect(0, y, 512, 1); }
+      ctx.fillStyle = "rgba(15, 23, 42, 0.82)";
+      ctx.font = "700 34px Space Grotesk, sans-serif"; ctx.fillText("KERNIQ // INTEL", 76, 155);
+      ctx.font = "600 24px JetBrains Mono, monospace"; ctx.fillText("CORE ULTRA 9 285K", 76, 205);
+      ctx.font = "500 18px JetBrains Mono, monospace"; ctx.fillText("TSMC N3B · 5.7 GHZ BOOST", 76, 250);
+      ctx.fillText("BATCH# 2026-DE-IN", 76, 290);
+      ctx.fillStyle = "#eab308"; ctx.beginPath(); ctx.moveTo(42, 470); ctx.lineTo(90, 470); ctx.lineTo(42, 422); ctx.fill();
+      const tex = new THREE.CanvasTexture(c); tex.anisotropy = 8;
       return tex;
-    }
-
-    function makeLGASocketTexture() {
-      const c = document.createElement("canvas");
-      c.width = 512; c.height = 512;
-      const ctx = c.getContext("2d");
-      ctx.fillStyle = "#111622"; ctx.fillRect(0, 0, 512, 512);
-      ctx.fillStyle = "#d97706";
-      for (let y = 28; y < 484; y += 8) {
-        for (let x = 28; x < 484; x += 8) {
-          if (x > 210 && x < 302 && y > 210 && y < 302) continue;
-          ctx.fillRect(x, y, 4, 4);
-        }
-      }
-      return new THREE.CanvasTexture(c);
-    }
-
-    function makeAIOPumpScreenTexture() {
-      const c = document.createElement("canvas");
-      c.width = 512; c.height = 512;
-      const ctx = c.getContext("2d");
-      ctx.fillStyle = "#03050a"; ctx.fillRect(0, 0, 512, 512);
-      ctx.strokeStyle = "#38bdf8"; ctx.lineWidth = 14;
-      ctx.beginPath(); ctx.arc(256, 256, 212, 0, Math.PI * 2); ctx.stroke();
-      ctx.strokeStyle = "#76b900"; ctx.lineWidth = 10;
-      ctx.beginPath(); ctx.arc(256, 256, 184, -Math.PI * 0.5, Math.PI * 0.85); ctx.stroke();
-      ctx.fillStyle = "#ffffff"; ctx.font = "700 84px Space Grotesk, sans-serif"; ctx.textAlign = "center";
-      ctx.fillText("34°C", 256, 265);
-      ctx.fillStyle = "#38bdf8"; ctx.font = "600 22px JetBrains Mono, monospace"; ctx.fillText("COOLANT TEMP", 256, 315);
-      ctx.fillStyle = "#94a3b8"; ctx.font = "500 18px JetBrains Mono, monospace"; ctx.fillText("2850 RPM · KERNIQ AIO", 256, 175);
-      return new THREE.CanvasTexture(c);
-    }
-
-    function makeNvidiaFEBadgeTexture() {
-      const c = document.createElement("canvas");
-      c.width = 512; c.height = 128;
-      const ctx = c.getContext("2d");
-      ctx.fillStyle = "#161b24"; ctx.fillRect(0, 0, 512, 128);
-      ctx.fillStyle = "#f1f5f9"; ctx.font = "700 44px Space Grotesk, sans-serif"; ctx.textAlign = "center";
-      ctx.fillText("GEFORCE RTX", 256, 78);
-      return new THREE.CanvasTexture(c);
-    }
-
-    function makePSULabelTexture() {
-      const c = document.createElement("canvas");
-      c.width = 512; c.height = 256;
-      const ctx = c.getContext("2d");
-      ctx.fillStyle = "#0b0e14"; ctx.fillRect(0, 0, 512, 256);
-      ctx.strokeStyle = "rgba(255,255,255,0.16)"; ctx.lineWidth = 4; ctx.strokeRect(10, 10, 492, 236);
-      ctx.fillStyle = "#f8fafc"; ctx.font = "700 34px Space Grotesk, sans-serif";
-      ctx.fillText("KERNIQ AX1200i", 32, 68);
-      ctx.fillStyle = "#eab308"; ctx.font = "700 20px JetBrains Mono, monospace";
-      ctx.fillText("80 PLUS TITANIUM · ATX 3.1", 32, 104);
-      ctx.fillStyle = "#94a3b8"; ctx.font = "500 16px JetBrains Mono, monospace";
-      ctx.fillText("+12V RAIL: 100A / 1200W · PCIe 5.1 12V-2x6", 32, 154);
-      ctx.fillText("135MM FDB ZERO-RPM FAN · 100% JAPANESE CAPS", 32, 186);
-      return new THREE.CanvasTexture(c);
     }
 
     function makeSiliconDieTexture() {
@@ -2075,1133 +1690,750 @@
         ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 1024); ctx.stroke();
         ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(1024, i); ctx.stroke();
       }
-      const tex = new THREE.CanvasTexture(c);
-      tex.anisotropy = 8;
+      const tex = new THREE.CanvasTexture(c); tex.anisotropy = 8;
       return tex;
     }
 
-    function makeCrystallineSiliconBump() {
+    function makeAIOPumpScreenTexture() {
       const c = document.createElement("canvas");
       c.width = 512; c.height = 512;
       const ctx = c.getContext("2d");
-      ctx.fillStyle = "#787878"; ctx.fillRect(0, 0, 512, 512);
-      for (let i = 0; i < 1800; i++) {
-        const shade = Math.random() > 0.5 ? 148 : 102;
-        ctx.fillStyle = `rgb(${shade},${shade},${shade})`;
-        ctx.fillRect(Math.random() * 512, Math.random() * 512, 14, 1.5);
-      }
-      const tex = new THREE.CanvasTexture(c);
-      tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-      tex.repeat.set(3, 3);
-      return tex;
+      ctx.fillStyle = "#03050a"; ctx.fillRect(0, 0, 512, 512);
+      ctx.strokeStyle = "#38bdf8"; ctx.lineWidth = 14;
+      ctx.beginPath(); ctx.arc(256, 256, 210, 0, Math.PI * 2); ctx.stroke();
+      ctx.strokeStyle = "#76b900"; ctx.lineWidth = 10;
+      ctx.beginPath(); ctx.arc(256, 256, 182, -Math.PI * 0.5, Math.PI * 0.85); ctx.stroke();
+      ctx.fillStyle = "#ffffff"; ctx.font = "700 84px Space Grotesk, sans-serif"; ctx.textAlign = "center";
+      ctx.fillText("34°C", 256, 265);
+      ctx.fillStyle = "#38bdf8"; ctx.font = "600 22px JetBrains Mono, monospace"; ctx.fillText("LIQUID TEMP", 256, 315);
+      ctx.fillStyle = "#94a3b8"; ctx.font = "500 18px JetBrains Mono, monospace"; ctx.fillText("2850 RPM · KERNIQ AIO", 256, 175);
+      return new THREE.CanvasTexture(c);
+    }
+
+    function makeNvidiaFEBadgeTexture() {
+      const c = document.createElement("canvas");
+      c.width = 512; c.height = 128;
+      const ctx = c.getContext("2d");
+      ctx.fillStyle = "#181c24"; ctx.fillRect(0, 0, 512, 128);
+      ctx.fillStyle = "#e2e8f0"; ctx.font = "700 44px Space Grotesk, sans-serif"; ctx.textAlign = "center";
+      ctx.fillText("GEFORCE RTX", 256, 78);
+      return new THREE.CanvasTexture(c);
     }
 
     /* ============================================================
-       4. PRECISION 3D CAD PC ASSEMBLY & SILICON ARCHITECTURE ENGINE
+       4. SCROLL-DRIVEN 3D: PHOTOREALISTIC PC & 3NM GAAFET (GATED)
        ============================================================ */
     const machineSection = document.getElementById("machine");
     const mCanvas = document.getElementById("machine-canvas");
-    const cadOverlay = document.getElementById("cad-overlay");
 
     const machineObserver = new IntersectionObserver((entries) => {
       machineVisible = entries[0].isIntersecting;
     }, { rootMargin: "160px 0px" });
     machineObserver.observe(machineSection);
 
-    // Hardware Subsystem Metadata Registry (8 Modular Subsystems)
-    const hardwareRegistry = {
-      chassis: {
-        id: "chassis",
-        name: "Dual-Chamber ATX Chassis",
-        category: "ENCLOSURE · CNC ALUMINIUM & LOW-IRON GLASS",
-        purpose: "Structural unibody frame providing positive-pressure laminar airflow, acoustic damping, and isolated thermal chambers for compute and power delivery.",
-        specs: [
-          { k: "Form Factor", v: "ATX / E-ATX Mid-Tower" },
-          { k: "Materials", v: "Anodized 6063 Al + 4mm Glass" },
-          { k: "Intake Airflow", v: "3× 120mm Swept-Blade Fans" },
-          { k: "Expansion", v: "7× Vented PCIe Slots" }
-        ],
-        connects: "Houses Motherboard standoffs, top 360mm Radiator, rear I/O shield, and lower PSU bay.",
-        explodeOffset: new THREE.Vector3(0, 0, 0),
-        camOffset: new THREE.Vector3(3.4, 1.8, 10.2),
-        anchorLocal: new THREE.Vector3(-2.6, 2.5, 1.65)
-      },
-      motherboard: {
-        id: "motherboard",
-        name: "ROG Maximus Z890 Hero",
-        category: "SYSTEM INTERCONNECT · 8-LAYER PCB",
-        purpose: "High-speed printed circuit board routing differential PCIe 5.0, DDR5, and DMI lanes while regulating clean multi-phase voltage to the processor.",
-        specs: [
-          { k: "Socket / Chipset", v: "LGA1851 · Intel Z890" },
-          { k: "Power Stages", v: "22+1+2 Teamed VRM (110A)" },
-          { k: "Primary Bus", v: "PCIe 5.0 x16 SafeSlot" },
-          { k: "Memory Bus", v: "4× DIMM Dual-Ch DDR5" }
-        ],
-        connects: "Interconnects CPU ↔ DDR5 RAM ↔ RTX GPU ↔ PCIe 5.0 NVMe SSD ↔ ATX PSU.",
-        explodeOffset: new THREE.Vector3(0, 0, 0),
-        camOffset: new THREE.Vector3(0.4, 0.8, 6.8),
-        anchorLocal: new THREE.Vector3(-0.3, 1.1, 0.1)
-      },
-      cpu: {
-        id: "cpu",
-        name: "Core Ultra 9 285K & LGA1851",
-        category: "CENTRAL PROCESSOR · TSMC N3B",
-        purpose: "Heterogeneous multi-core compute engine executing OS kernel scheduling, branch prediction, vector math, and PCIe/memory controller I/O.",
-        specs: [
-          { k: "Architecture", v: "24 Cores (8P + 16E)" },
-          { k: "Process Node", v: "TSMC N3B (3nm Class)" },
-          { k: "Boost Clock", v: "Up to 5.70 GHz" },
-          { k: "Package / IHS", v: "LGA1851 · Nickel-Plated Cu" }
-        ],
-        connects: "Seats into 1,851 gold micro-pins; interfaces directly with DDR5 RAM and AIO Copper Coldplate.",
-        explodeOffset: new THREE.Vector3(0, 0.15, 2.05),
-        camOffset: new THREE.Vector3(-0.4, 1.2, 4.4),
-        anchorLocal: new THREE.Vector3(-0.45, 1.15, 0.25)
-      },
-      ram: {
-        id: "ram",
-        name: "64GB DDR5-8400 Memory Kit",
-        category: "VOLATILE SYSTEM MEMORY · 4× 16GB DIMM",
-        purpose: "Ultra-low-latency high-bandwidth working memory storing active OS pages, compiler heaps, and model weights for immediate CPU access.",
-        specs: [
-          { k: "Capacity / Speed", v: "64GB (4×16GB) @ 8400 MT/s" },
-          { k: "Power Mgmt", v: "On-DIMM PMIC + ECC" },
-          { k: "Thermal", v: "2mm Anodized Al Spreaders" },
-          { k: "Interface", v: "288-Pin Gold Edge Bus" }
-        ],
-        connects: "Slots into 4× DDR5 DIMM channels directly adjacent to the CPU integrated memory controller.",
-        explodeOffset: new THREE.Vector3(0.35, 0.12, 1.85),
-        camOffset: new THREE.Vector3(1.1, 1.2, 4.6),
-        anchorLocal: new THREE.Vector3(0.95, 1.15, 0.35)
-      },
-      gpu: {
-        id: "gpu",
-        name: "GeForce RTX Founders Edition",
-        category: "PARALLEL ACCELERATOR · DUAL-FLOW COOLER",
-        purpose: "Massively parallel SIMT compute and ray-tracing accelerator engineered for AI tensor inference, real-time 3D shading, and CUDA workloads.",
-        specs: [
-          { k: "Bus Interface", v: "PCIe 5.0 x16 (128 GB/s)" },
-          { k: "Thermal Design", v: "Vapor Chamber + 6 Heatpipes" },
-          { k: "Airflow", v: "Dual Opposite Flow-Through" },
-          { k: "Power Input", v: "16-Pin 12V-2x6 (450W)" }
-        ],
-        connects: "Locks into reinforced PCIe 5.0 x16 SafeSlot; powered via braided 12V-2x6 cable from ATX PSU.",
-        explodeOffset: new THREE.Vector3(0, -0.35, 2.45),
-        camOffset: new THREE.Vector3(0.5, -0.2, 5.4),
-        anchorLocal: new THREE.Vector3(0.15, -0.25, 0.75)
-      },
-      cooler: {
-        id: "cooler",
-        name: "360mm AIO Liquid Cooling Loop",
-        category: "THERMAL TRANSFER · CLOSED-LOOP LIQUID",
-        purpose: "Transfers up to 350W of CPU thermal load via a skived copper coldplate and high-head pump through braided EPDM tubes to a 360mm radiator.",
-        specs: [
-          { k: "Radiator", v: "360mm Louvered Al Core" },
-          { k: "Coldplate", v: "Micro-Skived Pure Copper" },
-          { k: "Pump Telemetry", v: "2850 RPM · 34°C IPS LCD" },
-          { k: "Tubing", v: "Braided EPDM + Rotary Fittings" }
-        ],
-        connects: "Coldplate mounts onto CPU IHS; radiator exhausts heat through top chassis fan bank.",
-        explodeOffset: new THREE.Vector3(0, 0.95, 2.55),
-        camOffset: new THREE.Vector3(0.2, 2.2, 6.2),
-        anchorLocal: new THREE.Vector3(-0.45, 1.15, 0.55)
-      },
-      storage: {
-        id: "storage",
-        name: "2TB PCIe 5.0 NVMe M.2 SSD",
-        category: "NON-VOLATILE STORAGE · 14,500 MB/S",
-        purpose: "Solid-state 3D TLC NAND flash drive delivering ultra-fast sequential reads/writes and high random IOPS directly over 4 dedicated CPU PCIe 5.0 lanes.",
-        specs: [
-          { k: "Protocol", v: "NVMe 2.0 · PCIe Gen5 x4" },
-          { k: "Seq. Read / Write", v: "14,500 / 12,700 MB/s" },
-          { k: "Form Factor", v: "M.2 2280 + Finned Heatsink" },
-          { k: "Cache", v: "2GB LPDDR4 DRAM Buffer" }
-        ],
-        connects: "Mounts horizontally into M.2_1 slot with brass standoff and CNC aluminium thermal heatsink.",
-        explodeOffset: new THREE.Vector3(0, 0, 1.65),
-        camOffset: new THREE.Vector3(0.4, 0.4, 4.5),
-        anchorLocal: new THREE.Vector3(0.55, 0.35, 0.25)
-      },
-      psu: {
-        id: "psu",
-        name: "1200W ATX 3.1 Modular PSU",
-        category: "POWER DELIVERY · 80 PLUS TITANIUM",
-        purpose: "Converts AC mains into tightly regulated +12V, +5V, and +3.3V DC rails capable of handling 200% transient GPU power excursions.",
-        specs: [
-          { k: "Rated Output", v: "1200W Continuous (100A +12V)" },
-          { k: "Standard", v: "ATX 3.1 · Native 12V-2x6" },
-          { k: "Efficiency", v: "94.6% (80 PLUS Titanium)" },
-          { k: "Cabling", v: "Individually Braided + Combs" }
-        ],
-        connects: "Supplies sleeved DC harnesses to Motherboard 24-pin, CPU EPS, and GPU 12V-2x6 connectors.",
-        explodeOffset: new THREE.Vector3(0, -0.35, 2.35),
-        camOffset: new THREE.Vector3(1.6, -2.0, 6.2),
-        anchorLocal: new THREE.Vector3(1.4, -2.4, 0.4)
-      }
-    };
+    const mScene = new THREE.Scene();
+    mScene.fog = new THREE.FogExp2(0x03050a, 0.015);
+    const mCamera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 140);
+    const mRenderer = new THREE.WebGLRenderer({ canvas: mCanvas, antialias: true, powerPreference: "high-performance" });
+    mRenderer.setSize(window.innerWidth, window.innerHeight);
+    mRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    mRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+    mRenderer.toneMappingExposure = 1.26;
+    mRenderer.outputEncoding = THREE.sRGBEncoding;
+    mScene.environment = createStudioEnvMap(mRenderer);
 
-    // State variables accessible globally for Command Palette & Terminal
-    let assemblyMode = "assembled"; // "assembled" | "exploded" | "isolated"
-    let selectedPartId = null;
-    let hoveredPartId = null;
-    let activeChapter = 0;
-    let currentDepth = "simple";
-    let scrollProgress = 0;
-    let rgbEnabled = true;
-    let gateBiasOn = true;
+    mScene.add(new THREE.AmbientLight(0xdbeafe, 0.28));
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.85); keyLight.position.set(11, 16, 14); mScene.add(keyLight);
+    const fillCyan = new THREE.PointLight(0x38bdf8, 2.2, 45); fillCyan.position.set(-12, 7, 11); mScene.add(fillCyan);
+    const rimWarm = new THREE.PointLight(0xf59e0b, 1.6, 38); rimWarm.position.set(11, 5, -10); mScene.add(rimWarm);
 
-    let setAssemblyMode = () => {};
-    let selectSubsystem = () => {};
-    let clearSelection = () => {};
-    let resetCadCamera = () => {};
+    const brushedTex = makeBrushedMetalMaps();
+    const crystalBump = makeCrystallineSiliconBump();
+    const carbonTex = makeCarbonFiberMaps();
+    const pcbTex = makeROGMotherboardTexture();
+    const ihsTex = makeIHSTexture();
+    const dieTex = makeSiliconDieTexture();
+    const aioScreenTex = makeAIOPumpScreenTexture();
+    const rtxBadgeTex = makeNvidiaFEBadgeTexture();
+    const shadowTex = makeContactShadowTexture();
 
-    // Check WebGL availability
-    function hasWebGL() {
-      try {
-        const c = document.createElement("canvas");
-        return !!(window.WebGLRenderingContext && (c.getContext("webgl") || c.getContext("experimental-webgl")));
-      } catch (e) {
-        return false;
-      }
+    const matAnodizedBlack = new THREE.MeshStandardMaterial({ color: 0x0f131a, metalness: 0.84, roughness: 0.30, roughnessMap: brushedTex, bumpMap: brushedTex, bumpScale: 0.012 });
+    const matGunmetal = new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.94, roughness: 0.20, roughnessMap: brushedTex, bumpMap: brushedTex, bumpScale: 0.015 });
+    const matSilverAlum = new THREE.MeshStandardMaterial({ color: 0xdbeafe, metalness: 0.95, roughness: 0.16, roughnessMap: brushedTex, bumpMap: brushedTex, bumpScale: 0.012 });
+    const matDarkHeatsink = new THREE.MeshStandardMaterial({ color: 0x1a202c, metalness: 0.88, roughness: 0.26, bumpMap: brushedTex, bumpScale: 0.01 });
+    const matCopper = new THREE.MeshStandardMaterial({ color: 0xd97706, metalness: 0.96, roughness: 0.16, roughnessMap: brushedTex, bumpMap: brushedTex, bumpScale: 0.012 });
+    const matGold = new THREE.MeshStandardMaterial({ color: 0xfacc15, metalness: 0.97, roughness: 0.14 });
+    const matCarbon = new THREE.MeshStandardMaterial({ map: carbonTex, bumpMap: carbonTex, bumpScale: 0.02, metalness: 0.35, roughness: 0.42 });
+    const matMatteRubber = new THREE.MeshStandardMaterial({ color: 0x090c10, metalness: 0.06, roughness: 0.84 });
+
+    const rgbMaterials = [];
+    function makeRGBMat(hex) { const m = new THREE.MeshBasicMaterial({ color: hex }); rgbMaterials.push({ mat: m, baseHex: hex }); return m; }
+    function addStudioFloorShadow(parent, yPos, scale = 14) {
+      const plane = new THREE.Mesh(new THREE.PlaneGeometry(scale, scale), new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, opacity: 0.85, depthWrite: false }));
+      plane.rotation.x = -Math.PI / 2; plane.position.y = yPos; parent.add(plane);
     }
 
-    if (!window.THREE || !hasWebGL()) {
-      mCanvas.style.display = "none";
-      document.getElementById("webgl-fallback").style.display = "flex";
-    } else {
-      const mScene = new THREE.Scene();
-      mScene.fog = new THREE.FogExp2(0x04060b, 0.012);
-      const mCamera = new THREE.PerspectiveCamera(38, window.innerWidth / window.innerHeight, 0.1, 140);
-      const mRenderer = new THREE.WebGLRenderer({
-        canvas: mCanvas,
-        antialias: !isMobileDevice,
-        powerPreference: "high-performance"
-      });
-      mRenderer.setSize(window.innerWidth, window.innerHeight);
-      mRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobileDevice ? 1.5 : 2));
-      mRenderer.toneMapping = THREE.ACESFilmicToneMapping;
-      mRenderer.toneMappingExposure = 1.24;
-      mRenderer.outputEncoding = THREE.sRGBEncoding;
-      mScene.environment = createStudioEnvMap(mRenderer);
-
-      // Studio Three-Point + Rim Lighting Rig
-      mScene.add(new THREE.AmbientLight(0xdbeafe, 0.30));
-      const keyLight = new THREE.DirectionalLight(0xffffff, 1.85);
-      keyLight.position.set(10, 15, 14);
-      mScene.add(keyLight);
-
-      const fillCool = new THREE.PointLight(0x38bdf8, 2.0, 42);
-      fillCool.position.set(-11, 6, 11);
-      mScene.add(fillCool);
-
-      const rimWarm = new THREE.PointLight(0xf59e0b, 1.5, 38);
-      rimWarm.position.set(11, 4, -11);
-      mScene.add(rimWarm);
-
-      const interiorFill = new THREE.PointLight(0xe2e8f0, 0.9, 14);
-      interiorFill.position.set(0.2, 0.8, 1.4);
-      mScene.add(interiorFill);
-
-      // Shared Procedural Maps & Distinct Physically Based Materials
-      const brushedTex = makeBrushedMetalMaps();
-      const braidTex = makeBraidedSleeveMap();
-      const honeycombTex = makeHoneycombMeshMaps();
-      const moboTex = makeMotherboardMaps();
-      const ihsTex = makeIHSTexture();
-      const lgaTex = makeLGASocketTexture();
-      const aioScreenTex = makeAIOPumpScreenTexture();
-      const rtxBadgeTex = makeNvidiaFEBadgeTexture();
-      const psuLabelTex = makePSULabelTexture();
-      const dieTex = makeSiliconDieTexture();
-      const crystalBump = makeCrystallineSiliconBump();
-      const shadowTex = makeContactShadowTexture();
-
-      // Distinct Material Classes (Aluminium != Steel != Copper != PCB != Polymer != Glass)
-      const matAnodizedBlack = new THREE.MeshStandardMaterial({
-        color: 0x10141d, metalness: 0.84, roughness: 0.30,
-        roughnessMap: brushedTex, bumpMap: brushedTex, bumpScale: 0.01
-      });
-      const matGunmetalAlum = new THREE.MeshStandardMaterial({
-        color: 0x4b5563, metalness: 0.93, roughness: 0.21,
-        roughnessMap: brushedTex, bumpMap: brushedTex, bumpScale: 0.012
-      });
-      const matBrushedSilver = new THREE.MeshStandardMaterial({
-        color: 0xdbeafe, metalness: 0.95, roughness: 0.16,
-        roughnessMap: brushedTex, bumpMap: brushedTex, bumpScale: 0.01
-      });
-      const matDarkFinAlum = new THREE.MeshStandardMaterial({
-        color: 0x1e2430, metalness: 0.88, roughness: 0.26,
-        bumpMap: brushedTex, bumpScale: 0.008
-      });
-      const matPureCopper = new THREE.MeshStandardMaterial({
-        color: 0xd97706, metalness: 0.96, roughness: 0.15,
-        roughnessMap: brushedTex, bumpMap: brushedTex, bumpScale: 0.01
-      });
-      const matGoldPin = new THREE.MeshStandardMaterial({
-        color: 0xfacc15, metalness: 0.98, roughness: 0.14
-      });
-      const matMattePCB = new THREE.MeshStandardMaterial({
-        color: 0x0b0f17, metalness: 0.12, roughness: 0.58
-      });
-      const matSiliconSub = new THREE.MeshStandardMaterial({
-        color: 0x065f46, metalness: 0.28, roughness: 0.42
-      });
-      const matPolymer = new THREE.MeshStandardMaterial({
-        color: 0x11151f, metalness: 0.06, roughness: 0.72
-      });
-      const matBraidedSleeve = new THREE.MeshStandardMaterial({
-        color: 0x1a202c, metalness: 0.08, roughness: 0.78,
-        bumpMap: braidTex, bumpScale: 0.03
-      });
-      const matHoneycomb = new THREE.MeshStandardMaterial({
-        map: honeycombTex, bumpMap: honeycombTex, bumpScale: 0.025,
-        metalness: 0.75, roughness: 0.35
-      });
-      const matTemperedGlass = new THREE.MeshPhysicalMaterial({
-        color: 0xa5f3fc,
-        transparent: true,
-        opacity: 0.15,
-        roughness: 0.04,
-        metalness: 0.04,
-        clearcoat: 1.0,
-        clearcoatRoughness: 0.03,
-        reflectivity: 0.98,
-        depthWrite: false
-      });
-
-      const rgbMaterials = [];
-      function makeRGBMat(hex) {
-        const m = new THREE.MeshBasicMaterial({ color: hex });
-        rgbMaterials.push({ mat: m, baseHex: hex });
-        return m;
-      }
-
-      // Bevelled Box Helper using ExtrudeGeometry for real CAD edge highlights
-      function createBevelBox(w, h, d, bevel = 0.025, mat) {
-        const hw = Math.max(0.01, w / 2 - bevel);
-        const hh = Math.max(0.01, h / 2 - bevel);
-        const shape = new THREE.Shape();
-        shape.moveTo(-hw, -hh);
-        shape.lineTo(hw, -hh);
-        shape.lineTo(hw, hh);
-        shape.lineTo(-hw, hh);
-        shape.closePath();
-        const geo = new THREE.ExtrudeGeometry(shape, {
-          depth: Math.max(0.01, d - bevel * 2),
-          bevelEnabled: true,
-          bevelSegments: 2,
-          steps: 1,
-          bevelSize: bevel,
-          bevelThickness: bevel
-        });
-        geo.center();
-        return new THREE.Mesh(geo, mat);
-      }
-
-      function addPartBox(parent, w, h, d, x, y, z, mat, bevel = 0) {
-        const m = bevel > 0
-          ? createBevelBox(w, h, d, bevel, mat)
-          : new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
-        m.position.set(x, y, z);
-        parent.add(m);
-        return m;
-      }
-
-      // Precision Axial Fan Builder with True Swept Airfoil Blades
-      const spinningRotors = [];
-      function createCADFan(radius, ledHex = 0x38bdf8, squareFrame = true) {
-        const root = new THREE.Group();
-
-        if (squareFrame) {
-          // Outer square mounting shroud with circular bore
-          const s = radius * 1.04;
-          const frameShape = new THREE.Shape();
-          const rCorner = radius * 0.16;
-          frameShape.moveTo(-s + rCorner, -s);
-          frameShape.lineTo(s - rCorner, -s);
-          frameShape.quadraticCurveTo(s, -s, s, -s + rCorner);
-          frameShape.lineTo(s, s - rCorner);
-          frameShape.quadraticCurveTo(s, s, s - rCorner, s);
-          frameShape.lineTo(-s + rCorner, s);
-          frameShape.quadraticCurveTo(-s, s, -s, s - rCorner);
-          frameShape.lineTo(-s, -s + rCorner);
-          frameShape.quadraticCurveTo(-s, -s, -s + rCorner, -s);
-
-          const bore = new THREE.Path();
-          bore.absarc(0, 0, radius * 0.94, 0, Math.PI * 2, true);
-          frameShape.holes.push(bore);
-
-          const frameGeo = new THREE.ExtrudeGeometry(frameShape, {
-            depth: radius * 0.34,
-            bevelEnabled: true,
-            bevelSegments: 2,
-            steps: 1,
-            bevelSize: 0.012,
-            bevelThickness: 0.012
-          });
-          frameGeo.center();
-          root.add(new THREE.Mesh(frameGeo, matAnodizedBlack));
-        } else {
-          // Circular shroud ring (for RTX Founders Edition GPU)
-          const ring = new THREE.Mesh(new THREE.TorusGeometry(radius * 0.95, radius * 0.06, 14, 42), matGunmetalAlum);
-          root.add(ring);
-        }
-
-        // Diffused ARGB Halo Ring
-        const ledRing = new THREE.Mesh(
-          new THREE.TorusGeometry(radius * 0.92, radius * 0.02, 10, 44),
-          makeRGBMat(ledHex)
-        );
-        ledRing.position.z = radius * 0.14;
-        root.add(ledRing);
-
-        // Rotor Impeller
-        const rotor = new THREE.Group();
-        const hub = new THREE.Mesh(
-          new THREE.CylinderGeometry(radius * 0.28, radius * 0.28, radius * 0.24, 28),
-          matAnodizedBlack
-        );
-        hub.rotation.x = Math.PI / 2;
-        rotor.add(hub);
-
-        const cap = new THREE.Mesh(
-          new THREE.CylinderGeometry(radius * 0.21, radius * 0.21, radius * 0.26, 28),
-          matBrushedSilver
-        );
-        cap.rotation.x = Math.PI / 2;
-        rotor.add(cap);
-
-        const hubRing = new THREE.Mesh(
-          new THREE.TorusGeometry(radius * 0.16, radius * 0.014, 8, 28),
-          makeRGBMat(ledHex)
-        );
-        hubRing.position.z = radius * 0.135;
-        rotor.add(hubRing);
-
-        // Swept Cambered Airfoil Blade Profile (ExtrudeGeometry)
-        const bladeShape = new THREE.Shape();
-        bladeShape.moveTo(0, -radius * 0.05);
-        bladeShape.quadraticCurveTo(radius * 0.34, radius * 0.06, radius * 0.62, -radius * 0.02);
-        bladeShape.quadraticCurveTo(radius * 0.66, radius * 0.07, radius * 0.58, radius * 0.13);
-        bladeShape.quadraticCurveTo(radius * 0.28, radius * 0.18, 0, radius * 0.07);
-        bladeShape.closePath();
-
-        const bladeGeo = new THREE.ExtrudeGeometry(bladeShape, {
-          depth: 0.012,
-          bevelEnabled: true,
-          bevelSegments: 1,
-          steps: 1,
-          bevelSize: 0.004,
-          bevelThickness: 0.004
-        });
-        bladeGeo.center();
-
-        const bladeCount = 9;
-        for (let i = 0; i < bladeCount; i++) {
-          const bPivot = new THREE.Group();
-          const a = (i / bladeCount) * Math.PI * 2;
-          bPivot.rotation.z = a;
-          const bMesh = new THREE.Mesh(bladeGeo, matDarkFinAlum);
-          bMesh.position.set(radius * 0.56, 0, 0);
-          bMesh.rotation.x = 0.52; // aerodynamic pitch angle
-          bMesh.rotation.y = 0.14;
-          bPivot.add(bMesh);
-          rotor.add(bPivot);
-        }
-
-        // Outer impeller stabilizer ring (like Noctua/ASUS/NVIDIA axial-tech)
-        const tipRing = new THREE.Mesh(
-          new THREE.TorusGeometry(radius * 0.87, radius * 0.016, 8, 40),
-          matDarkFinAlum
-        );
-        rotor.add(tipRing);
-
-        root.add(rotor);
-        root.userData.rotor = rotor;
-        spinningRotors.push(rotor);
-        return root;
-      }
-
-      /* ============================================================
-         ROOT SCALE GROUPS:
-         - pcAssemblyRoot: Complete Unified CAD Workstation (Chapters 0, 1, 2)
-         - dieRoot: Silicon Die & 576 SM Cores (Chapter 3)
-         - finfetRoot: 3nm GAAFET Nanosheet Transistor (Chapter 4)
-         ============================================================ */
-      const pcAssemblyRoot = new THREE.Group();
-      const dieRoot = new THREE.Group();
-      const finfetRoot = new THREE.Group();
-      mScene.add(pcAssemblyRoot, dieRoot, finfetRoot);
-
-      // Studio Contact Shadow Floor under PC
-      const floorShadow = new THREE.Mesh(
-        new THREE.PlaneGeometry(14, 14),
-        new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, opacity: 0.88, depthWrite: false })
-      );
-      floorShadow.rotation.x = -Math.PI / 2;
-      floorShadow.position.y = -3.78;
-      pcAssemblyRoot.add(floorShadow);
-
-      // Container groups for each of the 8 selectable PC subsystems
-      const subsystemGroups = {};
-      const pickableMeshes = [];
-      Object.keys(hardwareRegistry).forEach((key) => {
-        const g = new THREE.Group();
-        g.name = key;
-        g.userData.partId = key;
-        subsystemGroups[key] = g;
-        pcAssemblyRoot.add(g);
-      });
-
-      function registerPickable(group, partId) {
-        group.traverse((child) => {
-          if (child.isMesh && child.material !== matTemperedGlass) {
-            child.userData.partId = partId;
-            pickableMeshes.push(child);
-          }
-        });
-      }
-
-      /* ------------------------------------------------------------
-         SUBSYSTEM 01: DUAL-CHAMBER ATX CHASSIS & TEMPERED GLASS
-         Case dimensions: X in [-3.4, +3.4] (Front to Rear),
-                          Y in [-3.45, +3.45] (Bottom to Top),
-                          Z in [-1.75, +1.75] (Backplate to Glass)
-         ------------------------------------------------------------ */
-      const gChassis = subsystemGroups.chassis;
-
-      // Top & Bottom Bevelled Aluminium Unibody Plates
-      addPartBox(gChassis, 6.85, 0.16, 3.55, 0,  3.45, 0, matAnodizedBlack, 0.025);
-      addPartBox(gChassis, 6.85, 0.16, 3.55, 0, -3.45, 0, matAnodizedBlack, 0.025);
-      // Top Perforated Mesh Filter Panel
-      addPartBox(gChassis, 5.4, 0.05, 2.35, 0.1, 3.55, 0.05, matHoneycomb, 0.01);
-
-      // Solid Rear Motherboard Tray & Cable Divider Spine
-      addPartBox(gChassis, 6.75, 6.85, 0.12, 0, 0, -1.72, matDarkFinAlum, 0.015);
-      // Internal Motherboard Mounting Tray Plate (Z = -0.82) with Cable Grommets
-      addPartBox(gChassis, 4.4, 5.2, 0.08, 0.65, 0.65, -0.82, matAnodizedBlack, 0.01);
-      for (let gy of [1.65, 0.25, -1.05]) {
-        addPartBox(gChassis, 0.24, 0.72, 0.12, 1.95, gy, -0.80, matPolymer, 0.02);
-      }
-
-      // Lower Dual-Chamber PSU Shroud Tunnel (Y in [-3.38, -1.85])
-      addPartBox(gChassis, 6.72, 0.08, 3.44, 0, -1.85, 0, matGunmetalAlum, 0.015);
-      addPartBox(gChassis, 4.5, 1.50, 0.08, 1.12, -2.62, 1.66, matAnodizedBlack, 0.015);
-      // Louvered intake slots on PSU shroud side
-      for (let lx = -0.6; lx <= 2.4; lx += 0.24) {
-        addPartBox(gChassis, 0.08, 0.55, 0.10, lx, -2.62, 1.67, matDarkFinAlum);
-      }
-
-      // Rear ATX Chassis Wall (X = +3.38) with I/O Cutout, Exhaust Fan & 7 PCIe Slots
-      addPartBox(gChassis, 0.12, 6.85, 1.45, 3.38, 0, -1.02, matAnodizedBlack, 0.015);
-      addPartBox(gChassis, 0.12, 1.65, 2.10, 3.38, 2.60, 0.68, matAnodizedBlack, 0.015);
-      addPartBox(gChassis, 0.12, 1.75, 2.10, 3.38, -2.55, 0.68, matAnodizedBlack, 0.015);
-      // Rear 120mm Exhaust Fan
-      const rearFan = createCADFan(0.68, 0x38bdf8, true);
-      rearFan.rotation.y = Math.PI / 2;
-      rearFan.position.set(3.22, 1.35, 0.68);
-      gChassis.add(rearFan);
-
-      // 7 Vented PCIe Expansion Slot Brackets + Thumbscrews (Y from -0.25 to -1.55)
-      for (let s = 0; s < 7; s++) {
-        const sy = -0.22 - s * 0.22;
-        if (s === 2 || s === 3) continue; // Occupied by RTX GPU I/O bracket!
-        addPartBox(gChassis, 0.06, 0.16, 1.45, 3.38, sy, 0.68, matBrushedSilver, 0.005);
-        const screw = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 0.12, 14), matGunmetalAlum);
-        screw.rotation.z = Math.PI / 2;
-        screw.position.set(3.44, sy, 1.32);
-        gChassis.add(screw);
-      }
-
-      // Corner Structural Bevelled Pillars
-      [[-3.36, -1.70], [3.36, -1.70], [3.36, 1.70], [-3.36, 1.70]].forEach(([px, pz]) => {
-        addPartBox(gChassis, 0.16, 6.95, 0.16, px, 0, pz, matGunmetalAlum, 0.02);
-      });
-
-      // 4 CNC-Machined Aluminium Feet with Rubber Isolation Pads
-      [[-2.55, -1.25], [2.55, -1.25], [-2.55, 1.25], [2.55, 1.25]].forEach(([fx, fz]) => {
-        const foot = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.28, 0.24, 28), matBrushedSilver);
-        foot.position.set(fx, -3.62, fz);
-        gChassis.add(foot);
-        const pad = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.04, 28), matPolymer);
-        pad.position.set(fx, -3.75, fz);
-        gChassis.add(pad);
-      });
-
-      // 3× Front Intake 120mm Fans (Angled 35 deg on Side/Front Intake Bracket at X = -2.35)
-      for (let i = 0; i < 3; i++) {
-        const fFan = createCADFan(0.70, 0x38bdf8, true);
-        fFan.position.set(-2.38, 1.65 - i * 1.54, -0.45);
-        fFan.rotation.y = 0.58;
-        gChassis.add(fFan);
-      }
-
-      // Panoramic Tempered Glass Side Panel (Z = +1.74) & Front Glass Panel (X = -3.38)
-      const sideGlassGroup = new THREE.Group();
-      const sideGlassPane = new THREE.Mesh(new THREE.BoxGeometry(6.55, 6.65, 0.05), matTemperedGlass);
-      sideGlassGroup.add(sideGlassPane);
-      const glassEdges = new THREE.LineSegments(
-        new THREE.EdgesGeometry(new THREE.BoxGeometry(6.56, 6.66, 0.055)),
-        new THREE.LineBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.38 })
-      );
-      sideGlassGroup.add(glassEdges);
-      [[-3.05, 3.12], [3.05, 3.12], [-3.05, -3.12], [3.05, -3.12]].forEach(([sx, sy]) => {
-        const standoff = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 0.14, 20), matBrushedSilver);
-        standoff.rotation.x = Math.PI / 2;
-        standoff.position.set(sx, sy, 0.05);
-        sideGlassGroup.add(standoff);
-      });
-      sideGlassGroup.position.set(0, 0, 1.74);
-      gChassis.add(sideGlassGroup);
-
-      const frontGlassPane = new THREE.Mesh(new THREE.BoxGeometry(0.05, 6.65, 3.32), matTemperedGlass);
-      frontGlassPane.position.set(-3.38, 0, 0);
-      gChassis.add(frontGlassPane);
-
-      registerPickable(gChassis, "chassis");
-
-      /* ------------------------------------------------------------
-         SUBSYSTEM 02: ROG MAXIMUS Z890 MOTHERBOARD
-         Mounted on Motherboard Tray at Z = -0.70, X in [-0.8, +2.8], Y in [-1.5, +2.7]
-         Note: Rear I/O is toward +X (right), Front/RAM is toward -X (left)
-         ------------------------------------------------------------ */
-      const gMobo = subsystemGroups.motherboard;
-      const moboX = 0.95, moboY = 0.62, moboZ = -0.68;
-
-      // 8-Layer Matte-Black PCB with procedural traces
-      const pcbGeo = new THREE.BoxGeometry(3.85, 4.35, 0.08);
-      const pcbMat = new THREE.MeshStandardMaterial({
-        map: moboTex,
-        bumpMap: moboTex,
-        bumpScale: 0.008,
-        roughness: 0.44,
-        metalness: 0.28
-      });
-      const moboPCB = new THREE.Mesh(pcbGeo, pcbMat);
-      moboPCB.position.set(moboX, moboY, moboZ);
-      gMobo.add(moboPCB);
-
-      // Integrated Rear I/O Shroud + Physical Rear Ports protruding to X = +3.38
-      addPartBox(gMobo, 0.72, 1.85, 0.56, moboX + 1.56, moboY + 1.18, moboZ + 0.30, matAnodizedBlack, 0.025);
-      addPartBox(gMobo, 0.74, 1.25, 0.04, moboX + 1.56, moboY + 1.25, moboZ + 0.59, makeRGBMat(0x38bdf8));
-      // Physical Rear I/O Connectors (USB-A, USB-C, RJ45 Ethernet, Wi-Fi Gold Jacks)
-      for (let py = 0; py < 5; py++) {
-        addPartBox(gMobo, 0.55, 0.16, 0.38, moboX + 2.08, moboY + 0.55 + py * 0.28, moboZ + 0.28, matBrushedSilver, 0.008);
-      }
-      const wifiJack1 = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.28, 12), matGoldPin);
-      wifiJack1.rotation.z = Math.PI / 2; wifiJack1.position.set(moboX + 2.42, moboY + 1.85, moboZ + 0.22); gMobo.add(wifiJack1);
-      const wifiJack2 = wifiJack1.clone(); wifiJack2.position.y -= 0.18; gMobo.add(wifiJack2);
-
-      // 22+1+2 VRM Power Stages, Gold Capacitors & CNC-Finned Heatsinks + Heatpipe
+    const spinningRotors = [];
+    function createRealisticFan(radius, ledHex = 0x38bdf8) {
+      const root = new THREE.Group();
+      root.add(new THREE.Mesh(new THREE.TorusGeometry(radius, radius * 0.085, 16, 48), matAnodizedBlack));
+      const ledRing = new THREE.Mesh(new THREE.TorusGeometry(radius * 0.94, radius * 0.024, 10, 48), makeRGBMat(ledHex));
+      ledRing.position.z = radius * 0.06; root.add(ledRing);
+      const rotor = new THREE.Group();
+      const hub = new THREE.Mesh(new THREE.CylinderGeometry(radius * 0.28, radius * 0.28, radius * 0.18, 32), matAnodizedBlack);
+      hub.rotation.x = Math.PI / 2; rotor.add(hub);
+      const cap = new THREE.Mesh(new THREE.CylinderGeometry(radius * 0.20, radius * 0.20, radius * 0.20, 32), matSilverAlum);
+      cap.rotation.x = Math.PI / 2; rotor.add(cap);
+      const capRing = new THREE.Mesh(new THREE.TorusGeometry(radius * 0.16, radius * 0.015, 8, 32), makeRGBMat(ledHex));
+      capRing.position.z = radius * 0.105; rotor.add(capRing);
       for (let i = 0; i < 9; i++) {
-        const vy = moboY + 0.35 + i * 0.19;
-        // Ferrite SMD Choke
-        addPartBox(gMobo, 0.14, 0.14, 0.12, moboX + 0.96, vy, moboZ + 0.09, matGunmetalAlum, 0.01);
-        // Gold-Top Solid Capacitor
-        const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 0.16, 14), matGoldPin);
-        cap.rotation.x = Math.PI / 2;
-        cap.position.set(moboX + 0.78, vy, moboZ + 0.11);
-        gMobo.add(cap);
+        const blade = new THREE.Mesh(new THREE.BoxGeometry(radius * 0.16, radius * 0.65, radius * 0.025), matDarkHeatsink);
+        const a = (i / 9) * Math.PI * 2;
+        blade.position.set(Math.cos(a) * radius * 0.54, Math.sin(a) * radius * 0.54, 0);
+        blade.rotation.z = a - Math.PI / 2 + 0.22; blade.rotation.y = 0.42; rotor.add(blade);
       }
-      // Left & Top CNC VRM Heatsink Blocks
-      addPartBox(gMobo, 0.42, 1.72, 0.46, moboX + 1.24, moboY + 1.15, moboZ + 0.26, matDarkFinAlum, 0.02);
-      addPartBox(gMobo, 1.65, 0.42, 0.44, moboX + 0.35, moboY + 1.88, moboZ + 0.25, matDarkFinAlum, 0.02);
-      // Nickel-Plated VRM Heatpipe bridging both heatsinks
-      const vrmPipeCurve = new THREE.CatmullRomCurve3([
-        new THREE.Vector3(moboX + 1.24, moboY + 0.45, moboZ + 0.32),
-        new THREE.Vector3(moboX + 1.24, moboY + 1.82, moboZ + 0.32),
-        new THREE.Vector3(moboX - 0.35, moboY + 1.88, moboZ + 0.32)
-      ]);
-      gMobo.add(new THREE.Mesh(new THREE.TubeGeometry(vrmPipeCurve, 20, 0.045, 10, false), matBrushedSilver));
+      root.add(rotor); root.userData.rotor = rotor;
+      return root;
+    }
 
-      // 4× DDR5 DIMM Slots with Retention Latches
-      for (let d = 0; d < 4; d++) {
-        const dx = moboX - 0.75 - d * 0.21;
-        addPartBox(gMobo, 0.11, 1.82, 0.16, dx, moboY + 0.95, moboZ + 0.11, matPolymer);
-        addPartBox(gMobo, 0.12, 0.10, 0.22, dx, moboY + 1.88, moboZ + 0.13, matBrushedSilver);
-        addPartBox(gMobo, 0.12, 0.10, 0.22, dx, moboY + 0.02, moboZ + 0.13, matBrushedSilver);
+    function createNvidiaFoundersGPU(scale = 1.0) {
+      const gpu = new THREE.Group();
+      const frameTop = new THREE.Mesh(new THREE.BoxGeometry(6.4, 0.12, 2.2), matGunmetal); frameTop.position.set(0, 0.56, 0); gpu.add(frameTop);
+      const frameBot = new THREE.Mesh(new THREE.BoxGeometry(6.4, 0.12, 2.2), matGunmetal); frameBot.position.set(0, -0.56, 0); gpu.add(frameBot);
+      const braceA = new THREE.Mesh(new THREE.BoxGeometry(0.18, 1.18, 2.22), matGunmetal); braceA.position.set(0.35, 0, 0); braceA.rotation.z = 0.48; gpu.add(braceA);
+      const braceB = new THREE.Mesh(new THREE.BoxGeometry(0.18, 1.18, 2.22), matGunmetal); braceB.position.set(0.35, 0, 0); braceB.rotation.z = -0.48; gpu.add(braceB);
+      for (let i = 0; i < 36; i++) {
+        const fx = -2.95 + i * 0.165; if (Math.abs(fx - 0.35) < 0.45) continue;
+        const fin = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.98, 2.04), matDarkHeatsink); fin.position.set(fx, 0, 0); gpu.add(fin);
       }
-
-      // Steel-Reinforced PCIe 5.0 x16 SafeSlot + Secondary PCIe Slots
-      addPartBox(gMobo, 1.85, 0.18, 0.20, moboX + 0.45, moboY - 0.58, moboZ + 0.13, matBrushedSilver, 0.01);
-      addPartBox(gMobo, 1.78, 0.08, 0.21, moboX + 0.45, moboY - 0.58, moboZ + 0.14, matPolymer);
-      addPartBox(gMobo, 1.85, 0.15, 0.18, moboX + 0.45, moboY - 1.38, moboZ + 0.12, matPolymer);
-
-      // Z890 PCH Chipset Heatsink + CMOS Battery + 24-Pin ATX Connector
-      addPartBox(gMobo, 1.15, 1.05, 0.18, moboX - 1.15, moboY - 1.35, moboZ + 0.13, matGunmetalAlum, 0.02);
-      const cmos = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 0.05, 20), matBrushedSilver);
-      cmos.rotation.x = Math.PI / 2;
-      cmos.position.set(moboX + 0.35, moboY - 0.98, moboZ + 0.08);
-      gMobo.add(cmos);
-      // 24-Pin ATX Socket on right/front edge
-      addPartBox(gMobo, 0.22, 0.85, 0.24, moboX - 1.72, moboY + 0.55, moboZ + 0.15, matPolymer, 0.01);
-
-      registerPickable(gMobo, "motherboard");
-
-      /* ------------------------------------------------------------
-         SUBSYSTEM 03: INTEL CORE ULTRA 9 285K & LGA1851 SOCKET
-         Located at (moboX + 0.18, moboY + 0.92, moboZ + 0.06)
-         ------------------------------------------------------------ */
-      const gCPU = subsystemGroups.cpu;
-      const cpuX = moboX + 0.18, cpuY = moboY + 0.92, cpuZ = moboZ + 0.05;
-
-      // LGA1851 Socket Base (remains on motherboard when CPU lifts)
-      const lgaBase = new THREE.Mesh(
-        new THREE.BoxGeometry(0.96, 1.08, 0.07),
-        new THREE.MeshStandardMaterial({ map: lgaTex, metalness: 0.65, roughness: 0.35 })
-      );
-      lgaBase.position.set(cpuX, cpuY, cpuZ);
-      gMobo.add(lgaBase);
-
-      // Stamped Steel ILM Retention Frame & Load Lever
-      const ilmFrame = new THREE.Group();
-      addPartBox(ilmFrame, 1.06, 0.12, 0.05, 0,  0.52, 0.05, matBrushedSilver, 0.006);
-      addPartBox(ilmFrame, 1.06, 0.12, 0.05, 0, -0.52, 0.05, matBrushedSilver, 0.006);
-      addPartBox(ilmFrame, 0.12, 1.14, 0.05, -0.48, 0, 0.05, matBrushedSilver, 0.006);
-      addPartBox(ilmFrame, 0.12, 1.14, 0.05,  0.48, 0, 0.05, matBrushedSilver, 0.006);
-      const lever = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.018, 1.18, 10), matBrushedSilver);
-      lever.position.set(-0.58, 0, 0.05);
-      ilmFrame.add(lever);
-      ilmFrame.position.set(cpuX, cpuY, cpuZ + 0.03);
-      gMobo.add(ilmFrame);
-
-      // Actual Processor Package (Substrate + Bevelled Nickel-Plated Copper IHS)
-      const cpuPackage = new THREE.Group();
-      addPartBox(cpuPackage, 0.84, 0.96, 0.05, 0, 0, 0, matSiliconSub, 0.006);
-      const ihsMat = new THREE.MeshStandardMaterial({
-        map: ihsTex,
-        roughnessMap: brushedTex,
-        metalness: 0.94,
-        roughness: 0.18
-      });
-      const ihsMesh = createBevelBox(0.72, 0.84, 0.08, 0.018, ihsMat);
-      ihsMesh.position.z = 0.055;
-      cpuPackage.add(ihsMesh);
-      cpuPackage.position.set(cpuX, cpuY, cpuZ + 0.07);
-      gCPU.add(cpuPackage);
-
-      registerPickable(gCPU, "cpu");
-
-      /* ------------------------------------------------------------
-         SUBSYSTEM 04: 64GB DDR5-8400 QUAD-CHANNEL RAM KIT
-         ------------------------------------------------------------ */
-      const gRAM = subsystemGroups.ram;
-      const ramSticks = [];
-      for (let d = 0; d < 4; d++) {
-        const stick = new THREE.Group();
-        const dx = moboX - 0.75 - d * 0.21;
-        // Exposed bottom black PCB + gold contact edge
-        addPartBox(stick, 0.035, 1.72, 0.14, 0, 0, 0.04, matMattePCB);
-        addPartBox(stick, 0.038, 1.66, 0.04, 0, 0, -0.02, matGoldPin);
-        // Faceted Gunmetal & Silver Aluminium Heatspreaders
-        addPartBox(stick, 0.05, 1.76, 0.34, -0.04, 0, 0.22, matGunmetalAlum, 0.01);
-        addPartBox(stick, 0.05, 1.76, 0.34,  0.04, 0, 0.22, matGunmetalAlum, 0.01);
-        addPartBox(stick, 0.135, 0.65, 0.32, 0, 0, 0.23, matBrushedSilver, 0.01);
-        // Diffused ARGB Light Guide Bar
-        addPartBox(stick, 0.11, 1.74, 0.08, 0, 0, 0.42, makeRGBMat(0xa78bfa), 0.01);
-
-        stick.position.set(dx, moboY + 0.95, moboZ + 0.16);
-        gRAM.add(stick);
-        ramSticks.push(stick);
-      }
-      registerPickable(gRAM, "ram");
-
-      /* ------------------------------------------------------------
-         SUBSYSTEM 05: NVIDIA GEFORCE RTX FOUNDERS EDITION GPU
-         Seated in PCIe 5.0 x16 SafeSlot at Y = moboY - 0.58 = +0.04
-         Length along X (from rear bracket X = +3.38 to X = -1.75)
-         ------------------------------------------------------------ */
-      const gGPU = subsystemGroups.gpu;
-      const gpuCenterX = 0.82, gpuCenterY = moboY - 0.58, gpuCenterZ = moboZ + 0.92;
-      const gpuUnit = new THREE.Group();
-
-      // Custom High-Density GPU PCB + Gold PCIe x16 Edge Connector
-      addPartBox(gpuUnit, 4.65, 0.06, 1.48, -0.15, 0.26, -0.06, matMattePCB, 0.008);
-      addPartBox(gpuUnit, 1.65, 0.18, 0.05, 0.45, 0.22, -0.78, matGoldPin);
-
-      // Dual-Slot Stainless-Steel Rear I/O Bracket (protrudes at X = +2.56 -> world X = 3.38)
-      addPartBox(gpuUnit, 0.06, 0.88, 1.62, 2.55, 0.02, -0.04, matBrushedSilver, 0.008);
-      for (let dp = 0; dp < 4; dp++) {
-        addPartBox(gpuUnit, 0.12, 0.08, 0.22, 2.58, -0.10, -0.45 + dp * 0.28, matPolymer);
-      }
-
-      // Instanced High-Density Stamped Aluminium Cooling Fins (56 fins in 1 draw call!)
-      const finCount = 56;
-      const finInst = new THREE.InstancedMesh(
-        new THREE.BoxGeometry(0.026, 0.66, 1.46),
-        matDarkFinAlum,
-        finCount
-      );
-      const finDummy = new THREE.Object3D();
-      for (let f = 0; f < finCount; f++) {
-        const fx = -2.25 + f * 0.084;
-        finDummy.position.set(fx, -0.04, 0);
-        finDummy.updateMatrix();
-        finInst.setMatrixAt(f, finDummy.matrix);
-      }
-      finInst.instanceMatrix.needsUpdate = true;
-      gpuUnit.add(finInst);
-
-      // 6 Curved Sintered Copper Heatpipes threading the fin stack
       for (let p = 0; p < 3; p++) {
-        const zOff = -0.44 + p * 0.44;
-        const hpCurve = new THREE.CatmullRomCurve3([
-          new THREE.Vector3(-2.15, -0.12, zOff),
-          new THREE.Vector3(-0.30,  0.14, zOff * 0.65),
-          new THREE.Vector3( 2.25, -0.12, zOff)
-        ]);
-        gpuUnit.add(new THREE.Mesh(new THREE.TubeGeometry(hpCurve, 22, 0.036, 10, false), matPureCopper));
+        const pf = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 5.9, 14), matCopper); pf.rotation.z = Math.PI / 2; pf.position.set(0, -0.26 + p * 0.26, 0.96); gpu.add(pf);
+        const pb = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 5.9, 14), matCopper); pb.rotation.z = Math.PI / 2; pb.position.set(0, -0.26 + p * 0.26, -0.96); gpu.add(pb);
       }
+      const f1 = createRealisticFan(0.84, 0x76b900); f1.position.set(-1.55, 0, 1.06); gpu.add(f1); spinningRotors.push(f1.userData.rotor);
+      const f2 = createRealisticFan(0.84, 0x76b900); f2.position.set(1.85, 0, -1.06); f2.rotation.y = Math.PI; gpu.add(f2); spinningRotors.push(f2.userData.rotor);
+      const ioBracket = new THREE.Mesh(new THREE.BoxGeometry(0.08, 1.32, 2.15), matSilverAlum); ioBracket.position.set(-3.24, -0.05, 0.05); gpu.add(ioBracket);
+      const pcieFinger = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.22, 0.08), matGold); pcieFinger.position.set(-1.5, -0.68, -0.55); gpu.add(pcieFinger);
+      const pwrPlug = new THREE.Mesh(new THREE.BoxGeometry(0.55, 0.32, 0.38), matAnodizedBlack); pwrPlug.position.set(0.35, 0.56, 0.75); gpu.add(pwrPlug);
+      const badgePlate = new THREE.Mesh(new THREE.BoxGeometry(2.3, 0.22, 0.05), new THREE.MeshBasicMaterial({ map: rtxBadgeTex })); badgePlate.position.set(-1.35, 0.38, 1.11); gpu.add(badgePlate);
+      const vLed = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.04, 0.04), makeRGBMat(0xffffff)); vLed.position.set(0.35, 0.58, 1.11); gpu.add(vLed);
+      gpu.scale.setScalar(scale);
+      return gpu;
+    }
 
-      // Die-Cast Gunmetal Unibody X-Frame Exoskeleton
-      addPartBox(gpuUnit, 4.95, 0.78, 0.09, 0.05, -0.04,  0.76, matGunmetalAlum, 0.022);
-      addPartBox(gpuUnit, 4.95, 0.78, 0.09, 0.05, -0.04, -0.76, matGunmetalAlum, 0.022);
-      addPartBox(gpuUnit, 0.14, 0.80, 1.58, -2.42, -0.04, 0, matGunmetalAlum, 0.025);
-      // Signature Diagonal Hourglass X-Frame Braces
-      const xBrace1 = createBevelBox(0.14, 0.80, 1.60, 0.018, matGunmetalAlum);
-      xBrace1.position.set(0.05, -0.04, 0);
-      xBrace1.rotation.y = 0.44;
-      gpuUnit.add(xBrace1);
-      const xBrace2 = createBevelBox(0.14, 0.80, 1.60, 0.018, matGunmetalAlum);
-      xBrace2.position.set(0.05, -0.04, 0);
-      xBrace2.rotation.y = -0.44;
-      gpuUnit.add(xBrace2);
+    const chapters = [new THREE.Group(), new THREE.Group(), new THREE.Group(), new THREE.Group(), new THREE.Group()];
+    chapters.forEach((g) => mScene.add(g));
+    const addBox = (parent, w, h, d, x, y, z, mat) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat); m.position.set(x, y, z); parent.add(m); return m; };
 
-      // Backlit GEFORCE RTX Nameplate + White V-LED Strip + 12V-2x6 Header
-      const rtxBadge = new THREE.Mesh(
-        new THREE.BoxGeometry(1.75, 0.18, 0.03),
-        new THREE.MeshBasicMaterial({ map: rtxBadgeTex })
-      );
-      rtxBadge.position.set(1.25, 0.18, 0.80);
-      gpuUnit.add(rtxBadge);
-      addPartBox(gpuUnit, 0.85, 0.035, 0.03, 0.05, 0.28, 0.80, makeRGBMat(0xffffff));
-      addPartBox(gpuUnit, 0.38, 0.22, 0.26, 0.05, 0.34, 0.56, matPolymer, 0.01);
+    // CHAPTER 0: WORKSTATION
+    const chassisGroup = chapters[0];
+    addStudioFloorShadow(chassisGroup, -3.79, 13.5);
+    addBox(chassisGroup, 6.2, 0.16, 3.6, 0,  3.45, 0, matAnodizedBlack);
+    addBox(chassisGroup, 6.2, 0.16, 3.6, 0, -3.45, 0, matAnodizedBlack);
+    addBox(chassisGroup, 6.2, 6.9,  0.14, 0, 0, -1.75, matDarkHeatsink);
+    addBox(chassisGroup, 0.18, 6.9, 3.6,  3.05, 0, 0, matAnodizedBlack);
+    addBox(chassisGroup, 6.0, 1.25, 3.4,  0, -2.75, 0, matCarbon);
+    addBox(chassisGroup, 0.16, 7.0, 0.16, -3.02, 0, -1.72, matGunmetal);
+    addBox(chassisGroup, 0.16, 7.0, 0.16,  3.02, 0,  1.72, matGunmetal);
+    [[-2.4, -1.25], [2.4, -1.25], [-2.4, 1.25], [2.4, 1.25]].forEach(([fx, fz]) => {
+      const foot = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.28, 0.26, 28), matSilverAlum);
+      foot.position.set(fx, -3.65, fz); chassisGroup.add(foot);
+    });
+    addBox(chassisGroup, 4.8, 0.34, 1.45, 0.2, 3.18, 0.2, matDarkHeatsink);
+    for (let i = -1; i <= 1; i++) {
+      const tf = createRealisticFan(0.68, 0x38bdf8); tf.position.set(0.2 + i * 1.48, 2.92, 0.2); tf.rotation.x = Math.PI / 2; chassisGroup.add(tf); spinningRotors.push(tf.userData.rotor);
+      const sf = createRealisticFan(0.68, 0x38bdf8); sf.position.set(-2.15, i * 1.48 + 0.45, -1.45); chassisGroup.add(sf); spinningRotors.push(sf.userData.rotor);
+    }
+    addBox(chassisGroup, 3.7, 4.1, 0.08, 0.75, 0.55, -1.58, new THREE.MeshStandardMaterial({ map: pcbTex, roughness: 0.42, metalness: 0.35 }));
+    const aioPump = new THREE.Mesh(new THREE.CylinderGeometry(0.52, 0.52, 0.44, 36), matAnodizedBlack);
+    aioPump.rotation.x = Math.PI / 2; aioPump.position.set(0.45, 1.15, -1.32); chassisGroup.add(aioPump);
+    const aioFace = new THREE.Mesh(new THREE.CircleGeometry(0.46, 36), new THREE.MeshBasicMaterial({ map: aioScreenTex }));
+    aioFace.position.set(0.45, 1.15, -1.09); chassisGroup.add(aioFace);
+    const tc1 = new THREE.CatmullRomCurve3([new THREE.Vector3(0.88, 1.25, -1.25), new THREE.Vector3(1.65, 1.85, -0.75), new THREE.Vector3(1.85, 2.95, 0.05)]);
+    const tc2 = new THREE.CatmullRomCurve3([new THREE.Vector3(0.88, 1.02, -1.25), new THREE.Vector3(1.78, 1.62, -0.65), new THREE.Vector3(2.05, 2.95, 0.25)]);
+    chassisGroup.add(new THREE.Mesh(new THREE.TubeGeometry(tc1, 24, 0.075, 12, false), matMatteRubber));
+    chassisGroup.add(new THREE.Mesh(new THREE.TubeGeometry(tc2, 24, 0.075, 12, false), matMatteRubber));
+    for (let i = 0; i < 4; i++) {
+      addBox(chassisGroup, 0.08, 1.25, 0.28, 1.32 + i * 0.19, 1.15, -1.36, matSilverAlum);
+      addBox(chassisGroup, 0.09, 1.24, 0.05, 1.32 + i * 0.19, 1.15, -1.21, makeRGBMat(0xa78bfa));
+    }
+    const interiorGPU = createNvidiaFoundersGPU(0.68); interiorGPU.position.set(0.65, -0.55, -0.55); chassisGroup.add(interiorGPU);
+    const pwrCable = new THREE.CatmullRomCurve3([new THREE.Vector3(0.88, -0.18, -0.05), new THREE.Vector3(0.95, -0.95, 0.35), new THREE.Vector3(0.85, -2.15, -0.35)]);
+    chassisGroup.add(new THREE.Mesh(new THREE.TubeGeometry(pwrCable, 20, 0.08, 10, false), matCarbon));
+    const glassAssembly = new THREE.Group();
+    glassAssembly.add(new THREE.Mesh(new THREE.BoxGeometry(5.85, 6.55, 0.06), new THREE.MeshPhysicalMaterial({ color: 0x93c5fd, transparent: true, opacity: 0.14, roughness: 0.05, metalness: 0.1, reflectivity: 0.96 })));
+    glassAssembly.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(5.87, 6.57, 0.07)), new THREE.LineBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.45 })));
+    [[-2.68, 3.05], [2.68, 3.05], [-2.68, -3.05], [2.68, -3.05]].forEach(([sx, sy]) => {
+      const screw = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.15, 20), matSilverAlum);
+      screw.rotation.x = Math.PI / 2; screw.position.set(sx, sy, 0.05); glassAssembly.add(screw);
+    });
+    glassAssembly.position.set(0, 0, 1.76); chassisGroup.add(glassAssembly);
+    const frontGlass = new THREE.Mesh(new THREE.BoxGeometry(0.06, 6.55, 3.35), new THREE.MeshPhysicalMaterial({ color: 0x93c5fd, transparent: true, opacity: 0.13, roughness: 0.05, reflectivity: 0.95 }));
+    frontGlass.position.set(-3.04, 0, 0); chassisGroup.add(frontGlass);
 
-      // Dual Opposite-Side Flow-Through Swept-Blade Fans
-      const gpuFanFront = createCADFan(0.58, 0x76b900, false);
-      gpuFanFront.rotation.x = Math.PI / 2;
-      gpuFanFront.position.set(-1.18, -0.38, 0);
-      gpuUnit.add(gpuFanFront);
+    // CHAPTER 1: ROG Z890 MOTHERBOARD
+    const moboGroup = chapters[1];
+    addStudioFloorShadow(moboGroup, -0.45, 16);
+    const explodePartsCh1 = [];
+    const pcbMesh = new THREE.Mesh(new THREE.BoxGeometry(10.4, 0.22, 8.8), new THREE.MeshStandardMaterial({ map: pcbTex, roughness: 0.4, metalness: 0.35 }));
+    pcbMesh.position.y = -0.3; moboGroup.add(pcbMesh);
+    const ioArmor = addBox(moboGroup, 1.25, 1.45, 4.5, -4.5, 0.52, -1.85, matAnodizedBlack);
+    addBox(moboGroup, 0.08, 0.85, 3.6, -3.86, 0.72, -1.85, makeRGBMat(0x38bdf8));
+    explodePartsCh1.push({ mesh: ioArmor, baseY: 0.52, lift: 0.85 });
+    const vrmGroup = new THREE.Group();
+    for (let i = 0; i < 11; i++) addBox(vrmGroup, 0.82, 0.92, 0.14, -3.25, 0.28, -3.0 + i * 0.34, matDarkHeatsink);
+    for (let i = 0; i < 9; i++) addBox(vrmGroup, 0.16, 0.78, 0.78, -2.5 + i * 0.36, 0.22, -3.65, matDarkHeatsink);
+    for (let i = 0; i < 10; i++) {
+      addBox(vrmGroup, 0.24, 0.22, 0.24, -2.62, -0.08, -2.85 + i * 0.31, matGunmetal);
+      const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.09, 0.34, 16), matGold);
+      cap.position.set(-2.32, -0.02, -2.85 + i * 0.31); vrmGroup.add(cap);
+    }
+    moboGroup.add(vrmGroup); explodePartsCh1.push({ mesh: vrmGroup, baseY: 0, lift: 0.95 });
+    const cpuAssembly = new THREE.Group();
+    addBox(cpuAssembly, 2.35, 0.16, 2.35, -1.05, -0.1, -1.4, matGunmetal);
+    addBox(cpuAssembly, 1.9, 0.28, 1.9, -1.05, 0.12, -1.4, new THREE.MeshStandardMaterial({ map: ihsTex, metalness: 0.9, roughness: 0.2 }));
+    moboGroup.add(cpuAssembly); explodePartsCh1.push({ mesh: cpuAssembly, baseY: 0, lift: 1.65 });
+    const ramGroup = new THREE.Group();
+    for (let i = 0; i < 4; i++) {
+      const rx = 1.25 + i * 0.48;
+      addBox(moboGroup, 0.26, 0.22, 3.65, rx, -0.08, -1.35, matAnodizedBlack);
+      addBox(ramGroup, 0.20, 0.65, 3.5, rx, 0.30, -1.35, matAnodizedBlack);
+      addBox(ramGroup, 0.21, 0.52, 3.5, rx, 0.85, -1.35, matSilverAlum);
+      addBox(ramGroup, 0.22, 0.12, 3.52, rx, 1.15, -1.35, makeRGBMat(0xa78bfa));
+    }
+    moboGroup.add(ramGroup); explodePartsCh1.push({ mesh: ramGroup, baseY: 0, lift: 1.95 });
+    addBox(moboGroup, 3.4, 0.22, 0.36, -1.5, -0.08, 1.65, matSilverAlum);
+    const moboGPU = createNvidiaFoundersGPU(1.0); moboGPU.position.set(-0.4, 0.72, 1.75); moboGroup.add(moboGPU);
+    explodePartsCh1.push({ mesh: moboGPU, baseY: 0.72, lift: 2.35 });
+    const nvme = addBox(moboGroup, 2.4, 0.28, 0.78, 3.55, -0.02, 1.45, matGunmetal);
+    explodePartsCh1.push({ mesh: nvme, baseY: -0.02, lift: 1.15 });
+    addBox(moboGroup, 2.2, 0.38, 2.2, 3.55, 0.02, 2.95, matAnodizedBlack);
+    const busPulses = [];
+    for (let i = 0; i < 20; i++) {
+      const p = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.45, 8), new THREE.MeshBasicMaterial({ color: i % 2 === 0 ? 0xe8ff47 : 0x38bdf8 }));
+      p.rotation.z = i % 2 === 0 ? Math.PI / 2 : 0; p.rotation.x = i % 2 === 0 ? 0 : Math.PI / 2;
+      p.userData = { phase: (i / 20) * Math.PI * 2, lane: i % 2 };
+      moboGroup.add(p); busPulses.push(p);
+    }
 
-      const gpuFanTop = createCADFan(0.58, 0x76b900, false);
-      gpuFanTop.rotation.x = -Math.PI / 2;
-      gpuFanTop.position.set(1.28, 0.30, 0);
-      gpuUnit.add(gpuFanTop);
+    // CHAPTER 2: HERO RTX GPU
+    addStudioFloorShadow(chapters[2], -1.6, 15);
+    const heroGPU = createNvidiaFoundersGPU(1.55);
+    chapters[2].add(heroGPU);
 
-      gpuUnit.position.set(gpuCenterX, gpuCenterY, gpuCenterZ);
-      gGPU.add(gpuUnit);
-      registerPickable(gGPU, "gpu");
+    // CHAPTER 3: SILICON DIE (576 SM CORES + HBM3)
+    const dieGroup = chapters[3];
+    addStudioFloorShadow(dieGroup, -0.7, 16);
+    addBox(dieGroup, 9.6, 0.34, 9.6, 0, -0.45, 0, new THREE.MeshStandardMaterial({ color: 0x064e3b, metalness: 0.45, roughness: 0.35 }));
+    for (let i = -3.8; i <= 3.8; i += 0.63) {
+      [[i, -4.3], [i, 4.3], [-4.3, i], [4.3, i]].forEach(([cx, cz]) => addBox(dieGroup, 0.22, 0.14, 0.12, cx, -0.22, cz, matGold));
+    }
+    for (let side of [-1, 1]) for (let i = -1; i <= 1; i++) addBox(dieGroup, 1.15, 0.52, 2.1, side * 4.15, -0.05, i * 2.45, matSilverAlum);
+    addBox(dieGroup, 6.8, 0.24, 7.6, 0, -0.15, 0, new THREE.MeshPhysicalMaterial({ map: dieTex, metalness: 0.85, roughness: 0.14, iridescence: 1.0, iridescenceIOR: 1.8 }));
+    const gridN = 24;
+    const gpuInstanced = new THREE.InstancedMesh(new THREE.BoxGeometry(0.21, 0.28, 0.21), new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.82, roughness: 0.18 }), gridN * gridN);
+    dieGroup.add(gpuInstanced);
+    const dummy = new THREE.Object3D(), tmpColor = new THREE.Color();
 
-      /* ------------------------------------------------------------
-         SUBSYSTEM 06: 360MM AIO LIQUID COOLING SYSTEM
-         - Top 360mm Radiator + 3× 120mm Fans at Y = +2.98
-         - Braided EPDM Tubes + Rotary Compression Fittings
-         - CNC Pump Block + Skived Copper Coldplate + Live IPS Screen
-         ------------------------------------------------------------ */
-      const gCooler = subsystemGroups.cooler;
-
-      // Top Radiator + 3 Fans Sub-Group (lifts upward on Explode)
-      const aioRadAssembly = new THREE.Group();
-      addPartBox(aioRadAssembly, 4.95, 0.34, 1.56, 0.15, 3.16, 0.08, matDarkFinAlum, 0.02);
-      addPartBox(aioRadAssembly, 4.55, 0.30, 1.44, 0.15, 3.16, 0.08, matGunmetalAlum);
-      for (let f = -1; f <= 1; f++) {
-        const radFan = createCADFan(0.68, 0x38bdf8, true);
-        radFan.rotation.x = Math.PI / 2;
-        radFan.position.set(0.15 + f * 1.50, 2.86, 0.08);
-        aioRadAssembly.add(radFan);
+    // CHAPTER 4: 3NM GAAFET NANOSHEET
+    const finfetGroup = chapters[4];
+    addStudioFloorShadow(finfetGroup, -1.95, 16);
+    const matWaferSi = new THREE.MeshPhysicalMaterial({ color: 0x162033, metalness: 0.88, roughness: 0.22, bumpMap: crystalBump, bumpScale: 0.028, iridescence: 0.65, iridescenceIOR: 2.1 });
+    addBox(finfetGroup, 9.8, 1.15, 6.4, 0, -1.25, 0, matWaferSi);
+    addBox(finfetGroup, 9.5, 0.34, 6.1, 0, -0.50, 0, new THREE.MeshPhysicalMaterial({ color: 0x0ea5e9, transparent: true, opacity: 0.26, roughness: 0.06, metalness: 0.05, reflectivity: 0.98 }));
+    const matEpiSiGe = new THREE.MeshPhysicalMaterial({ color: 0x64748b, metalness: 0.92, roughness: 0.18, bumpMap: crystalBump, bumpScale: 0.02, iridescence: 0.85, iridescenceIOR: 1.9 });
+    [-3.15, 3.15].forEach((xPos) => {
+      const wg = new THREE.Group();
+      wg.add(new THREE.Mesh(new THREE.BoxGeometry(2.15, 0.86, 4.9), matEpiSiGe));
+      addBox(wg, 1.85, 0.16, 4.7, 0, 0.48, 0, matSilverAlum);
+      addBox(wg, 1.5, 0.08, 4.4, 0, 0.58, 0, matGunmetal);
+      wg.position.set(xPos, -0.04, 0); finfetGroup.add(wg);
+    });
+    const interconnectGroup = new THREE.Group();
+    [-3.15, 3.15].forEach((vx) => {
+      addBox(interconnectGroup, 1.1, 0.24, 4.8, vx, 1.82, 0, matCopper);
+      for (let vz of [-1.45, 0, 1.45]) {
+        const liner = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.19, 1.25, 24), matGunmetal); liner.position.set(vx, 1.12, vz); interconnectGroup.add(liner);
+        const via = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.15, 1.28, 24), matCopper); via.position.set(vx, 1.12, vz); interconnectGroup.add(via);
       }
-      gCooler.add(aioRadAssembly);
-
-      // CNC Pump Block + Skived Copper Coldplate Sub-Group (lifts outward on Explode)
-      const aioPumpAssembly = new THREE.Group();
-      // Skived Copper Coldplate mating to CPU IHS
-      const coldplate = new THREE.Mesh(new THREE.CylinderGeometry(0.46, 0.48, 0.08, 32), matPureCopper);
-      coldplate.rotation.x = Math.PI / 2;
-      coldplate.position.z = -0.18;
-      aioPumpAssembly.add(coldplate);
-
-      // Anodized CNC Pump Housing + Chamfered Silver Bezel
-      const pumpBody = new THREE.Mesh(new THREE.CylinderGeometry(0.48, 0.50, 0.36, 32), matAnodizedBlack);
-      pumpBody.rotation.x = Math.PI / 2;
-      pumpBody.position.z = 0.03;
-      aioPumpAssembly.add(pumpBody);
-
-      const pumpBezel = new THREE.Mesh(new THREE.TorusGeometry(0.45, 0.03, 12, 36), matBrushedSilver);
-      pumpBezel.position.z = 0.21;
-      aioPumpAssembly.add(pumpBezel);
-
-      // Live Coolant Telemetry IPS LCD Display
-      const pumpLCD = new THREE.Mesh(
-        new THREE.CircleGeometry(0.43, 36),
-        new THREE.MeshBasicMaterial({ map: aioScreenTex })
-      );
-      pumpLCD.position.z = 0.225;
-      aioPumpAssembly.add(pumpLCD);
-
-      // Rotary Compression Fittings on side of pump
-      [-0.12, 0.12].forEach((fy) => {
-        const fit = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.075, 0.18, 16), matBrushedSilver);
-        fit.rotation.z = Math.PI / 2;
-        fit.position.set(-0.52, fy, 0.04);
-        aioPumpAssembly.add(fit);
+    });
+    finfetGroup.add(interconnectGroup);
+    const finZPositions = [-1.45, 0, 1.45], sheetYOffsets = [-0.20, 0.04, 0.28];
+    const matNanosheet = new THREE.MeshPhysicalMaterial({ color: 0x38bdf8, metalness: 0.75, roughness: 0.14, iridescence: 1.0, iridescenceIOR: 2.2 });
+    const matHighK = new THREE.MeshPhysicalMaterial({ color: 0xa78bfa, transparent: true, opacity: 0.36, roughness: 0.08 });
+    finZPositions.forEach((fz) => {
+      addBox(finfetGroup, 4.3, 0.22, 0.44, 0, -0.36, fz, matWaferSi);
+      sheetYOffsets.forEach((sy) => {
+        addBox(finfetGroup, 4.25, 0.13, 0.48, 0, sy, fz, matHighK);
+        addBox(finfetGroup, 4.3, 0.08, 0.42, 0, sy, fz, matNanosheet);
       });
+    });
+    const matSpacer = new THREE.MeshPhysicalMaterial({ color: 0x94a3b8, transparent: true, opacity: 0.28, roughness: 0.12 });
+    [-0.84, 0.84].forEach((sx) => addBox(finfetGroup, 0.18, 1.48, 5.15, sx, 0.36, 0, matSpacer));
+    const gateAssembly = new THREE.Group();
+    const matMetalGate = new THREE.MeshStandardMaterial({ color: 0xd4af37, emissive: 0x38bdf8, emissiveIntensity: 0.16, metalness: 0.94, roughness: 0.18, roughnessMap: brushedTex, bumpMap: brushedTex, bumpScale: 0.015 });
+    addBox(gateAssembly, 1.48, 1.48, 5.12, 0, 0.36, 0, matMetalGate);
+    addBox(gateAssembly, 1.1, 0.18, 4.9, 0, 1.18, 0, matSilverAlum);
+    addBox(gateAssembly, 0.55, 0.22, 5.2, 0, 1.38, 0, matCopper);
+    finfetGroup.add(gateAssembly);
 
-      aioPumpAssembly.position.set(cpuX, cpuY, cpuZ + 0.35);
-      gCooler.add(aioPumpAssembly);
+    const carrierFilaments = [];
+    const filamentMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.9, blending: THREE.AdditiveBlending });
+    const coreDotMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.95, blending: THREE.AdditiveBlending });
+    for (let i = 0; i < 54; i++) {
+      const group = new THREE.Group();
+      const streak = new THREE.Mesh(new THREE.CylinderGeometry(0.016, 0.016, 0.52, 8), filamentMat); streak.rotation.z = Math.PI / 2; group.add(streak);
+      const core = new THREE.Mesh(new THREE.SphereGeometry(0.032, 8, 8), coreDotMat); core.scale.set(2.2, 0.8, 0.8); group.add(core);
+      group.userData = { offset: (i / 54) + Math.random() * 0.1, speed: 0.48 + (i % 4) * 0.08, finZ: finZPositions[i % 3] + ((i % 5) - 2) * 0.06, sheetY: sheetYOffsets[Math.floor(i / 3) % 3] };
+      finfetGroup.add(group); carrierFilaments.push(group);
+    }
+    const fieldRings = [];
+    finZPositions.forEach((fz) => {
+      const ring = new THREE.Mesh(new THREE.TorusGeometry(0.46, 0.012, 8, 36), new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.45, blending: THREE.AdditiveBlending }));
+      ring.rotation.y = Math.PI / 2; ring.position.set(0, 0.04, fz); finfetGroup.add(ring); fieldRings.push(ring);
+    });
 
-      // Dual Braided EPDM Coolant Tubes from Pump Fittings to Radiator End Tank
-      const tubeCurve1 = new THREE.CatmullRomCurve3([
-        new THREE.Vector3(cpuX - 0.58, cpuY + 0.12, cpuZ + 0.39),
-        new THREE.Vector3(-0.65, 2.15, 0.15),
-        new THREE.Vector3(-1.95, 3.05, 0.02)
-      ]);
-      const tubeCurve2 = new THREE.CatmullRomCurve3([
-        new THREE.Vector3(cpuX - 0.58, cpuY - 0.12, cpuZ + 0.39),
-        new THREE.Vector3(-0.82, 1.95, 0.32),
-        new THREE.Vector3(-2.12, 3.05, 0.22)
-      ]);
-      const aioTube1 = new THREE.Mesh(new THREE.TubeGeometry(tubeCurve1, 26, 0.068, 12, false), matBraidedSleeve);
-      const aioTube2 = new THREE.Mesh(new THREE.TubeGeometry(tubeCurve2, 26, 0.068, 12, false), matBraidedSleeve);
-      gCooler.add(aioTube1, aioTube2);
+    const chapterData = [
+      { scale: "SCALE 1:1 · DUAL-CHAMBER ATX RIG", cat: "01 / WORKSTATION EXTERIOR", title: "Flagship ATX Workstation", simple: "A panoramic tempered-glass tower housing a 360mm LCD liquid cooler, 4× DDR5 RAM sticks, and an NVIDIA GeForce RTX Founders Edition GPU.", detailed: "Engineered for positive-pressure airflow with 9-blade infinity-mirror fans, braided AIO tubing, and a carbon-fiber PSU shroud.", deep: "Maintains laminar intake across dual 360mm fan banks while isolating power delivery and thermal chambers.", connects: "Keep scrolling to unscrew the tempered glass panel and fly inside." },
+      { scale: "SCALE 1:10 · ROG Z890 ARCHITECTURE", cat: "02 / SYSTEM INTERCONNECT", title: "Motherboard & Buses", simple: "An 8-layer ROG Z890 motherboard connecting the Core Ultra 9 CPU, G.Skill DDR5 memory, and RTX Founders Edition GPU over high-speed copper lanes.", detailed: "Features a 22+1+2 VRM power stage with gold-top capacitors, steel-reinforced PCIe 5.0 SafeSlot, and impedance-matched differential traces.", deep: "Routes PCIe Gen5 x16 lanes and dual-channel DDR5 buses. Click 'Explode Layers' above to inspect every sub-assembly.", connects: "Links CPU ↔ DDR5 RAM ↔ RTX GPU ↔ PCIe 5.0 NVMe." },
+      { scale: "SCALE 1:2 · NVIDIA FOUNDERS EDITION", cat: "03 / GRAPHICS ACCELERATOR", title: "RTX Founders Edition GPU", simple: "NVIDIA's iconic gunmetal X-brace unibody heatsink with dual opposite-side flow-through fans and six sintered copper heatpipes.", detailed: "Draws cool air through the front impeller and exhausts directly through the open fin stack out the top of the chassis.", deep: "Houses tens of billions of transistors, 4th-gen Tensor Cores, and a 16-pin 12V-2x6 power delivery rail.", connects: "Drag anywhere on screen to orbit around the dual-fan flow-through cooler." },
+      { scale: "SCALE 1:1,000 · SILICON & HBM3", cat: "04 / PARALLEL COMPUTE DIE", title: "Silicon Die & SM Array", simple: "Inside the chip package: 576 clustered Streaming Multiprocessor & Tensor blocks flanked by six stacks of High-Bandwidth Memory (HBM3).", detailed: "Executes thousands of parallel shader and matrix-multiply threads per clock cycle over a silicon interposer.", deep: "Uses SIMT (Single Instruction, Multiple Threads) scheduling to power real-time ray tracing and transformer AI inference.", connects: "High-speed silicon interposer links compute SMs to HBM3 memory." },
+      { scale: "SCALE: 3 NANOMETERS · GAA NANOSHEET", cat: "05 / 3NM SEMICONDUCTOR", title: "3nm GAAFET & Drift Current", simple: "At 3 nanometers, a Gate-All-Around (GAA) transistor surrounds stacked silicon nanosheets with a metal gate. Toggle 'V_GS Bias' above to switch the electron channel ON and OFF.", detailed: "Strained SiGe Source/Drain wells inject high-mobility electrons through three horizontally stacked monocrystalline silicon nanosheets wrapped in High-k HfO2 dielectric.", deep: "Dual-damascene copper M0/M1 vias with TaN barrier liners route signals from the TiN/W metal gate across billions of EUV-patterned nanosheet FETs.", connects: "Scroll past to test Boolean Logic Gates built from these transistors." }
+    ];
 
-      registerPickable(gCooler, "cooler");
+    let activeChapter = 0, currentDepth = "simple", scrollProgress = 0;
+    let exploded = false, explodeLerp = 0, rgbEnabled = true, gateBiasOn = true, biasLerp = 1.0;
+    let dragYaw = 0, dragPitch = 0, isDragging = false, lastX = 0, lastY = 0;
 
-      /* ------------------------------------------------------------
-         SUBSYSTEM 07: 2TB PCIe 5.0 NVMe M.2 SSD & FINNED HEATSINK
-         ------------------------------------------------------------ */
-      const gStorage = subsystemGroups.storage;
-      const ssdX = moboX + 0.38, ssdY = moboY - 0.14, ssdZ = moboZ + 0.09;
+    document.getElementById("gateBiasBtn").addEventListener("click", (e) => {
+      gateBiasOn = !gateBiasOn; e.currentTarget.classList.toggle("active", gateBiasOn);
+      e.currentTarget.textContent = gateBiasOn ? "V_GS BIAS: ON (0.75V)" : "V_GS BIAS: OFF (0.00V)";
+    });
+    document.getElementById("explodeBtn").addEventListener("click", (e) => {
+      exploded = !exploded; e.currentTarget.classList.toggle("active", exploded);
+      e.currentTarget.textContent = `EXPLODE LAYERS: ${exploded ? "ON" : "OFF"}`;
+    });
+    document.getElementById("rgbBtn").addEventListener("click", (e) => {
+      rgbEnabled = !rgbEnabled; e.currentTarget.classList.toggle("active", rgbEnabled);
+      e.currentTarget.textContent = `RGB LIGHTING: ${rgbEnabled ? "ON" : "OFF"}`;
+      rgbMaterials.forEach(({ mat, baseHex }) => mat.color.setHex(rgbEnabled ? baseHex : 0x11151d));
+    });
 
-      // M.2 2280 PCB + Gold M-Key Pins + Controller & 3D NAND Packages
-      const ssdBoard = new THREE.Group();
-      addPartBox(ssdBoard, 1.15, 0.32, 0.03, 0, 0, 0, matMattePCB);
-      addPartBox(ssdBoard, 0.07, 0.28, 0.035, 0.56, 0, 0, matGoldPin);
-      addPartBox(ssdBoard, 0.22, 0.22, 0.03, 0.26, 0, 0.025, matGunmetalAlum); // Controller IC
-      addPartBox(ssdBoard, 0.26, 0.24, 0.03, -0.08, 0, 0.025, matPolymer);    // NAND 1
-      addPartBox(ssdBoard, 0.26, 0.24, 0.03, -0.38, 0, 0.025, matPolymer);    // NAND 2
-      ssdBoard.position.set(ssdX, ssdY, ssdZ);
-      gStorage.add(ssdBoard);
+    function renderChapterText(idx) {
+      const d = chapterData[idx];
+      document.getElementById("scaleIndicator").textContent = d.scale;
+      document.getElementById("infoCategory").textContent = d.cat;
+      document.getElementById("infoTitle").textContent = d.title;
+      document.getElementById("infoBody").textContent = d[currentDepth];
+      document.getElementById("infoConnects").textContent = d.connects;
+      document.querySelectorAll(".rail-dot").forEach((dot, i) => dot.classList.toggle("active", i === idx));
+    }
+    renderChapterText(0);
 
-      // Finned CNC Aluminium M.2 Heatsink Cover (separates slightly higher on Explode)
-      const ssdHeatsink = new THREE.Group();
-      addPartBox(ssdHeatsink, 1.18, 0.35, 0.09, 0, 0, 0, matGunmetalAlum, 0.012);
-      for (let f = -3; f <= 3; f++) {
-        addPartBox(ssdHeatsink, 1.12, 0.025, 0.07, 0, f * 0.048, 0.06, matBrushedSilver);
-      }
-      ssdHeatsink.position.set(ssdX, ssdY, ssdZ + 0.09);
-      gStorage.add(ssdHeatsink);
-
-      registerPickable(gStorage, "storage");
-
-      /* ------------------------------------------------------------
-         SUBSYSTEM 08: 1200W ATX 3.1 MODULAR PSU & SLEEVED CABLES
-         ------------------------------------------------------------ */
-      const gPSU = subsystemGroups.psu;
-      const psuX = 1.95, psuY = -2.62, psuZ = -0.15;
-
-      // Brushed Anodized Enclosure + Side Spec Plate
-      addPartBox(gPSU, 2.55, 1.38, 2.25, psuX, psuY, psuZ, matAnodizedBlack, 0.025);
-      const psuSideLabel = new THREE.Mesh(
-        new THREE.BoxGeometry(2.15, 0.96, 0.02),
-        new THREE.MeshStandardMaterial({ map: psuLabelTex, roughness: 0.35, metalness: 0.4 })
-      );
-      psuSideLabel.position.set(psuX, psuY, psuZ + 1.135);
-      gPSU.add(psuSideLabel);
-
-      // Rear Honeycomb Exhaust Grille, AC C14 Socket & Power Rocker Switch (X = +3.24)
-      addPartBox(gPSU, 0.04, 1.24, 2.08, psuX + 1.28, psuY, psuZ, matHoneycomb);
-      addPartBox(gPSU, 0.08, 0.34, 0.48, psuX + 1.29, psuY - 0.32, psuZ + 0.62, matPolymer, 0.01);
-      addPartBox(gPSU, 0.08, 0.24, 0.18, psuX + 1.29, psuY - 0.32, psuZ + 0.22, matPolymer, 0.01);
-
-      // Modular Connector Panel on Front End of PSU (X = psuX - 1.28)
-      addPartBox(gPSU, 0.06, 1.15, 1.95, psuX - 1.28, psuY, psuZ, matGunmetalAlum);
-      for (let row = 0; row < 2; row++) {
-        for (let col = 0; col < 4; col++) {
-          addPartBox(gPSU, 0.10, 0.22, 0.34, psuX - 1.33, psuY - 0.24 + row * 0.48, psuZ - 0.62 + col * 0.42, matPolymer);
-        }
-      }
-
-      // Individually Braided Power Cables + Cable Combs
-      const cable12V = new THREE.CatmullRomCurve3([
-        new THREE.Vector3(gpuCenterX + 0.05, gpuCenterY + 0.42, gpuCenterZ + 0.56),
-        new THREE.Vector3(gpuCenterX + 0.05, -0.85, 1.15),
-        new THREE.Vector3(gpuCenterX + 0.05, -1.85, 0.55),
-        new THREE.Vector3(psuX - 1.35, psuY + 0.24, psuZ + 0.45)
-      ]);
-      const cable24P = new THREE.CatmullRomCurve3([
-        new THREE.Vector3(moboX - 1.72, moboY + 0.55, moboZ + 0.25),
-        new THREE.Vector3(-1.35, 0.85, -0.35),
-        new THREE.Vector3(-1.35, -2.45, -0.45),
-        new THREE.Vector3(psuX - 1.35, psuY - 0.24, psuZ - 0.35)
-      ]);
-      const psuCable1 = new THREE.Mesh(new THREE.TubeGeometry(cable12V, 24, 0.075, 10, false), matBraidedSleeve);
-      const psuCable2 = new THREE.Mesh(new THREE.TubeGeometry(cable24P, 24, 0.095, 10, false), matBraidedSleeve);
-      gPSU.add(psuCable1, psuCable2);
-
-      // Acrylic Cable Combs along the 12V-2x6 GPU cable
-      [0.22, 0.48].forEach((tComb) => {
-        const pt = cable12V.getPoint(tComb);
-        addPartBox(gPSU, 0.22, 0.05, 0.18, pt.x, pt.y, pt.z, matBrushedSilver, 0.008);
+    document.querySelectorAll(".depth-tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".depth-tab").forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active"); currentDepth = tab.dataset.depth; renderChapterText(activeChapter);
       });
+    });
+    document.querySelectorAll(".rail-dot").forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const idx = Number(dot.dataset.chapter);
+        const maxScroll = machineSection.offsetHeight - window.innerHeight;
+        window.scrollTo({ top: machineSection.offsetTop + (idx / 4.8) * maxScroll, behavior: "smooth" });
+      });
+    });
 
-      registerPickable(gPSU, "psu");
+    mCanvas.addEventListener("pointerdown", (e) => { isDragging = true; lastX = e.clientX; lastY = e.clientY; });
+    window.addEventListener("pointerup", () => { isDragging = false; });
+    window.addEventListener("pointermove", (e) => {
+      if (!isDragging) return;
+      dragYaw = Math.max(-1.6, Math.min(1.6, dragYaw - (e.clientX - lastX) * 0.006));
+      dragPitch = Math.max(-0.5, Math.min(0.7, dragPitch + (e.clientY - lastY) * 0.005));
+      lastX = e.clientX; lastY = e.clientY;
+    });
 
-      /* ------------------------------------------------------------
-         CHAPTER 04: SILICON DIE & 576 SM CORES (dieRoot)
-         ------------------------------------------------------------ */
-      const dieShadow = new THREE.Mesh(
-        new THREE.PlaneGeometry(16, 16),
-        new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, opacity: 0.85, depthWrite: false })
-      );
-      dieShadow.rotation.x = -Math.PI / 2;
-      dieShadow.position.y = -0.7;
-      dieRoot.add(dieShadow);
+    function updateMachineScroll() {
+      const rect = machineSection.getBoundingClientRect();
+      const total = machineSection.offsetHeight - window.innerHeight;
+      scrollProgress = Math.max(0, Math.min(1, -rect.top / total));
+      document.getElementById("machine-progress-fill").style.width = `${scrollProgress * 100}%`;
+      const idx = Math.min(4, Math.floor(scrollProgress * 5));
+      if (idx !== activeChapter) { activeChapter = idx; renderChapterText(idx); }
+    }
+    window.addEventListener("scroll", updateMachineScroll, { passive: true });
+    updateMachineScroll();
 
-      addPartBox(dieRoot, 9.6, 0.34, 9.6, 0, -0.45, 0, matSiliconSub, 0.02);
-      for (let i = -3.8; i <= 3.8; i += 0.63) {
-        [[i, -4.3], [i, 4.3], [-4.3, i], [4.3, i]].forEach(([cx, cz]) => {
-          addPartBox(dieRoot, 0.22, 0.14, 0.12, cx, -0.22, cz, matGoldPin);
+    const camKeyframes = [[1.8, 1.6, 11.4], [0.4, 8.2, 9.6], [1.2, 2.4, 10.2], [0.0, 7.6, 9.2], [0.6, 3.3, 8.2]];
+    let mTime = 0;
+
+    (function animateMachine() {
+      requestAnimationFrame(animateMachine);
+      if (!machineVisible) return;
+
+      mTime += 0.025;
+      explodeLerp += ((exploded ? 1 : 0) - explodeLerp) * 0.08;
+      biasLerp += ((gateBiasOn ? 1 : 0) - biasLerp) * 0.08;
+
+      const scaled = scrollProgress * 5;
+      const idx = Math.min(4, Math.floor(scaled));
+      const localT = Math.min(1, scaled - idx);
+
+      chapters.forEach((g, i) => {
+        g.visible = (i === idx);
+        if (i === idx) g.scale.setScalar(0.90 + Math.sin(Math.min(1, localT * 1.5) * Math.PI * 0.5) * 0.10);
+      });
+      spinningRotors.forEach((r) => { r.rotation.z -= 0.14; });
+
+      if (idx === 0) {
+        const glassOpen = Math.max(localT * 1.35, explodeLerp * 0.9);
+        glassAssembly.position.set(glassOpen * 2.1, 0, 1.76 + glassOpen * 3.4);
+        glassAssembly.rotation.y = glassOpen * 0.25;
+      }
+      if (idx === 1) {
+        explodePartsCh1.forEach((it) => { it.mesh.position.y = it.baseY + explodeLerp * it.lift; });
+        busPulses.forEach((p) => {
+          const t = ((mTime * 1.3 + p.userData.phase) % (Math.PI * 2)) / (Math.PI * 2);
+          if (p.userData.lane === 0) p.position.set(-1.05 + t * 3.1, 0.08 + explodeLerp * 0.4, -1.4);
+          else p.position.set(-1.05, 0.08 + explodeLerp * 0.4, -1.4 + t * 3.1);
         });
       }
-      // 6× HBM3 High-Bandwidth Memory Stacks flanking the die
-      for (let side of [-1, 1]) {
-        for (let i = -1; i <= 1; i++) {
-          addPartBox(dieRoot, 1.15, 0.52, 2.1, side * 4.15, -0.05, i * 2.45, matBrushedSilver, 0.02);
-        }
+      if (idx === 2) {
+        heroGPU.rotation.y = Math.sin(mTime * 0.45) * 0.38;
+        heroGPU.rotation.x = 0.18 + Math.cos(mTime * 0.35) * 0.08;
       }
-      addPartBox(dieRoot, 6.8, 0.24, 7.6, 0, -0.15, 0, new THREE.MeshPhysicalMaterial({
-        map: dieTex, metalness: 0.85, roughness: 0.14, clearcoat: 1.0, clearcoatRoughness: 0.06
-      }));
-
-      const gridN = 24;
-      const gpuInstanced = new THREE.InstancedMesh(
-        new THREE.BoxGeometry(0.21, 0.28, 0.21),
-        new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.82, roughness: 0.18 }),
-        gridN * gridN
-      );
-      dieRoot.add(gpuInstanced);
-      const dummy = new THREE.Object3D(), tmpColor = new THREE.Color();
-
-      /* ------------------------------------------------------------
-         CHAPTER 05: 3NM GAAFET NANOSHEET TRANSISTOR (finfetRoot)
-         ------------------------------------------------------------ */
-      const finShadow = dieShadow.clone();
-      finShadow.position.y = -1.95;
-      finfetRoot.add(finShadow);
-
-      const matWaferSi = new THREE.MeshPhysicalMaterial({
-        color: 0x162033, metalness: 0.88, roughness: 0.22,
-        bumpMap: crystalBump, bumpScale: 0.028, clearcoat: 0.9, clearcoatRoughness: 0.08
-      });
-      addPartBox(finfetRoot, 9.8, 1.15, 6.4, 0, -1.25, 0, matWaferSi, 0.03);
-      addPartBox(finfetRoot, 9.5, 0.34, 6.1, 0, -0.50, 0, new THREE.MeshPhysicalMaterial({
-        color: 0x0ea5e9, transparent: true, opacity: 0.26, roughness: 0.06, metalness: 0.05, reflectivity: 0.98
-      }));
-
-      const matEpiSiGe = new THREE.MeshPhysicalMaterial({
-        color: 0x64748b, metalness: 0.92, roughness: 0.18,
-        bumpMap: crystalBump, bumpScale: 0.02, clearcoat: 0.85, clearcoatRoughness: 0.08
-      });
-      [-3.15, 3.15].forEach((xPos) => {
-        const wg = new THREE.Group();
-        addPartBox(wg, 2.15, 0.86, 4.9, 0, 0, 0, matEpiSiGe, 0.025);
-        addPartBox(wg, 1.85, 0.16, 4.7, 0, 0.48, 0, matBrushedSilver, 0.015);
-        addPartBox(wg, 1.5, 0.08, 4.4, 0, 0.58, 0, matGunmetalAlum);
-        wg.position.set(xPos, -0.04, 0);
-        finfetRoot.add(wg);
-      });
-
-      const interconnectGroup = new THREE.Group();
-      [-3.15, 3.15].forEach((vx) => {
-        addPartBox(interconnectGroup, 1.1, 0.24, 4.8, vx, 1.82, 0, matPureCopper, 0.02);
-        for (let vz of [-1.45, 0, 1.45]) {
-          const liner = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.19, 1.25, 24), matGunmetalAlum);
-          liner.position.set(vx, 1.12, vz);
-          interconnectGroup.add(liner);
-          const via = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.15, 1.28, 24), matPureCopper);
-          via.position.set(vx, 1.12, vz);
-          interconnectGroup.add(via);
+      if (idx === 3) {
+        let ptr = 0;
+        for (let x = 0; x < gridN; x++) {
+          for (let z = 0; z < gridN; z++) {
+            const px = (x - gridN / 2 + 0.5) * 0.25 + Math.floor(x / 6) * 0.22 - 0.33;
+            const pz = (z - gridN / 2 + 0.5) * 0.28 + Math.floor(z / 6) * 0.22 - 0.33;
+            const wave = Math.sin(mTime * 2.8 + (x * 0.35 + z * 0.35));
+            dummy.position.set(px, wave * 0.16 + explodeLerp * 0.6, pz);
+            dummy.scale.set(1, 0.8 + (wave + 1) * 0.35, 1);
+            dummy.updateMatrix(); gpuInstanced.setMatrixAt(ptr, dummy.matrix);
+            tmpColor.setHSL(0.52 - (wave + 1) * 0.14, 0.92, 0.50); gpuInstanced.setColorAt(ptr, tmpColor);
+            ptr++;
+          }
         }
-      });
-      finfetRoot.add(interconnectGroup);
-
-      const finZPositions = [-1.45, 0, 1.45], sheetYOffsets = [-0.20, 0.04, 0.28];
-      const matNanosheet = new THREE.MeshPhysicalMaterial({
-        color: 0x38bdf8, metalness: 0.75, roughness: 0.14, clearcoat: 1.0, clearcoatRoughness: 0.05
-      });
-      const matHighK = new THREE.MeshPhysicalMaterial({
-        color: 0xa78bfa, transparent: true, opacity: 0.36, roughness: 0.08
-      });
-      finZPositions.forEach((fz) => {
-        addPartBox(finfetRoot, 4.3, 0.22, 0.44, 0, -0.36, fz, matWaferSi, 0.015);
-        sheetYOffsets.forEach((sy) => {
-          addPartBox(finfetRoot, 4.25, 0.13, 0.48, 0, sy, fz, matHighK);
-          addPartBox(finfetRoot, 4.3, 0.08, 0.42, 0, sy, fz, matNanosheet, 0.01);
+        gpuInstanced.instanceMatrix.needsUpdate = true;
+        if (gpuInstanced.instanceColor) gpuInstanced.instanceColor.needsUpdate = true;
+      }
+      if (idx === 4) {
+        gateAssembly.position.y = explodeLerp * 1.15;
+        interconnectGroup.position.y = explodeLerp * 0.55;
+        matMetalGate.emissiveIntensity = 0.04 + biasLerp * 0.24;
+        filamentMat.opacity = biasLerp * 0.88; coreDotMat.opacity = biasLerp * 0.95;
+        fieldRings.forEach((ring, rIdx) => {
+          ring.material.opacity = biasLerp * (0.35 + Math.sin(mTime * 4 + rIdx) * 0.15);
+          ring.scale.setScalar(0.95 + biasLerp * 0.08 + Math.sin(mTime * 3 + rIdx) * 0.03);
         });
-      });
-
-      const matSpacer = new THREE.MeshPhysicalMaterial({ color: 0x94a3b8, transparent: true, opacity: 0.28, roughness: 0.12 });
-      [-0.84, 0.84].forEach((sx) => addPartBox(finfetRoot, 0.18, 1.48, 5.15, sx, 0.36, 0, matSpacer));
-
-      const gateAssembly = new THREE.Group();
-      const matMetalGate = new THREE.MeshStandardMaterial({
-        color: 0xd4af37, emissive: 0x38bdf8, emissiveIntensity: 0.16,
-        metalness: 0.94, roughness: 0.18, roughnessMap: brushedTex, bumpMap: brushedTex, bumpScale: 0.015
-      });
-      addPartBox(gateAssembly, 1.48, 1.48, 5.12, 0, 0.36, 0, matMetalGate, 0.025);
-      addPartBox(gateAssembly, 1.1, 0.18, 4.9, 0, 1.18, 0, matBrushedSilver, 0.015);
-      addPartBox(gateAssembly, 0.55, 0.22, 5.2, 0, 1.38, 0, matPureCopper, 0.015);
-      finfetRoot.add(gateAssembly);
-
-      const carrierFilaments = [];
-      const filamentMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.9, blending: THREE.AdditiveBlending });
-      const coreDotMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.95, blending: THREE.AdditiveBlending });
-      for (let i = 0; i < 54; i++) {
-        const group = new THREE.Group();
-        const streak = new THREE.Mesh(new THREE.CylinderGeometry(0.016, 0.016, 0.52, 8), filamentMat);
-        streak.rotation.z = Math.PI / 2;
-        group.add(streak);
-        const core = new THREE.Mesh(new THREE.SphereGeometry(0.032, 8, 8), coreDotMat);
-        core.scale.set(2.2, 0.8, 0.8);
-        group.add(core);
-        group.userData = {
-          offset: (i / 54) + Math.random() * 0.1,
-          speed: 0.48 + (i % 4) * 0.08,
-          finZ: finZPositions[i % 3] + ((i % 5) - 2) * 0.06,
-          sheetY: sheetYOffsets[Math.floor(i / 3) % 3]
-        };
-        finfetRoot.add(group);
-        carrierFilaments.push(group);
+        carrierFilaments.forEach((f) => {
+          f.visible = biasLerp > 0.04;
+          const t = (mTime * f.userData.speed * (0.2 + biasLerp * 0.8) + f.userData.offset) % 1;
+          const xPos = -3.1 + t * 6.2;
+          f.scale.set(1 + Math.exp(-(xPos * xPos) / 1.2) * 0.35 * biasLerp, 1, 1);
+          f.position.set(xPos, f.userData.sheetY, f.userData.finZ);
+        });
       }
 
-      const fieldRings = [];
-      finZPositions.forEach((fz) => {
-        const ring = new THREE.Mesh(
-          new THREE.TorusGeometry(0.46, 0.012, 8, 36),
-          new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.45, blending: THREE.AdditiveBlending })
-        );
-        ring.rotation.y = Math.PI / 2;
-        ring.position.set(0, 0.04, fz);
-        finfetRoot.add(ring);
-        fieldRings.push(ring);
-      });
+      const kf = camKeyframes[idx];
+      const autoYaw = (localT - 0.5) * 0.65 + dragYaw;
+      const radius = kf[2] - localT * 1.25;
+      mCamera.position.x += (Math.sin(autoYaw) * radius + kf[0] * 0.25 - mCamera.position.x) * 0.08;
+      mCamera.position.y += (kf[1] + dragPitch * 3.8 - mCamera.position.y) * 0.08;
+      mCamera.position.z += (Math.cos(autoYaw) * radius - mCamera.position.z) * 0.08;
+      mCamera.lookAt(0, 0, 0);
+      mRenderer.render(mScene, mCamera);
+    })();
 
-      /* ------------------------------------------------------------
-         CHAPTER METADATA + CAD INTERACTION & CAMERA CONTROLLER
-         ------------------------------------------------------------ */
-      const chapterData = [
-        {
-          scale: "SCALE 1:1 · ATX WORKSTATION ASSEMBLY",
-          cat: "01 / COMPLETE SYSTEM ARCHITECTURE",
-          title: "Dual-Chamber ATX Workstation",
-          simple: "A precision-engineered ATX mid-tower housing a Z890 motherboard, Core Ultra 9 processor, 64GB DDR5 memory, GeForce RTX Founders Edition GPU, 360mm AIO liquid cooler, and 1200W ATX 3.1 PSU.",
-          detailed: "Built with 4mm low-iron tempered glass, swept-blade static-pressure fans, braided EPDM coolant lines, and individually sleeved power harnesses. Click any hardware part directly in 3D to inspect it.",
-          deep: "Separates heat-generating compute components in the upper laminar airflow chamber from the 1200W Titanium power supply in the lower vented tunnel. Switch to 'Exploded' above to inspect assembly axes.",
-          connects: "Tip: Click any component in the 3D viewport to isolate it and view technical specifications."
-        },
-        {
-          scale: "SCALE 1:5 · EXPLODED INTERNAL ARCHITECTURE",
-          cat: "02 / SYSTEM INTERCONNECT & BUSES",
-          title: "Motherboard & Modular Subsystems",
-          simple: "Each hardware module seats along a dedicated mechanical and electrical axis—PCIe 5.0 x16 for the GPU, LGA1851 for the CPU, 288-pin DIMMs for DDR5, and M.2 2280 for NVMe storage.",
-          detailed: "The 8-layer ROG Z890 PCB coordinates a 22+1+2 VRM power delivery stage, steel-reinforced PCIe SafeSlot, and impedance-matched differential copper
+    /* ============================================================
+       5. ZERO-CHURN CANVAS HELPER & CMOS LOGIC GATE SCHEMATIC
+       ============================================================ */
+    function sizeCanvas(canvas) {
+      const rect = canvas.getBoundingClientRect();
+      if (!rect.width || !rect.height) return false;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const w = Math.round(rect.width * dpr), h = Math.round(rect.height * dpr);
+      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+      return true;
+    }
+
+    let valA = 1, valB = 0;
+    const bitA = document.getElementById("bitA");
+    const bitB = document.getElementById("bitB");
+    const gateSelect = document.getElementById("gateSelect");
+    const logicCanvas = document.getElementById("logicCanvas");
+
+    function drawLogicGate() {
+      const g = gateSelect.value;
+      let out = 0;
+      if (g === "AND") out = valA & valB;
+      if (g === "OR") out = valA | valB;
+      if (g === "XOR") out = valA ^ valB;
+      if (g === "NAND") out = (valA & valB) ? 0 : 1;
+      if (g === "NOR") out = (valA | valB) ? 0 : 1;
+      if (g === "NOT") out = valA ? 0 : 1;
+      document.getElementById("gateFormula").textContent = g === "NOT" ? `NOT ${valA}` : `${valA} ${g} ${valB}`;
+      document.getElementById("gateOutput").textContent = `OUTPUT: ${out}`;
+
+      if (!sizeCanvas(logicCanvas)) return;
+      const ctx = logicCanvas.getContext("2d");
+      const w = logicCanvas.width, h = logicCanvas.height;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const accent = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#e8ff47";
+      ctx.clearRect(0, 0, w, h);
+
+      const cx = w * 0.5, cy = h * 0.5, offCol = "#334155";
+      ctx.lineWidth = 2.6 * dpr;
+      ctx.font = `600 ${12 * dpr}px "JetBrains Mono", monospace`;
+
+      ctx.strokeStyle = valA ? accent : offCol;
+      ctx.beginPath(); ctx.moveTo(w * 0.14, g === "NOT" ? cy : cy - 32 * dpr); ctx.lineTo(cx - 46 * dpr, g === "NOT" ? cy : cy - 32 * dpr); ctx.stroke();
+      if (g !== "NOT") {
+        ctx.strokeStyle = valB ? accent : offCol;
+        ctx.beginPath(); ctx.moveTo(w * 0.14, cy + 32 * dpr); ctx.lineTo(cx - 46 * dpr, cy + 32 * dpr); ctx.stroke();
+      }
+      ctx.strokeStyle = out ? accent : offCol;
+      ctx.beginPath(); ctx.moveTo(cx + 46 * dpr, cy); ctx.lineTo(w * 0.86, cy); ctx.stroke();
+
+      ctx.fillStyle = "rgba(15, 20, 32, 0.95)"; ctx.strokeStyle = "rgba(255,255,255,0.28)";
+      ctx.beginPath(); ctx.roundRect(cx - 46 * dpr, cy - 42 * dpr, 92 * dpr, 84 * dpr, 12 * dpr); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = "#f4f5f7"; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(g, cx, cy);
+
+      const node = (x, y, lbl, on) => {
+        ctx.fillStyle = on ? accent : "#1e293b";
+        ctx.beginPath(); ctx.arc(x, y, 7 * dpr, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "#cbd5e1"; ctx.fillText(lbl, x, y - 16 * dpr);
+      };
+      node(w * 0.14, g === "NOT" ? cy : cy - 32 * dpr, `A:${valA}`, valA);
+      if (g !== "NOT") node(w * 0.14, cy + 32 * dpr, `B:${valB}`, valB);
+      node(w * 0.86, cy, `OUT:${out}`, out);
+    }
+
+    bitA.addEventListener("click", () => { valA = valA ? 0 : 1; bitA.textContent = `Input A: ${valA}`; bitA.classList.toggle("on", valA === 1); drawLogicGate(); });
+    bitB.addEventListener("click", () => { valB = valB ? 0 : 1; bitB.textContent = `Input B: ${valB}`; bitB.classList.toggle("on", valB === 1); drawLogicGate(); });
+    gateSelect.addEventListener("change", drawLogicGate);
+
+    /* ============================================================
+       6. THE LABORATORY (VISIBILITY & ACTIVE-TAB GATED)
+       ============================================================ */
+    let activeLab = "glass", labVisible = false;
+    const labSection = document.getElementById("laboratory");
+    new IntersectionObserver((entries) => { labVisible = entries[0].isIntersecting; }, { threshold: 0.05 }).observe(labSection);
+
+    const aeroCanvas = document.getElementById("aeroCanvas");
+    const osCanvas = document.getElementById("osCanvas");
+    const pCanvas = document.getElementById("physicsCanvas");
+
+    document.querySelectorAll(".lab-tabs .pill-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".lab-tabs .pill-btn").forEach((b) => b.classList.remove("active"));
+        document.querySelectorAll(".lab-panel").forEach((p) => p.classList.remove("active"));
+        btn.classList.add("active");
+        activeLab = btn.dataset.lab;
+        document.getElementById("lab-" + activeLab).classList.add("active");
+        if (activeLab === "aero") sizeCanvas(aeroCanvas);
+        if (activeLab === "os") sizeCanvas(osCanvas);
+        if (activeLab === "physics") sizeCanvas(pCanvas);
+      });
+    });
+
+    // LAB 01: LIQUID GLASS
+    const liveCard = document.getElementById("live-glass-card");
+    function updateLiquidGlass() {
+      const blur = document.getElementById("ctrlBlur").value, op = document.getElementById("ctrlOpacity").value;
+      const border = document.getElementById("ctrlBorder").value, angle = document.getElementById("ctrlAngle").value;
+      const sat = document.getElementById("ctrlSat").value, depth = document.getElementById("ctrlDepth").value;
+      document.getElementById("valBlur").textContent = `${blur}px`; document.getElementById("valOpacity").textContent = op;
+      document.getElementById("valBorder").textContent = border; document.getElementById("valAngle").textContent = `${angle}°`;
+      document.getElementById("valSat").textContent = `${sat}%`; document.getElementById("valDepth").textContent = `${depth}px`;
+      liveCard.style.backdropFilter = `blur(${blur}px) saturate(${sat}%)`;
+      liveCard.style.webkitBackdropFilter = `blur(${blur}px) saturate(${sat}%)`;
+      liveCard.style.background = `linear-gradient(${angle}deg, rgba(255,255,255,${Number(op) + 0.14}), rgba(255,255,255,${op}))`;
+      liveCard.style.border = `1px solid rgba(255,255,255,${border})`;
+      liveCard.style.boxShadow = `0 ${depth}px ${depth * 2}px rgba(0,0,0,0.35)`;
+    }
+    ["ctrlBlur", "ctrlOpacity", "ctrlBorder", "ctrlAngle", "ctrlSat", "ctrlDepth"].forEach((id) => document.getElementById(id).addEventListener("input", updateLiquidGlass));
+    updateLiquidGlass();
+
+    // LAB 02: AI ATTENTION
+    const sentence = ["Software", "transforms", "ideas", "into", "working", "systems"];
+    const attentionMap = [
+      [0.35, 0.25, 0.10, 0.05, 0.10, 0.15], [0.28, 0.20, 0.26, 0.06, 0.08, 0.12],
+      [0.12, 0.24, 0.34, 0.06, 0.10, 0.14], [0.08, 0.18, 0.20, 0.14, 0.20, 0.20],
+      [0.15, 0.10, 0.10, 0.05, 0.30, 0.30], [0.26, 0.14, 0.12, 0.04, 0.24, 0.20]
+    ];
+    const tokenWrap = document.getElementById("aiTokens");
+    function renderAttention(idx) {
+      document.querySelectorAll(".token-chip").forEach((c, i) => c.classList.toggle("selected", i === idx));
+      document.getElementById("aiExplain").textContent = `Query Token: "${sentence[idx]}" — Conceptual Self-Attention Weights`;
+      document.getElementById("aiBars").innerHTML = attentionMap[idx].map((w, i) => {
+        const pct = Math.round(w * 100);
+        return `<div style="display:grid; grid-template-columns: 100px 1fr 42px; gap:10px; align-items:center; font-size:0.82rem; font-family:'JetBrains Mono',monospace;"><span>${sentence[i]}</span><div style="height:8px; border-radius:99px; background:rgba(255,255,255,0.08); overflow:hidden;"><div style="height:100%; width:${pct}%; background:var(--accent);"></div></div><span>${pct}%</span></div>`;
+      }).join("");
+    }
+    sentence.forEach((word, i) => {
+      const b = document.createElement("button"); b.className = "token-chip"; b.textContent = word;
+      b.addEventListener("click", () => renderAttention(i)); tokenWrap.appendChild(b);
+    });
+    renderAttention(0);
+
+    // LAB 03, 04, 05: UNIFIED GATED SIMULATION LOOP
+    const aeroCtx = aeroCanvas.getContext("2d");
+    const osCtx = osCanvas.getContext("2d");
+    const pCtx = pCanvas.getContext("2d");
+
+    let aeroOffset = 0;
+    const osSignals = [], osLayers = ["User App", "Syscall API", "OS Kernel", "Driver", "Hardware"];
+    document.getElementById("osTriggerBtn").addEventListener("click", () => osSignals.push({ x: 0, color: "#e8ff47" }));
+    document.getElementById("netTriggerBtn").addEventListener("click", () => osSignals.push({ x: 0, color: "#38bdf8" }));
+
+    let forceMode = "attract", pmx = -999, pmy = -999;
+    document.querySelectorAll("[data-force]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("[data-force]").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active"); forceMode = btn.dataset.force;
+      });
+    });
+    pCanvas.addEventListener("mousemove", (e) => {
+      const r = pCanvas.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+      pmx = (e.clientX - r.left) * dpr; pmy = (e.clientY - r.top) * dpr;
+    });
+    pCanvas.addEventListener("mouseleave", () => { pmx = -999; pmy = -999; });
+    const pts = Array.from({ length: 90 }, () => ({ x: Math.random() * 800, y: Math.random() * 400, vx: (Math.random() - 0.5) * 1.8, vy: (Math.random() - 0.5) * 1.8 }));
+
+    (function simLoop() {
+      requestAnimationFrame(simLoop);
+      if (!labVisible) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      if (activeLab === "aero" && sizeCanvas(aeroCanvas)) {
+        const w = aeroCanvas.width, h = aeroCanvas.height;
+        const aoa = Number(document.getElementById("ctrlAoA").value);
+        const spd = Number(document.getElementById("ctrlSpeed").value);
+        document.getElementById("valAoA").textContent = `${aoa}°`;
+        document.getElementById("valSpeed").textContent = `${spd} kt`;
+        const stalled = aoa > 15;
+        const lift = stalled ? Math.max(20, spd * 0.3) : Math.max(0, (aoa + 4) * spd * 0.08);
+        const drag = (Math.abs(aoa) * 1.4 + 4) * (spd / 150);
+        document.getElementById("aeroReadout").textContent = `LIFT: ${Math.round(lift)} · DRAG: ${Math.round(drag)} · STATUS: ${stalled ? "STALL WARNING" : aoa > 2 ? "CLIMBING" : "LEVEL"}`;
+
+        aeroCtx.clearRect(0, 0, w, h);
+        const cx = w * 0.48, cy = h * 0.52;
+        aeroCtx.strokeStyle = stalled ? "rgba(244,63,94,0.55)" : "rgba(56,189,248,0.5)";
+        aeroCtx.lineWidth = 1.5 * dpr;
+        for (let i = -4; i <= 4; i++) {
+          aeroCtx.beginPath();
+          for (let x = 0; x < w; x += 12 * dpr) {
+            const dx = (x - cx) / dpr;
+            const deflect = Math.exp(-(dx * dx) / 9000) * (i < 0 ? -18 - aoa : 14) * dpr;
+            const wave = stalled && dx > 30 ? Math.sin(dx * 0.1 + aeroOffset) * 10 * dpr : 0;
+            const y = cy + i * 26 * dpr + deflect + wave;
+            if (x === 0) aeroCtx.moveTo(x, y); else aeroCtx.lineTo(x, y);
+          }
+          aeroCtx.stroke();
+        }
+        aeroCtx.save(); aeroCtx.translate(cx, cy); aeroCtx.rotate((-aoa * Math.PI) / 180);
+        aeroCtx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#e8ff47";
+        aeroCtx.beginPath(); aeroCtx.moveTo(-75 * dpr, 0); aeroCtx.quadraticCurveTo(-20 * dpr, -28 * dpr, 75 * dpr, 0); aeroCtx.quadraticCurveTo(-10 * dpr, 12 * dpr, -75 * dpr, 0); aeroCtx.fill();
+        aeroCtx.restore();
+        aeroOffset += spd * 0.0012;
+      }
+
+      if (activeLab === "os" && sizeCanvas(osCanvas)) {
+        const w = osCanvas.width, h = osCanvas.height, midY = h * 0.5;
+        const step = w / (osLayers.length + 1);
+        osCtx.clearRect(0, 0, w, h);
+        osCtx.strokeStyle = "rgba(255,255,255,0.16)"; osCtx.lineWidth = 2 * dpr;
+        osCtx.beginPath(); osCtx.moveTo(step, midY); osCtx.lineTo(step * osLayers.length, midY); osCtx.stroke();
+        osLayers.forEach((name, i) => {
+          const x = step * (i + 1);
+          osCtx.fillStyle = "rgba(255,255,255,0.08)"; osCtx.strokeStyle = "rgba(232,255,71,0.5)"; osCtx.lineWidth = 1.4 * dpr;
+          osCtx.beginPath(); osCtx.roundRect(x - 48 * dpr, midY - 26 * dpr, 96 * dpr, 52 * dpr, 12 * dpr); osCtx.fill(); osCtx.stroke();
+          osCtx.fillStyle = "#f4f5f7"; osCtx.font = `${11 * dpr}px Inter, sans-serif`; osCtx.textAlign = "center"; osCtx.textBaseline = "middle"; osCtx.fillText(name, x, midY);
+        });
+        for (let i = osSignals.length - 1; i >= 0; i--) {
+          const s = osSignals[i]; s.x += 0.009;
+          osCtx.fillStyle = s.color; osCtx.beginPath(); osCtx.arc(step + s.x * (step * (osLayers.length - 1)), midY, 7 * dpr, 0, Math.PI * 2); osCtx.fill();
+          if (s.x >= 1) osSignals.splice(i, 1);
+        }
+      }
+
+      if (activeLab === "physics" && sizeCanvas(pCanvas)) {
+        const w = pCanvas.width, h = pCanvas.height;
+        const accent = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#e8ff47";
+        pCtx.clearRect(0, 0, w, h);
+        pts.forEach((p) => {
+          const dx = pmx - p.x, dy = pmy - p.y, dist = Math.hypot(dx, dy);
+          if (dist < 140 * dpr && dist > 1) {
+            if (forceMode === "attract") { p.vx += (dx / dist) * 0.35; p.vy += (dy / dist) * 0.35; }
+            if (forceMode === "repel")   { p.vx -= (dx / dist) * 0.45; p.vy -= (dy / dist) * 0.45; }
+            if (forceMode === "vortex")  { p.vx += (-dy / dist) * 0.4; p.vy += (dx / dist) * 0.4; }
+          }
+          p.vx *= 0.97; p.vy *= 0.97;
+          p.x = (p.x + p.vx + w) % w; p.y = (p.y + p.vy + h) % h;
+          pCtx.fillStyle = accent; pCtx.beginPath(); pCtx.arc(p.x, p.y, 2.5 * dpr, 0, Math.PI * 2); pCtx.fill();
+        });
+      }
+    })();
+
+    // LAB 06: KERNIQ TERMINAL
+    const termOutput = document.getElementById("termOutput");
+    const termInput = document.getElementById("termInput");
+    const vfs = {
+      "kerniqos.txt": "PROJECT: KerniqOS (Primary Venture — Active Development)\nCURRENT FOCUS: Cross-platform developer desktop application with intelligent, device-aware environments.\nLONG-TERM VISION: Gesture-based HCI and a proprietary Linux-based operating system.",
+      "the1.txt": "PROJECT: THE 1 (Live Product — https://the-1.app)\nSUMMARY: AI-powered student workspace unifying AI tutoring, notes, homework, timetables, revision tools, quizzes, and presentations.",
+      "cci.txt": "PROJECT: College Chances India (CCI)\nSUMMARY: AI-powered platform helping students discover universities and academic pathways without relying solely on expensive consultancies."
+    };
+    function termPrint(html) {
+      const div = document.createElement("div"); div.innerHTML = html;
+      termOutput.appendChild(div); termOutput.scrollTop = termOutput.scrollHeight;
+    }
+    function runTermCmd(raw) {
+      const cmd = raw.trim(); if (!cmd) return;
+      termPrint(`<span class="t-accent">samar@kerniq:~$</span> <span class="t-cmd">${cmd.replace(/</g, "&lt;")}</span>`);
+      const [base, ...args] = cmd.split(/\s+/); const arg = args.join(" ");
+      switch (base.toLowerCase()) {
+        case "help":
+          termPrint(`Commands: <span class="t-cyan">whoami</span>, <span class="t-cyan">ls</span>, <span class="t-cyan">cat &lt;file&gt;</span>, <span class="t-cyan">achievements</span>, <span class="t-cyan">leadership</span>, <span class="t-cyan">skills</span>, <span class="t-cyan">theme &lt;acid|ocean|sunset|light&gt;</span>, <span class="t-cyan">neofetch</span>, <span class="t-cyan">clear</span>`);
+          break;
+        case "whoami":
+          termPrint(`Samar Agshikar — Grade 8 at Adani International School, Ahmedabad, India.\nLived & studied in Germany and India (bilingual English & German).`);
+          break;
+        case "ls": termPrint(`<span class="t-cyan">kerniqos.txt</span>   <span class="t-cyan">the1.txt</span>   <span class="t-cyan">cci.txt</span>`); break;
+        case "cat": termPrint(vfs[arg] || `<span class="t-err">cat: ${arg || "(empty)"}: No such file. Try 'ls'.</span>`); break;
+        case "achievements": termPrint(`• SOF Mathematics Gold Medal of Excellence\n• ASSET Mathematics — Gold (98th percentile)\n• ASSET Science — Silver (93rd percentile)`); break;
+        case "leadership": termPrint(`• Student Council\n• Culture and Events Team\n• Round Square Student Committee (2026–27)`); break;
+        case "skills": termPrint(`Operating Systems · Computer Architecture · AI-Assisted Dev · Liquid Glass UI · Gesture HCI · Aerospace`); break;
+        case "theme":
+          if (themeAccentHex[arg]) { applyTheme(arg); termPrint(`Theme switched to <span class="t-accent">${arg}</span>.`); }
+          else termPrint(`Usage: theme <span class="t-cyan">acid | ocean | sunset | light</span>`);
+          break;
+        case "neofetch":
+          termPrint(`<span class="t-accent">SAMAR // DIGITAL UNIVERSE</span>\nLocation:  Ahmedabad, India (ex-Germany)\nPrimary:   KerniqOS\nShipped:   THE 1 (the-1.app)\nGitHub:    github.com/samar-agshikar`);
+          break;
+        case "clear": termOutput.innerHTML = ""; break;
+        default: termPrint(`<span class="t-err">Command not found: ${base}. Type 'help'.</span>`);
+      }
+    }
+    termPrint(`<span class="t-accent">Kerniq Shell v2.6</span> — Type <span class="t-cyan">help</span> or click a chip below.\n`);
+    termInput.addEventListener("keydown", (e) => { if (e.key === "Enter") { runTermCmd(termInput.value); termInput.value = ""; } });
+    document.querySelectorAll(".term-chip").forEach((c) => c.addEventListener("click", () => runTermCmd(c.dataset.cmd)));
+
+    // Initial Theme + Resize Handler
+    applyTheme(localStorage.getItem("site-theme") || "acid");
+    window.addEventListener("resize", () => {
+      bgCamera.aspect = window.innerWidth / window.innerHeight;
+      bgCamera.updateProjectionMatrix();
+      bgRenderer.setSize(window.innerWidth, window.innerHeight);
+
+      mCamera.aspect = window.innerWidth / window.innerHeight;
+      mCamera.updateProjectionMatrix();
+      mRenderer.setSize(window.innerWidth, window.innerHeight);
+
+      drawLogicGate();
+    });
+  </script>
+</body>
+</html>
